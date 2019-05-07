@@ -1,3 +1,10 @@
+#VSCode workspace file
+*.code-workspace
+
+#
+#!!!    below was packaged with the demo program
+#
+
 # OSX
 #
 .DS_Store
