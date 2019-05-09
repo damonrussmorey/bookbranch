@@ -1,6 +1,9 @@
 #VSCode workspace file
 *.code-workspace
 
+#Batch Scripts
+*.bat
+
 #
 #!!!    below was packaged with the demo program
 #
