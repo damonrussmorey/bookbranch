@@ -1,1 +1,3 @@
-Hi Matt.
+#install the node packages listed in package.json
+> npm install
+#I get "11 low severity vulnerabilities", I think this is ok
