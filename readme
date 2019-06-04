@@ -1,10 +1,10 @@
-#install the node packages listed in package.json
+# install the node packages listed in package.json
 > npm install
-#I get "11 low severity vulnerabilities", I think this is ok
+# I get "11 low severity vulnerabilities", I think this is ok
 
-#start your emulator, example on windows:
+# start your emulator, example on windows:
 > start /b %ANDROID_HOME%\emulator\emulator.exe -avd [emulator name]
-#or start it directly from android studio/xcode
+# or start it directly from android studio/xcode
 
-#run metro
+# run metro
 > npm start
