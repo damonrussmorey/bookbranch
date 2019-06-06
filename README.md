@@ -27,4 +27,4 @@ What things you need to install the software and how to install them
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-![alt text](images/1.png "Logo Title Text 1")
+![alt text](img/1.png "Logo Title Text 1")
