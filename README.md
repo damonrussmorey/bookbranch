@@ -25,7 +25,7 @@ What things you need to install the software and how to install them
 
 ## License
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/dmoreyPDX/bookbranch/blob/master/LICENSE.md)
 
 ![alt text](img/1.png "Logo Title Text 1")
 ![alt text](img/2.png "Logo Title Text 2")
