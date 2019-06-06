@@ -11,19 +11,16 @@ Inspired from BookBranch.ch
 What things you need to install the software and how to install them
 
 ### Installing
+>npm install -g react-native-cli
 
-## Deployment
-# install the node packages listed in package.json
-> npm install
-# I get "11 low severity vulnerabilities", I think this is ok
+#### For IOS
+>react-native run-ios
+#### For Android
+>react-native run-android
 
-# start your emulator, example on windows:
-> start /b %ANDROID_HOME%\emulator\emulator.exe -avd [emulator name]
-# or start it directly from android studio/xcode
 
-# run metro
-> npm start
-
+#### Documentation 
+>https://facebook.github.io/react-native/docs/getting-started
 
 ## License
 
