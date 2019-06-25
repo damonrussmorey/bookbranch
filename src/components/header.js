@@ -1,3 +1,5 @@
+//Citation: https://github.com/StephenGrider/ReactNativeReduxCasts/tree/master/albums
+
 // Import libraries for making a component
 import React from 'react';
 import { Text, View } from 'react-native';

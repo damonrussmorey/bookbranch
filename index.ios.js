@@ -1,3 +1,5 @@
+//Citation: https://github.com/StephenGrider/ReactNativeReduxCasts/tree/master/albums
+
 // Index.ios.js - place code in here for IOS!!!!
 
 // Import a library to help create a component
