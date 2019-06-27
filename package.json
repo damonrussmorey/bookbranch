@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
     "react": "16.8.3",
     "react-native": "0.59.8"
   },
