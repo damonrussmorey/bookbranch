@@ -5,13 +5,15 @@
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
-import Attributes from './src/components/Attributes';
+import AttributesList from './src/components/AttributesList';
+import MenuText from './src/components/MenuText';
 
 // Create a component
 const App = () => (
   <View style={{ flex: 1 }}>
     <Header headerText={'Bookbranch'} />
-    <Attributes/>
+    <MenuText/>
+    <AttributesList/>
 </View>
 );
 
