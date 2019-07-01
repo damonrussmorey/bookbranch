@@ -5,11 +5,14 @@ import { View, Text } from 'react-native';
 
 const MenuText= () => {
     return (
-        <View style = {styles.TopThreeStyle}>
-            <Text style = 
-            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
-            Choose this book's top 3 attributes:
-            </Text>
+        <View>
+            <Text style = {styles.BookNumStyle}>Book #1</Text>
+            <View style = {styles.TopThreeStyle}>
+                <Text style = 
+                {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
+                Choose this book's top 3 attributes:
+                </Text>
+            </View>
         </View>
     );
 };
@@ -19,7 +22,13 @@ const styles = {
         marginTop: 150,
         marginLeft: 87,
         //position: 'absolute'
-    }
+    },
+    BookNumStyle: {
+        marginTop: 20,
+        marginLeft: 87,
+        fontWeight: 'bold',
+        fontSize: 20,
+    },
 };
 
 export default MenuText;

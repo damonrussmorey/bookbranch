@@ -1,14 +1,7 @@
-/*
-Sources I used:
-https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/components/Card.js
-*/
-
-//Implements Card 
-
 import React from 'react';
-import { View , Text } from 'react-native';
+import { View } from 'react-native';
 
-const Card = (props) => {
+const ArrowCard = (props) => {
     return (
         <View>
              <View style = {styles.containerStyle}>
@@ -25,9 +18,9 @@ const styles = {
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
         height: 400,
-        width: 200,
+        width: 50,
         elevation: 1,
-        marginLeft: 90,
+        marginLeft: 35,
         marginRight: 5,
         marginTop: 10,
         position: 'absolute'
@@ -35,4 +28,4 @@ const styles = {
 
 };
 
-export default Card;
+export default ArrowCard;
