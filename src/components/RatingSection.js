@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const ArrowSection = (props) => {
+const RatingSection = (props) => {
   return (
     <View style={styles.containerStyle}>
       {props.children}
@@ -12,15 +12,19 @@ const ArrowSection = (props) => {
 const styles = {
   containerStyle: {
     borderBottomWidth: 0.5,
+    borderWidth: 1,
+    borderRadius: 2,
+    borderColor: '#000000',
     padding: 5,
     backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
+   // justifyContent: 'flex-start',
+    flexDirection: 'column',
     borderColor: '#ffffff',
-    position: 'relative',
-    height: 133,
-    opacity: 0.8
+    //position: 'absolute',
+    height: 28,
+    width: 34,
+    opacity: 1
   }
 };
 
-export default ArrowSection;
+export default RatingSection;

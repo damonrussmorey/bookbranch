@@ -15,8 +15,8 @@ const styles = {
     containerStyle: {
         borderWidth: 1,
         borderRadius: 2,
-        borderColor: '#000000',
-        backgroundColor: '#D3D3D3',
+        borderColor: '#ffffff',
+        backgroundColor: '#ffffff',
         height: 400,
         width: 50,
         elevation: 1,

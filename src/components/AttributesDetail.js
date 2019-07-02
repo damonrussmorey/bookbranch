@@ -3,12 +3,14 @@ Sources I used:
 https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/components/AlbumDetail.js
 */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import RatingCard from './RatingCard';
+import RatingSection from './RatingSection';
 
 const AttributesDetail = () => {
     return (
@@ -17,15 +19,30 @@ const AttributesDetail = () => {
                 <View>
                 <ArrowCardTwo>
                     <ArrowSection>
-                        <Text>Button 1</Text>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <Text>Button 2</Text>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <Text>Button 3</Text>
+                    <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
                 </ArrowCardTwo>
             </View>
@@ -33,15 +50,30 @@ const AttributesDetail = () => {
             <View>
                 <ArrowCard>
                     <ArrowSection>
-                        <Text>Button 1</Text>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <Text>Button 2</Text>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <Text>Button 3</Text>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
                     </ArrowSection>
                 </ArrowCard>
             </View>
@@ -49,18 +81,32 @@ const AttributesDetail = () => {
             <View>
                 <Card>
                     <CardSection>
-                        <Text>Attributes 1</Text>
+                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 1</Text>
                     </CardSection>
 
                     <CardSection>
-                        <Text>Attributes 2</Text>
+                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 2</Text>
                     </CardSection>
 
                     <CardSection>
-                        <Text>Attributes 3</Text>
+                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 3</Text>
                     </CardSection>
                 </Card>
-                    <Text style = {styles.RatingStyle}>Your Rating: </Text>
+                    <Text style = {styles.RatingStyle}> Your Rating: </Text>
+
+                    <RatingCard>
+                        <RatingSection>
+                            <TouchableOpacity>
+                                 <Text>1</Text> 
+                            </TouchableOpacity>
+                        </RatingSection>
+
+                        <RatingSection>
+                            <TouchableOpacity>
+                                 <Text>2</Text> 
+                            </TouchableOpacity>
+                        </RatingSection>
+                    </RatingCard>
             </View>
         </View>
     );
@@ -72,7 +118,18 @@ const styles = {
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 30
-    }
+    },
+
+    buttonStyle: {
+        width: 40,
+        height: 23,
+        //paddingTop: 2,
+        backgroundColor: '#ffffff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#ffffff',
+        alignSelf: 'center',
+      }
 };
 
 export default AttributesDetail;

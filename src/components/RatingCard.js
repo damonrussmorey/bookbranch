@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const ArrowCard = (props) => {
+const RatingCard = (props) => {
     return (
         <View>
              <View style = {styles.containerStyle}>
@@ -13,19 +13,19 @@ const ArrowCard = (props) => {
 
 const styles = {
     containerStyle: {
-        borderWidth: 0,
-        borderRadius: 0,
-        borderColor: '#ffffff',
-        backgroundColor: '#ffffff',
-        height: 400,
-        width: 50,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: '#000000',
+        backgroundColor: '#D3D3D3',
+        height: 30,
+        width: 170,
         elevation: 1,
-        marginLeft: 35,
+        marginLeft: 160,
         marginRight: 5,
-        marginTop: 10,
+        marginTop: -25,
         position: 'absolute'
     },
 
 };
 
-export default ArrowCard;
+export default RatingCard;
