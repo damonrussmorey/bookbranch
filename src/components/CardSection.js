@@ -24,7 +24,7 @@ const styles = {
     borderColor: '#000000',
     position: 'relative',
     height: 133,
-    opacity: 0.8
+    opacity: 1
   }
 };
 

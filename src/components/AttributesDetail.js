@@ -95,17 +95,13 @@ const AttributesDetail = () => {
                     <Text style = {styles.RatingStyle}> Your Rating: </Text>
 
                     <RatingCard>
-                        <RatingSection>
+                        
+                        <RatingSection style = {{}}>
                             <TouchableOpacity>
-                                 <Text>1</Text> 
+                                 <Text style={{marginLeft: 5}}>1</Text> 
                             </TouchableOpacity>
                         </RatingSection>
 
-                        <RatingSection>
-                            <TouchableOpacity>
-                                 <Text>2</Text> 
-                            </TouchableOpacity>
-                        </RatingSection>
                     </RatingCard>
             </View>
         </View>

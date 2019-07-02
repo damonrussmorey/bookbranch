@@ -18,7 +18,7 @@ const styles = {
     padding: 5,
     backgroundColor: '#fff',
    // justifyContent: 'flex-start',
-    flexDirection: 'column',
+    flexDirection: 'row',
     borderColor: '#ffffff',
     //position: 'absolute',
     height: 28,
