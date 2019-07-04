@@ -20,7 +20,10 @@ const Header = (props) => {
       <Text style={textStyle}>{props.headerText}</Text>
 
       <TouchableOpacity style = {buttonStyle}>
-        <Text>Menu</Text>
+        <Image
+          style={{height: 20, width: 25, marginLeft: 7}}
+            source={require('bookbranch/img/hamburger-menu.png')}>
+        </Image>
       </TouchableOpacity>
     </View>
   );

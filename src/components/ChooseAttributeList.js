@@ -277,6 +277,7 @@ class AttributesList extends Component {
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                  +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
+
                     </ScrollView>
                 </Card>
             </View>
