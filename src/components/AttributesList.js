@@ -18,12 +18,6 @@ import AttributesDetail from './AttributesDetail';
 
 class AttributesList extends Component {
 
-    //state = {attributes: []};
-    /*
-    renderAttributes(){
-        //return attribute => <Text> </Text>;
-    }
-    */
     render () {
         return (
             <View>

@@ -81,15 +81,21 @@ const AttributesDetail = () => {
             <View>
                 <Card>
                     <CardSection>
-                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 1</Text>
+                        <TouchableOpacity>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 2</Text>
+                        <TouchableOpacity>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <Text style= {{marginLeft: 60, marginTop: 50}}>Attribute 3</Text>
+                        <TouchableOpacity>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
                     </CardSection>
                 </Card>
                     <Text style = {styles.RatingStyle}> Your Rating: </Text>

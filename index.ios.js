@@ -7,8 +7,18 @@ import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
 import AttributesList from './src/components/AttributesList';
 import MenuText from './src/components/MenuText';
+import ChooseAttributeList from './src/components/ChooseAttributeList';
+
+const App = () => (
+  <View style={{ flex: 1 }}>
+    <Header headerText={'Bookbranch'} />
+    <MenuText/>
+    <ChooseAttributeList/>
+  </View>
+);
 
 // Create a component
+/*
 const App = () => (
   <View style={{ flex: 1 }}>
     <Header headerText={'Bookbranch'} />
@@ -16,6 +26,6 @@ const App = () => (
     <AttributesList/>
 </View>
 );
-
+*/
 // Render it to the device
 AppRegistry.registerComponent('bookbranch', () => App);
