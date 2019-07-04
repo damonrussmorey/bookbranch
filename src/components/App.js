@@ -21,7 +21,7 @@ export default class App extends Component {
     //run server.js on local machine
     //node server.js
     try {
-      res = await fetch('http://192.168.0.12:8765')
+      res = await fetch('http://localhost:8765')
       users = await res.json();
     } catch(e) {
       alert(e);

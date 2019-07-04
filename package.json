@@ -9,15 +9,16 @@
   "dependencies": {
     "express": "^4.17.1",
     "mysql": "^2.17.1",
+    "node-fetch": "^2.6.0",
     "react": "16.8.3",
     "react-native": "0.59.8"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.4",
-    "@babel/runtime": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.54.0",
+    "metro-react-native-babel-preset": "^0.54.1",
     "react-test-renderer": "16.8.3"
   },
   "jest": {
