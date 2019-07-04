@@ -1,26 +1,22 @@
 const express = require('express');
 const app = express();
 const port = 8765;
-var mysql = require('mysql');
-
-var pool = mysql.createPool({
-    host: '159.65.97.145',
-    user: 'forge',
-    password: '5OlUkuXQpeEXoHuK',
-    database: 'bookbranch'
-});
-
+const mysql = require('mysql');
 const bodyParser = require('body-parser')
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use( bodyParser.urlencoded({ extended: true }) ); // to support URL-encoded bodies
+const pool = mysql.createPool({
+  host: '159.65.97.145',
+  user: 'forge',
+  password: '5OlUkuXQpeEXoHuK',
+  database: 'bookbranch'
+});
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({extended: true}) ); // to support URL-encoded bodies
 
 /*
 Basic GET request for testing
 sends all the user names from the DB
 */
 app.get('/', (req, res) => {
-  console.log(req);
-
   //Ask DB for all user names
   pool.getConnection((err, connection) => {
       if (err) throw err;
@@ -32,21 +28,8 @@ app.get('/', (req, res) => {
   })
 });
 
-/*
-Book Recommendation Request
-Client sends a book title and 3 attribute values
-Body of request:
-  {title:...
-    attr: [
-      { name:...
-        val:...
-      }
-    ] //len 3
-  }
-Assume the names of the attributes are correct
-Attribute values are integers from 1 to 10 inclusive
-We need the book to skip it from matching to itself
-*/
-app.post('/recommendation', require('./recommendation'));
+app.post('/recommendation', (req, res) => {
+  require('./recommendation')(pool, req, res);
+});
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
