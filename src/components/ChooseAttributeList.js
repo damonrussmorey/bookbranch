@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
 import AttributesDetail from './AttributesDetail';
 import Card from './Card';
 import AttributeCard from './AttributeCard';
+import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 
 class AttributesList extends Component {
     //state = {attributes: []};
@@ -23,7 +24,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/adventurous-attribute.png')}>
                             </Image>
-                            <Text>Adventurous</Text>
+                            <Menu>
+                                <MenuTrigger text='Adventurous' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -33,7 +49,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/beautiful-attribute.png')}>
                             </Image>
-                            <Text>Beautiful</Text>
+                            <Menu>
+                                <MenuTrigger text='Beautiful' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -43,7 +74,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/brainy-attribute.png')}>
                             </Image>
-                            <Text>Brainy</Text>
+                            <Menu>
+                                <MenuTrigger text='Brainy' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -53,7 +99,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/complex-attribute.png')}>
                             </Image>
-                            <Text>Complex</Text>
+                            <Menu>
+                                <MenuTrigger text='Complex' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -63,7 +124,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/cooking-attribute.png')}>
                             </Image>
-                            <Text>Cooking</Text>
+                            <Menu>
+                                <MenuTrigger text='Cooking' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -73,7 +149,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/cultural-attribute.png')}>
                             </Image>
-                            <Text>Cultural</Text>
+                            <Menu>
+                                <MenuTrigger text='Cultural' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                         +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -83,7 +174,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/dark-attribute.png')}>
                             </Image>
-                            <Text>Dark</Text>
+                            <Menu>
+                                <MenuTrigger text='Dark' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                               +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -93,7 +199,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/disaster-attribute.png')}>
                             </Image>
-                            <Text>Disaster</Text>
+                            <Menu>
+                                <MenuTrigger text='Disaster' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -103,7 +224,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/erotic-attribute.png')}>
                             </Image>
-                            <Text>Erotic</Text>
+                            <Menu>
+                                <MenuTrigger text='Erotic' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -113,7 +249,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/faith-attribute.png')}>
                             </Image>
-                            <Text>Faith</Text>
+                            <Menu>
+                                <MenuTrigger text='Faith' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                               +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -123,7 +274,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/family-attribute.png')}>
                             </Image>
-                            <Text>Family</Text>
+                            <Menu>
+                                <MenuTrigger text='Family' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -133,7 +299,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/fantasy-attribute.png')}>
                             </Image>
-                            <Text>Fantasy</Text>
+                            <Menu>
+                                <MenuTrigger text='Fantasy' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                          +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -143,7 +324,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/friendship-attribute.png')}>
                             </Image>
-                            <Text>Friendship</Text>
+                            <Menu>
+                                <MenuTrigger text='Friendship' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                     +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -153,7 +349,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/funny-attribute.png')}>
                             </Image>
-                            <Text>Funny</Text>
+                            <Menu>
+                                <MenuTrigger text='Funny' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -163,7 +374,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/heroic-attribute.png')}>
                             </Image>
-                            <Text>Heroic</Text>
+                            <Menu>
+                                <MenuTrigger text='Heroic' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -173,7 +399,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/historical-attribute.png')}>
                             </Image>
-                            <Text>Historical</Text>
+                            <Menu>
+                                <MenuTrigger text='Historical' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -183,7 +424,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/idealistic-attribute.png')}>
                             </Image>
-                            <Text>Idealistic</Text>
+                            <Menu>
+                                <MenuTrigger text='Idealistic' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -193,7 +449,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/insightful-attribute.png')}>
                             </Image>
-                            <Text>Insightful</Text>
+                            <Menu>
+                                <MenuTrigger text='Insightful' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -203,7 +474,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/knowledge-attribute.png')}>
                             </Image>
-                            <Text>Knowledge</Text>
+                            <Menu>
+                                <MenuTrigger text='Knowledge' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -213,7 +499,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/mysterious-attribute.png')}>
                             </Image>
-                            <Text>Mysterious</Text>
+                            <Menu>
+                                <MenuTrigger text='Mysterious' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -223,7 +524,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/perserverence-attribute.png')}>
                             </Image>
-                            <Text>Perserverence</Text>
+                            <Menu>
+                                <MenuTrigger text='Perserverence' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>              +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -233,7 +549,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/power-attribute.png')}>
                             </Image>
-                            <Text>Power</Text>
+                            <Menu>
+                                <MenuTrigger text='Power' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -243,7 +574,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/readable-attribute.png')}>
                             </Image>
-                            <Text>Readable</Text>
+                            <Menu>
+                                <MenuTrigger text='Readable' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -253,7 +599,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/romantic-attribute.png')}>
                             </Image>
-                            <Text>Romantic</Text>
+                            <Menu>
+                                <MenuTrigger text='Romantic' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -263,7 +624,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/scary-attribute.png')}>
                             </Image>
-                            <Text>Scary</Text>
+                            <Menu>
+                                <MenuTrigger text='Scary' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                              +</Text>
                         </AttributeCard>
                     </TouchableOpacity>
@@ -273,7 +649,22 @@ class AttributesList extends Component {
                                 style={styles.imageStyle}
                                 source={require('bookbranch/img/attributes/suspenseful-attribute.png')}>
                             </Image>
-                            <Text>Suspenseful</Text>
+                            <Menu>
+                                <MenuTrigger text='Suspenseful' />
+                                <MenuOptions>
+                                    <MenuOption onSelect={() => alert(`Not a valid option`)} text='Choose a ranking' />
+                                    <MenuOption onSelect={() => alert('You ranked this attribute as 1')} text='1' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 2`)} text='2' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 3`)} text='3' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 4`)} text='4' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 5`)} text='5' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 6`)} text='6' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 7`)} text='7' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 8`)} text='8' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 9`)} text='9' />
+                                    <MenuOption onSelect={() => alert(`You ranked this attribute as 10`)} text='10' /> 
+                                </MenuOptions>
+                            </Menu>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                  +</Text>
                         </AttributeCard>
                     </TouchableOpacity>

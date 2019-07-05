@@ -6,6 +6,7 @@ Sources I used:
 // Import libraries for making a component
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 
 // Make a component
 const Header = (props) => {
@@ -24,6 +25,14 @@ const Header = (props) => {
           style={{height: 20, width: 25, marginLeft: 7}}
             source={require('bookbranch/img/hamburger-menu.png')}>
         </Image>
+        <Menu>
+          <MenuTrigger/>
+            <MenuOptions>
+              <MenuOption onSelect={() => alert(`You chose Main Menu`)} text='Main Menu' />
+              <MenuOption onSelect={() => alert('You chose User Profile')} text='User Profile' />
+              <MenuOption onSelect={() => alert('You chose Log-Out')} text='Log-Out' />
+            </MenuOptions>
+        </Menu>
       </TouchableOpacity>
     </View>
   );

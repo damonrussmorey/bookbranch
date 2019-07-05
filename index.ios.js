@@ -8,12 +8,15 @@ import Header from './src/components/header';
 import AttributesList from './src/components/AttributesList';
 import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
+import { MenuProvider } from 'react-native-popup-menu';
 
 const App = () => (
   <View style={{ flex: 1 }}>
+    <MenuProvider>
     <Header headerText={'Bookbranch'} />
     <MenuText/>
     <ChooseAttributeList/>
+    </MenuProvider>
   </View>
 );
 
