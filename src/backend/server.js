@@ -32,4 +32,8 @@ app.post('/recommendation', (req, res) => {
   require('./recommendation')(pool, req, res);
 });
 
+app.get('/attributes', (req, res) => {
+  require('./attributes')(pool, req, res);
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
