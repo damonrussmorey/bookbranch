@@ -2,6 +2,7 @@
 
 //itemImage = {require('./img/bookbranch_tree.png')}
 // Import a library to help create a component
+
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
@@ -10,12 +11,13 @@ import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
 import { MenuProvider } from 'react-native-popup-menu';
 
+
 const App = () => (
   <View style={{ flex: 1 }}>
     <MenuProvider>
-    <Header headerText={'Bookbranch'} />
-    <MenuText/>
-    <ChooseAttributeList/>
+      <Header headerText={'Bookbranch'} />
+      <MenuText/>
+      <ChooseAttributeList/>
     </MenuProvider>
   </View>
 );
@@ -24,9 +26,11 @@ const App = () => (
 /*
 const App = () => (
   <View style={{ flex: 1 }}>
-    <Header headerText={'Bookbranch'} />
-    <MenuText/>
-    <AttributesList/>
+    <MenuProvider>
+      <Header headerText={'Bookbranch'} />
+      <MenuText/>
+      <AttributesList/>
+    </MenuProvider>
 </View>
 );
 */
