@@ -21,7 +21,7 @@ const styles = {
         width: 50,
         elevation: 1,
         marginLeft: 295,
-        marginTop: 10,
+        marginTop: 130,
         position: 'absolute'
     },
 
