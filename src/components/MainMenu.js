@@ -20,7 +20,7 @@ const MainMenu= () => {
                     </TouchableOpacity>
                 </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={() => Actions.attList()}>
+                    <TouchableOpacity onPress={() => Actions.bookSearch()}>
                         <Text style = {styles.TextStyle3}>Search For A Book</Text>
                     </TouchableOpacity>
                 </View>
