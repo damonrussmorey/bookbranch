@@ -22,7 +22,7 @@ const styles = {
         elevation: 1,
         marginLeft: 160,
         marginRight: 5,
-        marginTop: -25,
+        marginTop: 130,
         position: 'absolute'
     },
 

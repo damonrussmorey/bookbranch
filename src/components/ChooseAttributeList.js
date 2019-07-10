@@ -4,6 +4,7 @@ import AttributesDetail from './AttributesDetail';
 import Card from './Card';
 import AttributeCard from './AttributeCard';
 import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
+import { Actions } from 'react-native-router-flux';
 
 class AttributesList extends Component {
     //state = {attributes: []};

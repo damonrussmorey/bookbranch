@@ -19,15 +19,16 @@ const MenuText= () => {
 
 const styles = {
     TopThreeStyle: {
-        marginTop: 150,
+        marginTop: 110,
         marginLeft: 87,
-        //position: 'absolute'
+        position: 'absolute'
     },
     BookNumStyle: {
-        marginTop: 20,
+        marginTop: 10,
         marginLeft: 87,
         fontWeight: 'bold',
         fontSize: 20,
+        position: 'absolute'        
     },
 };
 

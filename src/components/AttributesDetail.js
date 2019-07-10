@@ -11,7 +11,7 @@ import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
-
+import { Actions } from 'react-native-router-flux';
 const AttributesDetail = () => {
     return (
         <View>
@@ -19,7 +19,8 @@ const AttributesDetail = () => {
                 <View>
                 <ArrowCardTwo>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableOpacity style = {styles.buttonStyle}> 
+                            
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
@@ -81,19 +82,19 @@ const AttributesDetail = () => {
             <View>
                 <Card>
                     <CardSection>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>

@@ -10,8 +10,12 @@ import AttributesList from './src/components/AttributesList';
 import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
 import { MenuProvider } from 'react-native-popup-menu';
+import { Actions } from 'react-native-router-flux';
+import { Router, Scene } from 'react-native-router-flux';
+import CallAttributes from './src/components/CallAttributes';
+import CallChooseAttributeList from './src/components/CallChooseAttributeList';
 
-
+/*
 const App = () => (
   <View style={{ flex: 1 }}>
     <MenuProvider>
@@ -21,8 +25,9 @@ const App = () => (
     </MenuProvider>
   </View>
 );
-
+*/
 // Create a component
+
 /*
 const App = () => (
   <View style={{ flex: 1 }}>
@@ -34,5 +39,29 @@ const App = () => (
 </View>
 );
 */
+
+const App = () => (
+  <Router>
+
+      <Scene key="root">
+
+        <Scene
+          key="attList"
+          component={CallAttributes}
+          title="Choose Three Attributes"
+          initial
+        />
+
+        <Scene
+          key="chooseAttList"
+          component={CallChooseAttributeList}
+          title="Choose From The Following List"
+        />
+
+      </Scene>
+  </Router>
+);
+
+
 // Render it to the device
 AppRegistry.registerComponent('bookbranch', () => App);
