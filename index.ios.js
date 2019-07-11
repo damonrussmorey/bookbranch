@@ -10,8 +10,13 @@ import AttributesList from './src/components/AttributesList';
 import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
 import { MenuProvider } from 'react-native-popup-menu';
-
-
+import { Actions } from 'react-native-router-flux';
+import { Router, Scene } from 'react-native-router-flux';
+import CallAttributes from './src/components/CallAttributes';
+import CallChooseAttributeList from './src/components/CallChooseAttributeList';
+import MainMenu from './src/components/MainMenu';
+import BookSearch from './src/components/BookSearch';
+/*
 const App = () => (
   <View style={{ flex: 1 }}>
     <MenuProvider>
@@ -21,8 +26,9 @@ const App = () => (
     </MenuProvider>
   </View>
 );
-
+*/
 // Create a component
+
 /*
 const App = () => (
   <View style={{ flex: 1 }}>
@@ -34,5 +40,49 @@ const App = () => (
 </View>
 );
 */
+/*
+const App = () => (
+  <View style={{ flex: 1 }}>
+    <MenuProvider>
+      <Header headerText={'Bookbranch'}/>
+      <MainMenu/>
+    </MenuProvider>
+</View>
+);
+*/
+const App = () => (
+  <Router>
+
+      <Scene key="root">
+
+        <Scene
+          key="Main"
+          component={MainMenu}
+          title="Bookbranch"
+          initial
+        />
+
+        <Scene
+          key="attList"
+          component={CallAttributes}
+          title="Choose Three Attributes"
+        />
+
+        <Scene
+          key="chooseAttList"
+          component={CallChooseAttributeList}
+          title="Choose From The Following List"
+        />
+
+        <Scene
+          key="bookSearch"
+          component={BookSearch}
+          title="Book Search"
+        />
+
+      </Scene>
+  </Router>
+);
+
 // Render it to the device
 AppRegistry.registerComponent('bookbranch', () => App);

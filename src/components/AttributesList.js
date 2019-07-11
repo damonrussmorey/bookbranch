@@ -13,6 +13,7 @@ https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/co
 import React, { Component } from 'react';
 import { View, Text} from 'react-native';
 import AttributesDetail from './AttributesDetail';
+import { Actions } from 'react-native-router-flux';
 
 //import axios from 'axios'; // used for http requests
 
