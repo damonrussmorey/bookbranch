@@ -15,6 +15,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import CallAttributes from './src/components/CallAttributes';
 import CallChooseAttributeList from './src/components/CallChooseAttributeList';
 import MainMenu from './src/components/MainMenu';
+import BookSearch from './src/components/BookSearch';
 /*
 const App = () => (
   <View style={{ flex: 1 }}>
@@ -71,6 +72,12 @@ const App = () => (
           key="chooseAttList"
           component={CallChooseAttributeList}
           title="Choose From The Following List"
+        />
+
+        <Scene
+          key="bookSearch"
+          component={BookSearch}
+          title="Book Search"
         />
 
       </Scene>
