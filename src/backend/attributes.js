@@ -1,23 +1,32 @@
 /*
 Get a list of attributes from the database
 */
-module.exports = (pool, req, res) => {
-    console.log('Get attributes');
-    pool.getConnection((err, connection) => {
-        if(err) throw err;
-
-        connection.query('SELECT name FROM attributes;', (err, result) => {
-            if(err) throw err;
-
-            res.send(result);
-        });
-    });
+module.exports = async (pool, req, res) => {
+  console.log('Get attributes');
+    
+  let connection, result;
+  try {
+    connection = await pool.getConnection();
+    result = await connection.query('SELECT name FROM attributes;');
+    result = result[0];
+    if(!result) {
+      throw 'no matches';
+    }
+    if(!Array.isArray(result)) {
+      result = [result];
+    }
+  } finally {
+    if(connection && connection.release)  connection.release();
+  }
+  res.send(result[0]);
 }
 
 //quick test
-const fetch = require('node-fetch');
-(async () => {
-    var res = await fetch('http://localhost:8765/attributes');
-    var attr = await res.json();
-    console.log(JSON.stringify(attr));
-})();
+if(process.argv[2] === 'test') {
+  const fetch = require('node-fetch');
+  (async () => {
+      let res = await fetch('http://localhost:8765/attributes');
+      let attr = await res.json();
+      console.log(JSON.stringify(attr));
+  })();
+}

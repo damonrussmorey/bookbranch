@@ -30,9 +30,6 @@ pool.getConnection((err, connection) => {
   return;
 });
 
-//promisify query
-pool.query
-
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({extended: true}) ); // to support URL-encoded bodies
 
@@ -58,6 +55,10 @@ app.post('/recommendation', (req, res) => {
 
 app.get('/attributes', (req, res) => {
   require('./attributes')(pool, req, res);
+});
+
+app.post('/book', (req, res) => {
+  require('./book')(pool, req, res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
