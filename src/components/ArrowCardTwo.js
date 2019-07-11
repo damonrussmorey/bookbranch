@@ -14,15 +14,16 @@ const ArrowCardTwo = (props) => {
 const styles = {
     containerStyle: {
         borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#ffffff',
-        backgroundColor: '#ffffff',
+        borderRadius: 5,
+        borderColor: '#e9e9ef',
+        backgroundColor: '#e9e9ef',
         height: 400,
         width: 50,
         elevation: 1,
         marginLeft: 295,
         marginTop: 130,
-        position: 'absolute'
+        position: 'absolute',
+        opacity: 0.5,
     },
 
 };
