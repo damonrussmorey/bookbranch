@@ -1,3 +1,28 @@
+/*
+Insert recommandation review
+Client support to send one book id and three attribute ids and the new values
+Returns comment if function runs successfully.
+
+Body of request:
+{
+  book_id: int,
+  attribute1_id: int,
+  attribute1_value: int,
+  attribute2_id: int,
+  attribute2_value: int,
+  attribute3_id: int,
+  attribute3_value: int,
+  user_id: int,
+  rating_value: int
+}
+
+Body of response:
+result
+{
+  answer : 'Congratuations, you successfully update your information.'
+}
+*/
+
 module.exports = async (pool, req, res) => {
     //declare local vars
     let connection, result;
