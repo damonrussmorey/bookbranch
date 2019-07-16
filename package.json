@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "apac": "^3.0.2",
     "express": "^4.17.1",
     "js-priority-queue": "^0.1.5",
     "mysql": "^2.17.1",

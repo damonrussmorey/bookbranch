@@ -1,0 +1,7 @@
+/*
+Add a new book to the database
+XXX contingent on AWS book retrival
+Client provides a 
+
+
+*/
