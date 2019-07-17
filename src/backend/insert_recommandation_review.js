@@ -50,6 +50,13 @@ module.exports = async (pool, req, res) => {
         //query code update new average score to database, renew old information.
         update_avg = await connection.query('UPDATE book_attributes SET average_score = CASE WHEN book_id =' + infor[0].book_id + ' AND attribute_id =' + infor[0].attribute_id + ' THEN ' + infor[0].total + ' WHEN book_id=' + infor[1].book_id + ' AND attribute_id =' + infor[1].attribute_id + ' THEN ' + infor[1].total + ' WHEN book_id = ' + infor[2].book_id + ' AND attribute_id = ' + infor[2].attribute_id + ' THEN ' + infor[2].total + ' ELSE average_score END WHERE book_id IN( ' + infor[0].book_id + ',' + infor[1].book_id + ',' + infor[2].book_id + ' ) AND attribute_id IN( ' + infor[0].attribute_id + ',' + infor[1].attribute_id + ',' + infor[2].attribute_id + ')')
         console.log(update_avg)
+        //query code get the new average score of rate
+        new_rate = await connection.query('SELECT AVG(rating) AS rate FROM book_reviews WHERE book_id = '+ req.body.book_id);
+        item = new_rate[0];
+        console.log("The new average rating of book_id: " + req.body.book_id + " is " + item[0].rate);
+        //query code update new book average rate
+        update_rate = await connection.query('UPDATE books SET average_rating = ' + item[0].rate+ ' WHERE id= '+req.body.book_id);
+        console.log(update_rate)
         //return result, display to frontend if run successfully.
         result = {answer : 'Congratuations, you successfully update your information.'}
     } finally {
