@@ -53,4 +53,8 @@ app.post('/insert_recommandation_review', (req, res) => {
   require('./insert_recommandation_review')(pool, req, res);
 });
 
+app.post('/find_book', (req, res) => {
+  require('./find_book')(req, res);
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
