@@ -17,6 +17,7 @@ module.exports = async (pool, req, res) => {
 
   //connect to db and pull all the data necessary
   try {
+    console.log("\n\nKeyword Search");
     connection = await pool.getConnection();
     var querycode_keyword_search = 'SELECT books.title, authors.name, books.cover_url,books.id FROM books JOIN book_authors ON books.id = book_authors.book_id JOIN authors ON book_authors.author_id = authors.id WHERE (books.title LIKE "%' + req.body.keyword_search + '%" OR authors.name LIKE "%' + req.body.keyword_search +'%" OR books.description LIKE "%' + req.body.keyword_search + '%") GROUP BY books.title,books.description';
     //the query returns are an array, results followed by

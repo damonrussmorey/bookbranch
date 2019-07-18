@@ -13,7 +13,7 @@ Body of response:
     amazonURL: string,
     imageURL: string,
     title: string,
-    author: string,
+    author: string
   }, ...
 ]
 
