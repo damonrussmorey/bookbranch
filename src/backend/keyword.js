@@ -3,8 +3,12 @@ Box - skeleton to put in your keyword search request
 
 Body of Request:
 {
-  !!!describe the object the front-end needs to provide
-  in the body of the post request
+  search: string
+}
+
+Body of Response:
+{
+TODO
 }
 */
 module.exports = async (pool, req, res) => {
@@ -45,7 +49,7 @@ if(process.argv[2] === 'test') {
               Accept: 'application/json'},
           method : 'POST',
           body: JSON.stringify({
-            keyword_search: 'joan of arc'
+            search: 'joan of arc'
           })
       });
       let res = await hi.json();

@@ -47,10 +47,7 @@ module.exports = async (pool, req, res) => {
     result = await connection.query(querycode);
     result = result[0];
     if(!result) {
-      throw 'no matches';
-    }
-    if(!Array.isArray(result)) {
-      result = [result];
+      console.log('no matches, sending back null');
     }
   } finally {
     if(connection && connection.release)  connection.release();

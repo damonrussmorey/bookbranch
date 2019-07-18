@@ -10,7 +10,7 @@ Body of response:
 [
   {
     asin: string,
-    amazonPage: string,
+    amazonURL: string,
     imageURL: string,
     title: string,
     author: string,
@@ -63,7 +63,7 @@ module.exports = async (req, res) => {
       continue;
     let book = {}
     book['asin'] = r.ASIN;
-    book['amazonPage'] = r.DetailPageURL
+    book['amazonURL'] = r.DetailPageURL
     if(r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
@@ -85,7 +85,6 @@ module.exports = async (req, res) => {
 
   res.send(response);
 }
-
 
 //test
 if(process.argv[2] == 'test') {
