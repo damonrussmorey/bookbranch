@@ -20,9 +20,9 @@ const styles = {
         height: 30,
         width: 170,
         elevation: 1,
-        marginLeft: 160,
+        marginLeft: 100,
         marginRight: 5,
-        marginTop: 130,
+        marginTop: 578,
         position: 'absolute'
     },
 

@@ -19,7 +19,6 @@ const styles = {
     backgroundColor: '#fff',
    // justifyContent: 'flex-start',
     flexDirection: 'row',
-    borderColor: '#ffffff',
     //position: 'absolute',
     height: 28,
     width: 34,

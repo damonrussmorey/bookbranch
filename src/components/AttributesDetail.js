@@ -2,7 +2,7 @@
 Sources I used:
 https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/components/AlbumDetail.js
 */
-import React from 'react';
+import React, {Component} from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
@@ -12,11 +12,17 @@ import ArrowCardTwo from './ArrowCardTwo';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
 import { Actions } from 'react-native-router-flux';
-const AttributesDetail = () => {
+import ChooseAttributeList from './ChooseAttributeList';
+class AttributesDetail extends Component {
+    //componentDidMount = () => {
+    //    setTimeout(() => {
+    //        Actions.refresh(this.props.text);
+    //    },1000)
+    //}
+    render(){
     return (
         <View>
-
-                <View>
+            <View>
                 <ArrowCardTwo>
                     <ArrowSection>
                         <TouchableOpacity style = {styles.buttonStyle}> 
@@ -84,6 +90,7 @@ const AttributesDetail = () => {
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text>{this.props.text}</Text>
                         </TouchableOpacity>
                     </CardSection>
 
@@ -99,20 +106,10 @@ const AttributesDetail = () => {
                         </TouchableOpacity>
                     </CardSection>
                 </Card>
-                    <Text style = {styles.RatingStyle}> Your Rating: </Text>
-
-                    <RatingCard>
-                        
-                        <RatingSection style = {{}}>
-                            <TouchableOpacity>
-                                 <Text style={{marginLeft: 5}}>1</Text> 
-                            </TouchableOpacity>
-                        </RatingSection>
-
-                    </RatingCard>
             </View>
         </View>
     );
+    }
 };
 
 const styles = {

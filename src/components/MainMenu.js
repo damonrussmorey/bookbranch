@@ -10,17 +10,17 @@ const MainMenu= () => {
         <View>
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.attList()}>
+                    <TouchableOpacity onPress={() => Actions.FindNewBook()}>
                         <Text style = {styles.TextStyle1}>Find Your Next Book</Text>
                     </TouchableOpacity>
                 </View>
                 <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity onPress={() => Actions.attList()}>
+                    <TouchableOpacity onPress={() => Actions.ReviewBook()}>
                         <Text style = {styles.TextStyle2}>Review A Book</Text>
                     </TouchableOpacity>
                 </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={() => Actions.attList()}>
+                    <TouchableOpacity onPress={() => Actions.SearchBook()}>
                         <Text style = {styles.TextStyle3}>Search For A Book</Text>
                     </TouchableOpacity>
                 </View>
