@@ -32,6 +32,7 @@ class LogIn extends Component {
             <TextInput
                 style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Password"
+                secureTextEntry = {true}
                 placeholderTextColor="gray"
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
