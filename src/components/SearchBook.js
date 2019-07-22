@@ -21,8 +21,8 @@ class SearchBook extends Component {
                 Enter The Book Name: </Text>
             <TextInput
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
-                placeholder="Book Search"
-                placeholderTextColor="black"
+                placeholder=" Book Search"
+                placeholderTextColor="gray"
                 onChangeText={(text1) => this.setState({text1})}
                 value1={this.state.text1}
             />

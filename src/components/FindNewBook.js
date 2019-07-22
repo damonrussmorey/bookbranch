@@ -22,15 +22,15 @@ class FindNewBook extends Component {
                 Step #1: Tell us your favorite 2 books you've read recently</Text>
             <TextInput
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
-                placeholder="Book #1 Search"
-                placeholderTextColor="black"
+                placeholder=" Book #1 Search"
+                placeholderTextColor="gray"
                 onChangeText={(text1) => this.setState({text1})}
                 value1={this.state.text1}
             />
             <TextInput
                 style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
-                placeholder="Book #2 Search"
-                placeholderTextColor="black"
+                placeholder=" Book #2 Search"
+                placeholderTextColor="gray"
                 onChangeText={(text2) => this.setState({text2})}
                 value2={this.state.text2}
             />
