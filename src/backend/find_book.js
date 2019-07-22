@@ -11,6 +11,7 @@ Body of response:
   {
     asin: string,
     amazonURL: string,
+    description: string,
     imageURL: string,
     title: string,
     author: string
@@ -33,7 +34,7 @@ module.exports = async (req, res) => {
   if(!req.body.search)
     throw 'improper request body'
   console.log('Searching for book on AWS: ' + req.body.search);
-  let response, result;
+  let response, result, description;
   const {OperationHelper} = require('apac');
   const searcher = new OperationHelper({
     awsId:     'AKIAIANIRJALOZBL4MZQ',
@@ -47,7 +48,7 @@ module.exports = async (req, res) => {
       'ItemSearch', {
         'SearchIndex': 'Books',
         'Keywords': req.body.search,
-        'ResponseGroup': 'ItemAttributes,Images'
+        'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
     });
   } catch(e) {
     console.log(e);
@@ -61,9 +62,14 @@ module.exports = async (req, res) => {
   for(r of result) {
     if(r.ItemAttributes.ProductGroup !== 'Book')
       continue;
-    let book = {}
+    description = r.EditorialReviews.EditorialReview;
+    console.log(description);
+    if(Array.isArray(description))
+      description = description[0];
+    let book = {};
     book['asin'] = r.ASIN;
-    book['amazonURL'] = r.DetailPageURL
+    book['amazonURL'] = r.DetailPageURL;
+    book['description'] = description.Content;
     if(r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
