@@ -17,14 +17,13 @@ const Header = (props) => {
       <Image
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
-       </Image>
-      <Text style={textStyle}>{props.headerText}</Text>
-
-      <TouchableOpacity style = {buttonStyle} onPress={() => Actions.LogIn()}>
-        <Image
-          style={{height: 20, width: 25, marginLeft: 7}}
-            source={require('bookbranch/img/hamburger-menu.png')}>
         </Image>
+        <TouchableOpacity onPress={() => Actions.LogIn()}>
+          <Text style={textStyle}>{props.headerText}</Text>
+        </TouchableOpacity>
+
+      <TouchableOpacity style = {buttonStyle} onPress={() => Actions.pop()}>
+          <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold'}}>Back</Text>
       </TouchableOpacity>
     </View>
   );
@@ -43,8 +42,8 @@ const styles = {
     color: '#ffffff',
     fontWeight: 'bold',
     position: 'absolute',
-    paddingTop: 30,
-    paddingRight: 190
+    marginTop: -30,
+    marginLeft: -150
   },
   imageStyle: {
     height: 20,
