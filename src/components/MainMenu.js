@@ -3,12 +3,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ImageBackground} from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import Header from './header';
 //This will need to be changed to a class component later
 
 const MainMenu= () => {
     return (
         <View>
+            
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
+            <Header headerText={'Bookbranch'} />
                 <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress={() => Actions.FindNewBook()}>
                         <Text style = {styles.TextStyle1}>Find Your Next Book</Text>

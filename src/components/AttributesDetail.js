@@ -90,7 +90,6 @@ class AttributesDetail extends Component {
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                            <Text>{this.props.text}</Text>
                         </TouchableOpacity>
                     </CardSection>
 

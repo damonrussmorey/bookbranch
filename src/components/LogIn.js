@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, View, Text, TouchableOpacity, ImageBackground, TextInput} from 'react-native';
 import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
-
+import Header from './header';
 //import axios from 'axios'; // used for http requests
 
 class LogIn extends Component {
@@ -18,20 +18,21 @@ class LogIn extends Component {
     return (
       <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
         <View>
+            <Header headerText={'Bookbranch'} />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 155}}>
                 Log In</Text>
             <TextInput
-                style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
-                placeholder="Username"
-                placeholderTextColor="black"
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                placeholder=" Username"
+                placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
                 value={this.state.username}
             />
             <TextInput
-                style={{marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
-                placeholder="Password"
-                placeholderTextColor="black"
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                placeholder=" Password"
+                placeholderTextColor="gray"
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />

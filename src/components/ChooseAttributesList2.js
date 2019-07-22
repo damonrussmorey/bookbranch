@@ -6,7 +6,7 @@ import AttributeCard from './AttributeCard';
 import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-class ChooseAttributesList extends Component {
+class ChooseAttributesList2 extends Component {
     //state = {attributes: []};
     /*
     renderAttributes(){
@@ -19,7 +19,7 @@ class ChooseAttributesList extends Component {
                 <Header headerText={'Bookbranch'} />
                 <Card>
                     <ScrollView>
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Adventurous'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Adventurous', text: this.props.text})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -30,7 +30,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Beautiful'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Beautiful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -41,7 +41,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Brainy'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Brainy'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -52,7 +52,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Complex'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Complex'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -63,7 +63,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Cooking'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Cooking'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -74,7 +74,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Cultural'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Cultural'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -85,7 +85,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Dark'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Dark'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -96,7 +96,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Disaster'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Disaster'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -107,7 +107,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Erotic'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Erotic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -118,7 +118,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Faith'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Faith'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -129,7 +129,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Family'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Family'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -140,7 +140,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Fantasy'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Fantasy'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -151,7 +151,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Friendship'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Friendship'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -162,7 +162,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Funny'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Funny'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -173,7 +173,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Heroic'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Heroic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -184,7 +184,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Historical'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Historical'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -195,7 +195,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Idealistic'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Idealistic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -206,7 +206,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Insightful'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Insightful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -217,7 +217,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Knowledge'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Knowledge'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -228,7 +228,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Mysterious'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Mysterious'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -239,7 +239,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Perserverence'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Perserverence'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -250,7 +250,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Power'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Power'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -261,7 +261,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Readable'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Readable'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -272,7 +272,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Romantic'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Romantic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -283,7 +283,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Scary'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Scary'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -294,7 +294,7 @@ class ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Suspenseful'})}>
+                    <TouchableOpacity onPress={() => Actions.attList2({attribute2: 'Suspenseful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -326,4 +326,4 @@ const styles = {
     }
   };
 
-export default ChooseAttributesList;
+export default ChooseAttributesList2;

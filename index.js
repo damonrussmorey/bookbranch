@@ -23,6 +23,9 @@ import ReviewBook from './src/components/ReviewBook';
 import SearchBook from './src/components/SearchBook';
 import SearchBookResults from './src/components/SearchBookResults';
 import BookResultsDetails from './src/components/BookResultsDetails';
+import CallAttributes1 from './src/components/CallAttributes1';
+import ChooseAttributesList2 from './src/components/ChooseAttributesList2';
+import CallAttributes2 from './src/components/CallAttributes2';
 
 const App = () => (
   <MenuProvider>
@@ -34,60 +37,91 @@ const App = () => (
           component={LogIn}
           title="Bookbranch"
           initial
+          hideNavBar
         />
 
         <Scene
           key="Main"
           component={MainMenu}
           title="Bookbranch"
+          hideNavBar
         />
 
         <Scene
           key="attList"
           component={CallAttributes}
           title="Choose Three Attributes"
+          hideNavBar
         />
 
         <Scene
+          key="attList1"
+          component={CallAttributes1}
+          title="Choose Three Attributes"
+          hideNavBar
+        />
+
+        <Scene
+          key="attList2"
+          component={CallAttributes2}
+          title="Choose Three Attributes"
+          hideNavBar
+        /> 
+
+        <Scene
           key="chooseAttList"
-          component={CallChooseAttributeList}
+          component={ChooseAttributeList}
           title="Choose From The Following List"
+          hideNavBar
+        />
+
+        <Scene
+          key="chooseAttList2"
+          component={ChooseAttributesList2}
+          title="Choose From The Following List"
+          hideNavBar
         />
 
         <Scene
           key="FindNewBook"
           component={FindNewBook}
           title="Enter Two Books"
+          hideNavBar
         />
 
         <Scene
           key="DiscoveredNewBook"
           component={DiscoveredNewBook}
           title="Enter Two Books"
+          hideNavBar
         /> 
 
         <Scene
           key="ReviewBook"
           component={ReviewBook}
           title="Enter The Book To Review"
+          hideNavBar
         />
 
         <Scene
           key="SearchBook"
           component={SearchBook}
           title="Enter The Book To Search"
+          hideNavBar
         />
 
         <Scene
           key="SearchBookResults"
           component={SearchBookResults}
           title="Results"
+          hideNavBar
         />
 
         <Scene
           key="BookResultsDetail"
           component={BookResultsDetails}
           title="Results"
+          hideNavBar
         />
 
       </Scene>
