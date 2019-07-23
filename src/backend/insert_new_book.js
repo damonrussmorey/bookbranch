@@ -35,12 +35,10 @@ module.exports = async (pool, req, res) => {
             new_id = status[0];
             new_id = new_id[0].id;
             console.log(new_id);
-            tempvar = {
+            result = {
                 answer: false,
                 book_id: new_id
             };
-           copybody = JSON.parse(JSON.stringify(req.body));
-           result = Object.assign(copybody,tempvar)
            console.log(result);
         }
         else{
@@ -95,7 +93,6 @@ module.exports = async (pool, req, res) => {
             insert_book_auth = await connection.query('INSERT INTO book_authors(book_id, author_id) VALUES('+ new_id+','+ auth_id+')');
             console.log(insert_book_auth);
             //Insert book authors function end.
-            req.body.book_id = new_id
 /*
             //Insert book reviews
             insert_book_review = await connection.query('INSERT INTO book_reviews(book_id,user_id,rating,review,total_shares)'
@@ -123,24 +120,17 @@ module.exports = async (pool, req, res) => {
             console.log(into_avg);
             //Insert the average score function end
 */
-            result = {answer:false}
+            result = {answer:false,book_id: new_id}
         }
 
     } finally {
         //this closes the connection
         if (connection && connection.release) connection.release();
     }
-
     //now work with the data you queried for
-    if(result.answer == false){
-        console.log("move to new function")
-        req.body.book_id = result.book_id;
-        require('./insert_recommandation_review.js')(pool, req, res);
-    }
-    else
-        res.send(result.answer)
-
-    //await require('./insert_recommendation_review')(pool, req, res);
+    console.log("move to new function")
+    req.body.book_id = result.book_id;
+    require('./insert_recommandation_review.js')(pool, req, res);
 };
 
 if (process.argv[2] === 'test') {
