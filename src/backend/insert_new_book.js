@@ -95,7 +95,8 @@ module.exports = async (pool, req, res) => {
             insert_book_auth = await connection.query('INSERT INTO book_authors(book_id, author_id) VALUES('+ new_id+','+ auth_id+')');
             console.log(insert_book_auth);
             //Insert book authors function end.
-
+            req.body.book_id = new_id
+/*
             //Insert book reviews
             insert_book_review = await connection.query('INSERT INTO book_reviews(book_id,user_id,rating,review,total_shares)'
                                                         +' VALUES("' + new_id + '","' + req.body.user_id + '","' + req.body.rating_value + '","","0");');
@@ -108,20 +109,21 @@ module.exports = async (pool, req, res) => {
             console.log("Last insert ID is: " + last_id[0].last_insert)
             //query code insert new attributes value with last insert id.
             into_attribute = await connection.query('INSERT INTO book_review_attributes( book_id, attribute_id, book_review_id, score )'
-                                                    + 'VALUES(' + new_id + ',' + req.body.attr[0].id + ',' + last_id[0].last_insert + ',' + req.body.attr[0].value + '),(' 
-                                                    + new_id + ',' + req.body.attr[1].id + ',' + last_id[0].last_insert + ',' + req.body.attr[1].value + '),(' 
-                                                    + new_id + ',' + req.body.attr[2].id + ',' + last_id[0].last_insert + ',' + req.body.attr[2].value + ')')
+                                                    + 'VALUES(' + new_id + ',' + req.body.attr[0].id + ',' + last_id[0].last_insert + ',' + req.body.attr[0].val + '),(' 
+                                                    + new_id + ',' + req.body.attr[1].id + ',' + last_id[0].last_insert + ',' + req.body.attr[1].val + '),(' 
+                                                    + new_id + ',' + req.body.attr[2].id + ',' + last_id[0].last_insert + ',' + req.body.attr[2].val + ')')
             console.log(into_attribute)
             //Insert the attributes function end.
             
             //Insert the average score the new attributes
             into_avg = await connection.query('INSERT INTO book_attributes(book_id, attribute_id, average_score) VALUES ('
-                                             + new_id + ',' + req.body.attr[0].id + ',' + req.body.attr[0].value+'),('
-                                             + new_id + ',' + req.body.attr[1].id + ',' + req.body.attr[1].value+'),('
-                                             + new_id + ',' + req.body.attr[2].id + ',' + req.body.attr[2].value+')');
+                                             + new_id + ',' + req.body.attr[0].id + ',' + req.body.attr[0].val+'),('
+                                             + new_id + ',' + req.body.attr[1].id + ',' + req.body.attr[1].val+'),('
+                                             + new_id + ',' + req.body.attr[2].id + ',' + req.body.attr[2].val+')');
             console.log(into_avg);
             //Insert the average score function end
-            result = {answer:true}
+*/
+            result = {answer:false}
         }
 
     } finally {
@@ -132,6 +134,8 @@ module.exports = async (pool, req, res) => {
     //now work with the data you queried for
     if(result.answer == false){
         console.log("move to new function")
+        req.body.book_id = result.book_id;
+        require('./insert_recommandation_review.js')(pool, req, res);
     }
     else
         res.send(result.answer)
@@ -149,16 +153,16 @@ if (process.argv[2] === 'test') {
             },
             method: 'POST',
             body: JSON.stringify({
-                //asin: '0439023521',
-                asin:'11111111',
+                asin: '0439023521',
+                //asin:'11111111',
                 amazonURL: 'https://www.amazon.com/Hunger-Games-Book-1/dp/0439023521?SubscriptionId=AKIAIANIRJALOZBL4MZQ&tag=bookbch-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0439023521',
                 imageURL: 'https://images-na.ssl-images-amazon.com/images/I/41ir9m8QQnL.jpg',
                 title: 'The Hunger Games (Book 1)',
                 author: 'Suzanne Colli',
                 attr: [
-                    {id: 1, value: 3},
-                    {id: 13, value: 8},
-                    {id: 2, value: 4}
+                    {id: 1, val: 3},
+                    {id: 13, val: 8},
+                    {id: 2, val: 4}
                 ],
                 user_id: '1',
                 rating_value: '5'

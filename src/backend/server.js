@@ -61,4 +61,8 @@ app.post('/find_book', (req, res) => {
   require('./find_book')(req, res);
 });
 
+app.post('/insert_new_book',(req,res) =>{
+  require('./insert_new_book')(pool,req,res);
+})
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
