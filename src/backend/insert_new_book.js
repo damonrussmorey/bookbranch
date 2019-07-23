@@ -93,33 +93,6 @@ module.exports = async (pool, req, res) => {
             insert_book_auth = await connection.query('INSERT INTO book_authors(book_id, author_id) VALUES('+ new_id+','+ auth_id+')');
             console.log(insert_book_auth);
             //Insert book authors function end.
-/*
-            //Insert book reviews
-            insert_book_review = await connection.query('INSERT INTO book_reviews(book_id,user_id,rating,review,total_shares)'
-                                                        +' VALUES("' + new_id + '","' + req.body.user_id + '","' + req.body.rating_value + '","","0");');
-            console.log(insert_book_review);
-            //Insert book reviews function end.
-
-            //Insert the attributes
-            get_last_id = await connection.query('SELECT LAST_INSERT_ID() AS last_insert;');
-            last_id = get_last_id[0];
-            console.log("Last insert ID is: " + last_id[0].last_insert)
-            //query code insert new attributes value with last insert id.
-            into_attribute = await connection.query('INSERT INTO book_review_attributes( book_id, attribute_id, book_review_id, score )'
-                                                    + 'VALUES(' + new_id + ',' + req.body.attr[0].id + ',' + last_id[0].last_insert + ',' + req.body.attr[0].val + '),(' 
-                                                    + new_id + ',' + req.body.attr[1].id + ',' + last_id[0].last_insert + ',' + req.body.attr[1].val + '),(' 
-                                                    + new_id + ',' + req.body.attr[2].id + ',' + last_id[0].last_insert + ',' + req.body.attr[2].val + ')')
-            console.log(into_attribute)
-            //Insert the attributes function end.
-            
-            //Insert the average score the new attributes
-            into_avg = await connection.query('INSERT INTO book_attributes(book_id, attribute_id, average_score) VALUES ('
-                                             + new_id + ',' + req.body.attr[0].id + ',' + req.body.attr[0].val+'),('
-                                             + new_id + ',' + req.body.attr[1].id + ',' + req.body.attr[1].val+'),('
-                                             + new_id + ',' + req.body.attr[2].id + ',' + req.body.attr[2].val+')');
-            console.log(into_avg);
-            //Insert the average score function end
-*/
             result = {answer:false,book_id: new_id}
         }
 
@@ -143,8 +116,8 @@ if (process.argv[2] === 'test') {
             },
             method: 'POST',
             body: JSON.stringify({
-                asin: '0439023521',
-                //asin:'11111111',
+                //asin: '0439023521',
+                asin:'11111111',
                 amazonURL: 'https://www.amazon.com/Hunger-Games-Book-1/dp/0439023521?SubscriptionId=AKIAIANIRJALOZBL4MZQ&tag=bookbch-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=0439023521',
                 imageURL: 'https://images-na.ssl-images-amazon.com/images/I/41ir9m8QQnL.jpg',
                 title: 'The Hunger Games (Book 1)',
