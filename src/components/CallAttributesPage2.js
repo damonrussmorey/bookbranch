@@ -15,8 +15,8 @@ class CallAttributes extends Component {
             <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
+                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.book2}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
@@ -59,7 +59,7 @@ class CallAttributes extends Component {
                 </TouchableOpacity>
 
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.CallAttributesPage2({book2: this.props.textTwo})}>
+                <TouchableOpacity onPress={() => Actions.SearchBookResults()}>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableOpacity>
                 </View>

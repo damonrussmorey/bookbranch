@@ -5,13 +5,13 @@ import { Button, AppRegistry, View, Text, TouchableOpacity, ImageBackground, Tex
 import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
 //import axios from 'axios'; // used for http requests
 
 class LogIn extends Component {
   constructor(props) {
     super(props);
     this.state = { 
+        email: '',
         username: '',
         password: ''
     };
@@ -23,10 +23,18 @@ class LogIn extends Component {
         <View>
             <Header headerText={'Bookbranch'} />
             <Text
-                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 155}}>
-                Log In</Text>
+                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
+                Welcome to Bookbranch!</Text>
+
             <TextInput
                 style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                placeholder=" Email"
+                placeholderTextColor="gray"
+                onChangeText={(email) => this.setState({email})}
+                value={this.state.email}
+            />
+            <TextInput
+                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Username"
                 placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
@@ -40,19 +48,9 @@ class LogIn extends Component {
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />
-            <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => Actions.attList()}*/>
-                        <Text style = {styles.TextStyle1}>Login</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity /*onPress={() => Actions.attList()}*/>
-                        <Text style = {styles.TextStyle2}>Register</Text>
-                    </TouchableOpacity>
-                </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={() => Actions.Main()}>
-                        <Text style = {styles.TextStyle3}>Browse As Guest</Text>
+                <TouchableOpacity onPress={() => Actions.Main({value1: this.state.username})}>
+                        <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -97,12 +95,12 @@ const styles = {
         borderRadius: 5,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 30,
-        width: 140,
+        height: 40,
+        width: 110,
         elevation: 1,
         marginLeft: 220,
         marginRight: 5,
-        marginTop: 330,
+        marginTop: 230,
         position: 'absolute'  
     },
 
@@ -124,9 +122,9 @@ const styles = {
 
     TextStyle3: {
         fontWeight: 'bold',
-        fontSize: 13,
+        fontSize: 20,
         marginTop: 5,
-        marginLeft: 10,
+        marginLeft: 14,
         position: 'absolute'
     }
 };

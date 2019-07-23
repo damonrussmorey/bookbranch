@@ -107,7 +107,7 @@ class CallAttributes1 extends Component {
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
                             Choose this book's top 3 attributes:
-                            </Text>
+                        </Text>
                     </View>
                 </View>
                 <View>
@@ -182,7 +182,7 @@ class CallAttributes1 extends Component {
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList2(this.props.text)}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList2({text: this.props.text})}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>

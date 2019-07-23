@@ -3,6 +3,7 @@
 //itemImage = {require('./img/bookbranch_tree.png')}
 // Import a library to help create a component
 
+console.disableYellowBox = true;
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
@@ -26,6 +27,7 @@ import BookResultsDetails from './src/components/BookResultsDetails';
 import CallAttributes1 from './src/components/CallAttributes1';
 import ChooseAttributesList2 from './src/components/ChooseAttributesList2';
 import CallAttributes2 from './src/components/CallAttributes2';
+import CallAttributesPage2 from './src/components/CallAttributesPage2';
 
 const App = () => (
   <MenuProvider>
@@ -50,6 +52,13 @@ const App = () => (
         <Scene
           key="attList"
           component={CallAttributes}
+          title="Choose Three Attributes"
+          hideNavBar
+        />
+
+        <Scene
+          key = "CallAttributesPage2"
+          component={CallAttributesPage2}
           title="Choose Three Attributes"
           hideNavBar
         />
