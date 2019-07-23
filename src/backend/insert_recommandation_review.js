@@ -54,6 +54,7 @@ module.exports = async (pool, req, res) => {
              + ',' + review_id + ',' + attr.val + '),';
     }
     query = query.slice(0, -1);
+    console.log(query)
     result = await connection.query(query);
     //debug
     //console.log(query);
