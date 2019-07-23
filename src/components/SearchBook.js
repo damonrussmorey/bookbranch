@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AppRegistry, View, Text, TouchableOpacity, TextInput} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
+import { Platform } from 'react-native';
 //import axios from 'axios'; // used for http requests
 
 class SearchBook extends Component {

@@ -1,7 +1,7 @@
 //The tree background image is taken from this open source website: https://www.pexels.com/photo/countryside-dawn-daylight-environment-286305/
 
 import React, { Component } from 'react';
-import { Button, AppRegistry, View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableHighlight} from 'react-native';
+import { Button, AppRegistry, View, Text, TouchableNativeFeedback, ImageBackground, TextInput} from 'react-native';
 import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
@@ -41,19 +41,19 @@ class LogIn extends Component {
                 value={this.state.password}
             />
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => Actions.attList()}*/>
+                    <TouchableNativeFeedback /*onPress={() => Actions.attList()}*/>
                         <Text style = {styles.TextStyle1}>Login</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
                 <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity /*onPress={() => Actions.attList()}*/>
+                    <TouchableNativeFeedback /*onPress={() => Actions.attList()}*/>
                         <Text style = {styles.TextStyle2}>Register</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={() => Actions.Main()}>
+                    <TouchableNativeFeedback onPress={() => Actions.Main()}>
                         <Text style = {styles.TextStyle3}>Browse As Guest</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
 
         </View>

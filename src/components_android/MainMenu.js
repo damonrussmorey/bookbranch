@@ -1,10 +1,9 @@
 //The tree background image is taken from this open source website: https://www.pexels.com/photo/countryside-dawn-daylight-environment-286305/
 
 import React from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback} from 'react-native';
+import { View, Text, ImageBackground, TouchableNativeFeedback} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
 //This will need to be changed to a class component later
 
 const MainMenu= () => {
@@ -14,19 +13,19 @@ const MainMenu= () => {
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
             <Header headerText={'Bookbranch'} />
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.FindNewBook()}>
+                    <TouchableNativeFeedback onPress={() => Actions.FindNewBook()}>
                         <Text style = {styles.TextStyle1}>Find Your Next Book</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
                 <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity onPress={() => Actions.ReviewBook()}>
+                    <TouchableNativeFeedback onPress={() => Actions.ReviewBook()}>
                         <Text style = {styles.TextStyle2}>Review A Book</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={() => Actions.SearchBook()}>
+                    <TouchableNativeFeedback onPress={() => Actions.SearchBook()}>
                         <Text style = {styles.TextStyle3}>Search For A Book</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
             </ImageBackground>
         </View>

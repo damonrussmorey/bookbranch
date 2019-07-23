@@ -5,7 +5,7 @@ Sources I used:
 
 // Import libraries for making a component
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableNativeFeedback } from 'react-native';
 import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 import {Actions} from 'react-native-router-flux';
 import { Platform } from 'react-native';
@@ -19,13 +19,13 @@ const Header = (props) => {
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
         </Image>
-        <TouchableOpacity onPress={() => Actions.LogIn()}>
+        <TouchableNativeFeedback onPress={() => Actions.LogIn()}>
           <Text style={textStyle}>{props.headerText}</Text>
-        </TouchableOpacity>
+        </TouchableNativeFeedback>
 
-      <TouchableOpacity style = {buttonStyle} onPress={() => Actions.pop()}>
+      <TouchableNativeFeedback style = {buttonStyle} onPress={() => Actions.pop()}>
           <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold'}}>Back</Text>
-      </TouchableOpacity>
+      </TouchableNativeFeedback>
     </View>
   );
 };

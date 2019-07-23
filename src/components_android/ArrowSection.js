@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Platform } from 'react-native';
 const ArrowSection = (props) => {
   return (
     <View style={styles.containerStyle}>

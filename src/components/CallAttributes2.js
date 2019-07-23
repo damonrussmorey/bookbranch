@@ -13,6 +13,7 @@ import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import ChooseAttributeList from './ChooseAttributeList';
+import { Platform } from 'react-native';
 
 class CallAttributes2 extends Component {
     renderElement(){
