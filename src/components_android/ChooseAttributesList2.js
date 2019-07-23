@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import { View, Text, Image, TouchableNativeFeedback, ScrollView} from 'react-native';
 import AttributesDetail from './AttributesDetail';
 import Card from './Card';
 import AttributeCard from './AttributeCard';
@@ -8,7 +8,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Platform } from 'react-native';
 
-class ChooseAttributesList extends Component {
+class ChooseAttributesList2 extends Component {
     //state = {attributes: []};
     /*
     renderAttributes(){
@@ -21,7 +21,7 @@ class ChooseAttributesList extends Component {
                 <Header headerText={'Bookbranch'} />
                 <Card>
                     <ScrollView>
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Adventurous'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Adventurous', text: this.props.text})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -30,9 +30,9 @@ class ChooseAttributesList extends Component {
                             <Text>Adventurous</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Beautiful'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Beautiful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -41,9 +41,9 @@ class ChooseAttributesList extends Component {
                             <Text>Beautiful</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Brainy'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Brainy'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -52,9 +52,9 @@ class ChooseAttributesList extends Component {
                             <Text>Brainy</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Complex'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Complex'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -63,9 +63,9 @@ class ChooseAttributesList extends Component {
                             <Text>Complex</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Cooking'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Cooking'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -74,9 +74,9 @@ class ChooseAttributesList extends Component {
                             <Text>Cooking</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Cultural'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Cultural'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -85,9 +85,9 @@ class ChooseAttributesList extends Component {
                             <Text>Cultural</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                         +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Dark'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Dark'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -96,9 +96,9 @@ class ChooseAttributesList extends Component {
                             <Text>Dark</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                               +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Disaster'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Disaster'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -107,9 +107,9 @@ class ChooseAttributesList extends Component {
                             <Text>Disaster</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Erotic'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Erotic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -118,9 +118,9 @@ class ChooseAttributesList extends Component {
                             <Text>Erotic</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Faith'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Faith'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -129,9 +129,9 @@ class ChooseAttributesList extends Component {
                             <Text>Faith</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                               +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Family'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Family'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -140,9 +140,9 @@ class ChooseAttributesList extends Component {
                             <Text>Family</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Fantasy'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Fantasy'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -151,9 +151,9 @@ class ChooseAttributesList extends Component {
                             <Text>Fantasy</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                          +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Friendship'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Friendship'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -162,9 +162,9 @@ class ChooseAttributesList extends Component {
                             <Text>Friendship</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                     +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Funny'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Funny'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -173,9 +173,9 @@ class ChooseAttributesList extends Component {
                             <Text>Funny</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Heroic'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Heroic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -184,9 +184,9 @@ class ChooseAttributesList extends Component {
                             <Text>Heroic</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                            +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Historical'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Historical'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -195,9 +195,9 @@ class ChooseAttributesList extends Component {
                             <Text>Historical</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Idealistic'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Idealistic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -206,9 +206,9 @@ class ChooseAttributesList extends Component {
                             <Text>Idealistic</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                        +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Insightful'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Insightful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -217,9 +217,9 @@ class ChooseAttributesList extends Component {
                             <Text>Insightful</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Knowledge'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Knowledge'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -228,9 +228,9 @@ class ChooseAttributesList extends Component {
                             <Text>Knowledge</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Mysterious'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Mysterious'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -239,9 +239,9 @@ class ChooseAttributesList extends Component {
                             <Text>Mysterious</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Perserverence'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Perserverence'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -250,9 +250,9 @@ class ChooseAttributesList extends Component {
                             <Text>Perserverence</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>              +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Power'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Power'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -261,9 +261,9 @@ class ChooseAttributesList extends Component {
                             <Text>Power</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                             +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Readable'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Readable'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -272,9 +272,9 @@ class ChooseAttributesList extends Component {
                             <Text>Readable</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Romantic'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Romantic'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -283,9 +283,9 @@ class ChooseAttributesList extends Component {
                             <Text>Romantic</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                       +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Scary'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Scary'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -294,9 +294,9 @@ class ChooseAttributesList extends Component {
                             <Text>Scary</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                              +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
-                    <TouchableOpacity onPress={() => Actions.attList1({text: 'Suspenseful'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList2({attribute2: 'Suspenseful'})}>
                         <AttributeCard>
                             <Image
                                 style={styles.imageStyle}
@@ -305,7 +305,7 @@ class ChooseAttributesList extends Component {
                             <Text>Suspenseful</Text>
                             <Text style = {{fontWeight: 'bold', color: '#499920'}}>                  +</Text>
                         </AttributeCard>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
 
                     </ScrollView>
                 </Card>
@@ -328,4 +328,4 @@ const styles = {
     }
   };
 
-export default ChooseAttributesList;
+export default ChooseAttributesList2;

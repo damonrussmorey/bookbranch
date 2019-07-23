@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput} from 'react-native';
+import { AppRegistry, View, Text, TouchableNativeFeedback, TextInput} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Platform } from 'react-native';

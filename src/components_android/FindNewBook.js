@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput} from 'react-native';
+import { AppRegistry, View, Text, TouchableNativeFeedback, TextInput} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Platform } from 'react-native';
@@ -36,9 +36,9 @@ class FindNewBook extends Component {
                 value2={this.state.text2}
             />
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.DiscoveredNewBook({textOne: this.state.text1, textTwo: this.state.text2})}>
+                    <TouchableNativeFeedback onPress={() => Actions.DiscoveredNewBook({textOne: this.state.text1, textTwo: this.state.text2})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
             </View>
         </View>
     );

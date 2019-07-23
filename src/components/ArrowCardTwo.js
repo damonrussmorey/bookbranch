@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-
+import { Platform } from 'react-native';
 const ArrowCardTwo = (props) => {
     return (
         <View>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput, Image} from 'react-native';
+import { AppRegistry, View, Text, TouchableNativeFeedback, TextInput, Image} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import Card from './Card';
@@ -24,22 +24,22 @@ class SearchBookResults extends Component {
             <Text style = {{fontSize: 15 ,color: 'black', fontWeight: 'bold', marginLeft: 20, marginTop: 10}}>{this.props.BookSearch}</Text>
             <Card></Card>
 
-            <TouchableOpacity>
+            <TouchableNativeFeedback>
                 <ArrowCard>
                     <Image source={require('bookbranch/img/arrow_left.png')} style={{marginTop: 120, marginRight: 5,width: 50}}></Image>
                 </ArrowCard>
-            </TouchableOpacity>
+            </TouchableNativeFeedback>
 
-            <TouchableOpacity>
+            <TouchableNativeFeedback>
                 <ArrowCardTwo>
                     <Image source={require('bookbranch/img/arrow_right.png')} style={{marginTop: 120, marginLeft: 5,width: 50}}></Image>
                 </ArrowCardTwo>
-            </TouchableOpacity>
+            </TouchableNativeFeedback>
 
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.BookResultsDetail({BookResults: 'Placeholder'})}>
+                    <TouchableNativeFeedback onPress={() => Actions.BookResultsDetail({BookResults: 'Placeholder'})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
             </View>
 
         </View>

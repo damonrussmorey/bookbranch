@@ -6,6 +6,8 @@ import AttributeCard from './AttributeCard';
 import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
+import { Platform } from 'react-native';
+
 class ChooseAttributesList2 extends Component {
     //state = {attributes: []};
     /*

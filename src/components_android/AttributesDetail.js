@@ -3,7 +3,7 @@ Sources I used:
 https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/components/AlbumDetail.js
 */
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Image, TouchableNativeFeedback} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
@@ -13,7 +13,7 @@ import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
 import { Actions } from 'react-native-router-flux';
 import ChooseAttributeList from './ChooseAttributeList';
-import { Platform } from 'react-native';
+
 class AttributesDetail extends Component {
     //componentDidMount = () => {
     //    setTimeout(() => {
@@ -26,31 +26,31 @@ class AttributesDetail extends Component {
             <View>
                 <ArrowCardTwo>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}> 
+                        <TouchableNativeFeedback style = {styles.buttonStyle}> 
                             
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                    <TouchableOpacity style = {styles.buttonStyle}>
+                    <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCardTwo>
             </View>
@@ -58,30 +58,30 @@ class AttributesDetail extends Component {
             <View>
                 <ArrowCard>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCard>
             </View>
@@ -89,21 +89,21 @@ class AttributesDetail extends Component {
             <View>
                 <Card>
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
                 </Card>
             </View>

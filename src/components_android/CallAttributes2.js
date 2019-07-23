@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableNativeFeedback, ImageBackground } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
@@ -15,7 +15,7 @@ import ArrowCardTwo from './ArrowCardTwo';
 import ChooseAttributeList from './ChooseAttributeList';
 import { Platform } from 'react-native';
 
-class CallAttributes1 extends Component {
+class CallAttributes2 extends Component {
     renderElement(){
         if(this.props.text == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -96,6 +96,88 @@ class CallAttributes1 extends Component {
         
         return null;
      }
+
+     renderElementTwo(){
+        if(this.props.attribute2 == 'Adventurous')
+           return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Beautiful')
+           return <Image source={require('bookbranch/img/attributes/beautiful-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Brainy')
+           return <Image source={require('bookbranch/img/attributes/brainy-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Complex')
+           return <Image source={require('bookbranch/img/attributes/complex-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Cooking')
+           return <Image source={require('bookbranch/img/attributes/cooking-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Cultural')
+           return <Image source={require('bookbranch/img/attributes/cultural-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Dark')
+           return <Image source={require('bookbranch/img/attributes/dark-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Disaster')
+           return <Image source={require('bookbranch/img/attributes/disaster-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Erotic')
+           return <Image source={require('bookbranch/img/attributes/erotic-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Faith')
+           return <Image source={require('bookbranch/img/attributes/faith-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Family')
+           return <Image source={require('bookbranch/img/attributes/family-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Fantasy')
+           return <Image source={require('bookbranch/img/attributes/fantasy-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Friendship')
+           return <Image source={require('bookbranch/img/attributes/friendship-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Funny')
+           return <Image source={require('bookbranch/img/attributes/funny-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Heroic')
+           return <Image source={require('bookbranch/img/attributes/heroic-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Historical')
+           return <Image source={require('bookbranch/img/attributes/historical-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Idealistic')
+           return <Image source={require('bookbranch/img/attributes/idealistic-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Insightful')
+           return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Knowledge')
+           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Mysterious')
+           return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Perserverence')
+           return <Image source={require('bookbranch/img/attributes/perserverence-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Power')
+           return <Image source={require('bookbranch/img/attributes/power-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Readable')
+           return <Image source={require('bookbranch/img/attributes/readable-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Romantic')
+           return <Image source={require('bookbranch/img/attributes/romantic-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Scary')
+           return <Image source={require('bookbranch/img/attributes/scary-attribute.png')} style={styles.AttributeStyle}></Image>
+
+        if(this.props.attribute2 == 'Suspenseful')
+           return <Image source={require('bookbranch/img/attributes/suspenseful-attribute.png')} style={styles.AttributeStyle}></Image>
+        
+        return null;
+     }
     render(){
     return (
         <View>
@@ -114,31 +196,31 @@ class CallAttributes1 extends Component {
             <View>
                 <ArrowCardTwo>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}> 
+                        <TouchableNativeFeedback style = {styles.buttonStyle}> 
                             
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                    <TouchableOpacity style = {styles.buttonStyle}>
+                    <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCardTwo>
             </View>
@@ -146,30 +228,30 @@ class CallAttributes1 extends Component {
             <View>
                 <ArrowCard>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCard>
             </View>
@@ -177,20 +259,19 @@ class CallAttributes1 extends Component {
             <View>
                 <Card>
                     <CardSection>{ this.renderElement() }
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
-                        </TouchableOpacity>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
+                        </TouchableNativeFeedback>
+                    </CardSection>
+
+                    <CardSection>{ this.renderElementTwo() }
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList2()}>
+                        </TouchableNativeFeedback>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList2(this.props.text)}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
-                    </CardSection>
-
-                    <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
                 </Card>
             </View>
@@ -198,40 +279,40 @@ class CallAttributes1 extends Component {
                 <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
                 <RatingCard/>
 
-                <TouchableOpacity style = {{marginTop: 549, marginLeft: 100}}>
+                <TouchableNativeFeedback style = {{marginTop: 549, marginLeft: 100}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>1</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>2</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>3</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>4</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>5</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => alert(`Added to Database!`)}*/>
+                    <TouchableNativeFeedback /*onPress={() => alert(`Added to Database!`)}*/>
                         <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
 
             </MenuProvider>
@@ -302,4 +383,4 @@ const styles = {
     }
 };
 
-export default CallAttributes1;
+export default CallAttributes2;

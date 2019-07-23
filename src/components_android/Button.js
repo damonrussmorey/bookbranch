@@ -4,14 +4,14 @@ Sources I used:
 */
 
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableNativeFeedback } from 'react-native';
 import { Platform } from 'react-native';
 const Button = () => {
     const {buttonStyle, textStyle} = styles;
     return (
-        <TouchableOpacity style = {buttonStyle}>
+        <TouchableNativeFeedback style = {buttonStyle}>
             <Text style = {textStyle}>Button</Text>
-        </TouchableOpacity>
+        </TouchableNativeFeedback>
 
     );
 };

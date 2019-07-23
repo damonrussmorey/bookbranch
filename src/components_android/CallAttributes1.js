@@ -6,14 +6,13 @@ import { Actions } from 'react-native-router-flux';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableNativeFeedback, ImageBackground } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import ChooseAttributeList from './ChooseAttributeList';
-import { Platform } from 'react-native';
 
 class CallAttributes1 extends Component {
     renderElement(){
@@ -114,31 +113,31 @@ class CallAttributes1 extends Component {
             <View>
                 <ArrowCardTwo>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}> 
+                        <TouchableNativeFeedback style = {styles.buttonStyle}> 
                             
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                    <TouchableOpacity style = {styles.buttonStyle}>
+                    <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCardTwo>
             </View>
@@ -146,30 +145,30 @@ class CallAttributes1 extends Component {
             <View>
                 <ArrowCard>
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
 
                     <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
+                        <TouchableNativeFeedback style = {styles.buttonStyle}>
                              <Image
                                 style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_left.png')}>
                             </Image>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </ArrowSection>
                 </ArrowCard>
             </View>
@@ -177,20 +176,20 @@ class CallAttributes1 extends Component {
             <View>
                 <Card>
                     <CardSection>{ this.renderElement() }
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
-                        </TouchableOpacity>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
+                        </TouchableNativeFeedback>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList2(this.props.text)}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList2(this.props.text)}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableOpacity>
+                        </TouchableNativeFeedback>
                     </CardSection>
                 </Card>
             </View>
@@ -198,40 +197,40 @@ class CallAttributes1 extends Component {
                 <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
                 <RatingCard/>
 
-                <TouchableOpacity style = {{marginTop: 549, marginLeft: 100}}>
+                <TouchableNativeFeedback style = {{marginTop: 549, marginLeft: 100}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>1</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>2</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>3</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>4</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>5</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => alert(`Added to Database!`)}*/>
+                    <TouchableNativeFeedback /*onPress={() => alert(`Added to Database!`)}*/>
                         <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
 
             </MenuProvider>

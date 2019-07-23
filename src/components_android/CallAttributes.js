@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View , Text , TouchableOpacity} from 'react-native';
+import { View , Text ,TouchableNativeFeedback} from 'react-native';
 import Header from './header';
 import MenuText from './MenuText';
 import AttributesList from './AttributesList';
@@ -7,7 +7,6 @@ import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
-import { Platform } from 'react-native';
 
 class CallAttributes extends Component {
     render(){
@@ -28,40 +27,40 @@ class CallAttributes extends Component {
                 <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
                 <RatingCard/>
 
-                <TouchableOpacity style = {{marginTop: 549, marginLeft: 100}}>
+                <TouchableNativeFeedback style = {{marginTop: 549, marginLeft: 100}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>1</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>2</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>3</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>4</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
+                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
                     <RatingSection>
                         <Text style = {{marginLeft: 5}}>5</Text>
                     </RatingSection>
-                </TouchableOpacity>
+                </TouchableNativeFeedback>
 
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => alert(`Added to Database!`)}*/>
+                    <TouchableNativeFeedback /*onPress={() => alert(`Added to Database!`)}*/>
                         <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
                 </View>
 
             </MenuProvider>
