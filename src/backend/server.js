@@ -69,4 +69,8 @@ app.post('/user_hash', (req, res) => {
   require('./user_hash')(pool, req, res);
 });
 
+app.post('/new_user', (req, res) => {
+  require('./new_user')(pool, req, res);
+});
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
