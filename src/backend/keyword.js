@@ -3,8 +3,12 @@ Box - skeleton to put in your keyword search request
 
 Body of Request:
 {
-  !!!describe the object the front-end needs to provide
-  in the body of the post request
+  search: string
+}
+
+Body of Response:
+{
+TODO
 }
 */
 module.exports = async (pool, req, res) => {
@@ -13,6 +17,7 @@ module.exports = async (pool, req, res) => {
 
   //connect to db and pull all the data necessary
   try {
+    console.log("\n\nKeyword Search");
     connection = await pool.getConnection();
     var querycode_keyword_search = 'SELECT books.title, authors.name, books.cover_url,books.id FROM books JOIN book_authors ON books.id = book_authors.book_id JOIN authors ON book_authors.author_id = authors.id WHERE (books.title LIKE "%' + req.body.keyword_search + '%" OR authors.name LIKE "%' + req.body.keyword_search +'%" OR books.description LIKE "%' + req.body.keyword_search + '%") GROUP BY books.title,books.description';
     //the query returns are an array, results followed by
@@ -45,7 +50,7 @@ if(process.argv[2] === 'test') {
               Accept: 'application/json'},
           method : 'POST',
           body: JSON.stringify({
-            keyword_search: 'joan of arc'
+            search: 'joan of arc'
           })
       });
       let res = await hi.json();

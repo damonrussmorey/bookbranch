@@ -25,8 +25,8 @@ module.exports = async (pool, req, res) => {
 if(process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
-      let res = await fetch('http://localhost:8765/attributes');
-      let attr = await res.json();
-      console.log(JSON.stringify(attr));
+    let res = await fetch('http://localhost:8765/attributes');
+    let attr = await res.json();
+    console.log(JSON.stringify(attr));
   })();
 }

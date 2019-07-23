@@ -30,9 +30,13 @@ pool.getConnection((err, connection) => {
   return;
 });
 
-app.use(bodyParser.json());       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({extended: true}) ); // to support URL-encoded bodies
+//to support JSON-encoded bodies
+app.use(bodyParser.json());
+//to support URL-encoded bodies
+app.use(bodyParser.urlencoded({extended: true}) );
 
+//Routing list
+//send off to modules
 app.post('/recommendation', (req, res) => {
   require('./recommendation')(pool, req, res);
 });
@@ -55,6 +59,10 @@ app.post('/insert_recommandation_review', (req, res) => {
 
 app.post('/find_book', (req, res) => {
   require('./find_book')(req, res);
+});
+
+app.post('/user_hash', (req, res) => {
+  require('./user_hash')(pool, req, res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
