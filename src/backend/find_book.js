@@ -62,14 +62,18 @@ module.exports = async (req, res) => {
   for(r of result) {
     if(r.ItemAttributes.ProductGroup !== 'Book')
       continue;
-    description = r.EditorialReviews.EditorialReview;
-    console.log(description);
-    if(Array.isArray(description))
-      description = description[0];
     let book = {};
+    if(r.EditorialReviews && r.EditorialReviews.EditorialReview){
+      description = r.EditorialReviews.EditorialReview;
+      console.log(r.EditorialReviews.EditorialReview)
+      if(Array.isArray(description))
+        description = description[0];
+      book['description'] = description.Content;
+    }else{
+      book['description'] = null;
+    }
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
-    book['description'] = description.Content;
     if(r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
@@ -88,7 +92,7 @@ module.exports = async (req, res) => {
     */
     response.push(book);
   }
-
+  console.log(response)
   res.send(response);
 }
 
@@ -101,7 +105,7 @@ if(process.argv[2] == 'test') {
         'content-type': 'application/json',
         Accept: 'application/json'},
       method : 'POST',
-      body: JSON.stringify({search: 'dr suess'})
+      body: JSON.stringify({search: 'the hunger game'})
     });
     let res = await hi.json();
     console.log('test: ' + JSON.stringify(res) + '\n');
