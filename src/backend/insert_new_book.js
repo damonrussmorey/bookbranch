@@ -11,6 +11,7 @@ body:
     imageURL: string
     title: string
     author: string
+    description: string,
     attr: [
             {id: int, value: int},
             {id: int, value: int},
@@ -83,8 +84,9 @@ module.exports = async (pool, req, res) => {
             url_title = req.body.title.toLowerCase().split(' ').join('-')+"-"+new_id;
             console.log(url_title)
             continue_id = await connection.query('alter table books auto_increment= '+ last_id);
-            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,average_rating) VALUES("'+ req.body.title+'", "'
-                                                 + url_title +'", ' + req.body.asin + ', "' + req.body.imageURL + '", "' + req.body.amazonURL + '", ' +req.body.rating_value+')');
+            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,average_rating,description) VALUES("'+ req.body.title+'", "'
+                                                 + url_title +'", ' + req.body.asin + ', "' + req.body.imageURL + '", "' + req.body.amazonURL + '", ' +req.body.rating_value
+                                                 +',"'+ req.body.description+'")');
             console.log(insert_book);
             //Insert new book function end.
 
@@ -128,7 +130,8 @@ if (process.argv[2] === 'test') {
                     {id: 2, val: 4}
                 ],
                 user_id: '1',
-                rating_value: '5'
+                rating_value: '5',
+                description: 'an example'
             })
         });
         let res = await hi.json();
