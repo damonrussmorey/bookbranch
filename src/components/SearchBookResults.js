@@ -35,7 +35,7 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.BookResultsDetail({BookResults: 'Placeholder'})}>
+                    <TouchableOpacity onPress={() => Actions.BookResultsDetail({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.book2attributes3, Book2Rank1: this.props.Book2Rank1, Book2Rank2: this.props.Book2Rank2, Book2Rank3: this.props.Book2Rank3, Book2RankOverall: this.props.Book2RankOverall })}>
                         <Text style = {styles.TextStyle1}>Amazon</Text>
                     </TouchableOpacity>
             </View>

@@ -27,7 +27,15 @@ import BookResultsDetails from './src/components/BookResultsDetails';
 import CallAttributes1 from './src/components/CallAttributes1';
 import ChooseAttributesList2 from './src/components/ChooseAttributesList2';
 import CallAttributes2 from './src/components/CallAttributes2';
+import CallAttributes3 from './src/components/CallAttributes3';
+import ChooseAttributesList3 from './src/components/ChooseAttributesList3';
 import CallAttributesPage2 from './src/components/CallAttributesPage2';
+import Book2CallAttributes1 from './src/components/Book2CallAttributes1';
+import Book2ChooseAttributesList from './src/components/Book2ChooseAttributesList';
+import Book2ChooseAttributesList2 from './src/components/Book2ChooseAttributesList2';
+import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
+import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesList3';
+import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
 
 const App = () => (
   <MenuProvider>
@@ -78,6 +86,20 @@ const App = () => (
         /> 
 
         <Scene
+          key = "attList3"
+          component={CallAttributes3}
+          title="Choose The Rankings"
+          hideNavBar
+        />
+
+        <Scene
+          key = "Book2attList1"
+          component={Book2CallAttributes1}
+          title="Choose the Attributes"
+          hideNavBar
+        />
+
+        <Scene
           key="chooseAttList"
           component={ChooseAttributeList}
           title="Choose From The Following List"
@@ -88,6 +110,48 @@ const App = () => (
           key="chooseAttList2"
           component={ChooseAttributesList2}
           title="Choose From The Following List"
+          hideNavBar
+        />
+
+        <Scene 
+          key="Book2attList3"
+          component={Book2CallAttributes3}
+          title="Choose the Attributes"
+          hideNavBar
+        />
+
+        <Scene
+          key="Book2attList4"
+          component={Book2CallAttributes4}
+          title="Choose the Ranking"
+          hideNavBar
+        />
+
+        <Scene
+          key = "chooseAttList3"
+          component={ChooseAttributesList3}
+          title="Choose From The Following List"
+          hideNavBar
+        />
+
+        <Scene
+          key = "chooseAttListBook2"
+          component={Book2ChooseAttributesList}
+          title="Choose From The Following List"
+          hideNavBar
+        />
+
+        <Scene
+          key = "chooseAttList2Book2"
+          component={Book2ChooseAttributesList2}
+          title="Choose From The Following List"
+          hideNavBar
+        />
+
+        <Scene
+          key = "chooseAttList3Book2"
+          component={Book2ChooseAttributesList3}
+          title = "Choose From The Following List"
           hideNavBar
         />
 
