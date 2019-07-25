@@ -74,7 +74,7 @@ app.post('/new_user', (req, res) => {
 });
 
 app.post('/average_attribute',(req,res) =>{
-  require('/average_attribute')(pool,req,res);
+  require('./average_attribute')(pool,req,res);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
