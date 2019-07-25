@@ -1,58 +1,54 @@
 /*
 Book information from ID
+Information that is already in the database
 
 Body of request:
 [
-  {id: int},
+  int,
   ...
 ]
-optional array
 
 Body of response:
-{
-  books: [
-    {
-      title: string,
-      author: string,
-      cover_url: string,
-      TBD
-    },
-    ...
-  ]
-}
+[
+  {
+    title:        string,
+    author:       string,
+    imageURL:     string,
+    amazonURL:    string,
+    asin:         int,
+    description:  string
+  },
+  ...
+]
 */
 
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, ids) => {
   console.log('Book Information Request');
-  console.log(JSON.stringify(req.body));
-  if(!Array.isArray(req.body)) {
-    req.body = [req.body];
-  }
-  let connection, result, querycode;
+  console.log(ids);
+
+  let connection, result, query;
   try {
     connection = await pool.getConnection();
-    querycode =
-      'SELECT books.title, authors.name, books.cover_url '
+    query =
+      'SELECT books.title AS title, authors.name AS author, '
+      + 'books.cover_url AS imageURL, books.asin AS asin, '
+      + 'books.description AS description, books.amazon_url AS amazonURL '
       + 'FROM books JOIN book_authors ON books.id = book_authors.book_id '
       + 'JOIN authors ON book_authors.author_id = authors.id '
       + 'WHERE books.id IN (';
-    for(let i = 0, n = req.body.length; i < n; ++i) {
-      querycode += req.body[i].id.toString();
-      if(i+1 !== n)
-        querycode += ', ';
-      else
-        querycode += ');'
-    }
-    console.log(querycode);
-    result = await connection.query(querycode);
+    for(id of ids)
+      query += id + ',';
+    query = query.slice(0, -1) + ');';
+    console.log(query);
+    result = await connection.query(query);
     result = result[0];
-    if(!result) {
+    if(!result)
       console.log('no matches, sending back null');
-    }
   } finally {
     if(connection && connection.release)  connection.release();
   }
-  res.send(result);
+
+  return result;
 }
 
 //test
@@ -64,25 +60,9 @@ if(process.argv[2] == 'test') {
         'content-type': 'application/json',
         Accept: 'application/json'},
       method : 'POST',
-      body: JSON.stringify([
-        {id: 1},
-        {id: 2},
-        {id: 4}
-      ])
+      body: JSON.stringify([1,2,4]);
     });
     let res = await hi.json();
-    console.log('test 1: ' + JSON.stringify(res) + '\n');
-
-    await new Promise(done => setTimeout(done, 3000));
-    
-    hi = await fetch('http://localhost:8765/book', {
-      headers: {
-        'content-type': 'application/json',
-        Accept: 'application/json'},
-      method : 'POST',
-      body: JSON.stringify({id: 3})
-    });
-    res = await hi.json();
-    console.log('test 2: ' + JSON.stringify(res) + '\n');
+    console.log(JSON.stringify(res));
   })();
 }

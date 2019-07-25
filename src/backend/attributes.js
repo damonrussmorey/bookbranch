@@ -1,4 +1,6 @@
 /*
+NOT USING
+
 Get a list of attributes from the database
 */
 module.exports = async (pool, req, res) => {
