@@ -77,9 +77,6 @@ class Book2CallAttributes4 extends Component {
         if(this.props.book2attributes1 == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.book2attributes1 == 'Knowledge')
-           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
-
         if(this.props.book2attributes1 == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -157,9 +154,6 @@ class Book2CallAttributes4 extends Component {
 
         if(this.props.book2attributes2 == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
-
-        if(this.props.book2attributes2 == 'Knowledge')
-           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
 
         if(this.props.book2attributes2 == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -239,9 +233,6 @@ class Book2CallAttributes4 extends Component {
 
         if(this.props.attribute3 == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
-
-        if(this.props.attribute3 == 'Knowledge')
-           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
 
         if(this.props.attribute3 == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>

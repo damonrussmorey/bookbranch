@@ -223,17 +223,6 @@ class ChooseAttributesList3 extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.attList3({textOne: this.props.textOne, textTwo: this.props.textTwo, attribute1: this.props.attribute1, attribute2: this.props.attribute2, attribute3: 'Knowledge' })}>
-                        <AttributeCard>
-                            <Image
-                                style={styles.imageStyle}
-                                source={require('bookbranch/img/attributes/knowledge-attribute.png')}>
-                            </Image>
-                            <Text>Knowledge</Text>
-                            <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
-                        </AttributeCard>
-                    </TouchableOpacity>
-
                     <TouchableOpacity onPress={() => Actions.attList3({textOne: this.props.textOne, textTwo: this.props.textTwo, attribute1: this.props.attribute1, attribute2: this.props.attribute2, attribute3: 'Mysterious' })}>
                         <AttributeCard>
                             <Image
