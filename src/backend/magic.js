@@ -36,26 +36,26 @@ Request Body
 */
 
 module.exports = async (pool, req, res) => {
-  attr1 = [{id: attr1id1, val: attr1val1}];
-  if(attr1.filter(e => e.id === attr1id2).length == 0)
-    attr1.push({id: attr1id2, val: attr1val2});
-  if(attr1.filter(e => e.id === attr1id3).length == 0)
-    attr1.push({id: attr1id3, val: attr1val3});
+  attr1 = [{id: req.body.attr1id1, val: req.body.attr1val1}];
+  if(attr1.filter(e => e.id === req.body.attr1id2).length == 0)
+    attr1.push({id: req.body.attr1id2, val: req.body.attr1val2});
+  if(attr1.filter(e => e.id === req.body.attr1id3).length == 0)
+    attr1.push({id: req.body.attr1id3, val: req.body.attr1val3});
 
   book1 = require('./find_book')(pool, req.body.title1);
   book1_id = require('./insert_new_book')(pool, book1);
   success = require('./insert_recommandation_review')(pool, {
     book_id: book1_id,
     attr: attr1,
-    user_id: user_id,
-    rating_value: rating1
+    user_id: req.body.user_id,
+    rating_value: req.body.rating1
   });
     
-  let attr2 = [{id: attr2id1, val: attr2val1}];
-  if(attr2.filter(e => e.id === attr2id2).length == 0)
-    attr2.push({id: attr2id2, val: attr2val2});
-  if(attr2.filter(e => e.id === attr2id3).length == 0)
-    attr2.push({id: attr2id3, val: attr2val3});
+  let attr2 = [{id: req.body.attr2id1, val: req.body.attr2val1}];
+  if(attr2.filter(e => e.id === req.body.attr2id2).length == 0)
+    attr2.push({id: req.body.attr2id2, val: req.body.attr2val2});
+  if(attr2.filter(e => e.id === req.body.attr2id3).length == 0)
+    attr2.push({id: req.body.attr2id3, val: req.body.attr2val3});
 
 
   book2 = require('./find_book')(pool, req.body.title2);
@@ -63,8 +63,8 @@ module.exports = async (pool, req, res) => {
   success = require('./insert_recommandation_review')(pool, {
     book_id: book2_id,
     attr: attr2,
-    user_id: user_id,
-    rating_value: rating2
+    user_id: req.body.user_id,
+    rating_value: req.body.rating2
   });
 
   //fill out attribute list with only unique attributes, average
@@ -96,11 +96,42 @@ module.exports = async (pool, req, res) => {
   let recommendation_ids = require('./recommendation')(
     pool, [book1_id, book2_id], attr);
 
-  let recommendations = require('./books')(recommendation_ids);
+  let recommendations = require('./books')(pool, recommendation_ids);
   
   res.send(recommendations);
 }
 
 
 //test
-if(argv
+if(process.argv[2] === 'test') {
+  const fetch = require('node-fetch');
+  (async () => {
+    let hi = await fetch('http://localhost:8765/recommendation', {
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json'},
+      method : 'POST',
+      body: JSON.stringify({
+        title1:       "joan of arc",
+        rating1:      4,
+        attr1id1:     1,
+        attr1val1     10,
+        attr1id2:     5,
+        attr1val2:    8,
+        attr1id3:     18,
+        attr1val3:    6,
+        title2:       "albert einstein",
+        rating2:      5,
+        attr2id1:     2,
+        attr2val1     8,
+        attr2id2:     5,
+        attr2val2:    10,
+        attr2id3:     20,
+        attr2val3:    7,
+        user_id:      200
+      })
+    });
+    let res = await hi.json();
+    console.log(test + ': ', JSON.stringify(res));
+  })();
+}
