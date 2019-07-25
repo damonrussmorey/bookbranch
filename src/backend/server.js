@@ -37,6 +37,21 @@ app.use(bodyParser.urlencoded({extended: true}) );
 
 //Routing list
 //send off to modules
+
+//XXXsimplified routingXXX
+app.post('/user_hash', (req, res) => {
+  require('./user_hash')(pool, req, res);
+});
+
+app.post('/new_user', (req, res) => {
+  require('./new_user')(pool, req, res);
+});
+
+app.post('/magic', (req, res) => {
+  require('./magic')(pool, req, res);
+}
+
+/*
 app.post('/recommendation', (req, res) => {
   require('./recommendation')(pool, req, res);
 });
@@ -65,16 +80,10 @@ app.post('/insert_new_book',(req,res) =>{
   require('./insert_new_book')(pool,req,res);
 })
 
-app.post('/user_hash', (req, res) => {
-  require('./user_hash')(pool, req, res);
-});
-
-app.post('/new_user', (req, res) => {
-  require('./new_user')(pool, req, res);
-});
 
 app.post('/average_attribute',(req,res) =>{
   require('./average_attribute')(pool,req,res);
 });
+*/
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
