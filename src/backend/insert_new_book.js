@@ -7,10 +7,10 @@ Then just insert all information in the database.
 body:
 {
     asin: int,
-    amazonURL: string
-    imageURL: string
-    title: string
-    author: string
+    amazonURL: string,
+    imageURL: string,
+    title: string,
+    author: string,
     description: string,
     attr: [
             {id: int, value: int},
