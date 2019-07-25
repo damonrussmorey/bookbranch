@@ -35,6 +35,7 @@ export class Backend {
   }
 }
 
+
 /*
 Book object used to communicate between front and back ends
 
@@ -44,7 +45,7 @@ TBD:
 */
 export class Book {
   constructor() {
-    this.book_id = -1;
+    this.id = -1;
     this.attr = [];
     this.rating = -1;
     this.asin = -1;
@@ -56,18 +57,11 @@ export class Book {
     this.user_id = -1;
   }
 
-  /*//copy other book
   copy(other) {
-    this.book_id = other.book_id;
-    this.rating = other.;
-    this.asin = other.;
-    this.amazonURL = other.;
-    this.imageURL = other.;
-    this.title = other.;
-    this.author = other.;
-    this.description = other.;
-    this.user_id = other.;
-  }*/
+    for(a in other) {
+      this[a] = other[a];
+    }
+  }
 
   addAttribute(id1, val1, id2, val2, id3, val3) {
     this.attributes.push({
