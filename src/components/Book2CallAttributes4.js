@@ -16,7 +16,11 @@ import ChooseAttributeList from './ChooseAttributeList';
 
 class Book2CallAttributes4 extends Component {
     state = {  
-        choosenIndex: 0  
+        choosenIndex: 0,
+        language1: "One",
+        language2: "One",
+        language3: "One",
+        language4: "One"
     };
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
@@ -287,7 +291,7 @@ class Book2CallAttributes4 extends Component {
                         onValueChange={(itemValue, itemPosition) =>  
                             this.setState({language1: itemValue, choosenIndex: itemPosition})}  
                         >  
-                            <Picker.Item label="1" value="One" />  
+                            <Picker.Item label="1" value = "One" />  
                             <Picker.Item label="2" value="Two" />  
                             <Picker.Item label="3" value="Three" />
                             <Picker.Item label="4" value="Four" />
@@ -331,7 +335,7 @@ class Book2CallAttributes4 extends Component {
                         onValueChange={(itemValue, itemPosition) =>  
                             this.setState({language3: itemValue, choosenIndex: itemPosition})}  
                         >  
-                            <Picker.Item label="1" value="One" />  
+                            <Picker.Item label="1" value= "One" />  
                             <Picker.Item label="2" value="Two" />  
                             <Picker.Item label="3" value="Three" />
                             <Picker.Item label="4" value="Four" />
@@ -340,7 +344,7 @@ class Book2CallAttributes4 extends Component {
                             <Picker.Item label="7" value="Seven" />
                             <Picker.Item label="8" value="Eight" /> 
                             <Picker.Item label="9" value="Nine" />
-                            <Picker.Item label="10" value="Ten" /> 
+                            <Picker.Item label="10"value="Ten" /> 
                         </Picker>  
 
                         </View>

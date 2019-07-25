@@ -16,7 +16,11 @@ import ChooseAttributeList from './ChooseAttributeList';
 
 class CallAttributes3 extends Component {
     state = {  
-        choosenIndex: 0  
+        choosenIndex: 0,
+        language1: "One",
+        language2: "One",
+        language3: "One",
+        language4: "One"  
     };
     renderElement(){
         if(this.props.attribute1 == 'Adventurous')
