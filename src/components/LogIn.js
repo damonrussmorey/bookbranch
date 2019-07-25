@@ -26,7 +26,7 @@ class LogIn extends Component {
         username: username,
     }
     AsyncStorage.setItem('userObject', JSON.stringify(userObject));
-    Actions.Main();
+    Actions.Launch();
   }
 
   render() {

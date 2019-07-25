@@ -36,11 +36,39 @@ import Book2ChooseAttributesList2 from './src/components/Book2ChooseAttributesLi
 import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
 import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesList3';
 import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
+import Launch from './src/components/Launch';
+
+TODO
+//Need to copy Async Storage MainMenu Logic
+  // 1. Need to change APP into a class that extends React.Component
+  // 2. Need to change authenticate vvv function below to check for Async Storages's Username exists or not
+  // 3. Need to port all Async Storage over to Android
+
+// HELPER FUNCTION FOR AUTH
+authenticate = () => {
+  if(this.state.isUserLogin)
+    return true;
+  else {
+   return false;
+  }
+}
 
 const App = () => (
+  
   <MenuProvider>
     <Router>
       <Scene key="root">
+
+        {/* PLACEHOLDER SCENE */}
+      <Scene
+          key="Launch"
+          component={Launch}
+          title="Launch"
+          hideNavBar
+          on={this.authenticate}
+          success="Main"
+          failure="LogIn"
+      />
 
       <Scene
           key="LogIn"
@@ -48,6 +76,8 @@ const App = () => (
           title="Bookbranch"
           initial
           hideNavBar
+          on
+
         />
 
         <Scene
