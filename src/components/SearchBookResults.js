@@ -41,7 +41,7 @@ class SearchBookResults extends Component {
             </View>
             <View style = {styles.ButtonStyle2}>
                     <TouchableOpacity onPress={() => Actions.Main()}>
-                        <Text style = {styles.TextStyle2}>HomePage</Text>
+                        <Text style = {styles.TextStyle2}>Start Over</Text>
                     </TouchableOpacity>
             </View>
 
