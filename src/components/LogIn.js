@@ -20,13 +20,12 @@ class LogIn extends Component {
     };
   }
 
-  saveData =()=>{
+  Authenticate =()=>{
     const{username} = this.state;
-    let myArray = {
+    let userObject = {
         username: username,
     }
-    AsyncStorage.setItem('myArray', JSON.stringify(myArray));
-    alert(username + 'was saved successfully');
+    AsyncStorage.setItem('userObject', JSON.stringify(userObject));
     Actions.Main();
   }
 
@@ -62,7 +61,7 @@ class LogIn extends Component {
                 value={this.state.password}
             />
                 <View style = {styles.ButtonStyle3}>
-                <TouchableOpacity onPress={this.saveData.bind(this)}>
+                <TouchableOpacity onPress={this.Authenticate.bind(this)}>
                         <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>

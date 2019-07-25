@@ -22,9 +22,8 @@ class MainMenu extends Component {
       }
 
     fetchData = async () => {
-        let myArray = await AsyncStorage.getItem('myArray');
-        let data = JSON.parse(myArray);
-        alert(data.username);
+        let userObject = await AsyncStorage.getItem('userObject');
+        let data = JSON.parse(userObject);
         this.setState({
             username: data.username
         });
