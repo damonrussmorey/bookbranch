@@ -13,7 +13,6 @@ import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
 import { Actions } from 'react-native-router-flux';
 import ChooseAttributeList from './ChooseAttributeList';
-import { Platform } from 'react-native';
 class AttributesDetail extends Component {
     //componentDidMount = () => {
     //    setTimeout(() => {
@@ -27,7 +26,6 @@ class AttributesDetail extends Component {
                 <ArrowCardTwo>
                     <ArrowSection>
                         <TouchableOpacity style = {styles.buttonStyle}> 
-                            
                              <Image
                                 style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
                                 source={require('bookbranch/img/arrow_right.png')}>

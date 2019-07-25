@@ -13,7 +13,6 @@ import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import ChooseAttributeList from './ChooseAttributeList';
-import { Platform } from 'react-native';
 
 class CallAttributes2 extends Component {
     renderElement(){
@@ -184,11 +183,12 @@ class CallAttributes2 extends Component {
             <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookReview}</Text>
+                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
+                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
-                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
-                            Choose this book's top 3 attributes:
+                            {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
+                            Choose this book's top 3 attributes
                             </Text>
                     </View>
                 </View>
@@ -269,52 +269,13 @@ class CallAttributes2 extends Component {
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList3({textOne: this.props.textOne, textTwo: this.props.textTwo, attribute1: this.props.text, attribute2: this.props.attribute2 })}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
                 </Card>
             </View>
         </View>
-                <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
-                <RatingCard/>
-
-                <TouchableOpacity style = {{marginTop: 549, marginLeft: 100}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>1</Text>
-                    </RatingSection>
-                </TouchableOpacity>
-
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>2</Text>
-                    </RatingSection>
-                </TouchableOpacity>
-
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>3</Text>
-                    </RatingSection>
-                </TouchableOpacity>
-
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>4</Text>
-                    </RatingSection>
-                </TouchableOpacity>
-
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>5</Text>
-                    </RatingSection>
-                </TouchableOpacity>
-
-                <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => alert(`Added to Database!`)}*/>
-                        <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
-                </View>
-
             </MenuProvider>
         </View>
     );
