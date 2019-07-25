@@ -223,17 +223,6 @@ class Book2ChooseAttributesList extends Component {
                         </AttributeCard>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => Actions.Book2attList1({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, text: 'Knowledge'})}>
-                        <AttributeCard>
-                            <Image
-                                style={styles.imageStyle}
-                                source={require('bookbranch/img/attributes/knowledge-attribute.png')}>
-                            </Image>
-                            <Text>Knowledge</Text>
-                            <Text style = {{fontWeight: 'bold', color: '#499920'}}>                    +</Text>
-                        </AttributeCard>
-                    </TouchableOpacity>
-
                     <TouchableOpacity onPress={() => Actions.Book2attList1({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, text: 'Mysterious'})}>
                         <AttributeCard>
                             <Image

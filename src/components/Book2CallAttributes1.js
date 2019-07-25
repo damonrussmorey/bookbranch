@@ -71,9 +71,6 @@ class Book2CallAttributes1 extends Component {
         if(this.props.text == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Knowledge')
-           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
-
         if(this.props.text == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
 
