@@ -117,7 +117,7 @@ module.exports = async (pool, books, attrs) => {
     x = queue.dequeue();
     if(x.distance > 5)
       break;
-    result.push(x);
+    result.push(x.id);
   }
 
   return result;
