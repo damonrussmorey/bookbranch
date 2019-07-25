@@ -2,7 +2,7 @@
 
 //itemImage = {require('./img/bookbranch_tree.png')}
 // Import a library to help create a component
-
+console.disableYellowBox = true;
 import React from 'react';
 import { AppRegistry, View } from 'react-native';
 import ChooseAttributeList from './src/components_android/ChooseAttributeList';

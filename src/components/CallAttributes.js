@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View , Text , TouchableOpacity} from 'react-native';
+import { View , Text , TouchableOpacity, Image} from 'react-native';
 import Header from './header';
 import MenuText from './MenuText';
 import AttributesList from './AttributesList';
@@ -7,7 +7,12 @@ import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
 import RatingCard from './RatingCard';
 import RatingSection from './RatingSection';
-import { Platform } from 'react-native';
+import Card from './Card';
+import CardSection from './CardSection';
+import ArrowCard from './ArrowCard';
+import ArrowSection from './ArrowSection';
+import ArrowCardTwo from './ArrowCardTwo';
+import ChooseAttributeList from './ChooseAttributeList';
 
 class CallAttributes extends Component {
     render(){
@@ -16,54 +21,100 @@ class CallAttributes extends Component {
             <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookReview}</Text>
+                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
+                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
-                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
-                            Choose this book's top 3 attributes:
+                            {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
+                            Choose this book's top 3 attributes
                             </Text>
                     </View>
                 </View>
-                <AttributesList/>
-                <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
-                <RatingCard/>
+                <View>
+            <View>
+                <ArrowCardTwo>
+                    <ArrowSection>
+                        <TouchableOpacity style = {styles.buttonStyle}> 
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
 
-                <TouchableOpacity style = {{marginTop: 549, marginLeft: 100}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>1</Text>
-                    </RatingSection>
-                </TouchableOpacity>
+                    <ArrowSection>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>2</Text>
-                    </RatingSection>
-                </TouchableOpacity>
+                    <ArrowSection>
+                    <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_right.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
+                </ArrowCardTwo>
+            </View>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>3</Text>
-                    </RatingSection>
-                </TouchableOpacity>
+            <View>
+                <ArrowCard>
+                    <ArrowSection>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>4</Text>
-                    </RatingSection>
-                </TouchableOpacity>
+                    <ArrowSection>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
 
-                <TouchableOpacity style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>5</Text>
-                    </RatingSection>
-                </TouchableOpacity>
+                    <ArrowSection>
+                        <TouchableOpacity style = {styles.buttonStyle}>
+                             <Image
+                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
+                                source={require('bookbranch/img/arrow_left.png')}>
+                            </Image>
+                        </TouchableOpacity>
+                    </ArrowSection>
+                </ArrowCard>
+            </View>
 
-                <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity /*onPress={() => alert(`Added to Database!`)}*/>
-                        <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableOpacity>
-                </View>
+            <View>
+                <Card>
+                    <CardSection>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList({textOne: this.props.textOne, textTwo: this.props.textTwo})}>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
+                    </CardSection>
 
+                    <CardSection>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
+                    </CardSection>
+
+                    <CardSection>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                        </TouchableOpacity>
+                    </CardSection>
+                </Card>
+            </View>
+        </View>
             </MenuProvider>
         </View>
     );
@@ -72,8 +123,8 @@ class CallAttributes extends Component {
 
 const styles = {
     TopThreeStyle: {
-        marginTop: 110,
-        marginLeft: 87,
+        marginTop: 100,
+        marginLeft: 78,
         position: 'absolute'
     },
     BookNumStyle: {
@@ -104,7 +155,25 @@ const styles = {
         marginTop: 5,
         marginLeft: 18,
         position: 'absolute'
-    }
+    },
+
+    RatingStyle: {
+        marginTop: 450,
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginLeft: 30
+    },
+
+    buttonStyle: {
+        width: 40,
+        height: 23,
+        //paddingTop: 2,
+        backgroundColor: '#ffffff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#ffffff',
+        alignSelf: 'center',
+      }
 };
 
 export default CallAttributes;
