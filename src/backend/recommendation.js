@@ -31,15 +31,17 @@ We need the books to skip it from matching to itself
 
 This can be used without needing to exclude a book, just send book_id: -1.
 */
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, books, attrs) => {
   console.log('\nBook Recommendation')
 
-  //sort attr ids in ascending order
-  req.body.attrs.sort((a,b) => {
+  /*//sort attr ids in ascending order
+  attrs.sort((a,b) => {
     if(a.id > b.id) return 1;
     else  return -1;
   })
+  DONE IN MAGIC*/
 
+  /*
   //ensure proper attribute values
   //invalid ids will simply not match
   //invalid values will mess up distance calculation, so clamp them
@@ -49,9 +51,7 @@ module.exports = async (pool, req, res) => {
     if(attr.value > 10)
       attr.value = 10;
   }
-
-  //debug
-  //console.log('Request Body:\n' + JSON.stringify(req.body));
+  SILLY NOT REALLY NECESSARY*/
 
   const PriorityQueue = require('js-priority-queue');
   let connection,
@@ -63,17 +63,11 @@ module.exports = async (pool, req, res) => {
     connection = await pool.getConnection();
 
     query = 'SELECT book_id, attribute_id, average_score FROM '
-        + 'book_attributes WHERE ';
-    
-    if(req.body.books) {
-      query += 'NOT (';
-      for(b of req.body.books) {
-        query += 'book_id=' + b + ' AND ';
-      }
-      query = query.slice(0, -5) + ') AND';
+        + 'book_attributes WHERE NOT (';
+    for(b of req.body.books) {
+      query += 'book_id=' + b + ' AND ';
     }
-
-    query += '(';
+    query = query.slice(0, -5) + ') AND (';
     for(attr of req.body.attrs) {
       query += 'attribute_id=' + attr.id + ' OR ';
     }
@@ -81,9 +75,6 @@ module.exports = async (pool, req, res) => {
 
     result = await connection.query(query);
     result = result[0];
-    //debug
-    //console.log(query);
-    //console.log(result);
     if(!result) {
       throw 'no matches';
     }
@@ -107,15 +98,15 @@ module.exports = async (pool, req, res) => {
     book_id = result[i].book_id;
     x = j = 0;
     while(i < result.length && result[i].book_id == book_id) {
-      while(result[i].attribute_id > req.body.attrs[j].id)
+      while(result[i].attribute_id > attrs[j].id)
         x += Math.pow(req.body.attrs[j++].value, 2);
-      x += Math.pow(result[i].average_score - req.body.attrs[j].value, 2);
+      x += Math.pow(result[i].average_score - attrs[j].value, 2);
       ++i;
       ++j;
     }
-    while(j < req.body.attrs.length)
-      x += Math.pow(req.body.attrs[j++].value, 2);
-    x = Math.sqrt(x) / req.body.attrs.length;
+    while(j < attrs.length)
+      x += Math.pow(attrs[j++].value, 2);
+    x = Math.sqrt(x) / attrs.length;
     //console.log(`${book_id}: ${x}`);
     queue.queue({id: book_id, distance: x});
   }
@@ -126,9 +117,10 @@ module.exports = async (pool, req, res) => {
     x = queue.dequeue();
     if(x.distance > 5)
       break;
-    result.push(x);
+    result.push(x.id);
   }
-  res.send(result);
+
+  return result;
 }
 
 //Tests

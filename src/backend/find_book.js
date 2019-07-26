@@ -1,22 +1,21 @@
 /*
 Search AWS for a book
 
+XXX For magic, only returns the top result
+
 Body of request:
-{
-  search: string
-}
+string
+
 
 Body of response:
-[
-  {
-    asin: string,
-    amazonURL: string,
-    description: string,
-    imageURL: string,
-    title: string,
-    author: string
-  }, ...
-]
+{
+  asin: string,
+  amazonURL: string,
+  description: string,
+  imageURL: string,
+  title: string,
+  author: string
+}
 
 Note:
 In my opinion, we really don't need any other information about the book.
@@ -30,11 +29,11 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (req, res) => {
-  if(!req.body.search)
-    throw 'improper request body'
-  console.log('Searching for book on AWS: ' + req.body.search);
+module.exports = async (search) => {
+  console.log('\nSearching for book on AWS: ' + search);
+
   let response, result, description;
+
   const {OperationHelper} = require('apac');
   const searcher = new OperationHelper({
     awsId:     'AKIAIANIRJALOZBL4MZQ',
@@ -47,7 +46,7 @@ module.exports = async (req, res) => {
     response = await searcher.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
-        'Keywords': req.body.search,
+        'Keywords': search,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
     });
   } catch(e) {
@@ -58,19 +57,25 @@ module.exports = async (req, res) => {
 
   //Build the response
   //need to verify each field exists
-  response = []
-  for(r of result) {
-    if(r.ItemAttributes.ProductGroup !== 'Book')
-      continue;
+  //response = []
+  //for(r of result) {
+  let i = 0;
+  while(i < result.length &&
+        result[i].ItemAttributes.ProductGroup !== 'Book') {
+    ++i;
+  }
+  r = result[i];
+    /*if(r.ItemAttributes.ProductGroup !== 'Book')
+      continue;*/
     let book = {};
     if(r.EditorialReviews && r.EditorialReviews.EditorialReview){
       description = r.EditorialReviews.EditorialReview;
-      console.log(r.EditorialReviews.EditorialReview)
+      //console.log(r.EditorialReviews.EditorialReview)
       if(Array.isArray(description))
         description = description[0];
       book['description'] = description.Content;
-    }else{
-      book['description'] = null;
+    } else {
+      book['description'] = '';
     }
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
@@ -90,10 +95,12 @@ module.exports = async (req, res) => {
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
     */
-    response.push(book);
+    /*response.push(book);
   }
   console.log(response)
   res.send(response);
+  */
+  return book;
 }
 
 //test

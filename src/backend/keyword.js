@@ -1,4 +1,7 @@
 /*
+
+XXX WON'T BE USING FOR MAGIC
+
 Box - skeleton to put in your keyword search request
 
 Body of Request:
