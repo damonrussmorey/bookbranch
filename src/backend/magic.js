@@ -10,8 +10,9 @@ Find book 2 on AWS
 Add book 2 to database (or verify it is there)
 Add review for book 2 to database
 Generate the recommendations
+Return all the book information for the recommmended books
 
-Request Body
+Request Body:
 {
   title1:
   rating1:
@@ -33,17 +34,38 @@ Request Body
 
   user_id:
 }
+
+Response Body:
+[
+  {
+    title:        string,
+    author:       string,
+    imageURL:     string,
+    amazonURL:    string,
+    asin:         int,
+    description:  string
+  },
+  ...
+]
 */
 
+//Called from server.js when a post request is received
 module.exports = async (pool, req, res) => {
+
+  //remove duplicate attributes for book 1
   attr1 = [{id: req.body.attr1id1, val: req.body.attr1val1}];
   if(attr1.filter(e => e.id === req.body.attr1id2).length == 0)
     attr1.push({id: req.body.attr1id2, val: req.body.attr1val2});
   if(attr1.filter(e => e.id === req.body.attr1id3).length == 0)
     attr1.push({id: req.body.attr1id3, val: req.body.attr1val3});
 
+  //find book 1 on AWS
   book1 = require('./find_book')(pool, req.body.title1);
+
+  //add book 1 to database (or simply return the id if its already there)
   book1_id = require('./insert_new_book')(pool, book1);
+
+  //add book 1 review to database
   success = require('./insert_recommandation_review')(pool, {
     book_id: book1_id,
     attr: attr1,
@@ -51,15 +73,20 @@ module.exports = async (pool, req, res) => {
     rating_value: req.body.rating1
   });
     
+  //remove duplicate attributes for book 2
   let attr2 = [{id: req.body.attr2id1, val: req.body.attr2val1}];
   if(attr2.filter(e => e.id === req.body.attr2id2).length == 0)
     attr2.push({id: req.body.attr2id2, val: req.body.attr2val2});
   if(attr2.filter(e => e.id === req.body.attr2id3).length == 0)
     attr2.push({id: req.body.attr2id3, val: req.body.attr2val3});
 
-
+  //find book 2 on AWS
   book2 = require('./find_book')(pool, req.body.title2);
+
+  //add book 2 to database (or simply return the id if its already there)
   book2_id = require('./insert_new_book')(pool, book2);
+
+  //add book 2 review to database
   success = require('./insert_recommandation_review')(pool, {
     book_id: book2_id,
     attr: attr2,
@@ -93,14 +120,16 @@ module.exports = async (pool, req, res) => {
   while(j < attr2.length)
       attr.push(attr2[j++]);
   
-  let recommendation_ids = require('./recommendation')(
+  //Get a list of recommendations based on the 2 books
+  let ids = require('./recommendation')(
     pool, [book1_id, book2_id], attr);
 
-  let recommendations = require('./books')(pool, recommendation_ids);
+  //Get the information for the recommended books
+  let recommendations = require('./books')(pool, ids);
   
+  //Send the results back to the client
   res.send(recommendations);
 }
-
 
 //test
 if(process.argv[2] === 'test') {
@@ -120,7 +149,7 @@ if(process.argv[2] === 'test') {
         attr1val2:    8,
         attr1id3:     18,
         attr1val3:    6,
-        title2:       "albert einstein",
+        title2:       "albert einstein biography",
         rating2:      5,
         attr2id1:     2,
         attr2val1     8,
