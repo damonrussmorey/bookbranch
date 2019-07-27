@@ -74,8 +74,8 @@ module.exports = async (pool, book) => {
             url_title = book.title.toLowerCase().split(' ').join('-')+"-"+new_id;
             console.log(url_title)
             continue_id = await connection.query('alter table books auto_increment= '+ last_id);
-            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,description) VALUES("'+ book.title+'", "'
-                                                 + url_title +'", "' + book.asin + '", "' + book.imageURL + '", "' + book.amazonURL +'","'+ book.description+'")');
+            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,description,average_rating) VALUES("'+ book.title+'", "'
+                                                 + url_title +'", "' + book.asin + '", "' + book.imageURL + '", "' + book.amazonURL +'","'+ book.description+'", 0)');
             //Insert new book function end.
 
             //Insert book authors
