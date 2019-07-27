@@ -49,7 +49,7 @@ app.post('/new_user', (req, res) => {
 
 app.post('/magic', (req, res) => {
   require('./magic')(pool, req, res);
-}
+});
 
 /*
 app.post('/recommendation', (req, res) => {
