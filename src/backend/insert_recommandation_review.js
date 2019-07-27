@@ -94,7 +94,16 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
       query += '(' + book_id + ',' + d.attribute_id + ',' + d.avg + '),';
     }
     query = query.slice(0, -1);
-    result - await connection.query(query);
+    result = await connection.query(query);
+
+    //Update average rating score
+    query = 'SELECT AVG(rating) AS rate FROM book_reviews WHERE book_id = ' + book_id;
+    score = await connection.query(query);
+    score = score[0];
+    new_score = score[0].rate;
+    console.log(new_score);
+    query = 'UPDATE books SET average_rating =' + new_score + 'WHERE id = ' + book_id;
+    result = await connection.query(query);
     //debug
     //console.log(query);
     //console.log(result);
