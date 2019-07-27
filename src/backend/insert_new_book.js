@@ -21,14 +21,14 @@ body:
     rating_value: int
 }
 */
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, book) => {
     //declare local vars
     let connection, result;
     //connect to db and pull all the data necessary
     try {
         connection = await pool.getConnection();
         //Check the book inside database or not
-        status = await connection.query('SELECT id FROM books WHERE asin = "' + req.body.asin + '"');
+        status = await connection.query('SELECT id FROM books WHERE asin = "' + book.asin + '"');
         //check the length of return result, if larger than '0' means at lease one object returned from database.
         if (status[0].length > 0){
             console.log("New book already saved in the database")
@@ -36,16 +36,13 @@ module.exports = async (pool, req, res) => {
             new_id = status[0];
             new_id = new_id[0].id;
             console.log(new_id);
-            result = {
-                answer: false,
-                book_id: new_id
-            };
+            result = new_id;
            console.log(result);
         }
         else{
             console.log("Not in the database.");
             //Books are not saved in the databased, check the authors first, if need to add the new authors or not.
-            auth = await connection.query('SELECT id FROM authors WHERE name = "' + req.body.author + '"');
+            auth = await connection.query('SELECT id FROM authors WHERE name = "' + book.author + '"');
             //debug display
             //console.log(auth)
             var auth_id;
@@ -64,12 +61,12 @@ module.exports = async (pool, req, res) => {
                 new_id = last_id + 1;
                 //debug of last id
                 //console.log(last_id);
-                url_title = req.body.author.toLowerCase().split(' ').join('-') + "-" + new_id;
+                url_title = book.author.toLowerCase().split(' ').join('-') + "-" + new_id;
                 //debug of url_title
                 //console.log(url_title)
                 //For insert the new author
                 continue_id = await connection.query('alter table authors auto_increment= '+ last_id);
-                insert_auth = await connection.query('INSERT INTO authors(name,url_title) VALUES("'+ req.body.author+ '", "' + url_title+'")');
+                insert_auth = await connection.query('INSERT INTO authors(name,url_title) VALUES("'+ book.author+ '", "' + url_title+'")');
                 //debugger
                 console.log(insert_auth);
                 auth_id = new_id;
@@ -81,12 +78,12 @@ module.exports = async (pool, req, res) => {
             last_id = last_id[0].id;
             new_id = last_id + 1;
             console.log(last_id)
-            url_title = req.body.title.toLowerCase().split(' ').join('-')+"-"+new_id;
+            url_title = book.title.toLowerCase().split(' ').join('-')+"-"+new_id;
             console.log(url_title)
             continue_id = await connection.query('alter table books auto_increment= '+ last_id);
-            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,average_rating,description) VALUES("'+ req.body.title+'", "'
-                                                 + url_title +'", ' + req.body.asin + ', "' + req.body.imageURL + '", "' + req.body.amazonURL + '", ' +req.body.rating_value
-                                                 +',"'+ req.body.description+'")');
+            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,average_rating,description) VALUES("'+ book.title+'", "'
+                                                 + url_title +'", ' + book.asin + ', "' + book.imageURL + '", "' + book.amazonURL + '", ' +book.rating_value
+                                                 +',"'+ book.description+'")');
             console.log(insert_book);
             //Insert new book function end.
 
@@ -95,7 +92,7 @@ module.exports = async (pool, req, res) => {
             insert_book_auth = await connection.query('INSERT INTO book_authors(book_id, author_id) VALUES('+ new_id+','+ auth_id+')');
             console.log(insert_book_auth);
             //Insert book authors function end.
-            result = {answer:false,book_id: new_id}
+            result = new_id;
         }
 
     } finally {
@@ -104,10 +101,10 @@ module.exports = async (pool, req, res) => {
     }
     //now work with the data you queried for
     console.log("move to new function")
-    req.body.book_id = result.book_id;
-    require('./insert_recommandation_review.js')(pool, req, res);
+    return result;
 };
 
+/*
 if (process.argv[2] === 'test') {
     const fetch = require('node-fetch');
     (async () => {
@@ -139,3 +136,4 @@ if (process.argv[2] === 'test') {
 
     })();
 }
+*/
