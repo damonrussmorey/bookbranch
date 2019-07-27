@@ -24,10 +24,9 @@ result
 }
 */
 
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
   //declare local vars
-  let connection, result, data, query, review_id
-      book_id = req.body.book_id;
+  let connection, result, data, query, review_id;
 
   //connect to db and pull all the data necessary
   try {
@@ -38,8 +37,8 @@ module.exports = async (pool, req, res) => {
 
     //query code insert new book review in table book_reviews
     query = 'INSERT INTO book_reviews(book_id,user_id,rating) '
-          + 'VALUES("' + book_id + '","' + req.body.user_id
-          + '","' + req.body.rating_value + '");';
+          + 'VALUES("' + book_id + '","' + user_id
+          + '","' + rating_value + '");';
     result = await connection.query(query);
     review_id = result[0].insertId;
     //debug
@@ -49,9 +48,9 @@ module.exports = async (pool, req, res) => {
     //query code insert new attributes value with last insert id.
     query = 'INSERT INTO book_review_attributes(book_id, attribute_id, '
           + 'book_review_id, score) VALUES ';
-    for(attr of req.body.attr) {
-      query += '(' + req.body.book_id + ',' + attr.id
-             + ',' + review_id + ',' + attr.val + '),';
+    for(at of attr) {
+      query += '(' + book_id + ',' + at.id
+             + ',' + review_id + ',' + at.val + '),';
     }
     query = query.slice(0, -1);
     console.log(query)
@@ -64,8 +63,8 @@ module.exports = async (pool, req, res) => {
     query = 'SELECT attribute_id, AVG(score) AS avg FROM '
           + 'book_review_attributes WHERE book_id = '
           + book_id + ' AND ('
-    for(attr of req.body.attr) {
-      query += 'attribute_id = ' + attr.id + ' OR '
+    for(at of attr) {
+      query += 'attribute_id = ' + at.id + ' OR '
     }
     query = query.slice(0, -4) + ') GROUP BY attribute_id';
     result = await connection.query(query);
@@ -100,10 +99,10 @@ module.exports = async (pool, req, res) => {
     //console.log(result);
 
     //return result, display to frontend if run successfully.
-    res.send({answer : true});
+    return true;
   } catch(e) {
     console.log(e);
-    res.send({success: false});
+    return false;
   } finally {
     //this closes the connection
     if (connection && connection.release) connection.release();
@@ -111,7 +110,7 @@ module.exports = async (pool, req, res) => {
 };
 
 //test
-
+/*
 if (process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
@@ -136,3 +135,4 @@ if (process.argv[2] === 'test') {
     console.log(JSON.stringify(res));
   })();
 }
+*/
