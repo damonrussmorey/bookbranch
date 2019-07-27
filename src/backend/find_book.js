@@ -29,8 +29,8 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (search) => {
-  console.log('\nSearching for book on AWS: ' + search);
+module.exports = async (name) => {
+  console.log('\nSearching for book on AWS: ' + name);
 
   let response, result, description;
 
@@ -46,7 +46,7 @@ module.exports = async (search) => {
     response = await searcher.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
-        'Keywords': search,
+        'Keywords': name,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
     });
   } catch(e) {
@@ -79,18 +79,19 @@ module.exports = async (search) => {
     }
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
+    //all if else, 'continue' change to null statement.
     if(r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
-      continue;
+      book['imageURL'] = '';
     if(r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
-      continue;
+      book['title'] = '';
     if(r.ItemAttributes.Author)
       book['author'] = r.ItemAttributes.Author;
     else
-      continue;
+      book['author'] = '';
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
@@ -100,9 +101,11 @@ module.exports = async (search) => {
   console.log(response)
   res.send(response);
   */
-  return book;
+
+    return book;
 }
 
+/*
 //test
 if(process.argv[2] == 'test') {
   const fetch = require('node-fetch');
@@ -118,3 +121,4 @@ if(process.argv[2] == 'test') {
     console.log('test: ' + JSON.stringify(res) + '\n');
   })();
 }
+*/
