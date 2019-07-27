@@ -37,8 +37,9 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
 
     //query code insert new book review in table book_reviews
     query = 'INSERT INTO book_reviews(book_id,user_id,rating) '
-          + 'VALUES("' + book_id + '","' + user_id
-          + '","' + rating_value + '");';
+          + 'VALUES(' + book_id + ',' + user_id
+          + ',' + rating_value + ');';
+    console.log(query);
     result = await connection.query(query);
     review_id = result[0].insertId;
     //debug
