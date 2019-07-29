@@ -38,6 +38,7 @@ import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesLi
 import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
 import Launch from './src/components/Launch';
 import AsyncStorage from '@react-native-community/async-storage';
+import CardStackStyleInterpolator from "react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator";
 
 class App extends Component {
 
@@ -83,12 +84,31 @@ class App extends Component {
     }
   }
 
+  transitionConfig= () => StackViewTransitionConfigs.SlideFromRightIOS
+
+  
+
   render() {
     return (
+      
   
   <MenuProvider>
     <Router>
-      <Scene key="root">
+      <Scene key="root" transitionConfig={() => ({
+        screenInterpolator: (props) => {
+            switch (props.scene.route.params.direction) {
+                case 'vertical':
+                    return CardStackStyleInterpolator.forVertical(props);
+                case 'fade':
+                    return CardStackStyleInterpolator.forFade(props);
+                case 'none':
+                    return CardStackStyleInterpolator.forInitial
+                case 'horizontal':
+                default:
+                    return CardStackStyleInterpolator.forHorizontal(props)
+            }
+        }
+    })} >
 
         {/* PLACEHOLDER SCENE */}
       <Stack
@@ -99,17 +119,20 @@ class App extends Component {
           on={this.authenticate}
           success="Main"
           failure="LogIn"
-          animationEnabled={false}
           initial
+          panhandlers={null} // NOT WORKING
+          animationEnabled={false} // NOT WORKING
+          direction="none"
+          
       />
 
       <Scene
           key="LogIn"
           component={LogIn}
           title="Bookbranch"
-          
           hideNavBar
-          on
+          animationEnabled={false}
+          direction="none"
 
         />
 
@@ -118,6 +141,7 @@ class App extends Component {
           component={MainMenu}
           title="Bookbranch"
           hideNavBar
+          direction="none"
         />
 
         <Scene
