@@ -39,18 +39,10 @@ import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
 import Launch from './src/components/Launch';
 import {AsyncStorage} from 'react-native';
 
-//TODO
-//Need to copy Async Storage MainMenu Logic
-  // 1. Need to change APP into a class that extends React.Component
-  // 2. Need to change authenticate vvv function below to check for Async Storages's Username exists or not
-  // 3. Need to port all Async Storage over to Android
-
-// HELPER FUNCTION FOR AUTH
-
-
 class App extends Component {
 
   componentDidMount(){
+    // This is for demonstrating Async Works as intended, it can be uncommented and ran as if it were a 'Logout' button
     // this.resetKey();
   }
 

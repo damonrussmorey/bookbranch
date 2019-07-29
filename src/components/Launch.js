@@ -11,12 +11,14 @@ class Launch extends Component {
 
   render() {
     return (
+        <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
         <View>
             <Header headerText={'Launch'} />
                 <Text style={{marginTop: 250}}>
                     Loading...
                 </Text>
         </View>
+        </ImageBackground>
     );
   }
 }
