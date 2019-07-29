@@ -4,7 +4,7 @@
 // Import a library to help create a component
 
 console.disableYellowBox = true;
-import React from 'react';
+import React, { Component } from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
 import AttributesList from './src/components/AttributesList';
@@ -37,23 +37,62 @@ import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
 import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesList3';
 import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
 import Launch from './src/components/Launch';
+import {AsyncStorage} from 'react-native';
 
-TODO
+//TODO
 //Need to copy Async Storage MainMenu Logic
   // 1. Need to change APP into a class that extends React.Component
   // 2. Need to change authenticate vvv function below to check for Async Storages's Username exists or not
   // 3. Need to port all Async Storage over to Android
 
 // HELPER FUNCTION FOR AUTH
-authenticate = () => {
-  if(this.state.isUserLogin)
-    return true;
-  else {
-   return false;
-  }
-}
 
-const App = () => (
+
+class App extends Component {
+
+  componentDidMount(){
+    // this.resetKey();
+  }
+
+  constructor(props) {
+      super(props);
+      this.state = { 
+          username: ''
+      };
+    }
+
+  fetchData = async () => {
+      let userObject = await AsyncStorage.getItem('userObject');
+      let data = JSON.parse(userObject);
+      this.setState({
+          username: data.username
+      });
+  }
+
+  async resetKey() {
+    console.log("Reset was called");
+    try {
+      await AsyncStorage.removeItem('userObject');
+      const value = await AsyncStorage.getItem('userObject');
+      this.setState({myKey: value});
+    } catch (error) {
+      console.log("Error resetting data" + error);
+    }
+  }
+
+  authenticate = async () => {
+    let userObject = await AsyncStorage.getItem('userObject');
+    let data = JSON.parse(userObject);
+    console.log("From the Router: " + data.username);
+    if(data.username)
+      return true;
+    else {
+     return false;
+    }
+  }
+
+  render() {
+    return (
   
   <MenuProvider>
     <Router>
@@ -68,13 +107,15 @@ const App = () => (
           on={this.authenticate}
           success="Main"
           failure="LogIn"
+          animationEnabled={false}
+          initial
       />
 
       <Scene
           key="LogIn"
           component={LogIn}
           title="Bookbranch"
-          initial
+          
           hideNavBar
           on
 
@@ -230,7 +271,9 @@ const App = () => (
       </Scene>
     </Router>
   </MenuProvider>
-);
+)}
+    }
+  
 
 // Render it to the device
 AppRegistry.registerComponent('bookbranch', () => App);
