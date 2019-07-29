@@ -5,7 +5,7 @@ import { Button, AppRegistry, View, Text, TouchableOpacity, ImageBackground, Tex
 import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 // import { saveData, fetchData } from './asyncStorage';
 
 
@@ -61,8 +61,8 @@ class LogIn extends Component {
                 value={this.state.password}
             />
                 <View style = {styles.ButtonStyle3}>
-                <TouchableOpacity onPress={this.Authenticate.bind(this)}>
-                        <Text style = {styles.TextStyle3}>Register</Text>
+                    <TouchableOpacity onPress={this.Authenticate.bind(this)}>
+                            <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>
         </View>

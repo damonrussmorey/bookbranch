@@ -12,7 +12,7 @@ import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
 import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Stack } from 'react-native-router-flux';
 import CallAttributes from './src/components/CallAttributes';
 import CallChooseAttributeList from './src/components/CallChooseAttributeList';
 import MainMenu from './src/components/MainMenu';
@@ -37,7 +37,7 @@ import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
 import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesList3';
 import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
 import Launch from './src/components/Launch';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class App extends Component {
 
@@ -91,7 +91,7 @@ class App extends Component {
       <Scene key="root">
 
         {/* PLACEHOLDER SCENE */}
-      <Scene
+      <Stack
           key="Launch"
           component={Launch}
           title="Launch"

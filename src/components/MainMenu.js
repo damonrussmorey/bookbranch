@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Platform } from 'react-native';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 
 class MainMenu extends Component {
