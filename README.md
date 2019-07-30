@@ -13,6 +13,7 @@ What things you need to install the software and how to install them
 
 ### Installing
 >npm install -g react-native-cli
+>react-native link @react-native-community/async-storage
 
 #### For IOS
 >react-native run-ios
@@ -23,9 +24,8 @@ What things you need to install the software and how to install them
 
 #### Documentation 
 >https://facebook.github.io/react-native/docs/getting-started
->https://github.com/react-native-community/async-storage#link
->For Async Storage You will need to Link if running React Native <= 0.59
-$ react-native link @react-native-community/async-storage
+
+>https://github.com/react-native-community/async-storage
 
 
 ![alt text](img/1.png "Logo Title Text 1")
