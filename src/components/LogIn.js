@@ -5,9 +5,12 @@ import { Button, AppRegistry, View, Text, TouchableOpacity, ImageBackground, Tex
 import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-//import axios from 'axios'; // used for http requests
+import AsyncStorage from '@react-native-community/async-storage';
+// import { saveData, fetchData } from './asyncStorage';
+
 
 class LogIn extends Component {
+
   constructor(props) {
     super(props);
     this.state = { 
@@ -15,6 +18,15 @@ class LogIn extends Component {
         username: '',
         password: ''
     };
+  }
+
+  Authenticate =()=>{
+    const{username} = this.state;
+    let userObject = {
+        username: username,
+    }
+    AsyncStorage.setItem('userObject', JSON.stringify(userObject));
+    Actions.Launch();
   }
 
   render() {
@@ -49,11 +61,10 @@ class LogIn extends Component {
                 value={this.state.password}
             />
                 <View style = {styles.ButtonStyle3}>
-                <TouchableOpacity onPress={() => Actions.Main({value1: this.state.username})}>
-                        <Text style = {styles.TextStyle3}>Register</Text>
+                    <TouchableOpacity onPress={this.Authenticate.bind(this)}>
+                            <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>
-
         </View>
       </ImageBackground>
     );
