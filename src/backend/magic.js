@@ -160,36 +160,41 @@ module.exports = async (pool, req, res) => {
 
 //test
 if(process.argv[2] === 'test') {
-  const fetch = require('node-fetch');
-  (async () => {
-    let hi = await fetch('http://localhost:8765/magic', {
-      headers: {
-        'content-type': 'application/json',
-        Accept: 'application/json'},
-      method : 'POST',
-      body: JSON.stringify({
-        title1:       "joan of arc",
-        rating1:      4,
-        attr1id1:     1,
-        attr1val1:     10,
-        attr1id2:     5,
-        attr1val2:    8,
-        attr1id3:     18,
-        attr1val3:    6,
-        title2:       "albert einstein biography",
-        rating2:      5,
-        attr2id1:     2,
-        attr2val1:     8,
-        attr2id2:     5,
-        attr2val2:    10,
-        attr2id3:     20,
-        attr2val3:    7,
-        user_id:      1
-      })
-    });
-    let res = await hi.json();
-    for(r of res) {
-      console.log(r.title);
-    }
-  })();
+  if(process.argv.length != 5) {
+    console.log('Please provide 2 book names to test\n'
+           + '> node magic.js test "joan of arc" "huckleberry finn"');
+  } else {
+    const fetch = require('node-fetch');
+    (async () => {
+      let hi = await fetch('http://localhost:8765/magic', {
+        headers: {
+          'content-type': 'application/json',
+          Accept: 'application/json'},
+        method : 'POST',
+        body: JSON.stringify({
+          title1:       process.argv[3],
+          rating1:      4,
+          attr1id1:     1,
+          attr1val1:     10,
+          attr1id2:     5,
+          attr1val2:    8,
+          attr1id3:     18,
+          attr1val3:    6,
+          title2:       process.argv[4],
+          rating2:      5,
+          attr2id1:     2,
+          attr2val1:     8,
+          attr2id2:     5,
+          attr2val2:    10,
+          attr2id3:     20,
+          attr2val3:    7,
+          user_id:      1
+        })
+      });
+      let res = await hi.json();
+      for(r of res) {
+        console.log(r.imageURL);
+      }
+    })();
+  }
 }
