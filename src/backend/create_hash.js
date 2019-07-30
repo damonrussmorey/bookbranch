@@ -15,14 +15,13 @@ const saltPasswordAsync = (password, rounds) => new Promise((resolve, reject) =>
     });
 });
 
-// example
 async function hashPassword(plainPassword) {
     try {
-        const hash = await saltPasswordAsync(plainPassword, 10);
-        console.log('The hash is', hash);
+        return await saltPasswordAsync(plainPassword, 10);
     } catch (err) {
         console.error('There was an error ', err);
     }
 }
 
-hashPassword("bcrypt1999");
+// Example of how you would use
+hashPassword("supersecretpassword").then(console.log);
