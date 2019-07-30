@@ -51,6 +51,59 @@ Response Body:
 
 //Called from server.js when a post request is received
 module.exports = async (pool, req, res) => {
+  //convert attribute names
+  let convert_names = {
+    'Adventurous': 1,
+    'Beautiful': 2,
+    'Brainy': 3,
+    'Complex': 4,
+    'Cooking': 5,
+    'Cultural': 6,
+    'Dark': 7,
+    'Disaster': 8,
+    'Erotic': 9,
+    'Faith': 10,
+    'Family': 11,
+    'Fantasy': 12,
+    'Friendship': 13,
+    'Funny': 14,
+    'Heroic': 15,
+    'Historical': 16,
+    'Idealistic': 17,
+    'Insightful': 18,
+    'Mysterious': 19,
+    'Perserverence': 20,
+    'Power': 21,
+    'Readable': 22,
+    'Romantic': 23,
+    'Scary': 24,
+    'Suspenseful': 25
+  };
+  let convert_rank = {
+    'One': 1,
+    'Two': 2,
+    'Three': 3,
+    'Four': 4,
+    'Five': 5,
+    'Six': 6,
+    'Seven': 7,
+    'Eight': 8,
+    'Nine': 9,
+    'Ten': 10
+  };
+  req.body.attr1id1 = convert_names[req.body.attr1id1];
+  req.body.attr1id2 = convert_names[req.body.attr1id2];
+  req.body.attr1id3 = convert_names[req.body.attr1id3];
+  req.body.attr2id1 = convert_names[req.body.attr2id1];
+  req.body.attr2id2 = convert_names[req.body.attr2id2];
+  req.body.attr2id3 = convert_names[req.body.attr2id3];
+  req.body.attr1val1 = convert_rank[req.body.attr1val1];
+  req.body.attr1val2 = convert_rank[req.body.attr1val2];
+  req.body.attr1val3 = convert_rank[req.body.attr1val3];
+  req.body.attr2val1 = convert_rank[req.body.attr2val1];
+  req.body.attr2val2 = convert_rank[req.body.attr2val2];
+  req.body.attr2val3 = convert_rank[req.body.attr2val3];
+  console.log(req.body);
 
   let attr1, attr2, attr, book1, book2, book1_id, book2_id,
       success, ids, recommendations;
