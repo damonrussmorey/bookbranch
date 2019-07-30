@@ -14,6 +14,45 @@ class SearchBookResults extends Component {
         text1: '',
     };
     this.i = 0;
+    this.props.Results = [];
+  }
+
+  componentDidMount() {
+    let res = fetch('http://localhost:8765/magic', {
+        headers: {
+            'content-type': 'application/json',
+            Accept: 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+          title1:       this.props.BookOne,
+          rating1:      this.props.Book1RankOverall,
+          attr1id1:     this.props.Book1Attribute1,
+          attr1val1:    this.props.Book1Rank1,
+          attr1id2:     this.props.Book1Attribute2,
+          attr1val2:    this.props.Book1Rank2,
+          attr1id3:     this.props.Book1Attribute3,
+          attr1val3:    this.props.Book1Rank3,
+          title2:       this.props.BookTwo,
+          rating2:      this.props.Book2RankOverall,
+          attr2id1:     this.props.book2attributes1,
+          attr2val1:    this.props.Book2Rank1,
+          attr2id2:     this.props.book2attributes2,
+          attr2val2:    this.props.Book2Rank2,
+          attr2id3:     this.props.book2attributes3,
+          attr2val3:    this.props.Book2Rank3,
+          user_id:      1
+        })
+      }, (err, res) => {
+        res.JSON((err, res) => {
+            alert(res.length);
+            this.props.Results = res;
+        /*
+        [{imageURL: string,
+            amazonURL: string
+        }, ...]
+        */
+    })});
   }
 
   render() {
@@ -22,11 +61,9 @@ class SearchBookResults extends Component {
             <Header headerText={'Bookbranch'} />
             <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>Results </Text>
             <Card>
-              <Image source={{uri:this.prop.Results[i].imageURL}}/>
             </Card>
 
             <TouchableOpacity onPress = {() => {
-              this.i = (this.i-1)%this.prop.Results.length;
             }}>
                 <ArrowCard>
                     <Image source={require('bookbranch/img/arrow_left.png')} style={{marginTop: 120, marginRight: 5,width: 50}}></Image>
@@ -34,7 +71,6 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress = {() => {
-              this.i = (this.i+1) % this.prop.Results.length;
               
             }}>
                 <ArrowCardTwo>
@@ -43,10 +79,7 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Linking.openURL(this.props.res[this.i].amazonURL);}>
-      /*
-      () => Actions.BookResultsDetail({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.book2attributes3, Book2Rank1: this.props.Book2Rank1, Book2Rank2: this.props.Book2Rank2, Book2Rank3: this.props.Book2Rank3, Book2RankOverall: this.props.Book2RankOverall })}>
-      */
+                    <TouchableOpacity>
                         <Text style = {styles.TextStyle1}>Amazon</Text>
                     </TouchableOpacity>
             </View>
