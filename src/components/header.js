@@ -19,7 +19,7 @@ const Header = (props) => {
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
         </Image>
-        <TouchableOpacity onPress={() => Actions.home()}>
+        <TouchableOpacity onPress={() => Actions.popTo('Main')}>
           <Text style={textStyle}>{props.headerText}</Text>
         </TouchableOpacity>
 

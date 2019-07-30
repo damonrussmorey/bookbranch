@@ -86,29 +86,13 @@ class App extends Component {
 
   transitionConfig= () => StackViewTransitionConfigs.SlideFromRightIOS
 
-  
 
   render() {
     return (
-      
-  
+        
   <MenuProvider>
     <Router>
-      <Scene key="root" transitionConfig={() => ({
-        screenInterpolator: (props) => {
-            switch (props.scene.route.params.direction) {
-                case 'vertical':
-                    return CardStackStyleInterpolator.forVertical(props);
-                case 'fade':
-                    return CardStackStyleInterpolator.forFade(props);
-                case 'none':
-                    return CardStackStyleInterpolator.forInitial
-                case 'horizontal':
-                default:
-                    return CardStackStyleInterpolator.forHorizontal(props)
-            }
-        }
-    })} >
+      <Scene key="root">
 
         {/* PLACEHOLDER SCENE */}
       <Stack
@@ -120,10 +104,6 @@ class App extends Component {
           success="Main"
           failure="LogIn"
           initial
-          panhandlers={null} // NOT WORKING
-          animationEnabled={false} // NOT WORKING
-          direction="none"
-          
       />
 
       <Scene
@@ -131,8 +111,6 @@ class App extends Component {
           component={LogIn}
           title="Bookbranch"
           hideNavBar
-          animationEnabled={false}
-          direction="none"
 
         />
 
@@ -141,7 +119,6 @@ class App extends Component {
           component={MainMenu}
           title="Bookbranch"
           hideNavBar
-          direction="none"
         />
 
         <Scene
