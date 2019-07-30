@@ -102,13 +102,13 @@ class CallAttributesPage2 extends Component {
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableOpacity>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableOpacity>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
