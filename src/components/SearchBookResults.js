@@ -40,7 +40,7 @@ class SearchBookResults extends Component {
                     </TouchableOpacity>
             </View>
             <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity onPress={() => Actions.Main()}>
+                    <TouchableOpacity onPress={() => Actions.popTo('Main')}>
                         <Text style = {styles.TextStyle2}>Start Over</Text>
                     </TouchableOpacity>
             </View>

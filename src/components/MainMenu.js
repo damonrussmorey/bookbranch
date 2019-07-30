@@ -1,20 +1,40 @@
 //The tree background image is taken from this open source website: https://www.pexels.com/photo/countryside-dawn-daylight-environment-286305/
 
 import React, {Component}from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback} from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback, Button} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Platform } from 'react-native';
-//This will need to be changed to a class component later
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 class MainMenu extends Component {
+
+    componentDidMount(){
+        this.fetchData();
+    }
+    
+    constructor(props) {
+        super(props);
+        this.state = { 
+            username: ''
+        };
+      }
+
+    fetchData = async () => {
+        let userObject = await AsyncStorage.getItem('userObject');
+        let data = JSON.parse(userObject);
+        this.setState({
+            username: data.username
+        });
+    }
+
     render(){
     return (
         <View>
-            
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
             <Header headerText={'Bookbranch'} />
-            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.props.value1}!</Text>
+            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress={() => Actions.FindNewBook()}>
                         <Text style = {styles.TextStyle1}>Find Your Next</Text>

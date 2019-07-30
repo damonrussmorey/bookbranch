@@ -4,7 +4,7 @@
 // Import a library to help create a component
 
 console.disableYellowBox = true;
-import React from 'react';
+import React, { Component } from 'react';
 import { AppRegistry, View } from 'react-native';
 import Header from './src/components/header';
 import AttributesList from './src/components/AttributesList';
@@ -12,7 +12,7 @@ import MenuText from './src/components/MenuText';
 import ChooseAttributeList from './src/components/ChooseAttributeList';
 import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
-import { Router, Scene } from 'react-native-router-flux';
+import { Router, Scene, Stack } from 'react-native-router-flux';
 import CallAttributes from './src/components/CallAttributes';
 import CallChooseAttributeList from './src/components/CallChooseAttributeList';
 import MainMenu from './src/components/MainMenu';
@@ -36,18 +36,82 @@ import Book2ChooseAttributesList2 from './src/components/Book2ChooseAttributesLi
 import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
 import Book2ChooseAttributesList3 from './src/components/Book2ChooseAttributesList3';
 import Book2CallAttributes4 from './src/components/Book2CallAttributes4';
+import Launch from './src/components/Launch';
+import AsyncStorage from '@react-native-community/async-storage';
+import CardStackStyleInterpolator from "react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator";
 
-const App = () => (
+class App extends Component {
+
+  componentDidMount(){
+    // This is for demonstrating Async Works as intended, it can be uncommented and ran as if it were a 'Logout' button
+    // this.resetKey();
+  }
+
+  constructor(props) {
+      super(props);
+      this.state = { 
+          username: ''
+      };
+    }
+
+  fetchData = async () => {
+      let userObject = await AsyncStorage.getItem('userObject');
+      let data = JSON.parse(userObject);
+      this.setState({
+          username: data.username
+      });
+  }
+
+  async resetKey() {
+    console.log("Reset was called");
+    try {
+      await AsyncStorage.removeItem('userObject');
+      const value = await AsyncStorage.getItem('userObject');
+      this.setState({myKey: value});
+    } catch (error) {
+      console.log("Error resetting data" + error);
+    }
+  }
+
+  authenticate = async () => {
+    let userObject = await AsyncStorage.getItem('userObject');
+    let data = JSON.parse(userObject);
+    console.log("From the Router: " + data.username);
+    if(data.username)
+      return true;
+    else {
+     return false;
+    }
+  }
+
+  transitionConfig= () => StackViewTransitionConfigs.SlideFromRightIOS
+
+
+  render() {
+    return (
+        
   <MenuProvider>
     <Router>
       <Scene key="root">
+
+        {/* PLACEHOLDER SCENE */}
+      <Stack
+          key="Launch"
+          component={Launch}
+          title="Launch"
+          hideNavBar
+          on={this.authenticate}
+          success="Main"
+          failure="LogIn"
+          initial
+      />
 
       <Scene
           key="LogIn"
           component={LogIn}
           title="Bookbranch"
-          initial
           hideNavBar
+
         />
 
         <Scene
@@ -200,7 +264,9 @@ const App = () => (
       </Scene>
     </Router>
   </MenuProvider>
-);
+)}
+    }
+  
 
 // Render it to the device
 AppRegistry.registerComponent('bookbranch', () => App);
