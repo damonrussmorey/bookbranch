@@ -13,6 +13,7 @@ What things you need to install the software and how to install them
 
 ### Installing
 >npm install -g react-native-cli
+
 >react-native link @react-native-community/async-storage
 
 #### For IOS
