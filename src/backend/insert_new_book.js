@@ -13,84 +13,105 @@ body:
     author: string
     description: string,
 }
+
+Returns the id for the inserted book
 */
 module.exports = async (pool, book) => {
-    //declare local vars
-    let connection, result;
-    //connect to db and pull all the data necessary
-    try {
-        connection = await pool.getConnection();
-        //Check the book inside database or not
-        console.log(book.asin)
-        status = await connection.query('SELECT id FROM books WHERE asin = "' + book.asin + '"');
-        //check the length of return result, if larger than '0' means at lease one object returned from database.
-        if (status[0].length > 0){
-            console.log("New book already saved in the database")
-            //The books alreay saved in the database, dont need to check the author, can move to insert_recommandation_review.js with send the same attributes.
-            new_id = status[0];
-            new_id = new_id[0].id;
-            result = new_id;
-            console.log(result);
-        }
-        else{
-            console.log("Not in the database.");
-            //Books are not saved in the databased, check the authors first, if need to add the new authors or not.
-            auth = await connection.query('SELECT id FROM authors WHERE name = "' + book.author + '"');
-            //debug display
-            //console.log(auth)
-            var auth_id;
-            if(auth[0].length > 0){
-                console.log("Authors already saved in the database");
-                auth_id = auth[0];
-                auth_id = auth_id[0].id;
-                console.log(auth_id);
-            }
-            else{
-                console.log("Need to saved the authors information");
-                //For get url_title, need to get the max_id in authors table and then add '1' to the new authors
-                temp = await connection.query('SELECT id FROM authors ORDER BY id DESC LIMIT 0, 1');
-                last_id = temp[0];
-                last_id = last_id[0].id;
-                new_id = last_id + 1;
-                //debug of last id
-                //console.log(last_id);
-                url_title = book.author.toLowerCase().split(' ').join('-') + "-" + new_id;
-                //debug of url_title
-                //console.log(url_title)
-                //For insert the new author
-                continue_id = await connection.query('alter table authors auto_increment= '+ last_id);
-                insert_auth = await connection.query('INSERT INTO authors(name,url_title) VALUES("'+ book.author+ '", "' + url_title+'")');
-                //debugger
-                console.log(insert_auth);
-                auth_id = new_id;
-                console.log(auth_id);
-            }
-            //Insert the new book and return the book_id back
-            temp = await connection.query('SELECT id FROM books ORDER BY id DESC LIMIT 0, 1');
-            last_id = temp[0];
-            last_id = last_id[0].id;
-            new_id = last_id + 1;
-            console.log(last_id)
-            url_title = book.title.toLowerCase().split(' ').join('-')+"-"+new_id;
-            console.log(url_title)
-            continue_id = await connection.query('alter table books auto_increment= '+ last_id);
-            insert_book = await connection.query('INSERT INTO books(title,url_title, asin, cover_url,amazon_url,description,average_rating) VALUES("'+ book.title+'", "'
-                                                 + url_title +'", "' + book.asin + '", "' + book.imageURL + '", "' + book.amazonURL +'","'+ book.description+'", 0)');
-            //Insert new book function end.
+  console.log('\nAdding book to the database');
 
-            //Insert book authors
-            console.log(new_id);
-            insert_book_auth = await connection.query('INSERT INTO book_authors(book_id, author_id) VALUES('+ new_id+','+ auth_id+')');
-            //Insert book authors function end.
-            result = new_id;
-        }
+  //declare local vars
+  let connection, result, query, book_id, auth_id, url_title;
 
-    } finally {
-        //this closes the connection
-        if (connection && connection.release) connection.release();
-    }
-    //now work with the data you queried for
-    return result;
+  //connect to db and pull all the data necessary
+  try {
+    connection = await pool.getConnection();
+
+    //Check the book inside database or not
+    //console.log(book.asin);
+    query = 'SELECT id FROM books WHERE asin = "' + book.asin + '";';
+    //console.log(query);
+    result = await connection.query(query);
+    result = result[0];
+    if(Array.isArray(result))
+      result = result[0];
+
+    //If we have a result from the query, then the book is already
+    //in the database, return its id
+    if(result) {
+      console.log('Book is already in the database');
+      book_id = result.id;
+
+    } else {
+      console.log("Book is not in the database.");
+      //Books are not saved in the database, check the
+      //authors first, if need to add the new authors or not.
+      query = 'SELECT id FROM authors WHERE name = "'
+            + book.author + '";';
+      //console.log(query);
+      result = await connection.query(query);
+      result = result[0];
+      if(Array.isArray(result))
+        result = result[0];
+          
+      if(result) {
+        console.log('Author is already in the database');
+        auth_id = result.id;
+
+      } else {
+        console.log('Author is not in the database');
+
+        //For get url_title, need to get the max_id in
+        //authors table and then add '1' to the new authors
+        query = 'SELECT id FROM authors ORDER BY id DESC LIMIT 0, 1;';
+        //console.log(query);
+        result = await connection.query(query);
+        auth_id = result[0][0].id + 1;
+        url_title = book.author.toLowerCase().split(' ').join('-')
+                  + "-" + auth_id;
+              
+        //Damon: I didn't see why this was necessary, it's already
+        //primary key
+        //For insert the new author
+        //continue_id = await connection.query('alter table authors auto_increment= '+ last_id);
+
+        query = 'INSERT INTO authors(name,url_title) VALUES("'
+              + book.author + '", "' + url_title + '");';
+        //console.log(query);
+        result = await connection.query(query);
+      }
+
+      //Insert the new book and return the book_id back
+      query = 'SELECT id FROM books ORDER BY id DESC LIMIT 0, 1;';
+      //console.log(query);
+      result = await connection.query(query);
+      book_id = result[0][0].id + 1;
+      url_title = book.title.toLowerCase().split(' ').join('-')
+                + "-" + book_id;
+
+      //Damon: same note from above
+      //continue_id = await connection.query('alter table books auto_increment= '+ last_id);
+
+      query = 'INSERT INTO books (title, url_title, asin, '
+            + 'cover_url, amazon_url, description, average_rating) '
+            + 'VALUES("'+ book.title + '","' + url_title + '", "'
+            + book.asin + '", "' + book.imageURL + '", "'
+            + book.amazonURL +'","'+ book.description+'", 0);';
+      //console.log(query);
+      result = await connection.query();
+
+      //Insert book authors
+      query = 'INSERT INTO book_authors(book_id, author_id) '
+            + 'VALUES('+ book_id + ',' + auth_id + ');';
+      //console.log(query);
+      result = await connection.query(query);
+      }
+
+  } finally {
+      //this closes the connection
+      if (connection && connection.release) connection.release();
+  }
+
+  return book_id;
 };
 
 /*

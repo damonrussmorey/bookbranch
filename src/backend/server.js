@@ -80,7 +80,6 @@ app.post('/insert_new_book',(req,res) =>{
   require('./insert_new_book')(pool,req,res);
 })
 
-
 app.post('/average_attribute',(req,res) =>{
   require('./average_attribute')(pool,req,res);
 });
