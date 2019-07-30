@@ -1,6 +1,9 @@
 /*
 Create Hash
 Creates a hash that works with laravel backend
+
+Example of how you would use:
+hashPassword("supersecretpassword").then(console.log);
 */
 const bcrypt = require('bcrypt');
 
@@ -22,6 +25,3 @@ async function hashPassword(plainPassword) {
         console.error('There was an error ', err);
     }
 }
-
-// Example of how you would use
-hashPassword("supersecretpassword").then(console.log);
