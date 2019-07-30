@@ -32,18 +32,15 @@ module.exports = async (pool, ids) => {
   try {
     connection = await pool.getConnection();
     query =
-      'SELECT books.title AS title, authors.name AS author, '
-      + 'books.cover_url AS imageURL, books.asin AS asin, '
-      + 'books.description AS description, '
-      + 'books.amazon_url AS amazonURL '
-      + 'FROM books JOIN book_authors ON '
-      + 'books.id = book_authors.book_id '
-      + 'JOIN authors ON book_authors.author_id = authors.id '
-      + 'WHERE books.id IN (';
+      'SELECT cover_url AS imageURL, amazon_url AS amazonURL '
+      + 'FROM books WHERE books.id IN (';
+    for(id of ids)
+      query += id + ',';
+    query = query.slice(0, -1) + ') ORDER BY FIELD(books.id,';
     for(id of ids)
       query += id + ',';
     query = query.slice(0, -1) + ');';
-    console.log(query);
+    //console.log(query);
     result = await connection.query(query);
     result = result[0];
     if(!result)
@@ -53,7 +50,10 @@ module.exports = async (pool, ids) => {
   } finally {
     if(connection && connection.release)  connection.release();
   }
-
+/*
+  for(r of result)
+    console.log(r.imageURL);
+    */
   return result;
 }
 

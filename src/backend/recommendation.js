@@ -33,8 +33,8 @@ This can be used without needing to exclude a book, just send book_id: -1.
 */
 module.exports = async (pool, books, attrs) => {
   console.log('\nBook Recommendation')
-  console.log(books);
-  console.log(attrs);
+  //console.log(books);
+  //console.log(attrs);
 
   /*//sort attr ids in ascending order
   attrs.sort((a,b) => {
@@ -75,7 +75,7 @@ module.exports = async (pool, books, attrs) => {
       query += 'attribute_id=' + attr.id + ' OR ';
     }
     query = query.slice(0, -4) + ') ORDER BY book_id, attribute_id;'
-    console.log(query);
+    //console.log(query);
     result = await connection.query(query);
     result = result[0];
     if(!result) {
@@ -118,7 +118,7 @@ module.exports = async (pool, books, attrs) => {
   result = []
   for(i = 0; i < 50; ++i) {
     x = queue.dequeue();
-    console.log(x);
+    //console.log(x);
     if(x.distance > 5)
       break;
     result.push(x.id);

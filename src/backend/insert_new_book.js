@@ -97,7 +97,7 @@ module.exports = async (pool, book) => {
             + book.asin + '", "' + book.imageURL + '", "'
             + book.amazonURL +'","'+ book.description+'", 0);';
       //console.log(query);
-      result = await connection.query();
+      result = await connection.query(query);
 
       //Insert book authors
       query = 'INSERT INTO book_authors(book_id, author_id) '
