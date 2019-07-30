@@ -25,26 +25,23 @@ result
 */
 
 module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
+  console.log('\nBook review');
+
   //declare local vars
-  let connection, result, data, query, review_id;
+  let connection, result, data, query, review_id, new_score;
 
   //connect to db and pull all the data necessary
   try {
-    console.log("\n\nBook review")
-
     //get connection with database
     connection = await pool.getConnection();
 
     //query code insert new book review in table book_reviews
-    query = 'INSERT INTO book_reviews(book_id,user_id,rating) '
+    query = 'INSERT INTO book_reviews(book_id, user_id, rating) '
           + 'VALUES(' + book_id + ',' + user_id
           + ',' + rating_value + ');';
-    console.log(query);
+    //console.log(query);
     result = await connection.query(query);
     review_id = result[0].insertId;
-    //debug
-    //console.log(query);
-    //console.log("Last insert ID is: " + review_id);
 
     //query code insert new attributes value with last insert id.
     query = 'INSERT INTO book_review_attributes(book_id, attribute_id, '
@@ -53,11 +50,10 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
       query += '(' + book_id + ',' + at.id
              + ',' + review_id + ',' + at.val + '),';
     }
-    query = query.slice(0, -1);
-    console.log(query)
+    query = query.slice(0, -1) + ';';
+    //console.log(query)
     result = await connection.query(query);
     //debug
-    //console.log(query);
     //console.log(result)
 
     //query code get the new average score of inserted attributes
@@ -67,11 +63,11 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
     for(at of attr) {
       query += 'attribute_id = ' + at.id + ' OR '
     }
-    query = query.slice(0, -4) + ') GROUP BY attribute_id';
+    query = query.slice(0, -4) + ') GROUP BY attribute_id;';
+    //console.log(query);
     result = await connection.query(query);
     data = result[0];
     //debug
-    //console.log(query);
     //console.log("The bookid, attribute_id and new average score: ")
     //console.log(data)
 
@@ -81,10 +77,10 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
     for(d of data) {
       query += 'attribute_id=' + d.attribute_id + ' OR ';
     }
-    query = query.slice(0, -4) + ')';
+    query = query.slice(0, -4) + ');';
+    //console.log(query);
     result = await connection.query(query);
     //debug
-    //console.log(query);
     //console.log(result);
 
     //Insert new book_attribute records
@@ -93,19 +89,20 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
     for(d of data) {
       query += '(' + book_id + ',' + d.attribute_id + ',' + d.avg + '),';
     }
-    query = query.slice(0, -1);
+    query = query.slice(0, -1) + ';';
+    //console.log(query);
     result = await connection.query(query);
 
     //Update average rating score
-    query = 'SELECT AVG(rating) AS rate FROM book_reviews WHERE book_id = ' + book_id;
-    score = await connection.query(query);
-    score = score[0];
-    new_score = score[0].rate;
-    console.log(new_score);
-    query = 'UPDATE books SET average_rating =' + new_score + 'WHERE id = ' + book_id;
+    query = 'SELECT AVG(rating) AS rate FROM book_reviews WHERE book_id = ' + book_id + ';';
+    //console.log(query);
+    result = await connection.query(query);
+    new_score = result[0][0].rate;
+    query = 'UPDATE books SET average_rating = ' + new_score
+          + ' WHERE id = ' + book_id + ';';
+    //console.log(query);
     result = await connection.query(query);
     //debug
-    //console.log(query);
     //console.log(result);
 
     //return result, display to frontend if run successfully.

@@ -4,7 +4,7 @@ Search AWS for a book
 XXX For magic, only returns the top result
 
 Body of request:
-string
+name
 
 
 Body of response:
@@ -32,7 +32,7 @@ amazon again.
 module.exports = async (name) => {
   console.log('\nSearching for book on AWS: ' + name);
 
-  let response, result, description;
+  let book, response, result, description;
 
   const {OperationHelper} = require('apac');
   const searcher = new OperationHelper({
@@ -51,47 +51,64 @@ module.exports = async (name) => {
     });
   } catch(e) {
     console.log(e);
+
+    //didn't get a result from Amazon, so return null
+    return null;
   }
+
   result = response.result.ItemSearchResponse.Items.Item
-  console.log(result.length);
+  //console.log(result.length);
+  if(!Array.isArray(result))
+    result = [result];
 
   //Build the response
   //need to verify each field exists
   //response = []
-  //for(r of result) {
   let i = 0;
-  while(i < result.length &&
-        result[i].ItemAttributes.ProductGroup !== 'Book') {
+  while(i < result.length
+        && result[i].ItemAttributes.ProductGroup !== 'Book') {
     ++i;
   }
+
+  //No books in the response, return null
+  if(i == result.length)
+    return null;
+
   r = result[i];
+  //for(r of result) {
     /*if(r.ItemAttributes.ProductGroup !== 'Book')
       continue;*/
-    let book = {};
+    book = {};
+
+    //Just take the first description, if there are any
     if(r.EditorialReviews && r.EditorialReviews.EditorialReview){
       description = r.EditorialReviews.EditorialReview;
-      //console.log(r.EditorialReviews.EditorialReview)
       if(Array.isArray(description))
         description = description[0];
       book['description'] = description.Content;
     } else {
       book['description'] = '';
     }
+
+    //these are guaranteed
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
-    //all if else, 'continue' change to null statement.
+
     if(r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
       book['imageURL'] = '';
+
     if(r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
       book['title'] = '';
+
     if(r.ItemAttributes.Author)
       book['author'] = r.ItemAttributes.Author;
     else
       book['author'] = '';
+
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
@@ -102,7 +119,7 @@ module.exports = async (name) => {
   res.send(response);
   */
 
-    return book;
+  return book;
 }
 
 /*

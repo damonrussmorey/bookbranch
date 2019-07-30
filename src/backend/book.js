@@ -23,8 +23,10 @@ Body of response:
 */
 
 module.exports = async (pool, ids) => {
-  console.log('Book Information Request');
-  console.log(ids);
+  console.log('\nBook Information Request');
+
+  if(!Array.isArray(ids))
+    ids = [ids];
 
   let connection, result, query;
   try {
@@ -32,8 +34,10 @@ module.exports = async (pool, ids) => {
     query =
       'SELECT books.title AS title, authors.name AS author, '
       + 'books.cover_url AS imageURL, books.asin AS asin, '
-      + 'books.description AS description, books.amazon_url AS amazonURL '
-      + 'FROM books JOIN book_authors ON books.id = book_authors.book_id '
+      + 'books.description AS description, '
+      + 'books.amazon_url AS amazonURL '
+      + 'FROM books JOIN book_authors ON '
+      + 'books.id = book_authors.book_id '
       + 'JOIN authors ON book_authors.author_id = authors.id '
       + 'WHERE books.id IN (';
     for(id of ids)
@@ -44,6 +48,8 @@ module.exports = async (pool, ids) => {
     result = result[0];
     if(!result)
       console.log('no matches, sending back null');
+    if(!Array.isArray(result))
+      result = [result];
   } finally {
     if(connection && connection.release)  connection.release();
   }
@@ -60,7 +66,7 @@ if(process.argv[2] == 'test') {
         'content-type': 'application/json',
         Accept: 'application/json'},
       method : 'POST',
-      body: JSON.stringify([1,2,4]);
+      body: JSON.stringify([1,2,4])
     });
     let res = await hi.json();
     console.log(JSON.stringify(res));

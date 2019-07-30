@@ -52,54 +52,73 @@ Response Body:
 //Called from server.js when a post request is received
 module.exports = async (pool, req, res) => {
 
+  let attr1, attr2, attr, book1, book2, book1_id, book2_id,
+      success, ids, recommendations;
+
   //remove duplicate attributes for book 1
   attr1 = [{id: req.body.attr1id1, val: req.body.attr1val1}];
   if(attr1.filter(e => e.id === req.body.attr1id2).length == 0)
     attr1.push({id: req.body.attr1id2, val: req.body.attr1val2});
   if(attr1.filter(e => e.id === req.body.attr1id3).length == 0)
     attr1.push({id: req.body.attr1id3, val: req.body.attr1val3});
-  console.log("######Book 1 track begin ######################")
-  //find book 1 on AWS
-  var name = req.body.title1;
-  book1 = await require('./find_book')(name);
-  console.log(book1);
 
-  //add book 1 to database (or simply return the id if its already there)
-  book1_id = await require('./insert_new_book')(pool, book1);
-  console.log(book1_id)
-  //add book 1 review to database
-  success = await require('./insert_recommandation_review')(pool, {
-    book_id: book1_id,
-    attr: attr1,
-    user_id: req.body.user_id,
-    rating_value: req.body.rating1
-  });
-  console.log("############book 1 track end ##################")
+  //console.log("###### Book 1 track begin ######################")
   
+  //find book 1 on AWS
+  book1 = await require('./find_book')(req.body.title1);
+  //console.log(book1);
+
+  //potentially we don't the book on Amazon, skip these if we didn't
+  if(book1) {
+    //add book 1 to database or simply return the id if it's 
+    //already there
+    book1_id = await require('./insert_new_book')(pool, book1);
+    //console.log(book1_id)
+
+    //add book 1 review to database
+    success = await require('./insert_recommandation_review')(pool, {
+      book_id: book1_id,
+      attr: attr1,
+      user_id: req.body.user_id,
+      rating_value: req.body.rating1
+    });
+  } else {
+    book1_id = -1;
+  }
+
+  //console.log("############ Book 1 track end ##################")
   
   //remove duplicate attributes for book 2
-  let attr2 = [{id: req.body.attr2id1, val: req.body.attr2val1}];
+  attr2 = [{id: req.body.attr2id1, val: req.body.attr2val1}];
   if(attr2.filter(e => e.id === req.body.attr2id2).length == 0)
     attr2.push({id: req.body.attr2id2, val: req.body.attr2val2});
   if(attr2.filter(e => e.id === req.body.attr2id3).length == 0)
     attr2.push({id: req.body.attr2id3, val: req.body.attr2val3});
 
-  console.log("\n\n###############book 2 track begin############")
+  //console.log("\n\n############### Book 2 track begin ############")
+  
   //find book 2 on AWS
-  var name = req.body.title2;
-  book2 = await require('./find_book')(name);
-  console.log(book2)
-  //add book 2 to database (or simply return the id if its already there)
-  book2_id = await require('./insert_new_book')(pool, book2);
+  book2 = await require('./find_book')(req.body.title2);
+  //console.log(book2)
 
-  //add book 2 review to database
-  success = await require('./insert_recommandation_review')(pool, {
-    book_id: book2_id,
-    attr: attr2,
-    user_id: req.body.user_id,
-    rating_value: req.body.rating2
-  });
-  console.log("###################Book 2 track end ##############")
+  if(book2) {
+    //add book 2 to database or simply return the id if it's
+    //already there
+    book2_id = await require('./insert_new_book')(pool, book2);
+    //console.log(book2_id);
+
+    //add book 2 review to database
+    success = await require('./insert_recommandation_review')(pool, {
+      book_id: book2_id,
+      attr: attr2,
+      user_id: req.body.user_id,
+      rating_value: req.body.rating2
+    });
+  } else {
+    book2_id = -1;
+  }
+
+  //console.log("################### Book 2 track end ##############")
 
   //fill out attribute list with only unique attributes, average
   //them if they are the same
@@ -111,10 +130,11 @@ module.exports = async (pool, req, res) => {
     if(a.id > b.id) return 1;
     else  return -1;
   })
-  let attr = [], i = 0, j = 0;
+  attr = [], i = 0, j = 0;
   while(i < attr1.length && j < attr2.length) {
     if(attr1[i].id == attr2[j].id) {
-      attr.push({id: attr1[i].id, val: (attr1[i].val + attr2[j].val)/2});
+      attr.push({id: attr1[i].id,
+                 val: (attr1[i].val + attr2[j].val)/2});
       ++i, ++j;
     } else if(attr1[i].id < attr2[j].id) {
       attr.push(attr1[i++]);
@@ -128,15 +148,14 @@ module.exports = async (pool, req, res) => {
       attr.push(attr2[j++]);
   
   //Get a list of recommendations based on the 2 books
-  let ids = require('./recommendation')(
+  ids = await require('./recommendation')(
     pool, [book1_id, book2_id], attr);
 
   //Get the information for the recommended books
-  let recommendations = require('./books')(pool, ids);
+  recommendations = await require('./book')(pool, ids);
   
   //Send the results back to the client
   res.send(recommendations);
-
 }
 
 //test
@@ -169,6 +188,8 @@ if(process.argv[2] === 'test') {
       })
     });
     let res = await hi.json();
-    console.log(test + ': ', JSON.stringify(res));
+    for(r of res) {
+      console.log(r.title);
+    }
   })();
 }
