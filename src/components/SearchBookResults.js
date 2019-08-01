@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput, Image, Linking} from 'react-native';
+import { ActivityIndicator, AppRegistry, View, Text, TouchableOpacity, TextInput, Image, Linking} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import Card from './Card';
@@ -12,21 +12,75 @@ class SearchBookResults extends Component {
     super(props);
     this.state = { 
         text1: '',
-    };
-    this.i = 0;
+        isLoading: true
+    }
+  }
+
+  componentDidMount() {
+    return fetch('http://localhost:8765/magic', {
+        headers: {
+            'content-type': 'application/json',
+            Accept: 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            title1:       this.props.BookOne,
+            rating1:      this.props.Book1RankOverall,
+            attr1id1:     this.props.Book1Attribute1,
+            attr1val1:    this.props.Book1Rank1,
+            attr1id2:     this.props.Book1Attribute2,
+            attr1val2:    this.props.Book1Rank2,
+            attr1id3:     this.props.Book1Attribute3,
+            attr1val3:    this.props.Book1Rank3,
+            title2:       this.props.BookTwo,
+            rating2:      this.props.Book2RankOverall,
+            attr2id1:     this.props.book2attributes1,
+            attr2val1:    this.props.Book2Rank1,
+            attr2id2:     this.props.book2attributes2,
+            attr2val2:    this.props.Book2Rank2,
+            attr2id3:     this.props.book2attributes3,
+            attr2val3:    this.props.Book2Rank3,
+            user_id:      1
+        })
+    })
+    .then(res => res.json())
+    .then(res => {
+        this.setState({
+            isLoading: false,
+            Results: res,
+            i: 0
+        }, function() {
+
+        });
+    })
+    .catch(err => alert(err));
+    
+        /*
+        [{imageURL: string,
+            amazonURL: string
+        }, ...]
+        */
   }
 
   render() {
+    if(this.state.isLoading) {
+        return(
+            <View style={{flex: 1, padding: 20}}>
+                <ActivityIndicator/>
+            </View>
+        )
+    } else {
     return (
         <View>
             <Header headerText={'Bookbranch'} />
-            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>Results </Text>
+            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>{this.state.Results.length + ' Results' }</Text>   
             <Card>
-              <Image source={{uri:this.prop.Results[i].imageURL}}/>
+             <Image 
+             style={{width: '100%', height: '100%'}}
+             source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
             </Card>
-
             <TouchableOpacity onPress = {() => {
-              this.i = (this.i-1)%this.prop.Results.length;
+                this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
                 <ArrowCard>
                     <Image source={require('bookbranch/img/arrow_left.png')} style={{marginTop: 120, marginRight: 5,width: 50}}></Image>
@@ -34,8 +88,7 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress = {() => {
-              this.i = (this.i+1) % this.prop.Results.length;
-              
+                this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length)}})
             }}>
                 <ArrowCardTwo>
                     <Image source={require('bookbranch/img/arrow_right.png')} style={{marginTop: 120, marginLeft: 5,width: 50}}></Image>
@@ -43,10 +96,7 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Linking.openURL(this.props.res[this.i].amazonURL);}>
-      /*
-      () => Actions.BookResultsDetail({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.book2attributes3, Book2Rank1: this.props.Book2Rank1, Book2Rank2: this.props.Book2Rank2, Book2Rank3: this.props.Book2Rank3, Book2RankOverall: this.props.Book2RankOverall })}>
-      */
+                    <TouchableOpacity onPress = {() => Linking.openURL(this.state.Results[this.state.i].amazonURL).catch((err)=>alert('bad'))}>
                         <Text style = {styles.TextStyle1}>Amazon</Text>
                     </TouchableOpacity>
             </View>
@@ -58,6 +108,7 @@ class SearchBookResults extends Component {
 
         </View>
     );
+    }
   }
 }
 

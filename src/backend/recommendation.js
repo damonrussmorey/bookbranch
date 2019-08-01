@@ -114,9 +114,9 @@ module.exports = async (pool, books, attrs) => {
     queue.queue({id: book_id, distance: x});
   }
 
-  //return top 50 matches, within 5 distance
+  //return top 10 matches, within 5 distance
   result = []
-  for(i = 0; i < 50; ++i) {
+  for(i = 0; i < 10; ++i) {
     x = queue.dequeue();
     //console.log(x);
     if(x.distance > 5)

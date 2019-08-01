@@ -104,6 +104,8 @@ module.exports = async (pool, req, res) => {
     req.body.attr2val1 = convert_rank[req.body.attr2val1];
     req.body.attr2val2 = convert_rank[req.body.attr2val2];
     req.body.attr2val3 = convert_rank[req.body.attr2val3];
+    req.body.rating1 = convert_rank[req.body.rating1];
+    req.body.rating2 = convert_rank[req.body.rating2];
   }
   console.log(req.body);
 

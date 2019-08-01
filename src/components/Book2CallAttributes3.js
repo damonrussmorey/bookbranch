@@ -253,12 +253,12 @@ class Book2CallAttributes3 extends Component {
             <View>
                 <Card>
                     <CardSection>{ this.renderElement() }
-                        <TouchableOpacity onPress={() => Actions.chooseAttList()}>
+                        <TouchableOpacity>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>{this.renderElement2()}
-                        <TouchableOpacity onPress={() => Actions.chooseAttList2Book2()}>
+                        <TouchableOpacity>
                         </TouchableOpacity>
                     </CardSection>
 
