@@ -12,9 +12,9 @@ class SearchBookResults extends Component {
     super(props);
     this.state = { 
         text1: '',
-    };
-    this.i = 0;
-    this.props.Results = [];
+        Results: [{imageURL: 'https://arbordayblog.org/wp-content/uploads/2018/06/oak-tree-sunset-iStock-477164218-1080x608.jpg'}],
+        i: 0
+    }
   }
 
   componentDidMount() {
@@ -45,8 +45,10 @@ class SearchBookResults extends Component {
         })
       }, (err, res) => {
         res.JSON((err, res) => {
-            alert(res.length);
-            this.props.Results = res;
+            this.setState(prev => {
+                this.state.Results = res;
+                this.state.i = 0;
+            });
         /*
         [{imageURL: string,
             amazonURL: string
@@ -59,11 +61,14 @@ class SearchBookResults extends Component {
     return (
         <View>
             <Header headerText={'Bookbranch'} />
-            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>Results </Text>
+            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>Results </Text>   
             <Card>
+             <Image 
+             style={{width: '100%', height: '100%'}}
+             source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
             </Card>
-
             <TouchableOpacity onPress = {() => {
+                this.setState(prev => this.state.i = (prev.i - 1) % prev.Results.length)
             }}>
                 <ArrowCard>
                     <Image source={require('bookbranch/img/arrow_left.png')} style={{marginTop: 120, marginRight: 5,width: 50}}></Image>
@@ -71,7 +76,7 @@ class SearchBookResults extends Component {
             </TouchableOpacity>
 
             <TouchableOpacity onPress = {() => {
-              
+                this.setState(prev => this.state.i = (prev.i + 1) % prev.Results.length)
             }}>
                 <ArrowCardTwo>
                     <Image source={require('bookbranch/img/arrow_right.png')} style={{marginTop: 120, marginLeft: 5,width: 50}}></Image>
