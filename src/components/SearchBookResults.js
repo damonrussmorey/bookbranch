@@ -81,7 +81,7 @@ class SearchBookResults extends Component {
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 265, marginLeft: 330, position: 'absolute'}}>
+            <View style = {{marginTop: 260, marginLeft: 330, position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
