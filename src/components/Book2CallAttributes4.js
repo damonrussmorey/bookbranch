@@ -380,7 +380,40 @@ class Book2CallAttributes4 extends Component {
                         </View>
 
         <View style = {styles.ButtonStyle1}>
-                <TouchableOpacity /*BookResultsDetail*/ onPress={() => Actions.SearchBookResults({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.attribute3, Book2Rank1: this.state.language1, Book2Rank2: this.state.language2, Book2Rank3: this.state.language3, Book2RankOverall: this.state.language4})}>
+                <TouchableOpacity /*BookResultsDetail*/ onPress={() => async {
+                   let res = await fetch('http://localhost:8765/magic', {
+                    headers: {
+                        'content-type': 'application/json',
+                        Accept: 'application/json'
+                    },
+                    method: 'POST',
+                    body: JSON.stringify({
+                      title1:       this.props.BookOne,
+                      rating1:      this.props.Book1RankOverall,
+                      attr1id1:     this.props.Book1Attribute1,
+                      attr1val1:    this.props.Book1Rank1,
+                      attr1id2:     this.props.Book1Attribute2,
+                      attr1val2:    this.props.Book1Rank2,
+                      attr1id3:     this.props.Book1Attribute3,
+                      attr1val3:    this.props.Book1Rank3
+                      title2:       this.props.BookTwo,
+                      rating2:      this.state.language4,
+                      attr2id1:     this.props.book2attribute1,
+                      attr2val1:    this.state.language1,
+                      attr2id2:     this.props.book2attribute2,
+                      attr2val2:    this.state.langauge2
+                      attr2id3:     this.props.book2attribute3,
+                      attr2val3:    this.state.language3,
+                      user_id:      1
+                    });
+                  });
+                  res = await res.JSON();
+                  /*
+                  [{imageURL: string,
+                    amazonURL: string
+                  }, ...]
+                  */
+                  Actions.SearchBookResults({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.attribute3, Book2Rank1: this.state.language1, Book2Rank2: this.state.language2, Book2Rank3: this.state.language3, Book2RankOverall: this.state.language4, Results: res})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableOpacity>
                 </View>
