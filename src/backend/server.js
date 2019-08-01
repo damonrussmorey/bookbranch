@@ -47,6 +47,10 @@ app.post('/new_user', (req, res) => {
   require('./new_user')(pool, req, res);
 });
 
+app.post('/insert_facebook', (req,res) =>{
+  require('./insert_facebook')(pool,req,res);
+});
+
 app.post('/magic', (req, res) => {
   require('./magic')(pool, req, res);
 });
