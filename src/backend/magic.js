@@ -91,18 +91,22 @@ module.exports = async (pool, req, res) => {
     'Nine': 9,
     'Ten': 10
   };
-  req.body.attr1id1 = convert_names[req.body.attr1id1];
-  req.body.attr1id2 = convert_names[req.body.attr1id2];
-  req.body.attr1id3 = convert_names[req.body.attr1id3];
-  req.body.attr2id1 = convert_names[req.body.attr2id1];
-  req.body.attr2id2 = convert_names[req.body.attr2id2];
-  req.body.attr2id3 = convert_names[req.body.attr2id3];
-  req.body.attr1val1 = convert_rank[req.body.attr1val1];
-  req.body.attr1val2 = convert_rank[req.body.attr1val2];
-  req.body.attr1val3 = convert_rank[req.body.attr1val3];
-  req.body.attr2val1 = convert_rank[req.body.attr2val1];
-  req.body.attr2val2 = convert_rank[req.body.attr2val2];
-  req.body.attr2val3 = convert_rank[req.body.attr2val3];
+  if(!req.body.test) {
+    req.body.attr1id1 = convert_names[req.body.attr1id1];
+    req.body.attr1id2 = convert_names[req.body.attr1id2];
+    req.body.attr1id3 = convert_names[req.body.attr1id3];
+    req.body.attr2id1 = convert_names[req.body.attr2id1];
+    req.body.attr2id2 = convert_names[req.body.attr2id2];
+    req.body.attr2id3 = convert_names[req.body.attr2id3];
+    req.body.attr1val1 = convert_rank[req.body.attr1val1];
+    req.body.attr1val2 = convert_rank[req.body.attr1val2];
+    req.body.attr1val3 = convert_rank[req.body.attr1val3];
+    req.body.attr2val1 = convert_rank[req.body.attr2val1];
+    req.body.attr2val2 = convert_rank[req.body.attr2val2];
+    req.body.attr2val3 = convert_rank[req.body.attr2val3];
+    req.body.rating1 = convert_rank[req.body.rating1];
+    req.body.rating2 = convert_rank[req.body.rating2];
+  }
   console.log(req.body);
 
   let attr1, attr2, attr, book1, book2, book1_id, book2_id,
@@ -241,7 +245,8 @@ if(process.argv[2] === 'test') {
           attr2val2:    10,
           attr2id3:     20,
           attr2val3:    7,
-          user_id:      1
+          user_id:      1,
+          test:         true
         })
       });
       let res = await hi.json();
