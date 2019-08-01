@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, AppRegistry, View, Text, TouchableOpacity, TextInput, Image, Linking} from 'react-native';
+import { ActivityIndicator, View, Text, TouchableOpacity, Image, Linking} from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Header from './header';
-import Card from './Card';
-import ArrowCard from './ArrowCard';
-import ArrowCardTwo from './ArrowCardTwo';
+import CardLarge from './CardLarge';
+import HeaderBookResults from './HeaderBookResults';
 //import axios from 'axios'; // used for http requests
 
 class SearchBookResults extends Component {
@@ -55,11 +53,6 @@ class SearchBookResults extends Component {
     })
     .catch(err => alert(err));
     
-        /*
-        [{imageURL: string,
-            amazonURL: string
-        }, ...]
-        */
   }
 
   render() {
@@ -72,28 +65,28 @@ class SearchBookResults extends Component {
     } else {
     return (
         <View>
-            <Header headerText={'Bookbranch'} />
+            <HeaderBookResults headerText={'Bookbranch'} />
             <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>{this.state.Results.length + ' Results' }</Text>   
-            <Card>
-             <Image 
-             style={{width: '100%', height: '100%'}}
-             source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
-            </Card>
+            <CardLarge>
+                <Image 
+                 style={{width: '100%', height: '100%'}}
+                source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
+            </CardLarge>
 
-            <View style = {{marginTop: 380, marginLeft: 20, position: 'absolute'}}>
+            <View style = {{marginTop: 345, marginLeft: -10, position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>
+                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {"<"} </Text>
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 380, marginLeft: 300, position: 'absolute'}}>
-             <TouchableOpacity onPress = {() => {
+            <View style = {{marginTop: 265, marginLeft: 330, position: 'absolute'}}>
+                <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>
-             </TouchableOpacity>
+                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {">"} </Text>
+                </TouchableOpacity>
             </View>
 
             <View style = {styles.ButtonStyle1}>
@@ -124,8 +117,7 @@ const styles = {
         width: 90,
         elevation: 1,
         marginLeft: 200,
-       // marginRight: 5,
-        marginTop: 650,
+        marginTop: 625,
         position: 'absolute'       
     },
 
@@ -146,8 +138,7 @@ const styles = {
         width: 90,
         elevation: 1,
         marginLeft: 95,
-       // marginRight: 5,
-        marginTop: 650,
+        marginTop: 625,
         position: 'absolute'       
     },
 

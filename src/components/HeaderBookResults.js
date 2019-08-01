@@ -6,9 +6,9 @@ Sources I used:
 // Import libraries for making a component
 import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import {Actions} from 'react-native-router-flux';
 
-const Header = (props) => {
+// Make a component
+const HeaderBookResults = (props) => {
   const { textStyle, viewStyle, imageStyle, buttonStyle, imageStyle_two } = styles;
 
   return (
@@ -17,13 +17,14 @@ const Header = (props) => {
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
         </Image>
-        <TouchableOpacity onPress={() => Actions.popTo('Main')}>
+        <TouchableOpacity>
           <Text style={textStyle}>{props.headerText}</Text>
         </TouchableOpacity>
 
-      <TouchableOpacity style = {buttonStyle} onPress={() => Actions.pop()}>
-          <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}>Back</Text>
+        <TouchableOpacity style = {buttonStyle}>
+          <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}></Text>
       </TouchableOpacity>
+
     </View>
   );
 };
@@ -53,16 +54,15 @@ const styles = {
     alignSelf: 'flex-start',
     borderRadius: 15
   },
+
   buttonStyle: {
     width: 40,
     height: 23,
     backgroundColor: '#499920',
     borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#ffffff',
     marginLeft: 280,
     marginTop: -34,
     alignSelf: 'center',
   }
 };
-export default Header;
+export default HeaderBookResults;

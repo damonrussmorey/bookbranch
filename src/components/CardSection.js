@@ -5,7 +5,6 @@ https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/co
 
 import React from 'react';
 import { View } from 'react-native';
-import { Platform } from 'react-native';
 
 const CardSection = (props) => {
   return (

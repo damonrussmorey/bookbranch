@@ -1,28 +1,21 @@
 import React, {Component} from 'react';
 import { View , Text , TouchableOpacity, Image} from 'react-native';
 import Header from './header';
-import MenuText from './MenuText';
-import AttributesList from './AttributesList';
-import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
-import RatingCard from './RatingCard';
-import RatingSection from './RatingSection';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
-import ChooseAttributeList from './ChooseAttributeList';
 
 class CallAttributesPage2 extends Component {
     render(){
     return (
         <View>
-            <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
                     <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
@@ -31,68 +24,6 @@ class CallAttributesPage2 extends Component {
                     </View>
                 </View>
                 <View>
-            <View>
-                <ArrowCardTwo>
-                    <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}> 
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                    <TouchableOpacity style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-                </ArrowCardTwo>
-            </View>
-
-            <View>
-                <ArrowCard>
-                    <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableOpacity style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableOpacity>
-                    </ArrowSection>
-                </ArrowCard>
-            </View>
-
             <View>
                 <Card>
                     <CardSection>
@@ -115,7 +46,6 @@ class CallAttributesPage2 extends Component {
                 </Card>
             </View>
         </View>
-            </MenuProvider>
         </View>
     );
   }
@@ -123,7 +53,7 @@ class CallAttributesPage2 extends Component {
 
 const styles = {
     TopThreeStyle: {
-        marginTop: 100,
+        marginTop: 50,
         marginLeft: 78,
         position: 'absolute'
     },

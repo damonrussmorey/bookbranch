@@ -1,8 +1,7 @@
 //The tree background image is taken from this open source website: https://www.pexels.com/photo/countryside-dawn-daylight-environment-286305/
 
 import React, { Component } from 'react';
-import { Button, AppRegistry, View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableHighlight} from 'react-native';
-import AttributesDetail from './AttributesDetail';
+import {  View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableHighlight} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';

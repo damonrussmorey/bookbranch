@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { View, Text } from 'react-native';
 import Header from './header';
-import { Platform } from 'react-native';
-//import axios from 'axios'; // used for http requests
 
 class BookResultsDetail extends Component {
   constructor(props) {
