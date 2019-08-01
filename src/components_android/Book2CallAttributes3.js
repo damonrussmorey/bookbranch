@@ -8,87 +8,87 @@ import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 
-class CallAttributes2 extends Component {
+class Book2CallAttributes3 extends Component {
     renderElement(){
-        if(this.props.text == 'Adventurous')
+        if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Beautiful')
+        if(this.props.book2attributes1 == 'Beautiful')
            return <Image source={require('bookbranch/img/attributes/beautiful-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Brainy')
+        if(this.props.book2attributes1 == 'Brainy')
            return <Image source={require('bookbranch/img/attributes/brainy-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Complex')
+        if(this.props.book2attributes1 == 'Complex')
            return <Image source={require('bookbranch/img/attributes/complex-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Cooking')
+        if(this.props.book2attributes1 == 'Cooking')
            return <Image source={require('bookbranch/img/attributes/cooking-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Cultural')
+        if(this.props.book2attributes1 == 'Cultural')
            return <Image source={require('bookbranch/img/attributes/cultural-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Dark')
+        if(this.props.book2attributes1 == 'Dark')
            return <Image source={require('bookbranch/img/attributes/dark-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Disaster')
+        if(this.props.book2attributes1 == 'Disaster')
            return <Image source={require('bookbranch/img/attributes/disaster-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Erotic')
+        if(this.props.book2attributes1 == 'Erotic')
            return <Image source={require('bookbranch/img/attributes/erotic-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Faith')
+        if(this.props.book2attributes1 == 'Faith')
            return <Image source={require('bookbranch/img/attributes/faith-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Family')
+        if(this.props.book2attributes1 == 'Family')
            return <Image source={require('bookbranch/img/attributes/family-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Fantasy')
+        if(this.props.book2attributes1 == 'Fantasy')
            return <Image source={require('bookbranch/img/attributes/fantasy-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Friendship')
+        if(this.props.book2attributes1 == 'Friendship')
            return <Image source={require('bookbranch/img/attributes/friendship-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Funny')
+        if(this.props.book2attributes1 == 'Funny')
            return <Image source={require('bookbranch/img/attributes/funny-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Heroic')
+        if(this.props.book2attributes1 == 'Heroic')
            return <Image source={require('bookbranch/img/attributes/heroic-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Historical')
+        if(this.props.book2attributes1 == 'Historical')
            return <Image source={require('bookbranch/img/attributes/historical-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Idealistic')
+        if(this.props.book2attributes1 == 'Idealistic')
            return <Image source={require('bookbranch/img/attributes/idealistic-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Insightful')
+        if(this.props.book2attributes1 == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Mysterious')
+        if(this.props.book2attributes1 == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Perserverence')
+        if(this.props.book2attributes1 == 'Perserverence')
            return <Image source={require('bookbranch/img/attributes/perserverence-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Power')
+        if(this.props.book2attributes1 == 'Power')
            return <Image source={require('bookbranch/img/attributes/power-attribute.png')} style={styles.AttributeStyle}></Image>
-           
-        if(this.props.text == 'Readable')
+
+        if(this.props.book2attributes1 == 'Readable')
            return <Image source={require('bookbranch/img/attributes/readable-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Romantic')
+        if(this.props.book2attributes1 == 'Romantic')
            return <Image source={require('bookbranch/img/attributes/romantic-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Scary')
+        if(this.props.book2attributes1 == 'Scary')
            return <Image source={require('bookbranch/img/attributes/scary-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Suspenseful')
+        if(this.props.book2attributes1 == 'Suspenseful')
            return <Image source={require('bookbranch/img/attributes/suspenseful-attribute.png')} style={styles.AttributeStyle}></Image>
         
         return null;
      }
 
-     renderElementTwo(){
+     renderElement2(){
         if(this.props.attribute2 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -171,8 +171,8 @@ class CallAttributes2 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
+                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
@@ -181,6 +181,7 @@ class CallAttributes2 extends Component {
                     </View>
                 </View>
                 <View>
+            
             <View>
                 <Card>
                     <CardSection>{ this.renderElement() }
@@ -188,13 +189,13 @@ class CallAttributes2 extends Component {
                         </TouchableOpacity>
                     </CardSection>
 
-                    <CardSection>{ this.renderElementTwo() }
+                    <CardSection>{this.renderElement2()}
                         <TouchableOpacity>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList3({textOne: this.props.textOne, textTwo: this.props.textTwo, attribute1: this.props.text, attribute2: this.props.attribute2 })}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList3Book2({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.attribute2})}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
@@ -268,4 +269,4 @@ const styles = {
     }
 };
 
-export default CallAttributes2;
+export default Book2CallAttributes3;

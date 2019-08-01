@@ -5,7 +5,7 @@ Sources I used:
 
 // Import libraries for making a component
 import React from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
 const Header = (props) => {
@@ -17,7 +17,7 @@ const Header = (props) => {
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
         </Image>
-        <TouchableOpacity onPress={() => Actions.popTo('Main')}>
+        <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch').catch((err)=>alert('bad'))}>
           <Text style={textStyle}>{props.headerText}</Text>
         </TouchableOpacity>
 

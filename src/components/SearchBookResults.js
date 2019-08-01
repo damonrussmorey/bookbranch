@@ -66,7 +66,7 @@ class SearchBookResults extends Component {
     return (
         <View>
             <HeaderBookResults headerText={'Bookbranch'} />
-            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}>{this.state.Results.length + ' Results' }</Text>   
+            <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}> {'Top ' + this.state.Results.length + ' Results' }</Text>   
             <CardLarge>
                 <Image 
                  style={{width: '100%', height: '100%'}}

@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import { View , Text } from 'react-native';
-import { MenuProvider} from 'react-native-popup-menu';
-import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import MenuText from './MenuText';
 import ChooseAttributeList from './ChooseAttributeList';
-import { Platform } from 'react-native';
 
 class CallChooseAttributeList extends Component {
 
     render(){
     return (
         <View>
-            <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
                     <Text style = {{marginTop: 5,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookReview}</Text>
@@ -24,7 +19,6 @@ class CallChooseAttributeList extends Component {
                     </View>
                 </View>
                 <ChooseAttributeList/>
-            </MenuProvider>
         </View>
     );
    }

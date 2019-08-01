@@ -5,11 +5,9 @@ Sources I used:
 
 // Import libraries for making a component
 import React from 'react';
-import { Text, View, Image, TouchableNativeFeedback } from 'react-native';
-import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
+import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import { Platform } from 'react-native';
-// Make a component
+
 const Header = (props) => {
   const { textStyle, viewStyle, imageStyle, buttonStyle, imageStyle_two } = styles;
 
@@ -19,13 +17,13 @@ const Header = (props) => {
         style={imageStyle}
           source={require('bookbranch/img/Bookbranch_Tree2.png')}>
         </Image>
-        <TouchableNativeFeedback onPress={() => Actions.LogIn()}>
+        <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch').catch((err)=>alert('bad'))}>
           <Text style={textStyle}>{props.headerText}</Text>
-        </TouchableNativeFeedback>
+        </TouchableOpacity>
 
-      <TouchableNativeFeedback style = {buttonStyle} onPress={() => Actions.pop()}>
-          <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold'}}>Back</Text>
-      </TouchableNativeFeedback>
+      <TouchableOpacity style = {buttonStyle} onPress={() => Actions.pop()}>
+          <Text style = {{marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}>Back</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -58,16 +56,13 @@ const styles = {
   buttonStyle: {
     width: 40,
     height: 23,
-    //paddingTop: 2,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#499920',
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#ffffff',
     marginLeft: 280,
     marginTop: -34,
-   // position: 'absolute',
     alignSelf: 'center',
   }
 };
-// Make the component available to other parts of the app
 export default Header;
