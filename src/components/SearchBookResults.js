@@ -79,21 +79,22 @@ class SearchBookResults extends Component {
              style={{width: '100%', height: '100%'}}
              source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
             </Card>
-            <TouchableOpacity onPress = {() => {
+
+            <View style = {{marginTop: 380, marginLeft: 20, position: 'absolute'}}>
+                <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
-                <ArrowCard>
-                    <Image source={require('bookbranch/img/arrow_left.png')} style={{marginTop: 120, marginRight: 5,width: 50}}></Image>
-                </ArrowCard>
-            </TouchableOpacity>
+                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>
+                </TouchableOpacity>
+            </View>
 
-            <TouchableOpacity onPress = {() => {
-                this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length)}})
+            <View style = {{marginTop: 380, marginLeft: 300, position: 'absolute'}}>
+             <TouchableOpacity onPress = {() => {
+                this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
-                <ArrowCardTwo>
-                    <Image source={require('bookbranch/img/arrow_right.png')} style={{marginTop: 120, marginLeft: 5,width: 50}}></Image>
-                </ArrowCardTwo>
-            </TouchableOpacity>
+                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>
+             </TouchableOpacity>
+            </View>
 
             <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress = {() => Linking.openURL(this.state.Results[this.state.i].amazonURL).catch((err)=>alert('bad'))}>
