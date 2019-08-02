@@ -29,8 +29,7 @@ module.exports = async (pool, req, res) => {
         result = await connection.query(query);
         result = result[0];
         if (result.length && result.length > 0) {
-            result = result[0].id
-            res.sendStatus(result)
+            res.send({id:-1})
             return;
         }
         query = 'INSERT INTO users (facebook_id, name, email, avatar_url, facebook_avatar_original ) VALUES ("'
@@ -38,10 +37,9 @@ module.exports = async (pool, req, res) => {
             + req.body.email + '", "' + req.body.avatar_url + '", "'
             + req.body.facebook_avatar_original +'");';
         result = await connection.query(query);
-        result = result[0].insertid;
-        res.sendStatus(result)
+        res.send({id:result[0].insertId})
     } catch(e) {
-        res.sendStatus(false);
+        res.send(false);
       }finally {
         //this closes the connection
         if (connection && connection.release) connection.release();
@@ -60,14 +58,14 @@ if (process.argv[2] === 'test') {
                 },
                 method: 'POST',
                 body: JSON.stringify({
-                    facebook_id: '9999999',
+                    facebook_id: '88888888',
                     name: 'aaaaaa',
-                    email: 'asdjaw@gmail.com',
+                    email: 'bbbbbbb@gmail.com',
                     avatar_url: 'https://graph.facebook.com/v2.5/961719844303/picture?type=normal',
                     facebook_avatar_original: 'https://graph.facebook.com/v2.5/961719844303/picture?width=1920'
                 })
             });
         let res = await hi.json();
-        console.log(JSON.stringify(res));
+        console.log(JSON.stringify(res.id));
     })();
 }
