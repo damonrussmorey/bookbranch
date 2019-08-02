@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableNativeFeedback, TextInput} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
+import { Text, View, TouchableNativeFeedback, TextInput } from 'react-native';
+
 //import axios from 'axios'; // used for http requests
 
 class FindNewBook extends Component {
@@ -19,7 +19,7 @@ class FindNewBook extends Component {
         <View>
             <Header headerText={'Bookbranch'} />
             <Text
-                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 40}}>
+                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 140,marginLeft: 40}}>
                 Step #1: Tell us your favorite 2 books you've read recently</Text>
             <TextInput
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
@@ -36,7 +36,7 @@ class FindNewBook extends Component {
                 value2={this.state.text2}
             />
             <View style = {styles.ButtonStyle1}>
-                    <TouchableNativeFeedback onPress={() => Actions.DiscoveredNewBook({textOne: this.state.text1, textTwo: this.state.text2})}>
+                    <TouchableNativeFeedback onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableNativeFeedback>
             </View>
@@ -53,19 +53,19 @@ const styles = {
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
         height: 30,
-        width: 140,
+        width: 80,
         elevation: 1,
-        marginLeft: 190,
+        marginLeft: 250,
        // marginRight: 5,
-        marginTop: 230,
+        marginTop: 360,
         position: 'absolute'       
     },
 
     TextStyle1: {
         fontWeight: 'bold',
-        fontSize: 13,
-        marginTop: 5,
-        marginLeft: 50,
+        fontSize: 16,
+        marginTop: 4,
+        marginLeft: 20,
         position: 'absolute'
     }
 };

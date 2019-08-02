@@ -1,18 +1,11 @@
 import Header from './header';
-import MenuText from './MenuText';
-import AttributesList from './AttributesList';
-import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
-import RatingCard from './RatingCard';
-import RatingSection from './RatingSection';
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground , Picker} from 'react-native';
+import { View, Text, Image, TouchableOpacity, Picker} from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
-import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
-import ChooseAttributeList from './ChooseAttributeList';
 
 class Book2CallAttributes4 extends Component {
     state = {  
@@ -260,15 +253,14 @@ class Book2CallAttributes4 extends Component {
     render(){
     return (
         <View>
-            <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
                     <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
-                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Give each attribute a ranking (1-10) and overall ranking!
+                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
+                            Now attach some attribute ratings!
                             </Text>
                     </View>
                 </View>
@@ -363,8 +355,8 @@ class Book2CallAttributes4 extends Component {
             </View>
         </View>
 
-        <Text style = {{marginTop: 610,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 610, alignSelf: 'center'}}> 
+        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  
@@ -385,7 +377,6 @@ class Book2CallAttributes4 extends Component {
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableOpacity>
                 </View>
-            </MenuProvider>
         </View>
     );
   }
@@ -394,10 +385,9 @@ class Book2CallAttributes4 extends Component {
 const styles = {
 
     textStyle:{  
-        margin: 24,  
-        fontSize: 25,  
-        fontWeight: 'bold',  
-        textAlign: 'center',  
+      marginTop: 50,
+      marginLeft: 78,
+      position: 'absolute'  
     },  
     pickerStyle:{  
         height: 23,  
@@ -408,9 +398,9 @@ const styles = {
     },  
 
     TopThreeStyle: {
-        marginTop: 85,
-        marginLeft: 35,
-        position: 'absolute'
+      marginTop: 50,
+      marginLeft: 78,
+      position: 'absolute'
     },
     BookNumStyle: {
         marginTop: 10,
@@ -430,7 +420,7 @@ const styles = {
         elevation: 1,
         marginLeft: 280,
         marginRight: 5,
-        marginTop: 670,
+        marginTop: 560,
         position: 'absolute'       
     },
 
