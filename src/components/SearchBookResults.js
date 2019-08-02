@@ -73,7 +73,7 @@ class SearchBookResults extends Component {
                 source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
             </CardLarge>
 
-            <View style = {{marginTop: 380, marginLeft: 20, position: 'absolute'}}>
+            <View style = {{marginTop: 380, marginLeft: 0.1, position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
@@ -81,7 +81,7 @@ class SearchBookResults extends Component {
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 380, marginLeft: 300, position: 'absolute'}}>
+            <View style = {{marginTop: 380, marginLeft: 320, position: 'absolute'}}>
              <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
