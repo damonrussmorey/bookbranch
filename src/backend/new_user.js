@@ -21,20 +21,17 @@ module.exports = async (pool, req, res) => {
   //connect to db and pull all the data necessary
   try {
     connection = await pool.getConnection();
-
     query = 'SELECT id FROM users WHERE email ="' + req.body.email+'";';
     result = await connection.query(query);
-    result = result[0];
-    if(result.length && result.length > 0){
-      res.send(false);
+    if(result[0].length && result[0].length > 0){
+      res.send({id: -1});
       return;
     }
-
     query = 'INSERT INTO users (name, email, password) VALUES ("'
           + req.body.name + '", "' + req.body.email + '", "'
           + req.body.hash + '");';
     result = await connection.query(query);
-    res.send(true);
+    res.send({id: result[0].insertId});
 
     } catch(e) {
       res.send(false);
@@ -48,6 +45,33 @@ module.exports = async (pool, req, res) => {
 if (process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
+      let hi = await fetch(
+          'http://localhost:8765/new_user', {
+              headers: {
+                  'content-type': 'application/json',
+                  Accept: 'application/json'
+              },
+              method: 'POST',
+              body: JSON.stringify({
+                  //facebook_id: '9999999',
+                  name: 'aaaaaa',
+                  email: 'asasdwad@gmail.com',
+                  hash: 'asdasdawdawdawdawawdad'
+                  //avatar_url: 'https://graph.facebook.com/v2.5/961719844303/picture?type=normal',
+                  //facebook_avatar_original: 'https://graph.facebook.com/v2.5/961719844303/picture?width=1920'
+              })
+          });
+      let res = await hi.json();
+      console.log(JSON.stringify(res.id));
+  })();
+}
+
+
+
+/*
+if (process.argv[2] === 'test') {
+  const fetch = require('node-fetch');
+  (async () => {
     let hi = await fetch('http://localhost:8765/new_user', {
       headers: {
         'content-type': 'application/json',
@@ -57,14 +81,13 @@ if (process.argv[2] === 'test') {
       body: JSON.stringify({
         //name: 'Paul Burdick',
         name: 'Paul Burd',
-        email: 'reedmanic@gmail.com',
+        email: process.argv[3],
         hash: '$2y$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
             + 'aujnIyW5ZUh3HWdKx02eO'
       })
     });
     let res = await hi.json();
     console.log('test 1: ' + JSON.stringify(res));
-
     await new Promise(done => setTimeout(done, 3000));
 
     hi = await fetch('http://localhost:8765/new_user', {
@@ -76,12 +99,14 @@ if (process.argv[2] === 'test') {
       body: JSON.stringify({
         //name: 'Paul Burdick',
         name: 'Paul Burd',
-        email: 'reedmanic@gmail.com',
+        email: ,
         hash: '$2y$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
             + 'aujnIyW5ZUh3HWdKx02eO'
       })
     });
     res = await hi.json();
     console.log('test 2: ' + JSON.stringify(res));
+    
   })();
 }
+*/
