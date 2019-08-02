@@ -1,23 +1,60 @@
-import React, { Component } from 'react';
-import { AppRegistry, View, Text, TouchableOpacity, TextInput} from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import React from 'react';
+import { FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity  } from 'react-native';
 import Header from './header';
+import { Actions } from 'react-native-router-flux';
 
-//import axios from 'axios'; // used for http requests
+export default class FetchExample extends React.Component {
 
-class FindNewBook extends Component {
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.state = { 
-        text1: '',
-        text2: ''
-    };
+    this.state ={ 
+        isLoading: true,
+        dataSource: ["", ""],
+        text1:'',
+        text2:''
+    }
+
   }
 
-  render() {
-    return (
-        <View>
-            <Header headerText={'Bookbranch'} />
+  componentDidMount(){
+        this.setState({
+          isLoading: false,
+          // text1: '',
+          // text2: ''
+        })
+  }
+
+  handleChangeName = (textInput) => {
+    console.log("You typed");
+    // this.setState({text1: "your new prop"})
+   }
+   
+  _search = () =>{
+    
+  }
+
+
+
+  render(){
+    const dataObj = [
+      {title: 'Text', key: '1'},
+      {title: 'Text 2', key: '2'},
+      {title: 'Text 3', key: '3'},
+    ];
+
+    if(this.state.isLoading){
+      return(
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator/>
+        </View>
+      )
+    }
+
+    return(
+      <View style={{flex: 1, paddingTop:20}}>
+
+        
+          <Header headerText={'Bookbranch'} />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 220,marginLeft: 40}}>
                 Step #1: Tell us your favorite 2 books you've read recently</Text>
@@ -32,15 +69,21 @@ class FindNewBook extends Component {
                 style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #2 Search"
                 placeholderTextColor="gray"
-                onChangeText={(text2) => this.setState({text2})}
+                onChangeText={ this.handleChangeName(this.state.text2)}
                 value2={this.state.text2}
             />
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}>
+                    {/* <TouchableOpacity onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}> */}
+                    <TouchableOpacity onPress={ this._search() }>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableOpacity>
             </View>
-        </View>
+            <Text>{"\n\n\n\n\n\n\n\n\n"}</Text>
+            <FlatList
+              data={dataObj}
+              renderItem={({ item }) => <Text>{item.title}</Text>}
+            />
+      </View>
     );
   }
 }
@@ -53,21 +96,26 @@ const styles = {
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
         height: 30,
-        width: 80,
+        width: 140,
         elevation: 1,
-        marginLeft: 250,
+        marginLeft: 190,
        // marginRight: 5,
-        marginTop: 440,
+        marginTop: 230,
         position: 'absolute'       
+    },
+
+    flatListResults:{
+        borderRadius: 4,
+        borderWidth: 0.5,
+        borderColor: '#d6d7da',
+        backgroundColor: 'red',
     },
 
     TextStyle1: {
         fontWeight: 'bold',
-        fontSize: 16,
-        marginTop: 4,
-        marginLeft: 20,
+        fontSize: 13,
+        marginTop: 5,
+        marginLeft: 50,
         position: 'absolute'
     }
 };
-
-export default FindNewBook;
