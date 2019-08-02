@@ -73,20 +73,20 @@ class SearchBookResults extends Component {
                 source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
             </CardLarge>
 
-            <View style = {{marginTop: 345, marginLeft: -10, position: 'absolute'}}>
+            <View style = {{marginTop: 380, marginLeft: 20, position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {"<"} </Text>
+                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 260, marginLeft: 330, position: 'absolute'}}>
-                <TouchableOpacity onPress = {() => {
+            <View style = {{marginTop: 380, marginLeft: 300, position: 'absolute'}}>
+             <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {">"} </Text>
-                </TouchableOpacity>
+                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>
+             </TouchableOpacity>
             </View>
 
             <View style = {styles.ButtonStyle1}>
