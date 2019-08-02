@@ -29,7 +29,8 @@ module.exports = async (pool, req, res) => {
         result = await connection.query(query);
         result = result[0];
         if (result.length && result.length > 0) {
-            res.send({id:-1})
+            result = result[0].id
+            res.send({id:result})
             return;
         }
         query = 'INSERT INTO users (facebook_id, name, email, avatar_url, facebook_avatar_original ) VALUES ("'
