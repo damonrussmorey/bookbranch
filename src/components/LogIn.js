@@ -5,8 +5,8 @@ import {  View, Text, TouchableOpacity, ImageBackground, TextInput, TouchableHig
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
-// import { saveData, fetchData } from './asyncStorage';
 
+// import { saveData, fetchData } from './asyncStorage';
 
 class LogIn extends Component {
 
@@ -63,9 +63,9 @@ class LogIn extends Component {
                     <TouchableOpacity onPress={this.Authenticate.bind(this)}>
                             <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
-                </View>
+                </View>                
         </View>
-      </ImageBackground>
+    </ImageBackground>
     );
   }
 }

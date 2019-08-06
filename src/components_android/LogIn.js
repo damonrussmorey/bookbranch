@@ -5,8 +5,10 @@ import {  View, Text, TouchableNativeFeedback, ImageBackground, TextInput, Touch
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
+// import FBLoginButton from './FBLoginButton';
 // import { saveData, fetchData } from './asyncStorage';
 
+var FBLoginButton = require('./FBLoginButton');
 
 class LogIn extends Component {
 
@@ -33,6 +35,7 @@ class LogIn extends Component {
       <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
         <View>
             <Header headerText={'Bookbranch'} />
+            <FBLoginButton />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
                 Welcome to Bookbranch!</Text>
