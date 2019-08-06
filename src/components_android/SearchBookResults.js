@@ -15,7 +15,8 @@ class SearchBookResults extends Component {
   }
 
   componentDidMount() {
-    return fetch('http://localhost:8765/magic', {
+      console.log("Hello")
+    return fetch('http://159.65.97.145:8765/magic', {
         headers: {
             'content-type': 'application/json',
             Accept: 'application/json'
@@ -51,7 +52,7 @@ class SearchBookResults extends Component {
 
         });
     })
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
     
   }
 
