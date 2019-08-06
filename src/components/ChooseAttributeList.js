@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
-import AttributesDetail from './AttributesDetail';
 import Card from './Card';
 import AttributeCard from './AttributeCard';
-import { MenuProvider, Menu, MenuOptions, MenuOption, MenuTrigger, } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
 
 class ChooseAttributesList extends Component {
-    //state = {attributes: []};
-    /*
-    renderAttributes(){
-        //return attribute => <Text> </Text>;
-    }
-    */
     render () {
         return (
             <View>
                 <Header headerText={'Bookbranch'} />
                     <View>
                         <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                        <Text style = {{marginTop: 50,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                        <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
                     </View>
                 <Card>
                     <ScrollView>

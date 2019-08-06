@@ -12,6 +12,10 @@ Inspired from BookBranch.ch
 What things you need to install the software and how to install them
 
 ### Installing
+>cd bookbranch
+
+>npm install react-native@0.59.8
+
 >npm install -g react-native-cli
 
 >react-native link @react-native-community/async-storage

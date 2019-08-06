@@ -6,8 +6,7 @@ https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/co
 //Implements Card 
 
 import React from 'react';
-import { View , Text } from 'react-native';
-import { Platform } from 'react-native';
+import { View } from 'react-native';
 const Card = (props) => {
     return (
         <View>
@@ -29,7 +28,7 @@ const styles = {
         elevation: 1,
         marginLeft: 90,
         marginRight: 5,
-        marginTop: 130,
+        marginTop: 75,
         position: 'absolute'
     },
 

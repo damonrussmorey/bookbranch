@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Platform } from 'react-native';
+
 const ArrowCardTwo = (props) => {
     return (
         <View>
@@ -21,7 +21,7 @@ const styles = {
         width: 50,
         elevation: 1,
         marginLeft: 295,
-        marginTop: 130,
+        marginTop: 75,
         position: 'absolute',
         opacity: 0.5,
     },
