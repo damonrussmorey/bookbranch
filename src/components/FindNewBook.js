@@ -1,13 +1,14 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity  } from 'react-native';
+import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity  } from 'react-native';
 import Header from './header';
 import { Actions } from 'react-native-router-flux';
 
-export default class FetchExample extends React.Component {
+export default class FindNewBook extends React.Component {
 
   constructor(props){
     super(props);
     this.state ={ 
+        showList: false,
         isLoading: true,
         dataSource: ["", ""],
         text1:'',
@@ -19,28 +20,39 @@ export default class FetchExample extends React.Component {
   componentDidMount(){
         this.setState({
           isLoading: false,
-          // text1: '',
-          // text2: ''
+          text1: '',
+          text2: ''
         })
   }
 
-  handleChangeName = (textInput) => {
-    console.log("You typed");
-    // this.setState({text1: "your new prop"})
-   }
-   
-  _search = () =>{
-    
+  _onPress = () => {
+      //fetch
+      let data = fetch('http://localhost:8765/find_book', {
+        headers: {
+          'content-type': 'application/json',
+          Accept: 'application/json'},
+        method : 'POST',
+        body: JSON.stringify({name: this.state.text1})
+      })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+            showList: true,
+            data: res
+        })
+      })
+      .catch((err) => alert(err));
   }
 
-
+  _clearAndSave = (userChoice) => {
+    // () => Actions.refresh({ key: FindNewBook ,text1: item.title})
+    this.setState({
+        text1: userChoice
+    })
+    console.log("State Changed from clear and save")
+  }
 
   render(){
-    const dataObj = [
-      {title: 'Text', key: '1'},
-      {title: 'Text 2', key: '2'},
-      {title: 'Text 3', key: '3'},
-    ];
 
     if(this.state.isLoading){
       return(
@@ -52,8 +64,6 @@ export default class FetchExample extends React.Component {
 
     return(
       <View style={{flex: 1, paddingTop:20}}>
-
-        
           <Header headerText={'Bookbranch'} />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 220,marginLeft: 40}}>
@@ -62,27 +72,35 @@ export default class FetchExample extends React.Component {
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #1 Search"
                 placeholderTextColor="gray"
-                onChangeText={(text1) => this.setState({text1})}
-                value1={this.state.text1}
+                onChangeText={(text1) => this.setState({text1: text1})}
+                value={this.state.text1}
             />
             <TextInput
                 style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #2 Search"
                 placeholderTextColor="gray"
-                onChangeText={ this.handleChangeName(this.state.text2)}
-                value2={this.state.text2}
+                onChangeText={(text2) => this.setState({text2: text2})}
+                // value={this.state.text2}
             />
             <View style = {styles.ButtonStyle1}>
                     {/* <TouchableOpacity onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}> */}
-                    <TouchableOpacity onPress={ this._search() }>
-                        <Text style = {styles.TextStyle1}>Next</Text>
+                    <TouchableOpacity onPress={this._onPress}>
+                        <Text style = {styles.TextStyle1}>Look Up Book</Text>
                     </TouchableOpacity>
+                    
             </View>
-            <Text>{"\n\n\n\n\n\n\n\n\n"}</Text>
-            <FlatList
-              data={dataObj}
-              renderItem={({ item }) => <Text>{item.title}</Text>}
-            />
+        {(this.state.showList) && <FlatList
+          data={this.state.data}
+          renderItem={({item}) => 
+          
+            <Button
+                title={item.title}
+                onPress={ () => this._clearAndSave(item.title)  }
+                >
+            </Button>}
+          
+          
+        />}
       </View>
     );
   }
