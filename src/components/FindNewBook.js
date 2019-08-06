@@ -9,10 +9,13 @@ export default class FindNewBook extends React.Component {
     super(props);
     this.state ={ 
         showList: false,
+        showList2: false,
         isLoading: true,
         dataSource: ["", ""],
         text1:'',
-        text2:''
+        text2:'',
+        lookupButton1: true,
+        continue: false
     }
 
   }
@@ -25,7 +28,7 @@ export default class FindNewBook extends React.Component {
         })
   }
 
-  _onPress = () => {
+  _onPress1 = () => {
       //fetch
       let data = fetch('http://localhost:8765/find_book', {
         headers: {
@@ -44,13 +47,64 @@ export default class FindNewBook extends React.Component {
       .catch((err) => alert(err));
   }
 
-  _clearAndSave = (userChoice) => {
-    // () => Actions.refresh({ key: FindNewBook ,text1: item.title})
-    this.setState({
-        text1: userChoice
+  _onPress2 = () => {
+    //fetch
+    let data = fetch('http://localhost:8765/find_book', {
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json'},
+      method : 'POST',
+      body: JSON.stringify({name: this.state.text2})
     })
+    .then((res) => res.json())
+    .then((res) => {
+      this.setState({
+          showList: true,
+          data: res
+      })
+    })
+    .catch((err) => alert(err));
+}
+
+  _clearAndSave1 = (userChoice) => {
+        this.setState({
+            text1: userChoice,
+            showList1: false,
+        })
+    
     console.log("State Changed from clear and save")
   }
+
+
+_clearAndSave2 = (userChoice) => {
+    console.log("clear and save 2");
+    this.setState({
+        text2: userChoice,
+        showList2: false,
+        continue: true
+    })
+    Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})
+}
+
+  onKeyPress1(userChoice) {
+      console.log("keypress1")
+    this._onPress1()
+    this.setState({
+        text1: userChoice,
+        showList1: true,
+    })
+  }
+
+  onKeyPress2(userChoice) {
+    console.log("keypress2")
+    this._onPress2()
+    this.setState({
+        text2: userChoice,
+        showList2: true,
+    })
+  }
+
+  
 
   render(){
 
@@ -72,35 +126,50 @@ export default class FindNewBook extends React.Component {
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #1 Search"
                 placeholderTextColor="gray"
-                onChangeText={(text1) => this.setState({text1: text1})}
+                
                 value={this.state.text1}
+                
+                onSubmitEditing={() => this.onKeyPress1(this.state.text1)}
+                onChangeText={(text1) => this.setState({text1: text1})}
             />
             <TextInput
                 style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #2 Search"
                 placeholderTextColor="gray"
+                onSubmitEditing={() => this.onKeyPress2(this.state.text2)}
                 onChangeText={(text2) => this.setState({text2: text2})}
-                // value={this.state.text2}
+                value={this.state.text2}
             />
-            <View style = {styles.ButtonStyle1}>
-                    {/* <TouchableOpacity onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}> */}
-                    <TouchableOpacity onPress={this._onPress}>
-                        <Text style = {styles.TextStyle1}>Look Up Book</Text>
-                    </TouchableOpacity>
-                    
-            </View>
-        {(this.state.showList) && <FlatList
+            
+        {(this.state.showList1) && <FlatList
           data={this.state.data}
           renderItem={({item}) => 
           
             <Button
                 title={item.title}
-                onPress={ () => this._clearAndSave(item.title)  }
+                onPress={ () => this._clearAndSave1(item.title)  }
                 >
             </Button>}
           
           
         />}
+        {(this.state.showList2) && <FlatList
+          data={this.state.data}
+          renderItem={({item}) => 
+          
+            <Button
+                title={item.title}
+                onPress={ () => this._clearAndSave2(item.title)  }
+                >
+            </Button>}
+          
+          
+        />}
+        {(this.state.continue) && <Button
+                title={"Continue"}
+                onPress={ () => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2}) }
+                >
+            </Button>}
       </View>
     );
   }
