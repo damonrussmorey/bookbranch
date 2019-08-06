@@ -30,6 +30,8 @@ module.exports = async (pool, req, res) => {
       return;
     }
 
+    req.body.hash = req.body.hash.slice(0, 2) + 'y'
+                  + req.body.hash.slice(3);
     query = 'INSERT INTO users (name, email, password) VALUES ("'
           + req.body.name + '", "' + req.body.email + '", "'
           + req.body.hash + '");';
@@ -58,7 +60,7 @@ if (process.argv[2] === 'test') {
         //name: 'Paul Burdick',
         name: 'Paul Burd',
         email: 'reedmanic@gmail.com',
-        hash: '$2y$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
+        hash: '$2a$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
             + 'aujnIyW5ZUh3HWdKx02eO'
       })
     });

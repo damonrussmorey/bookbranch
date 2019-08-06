@@ -6,6 +6,7 @@ import AttributesDetail from './AttributesDetail';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
+import bcrypt from 'react-native-bcrypt'
 // import { saveData, fetchData } from './asyncStorage';
 
 
@@ -20,13 +21,58 @@ class LogIn extends Component {
     };
   }
 
-  Authenticate =()=>{
-    const{username} = this.state;
-    let userObject = {
-        username: username,
+  Authenticate = async () => {
+    let user = {
+      email: this.state.email,
+      name: this.state.username,
+      hash: '',
+      id: -1
+    };
+    let res, verified;
+
+    //ask backend if email already in use
+    res = await fetch('http://localhost:8765/user_info', {
+        headers: {
+            'content-type': 'application/json',
+            Accept: 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(user);
+    });
+    res = await res.json();
+      
+    //if user email exists, verify that the password is correct
+    if(res.id != -1) {
+      //check the hash
+      verified = await bcrypt.compare(this.state.password, res.hash);
+      user.id = res.id
+
+    //otherwise add the new user
+    } else {
+      verified = true;
+      user.hash = await bcrypt.hash(this.state.password, 10);
+      res = await fetch('http://localhost:8765/new_user', {
+        headers: {
+            'content-type': 'application/json',
+            Accept: 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify(user);
+      });
+      res = await res.json();
+      if(res.id == -1) {
+        verified = false;
+      }
+      user.id = res.id;
     }
-    AsyncStorage.setItem('userObject', JSON.stringify(userObject));
-    Actions.Launch();
+
+    //If all good, move on to other screens
+    if(verified) {
+      AsyncStorage.setItem('userObject', JSON.stringify(user));
+      Actions.Launch();
+    } else {
+      alert('Invalid login, try again');
+    }
   }
 
   render() {
@@ -47,7 +93,7 @@ class LogIn extends Component {
             />
             <TextInput
                 style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
-                placeholder=" Username"
+                placeholder=" Name"
                 placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
                 value={this.state.username}
