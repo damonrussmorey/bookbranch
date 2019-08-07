@@ -1,18 +1,12 @@
 import Header from './header';
-import MenuText from './MenuText';
-import AttributesList from './AttributesList';
-import { MenuProvider } from 'react-native-popup-menu';
 import { Actions } from 'react-native-router-flux';
-import RatingCard from './RatingCard';
-import RatingSection from './RatingSection';
 import React, {Component} from 'react';
-import { View, Text, Image, TouchableNativeFeedback, ImageBackground } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
-import ChooseAttributeList from './ChooseAttributeList';
 
 class CallAttributes1 extends Component {
     renderElement(){
@@ -70,9 +64,6 @@ class CallAttributes1 extends Component {
         if(this.props.text == 'Insightful')
            return <Image source={require('bookbranch/img/attributes/insightful-attribute.png')} style={styles.AttributeStyle}></Image>
 
-        if(this.props.text == 'Knowledge')
-           return <Image source={require('bookbranch/img/attributes/knowledge-attribute.png')} style={styles.AttributeStyle}></Image>
-
         if(this.props.text == 'Mysterious')
            return <Image source={require('bookbranch/img/attributes/mysterious-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -98,142 +89,39 @@ class CallAttributes1 extends Component {
     render(){
     return (
         <View>
-            <MenuProvider>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 87, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookReview}</Text>
+                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
+                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
-                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
-                            Choose this book's top 3 attributes:
+                            {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
+                            Choose this book's top 3 attributes
                             </Text>
                     </View>
                 </View>
                 <View>
             <View>
-                <ArrowCardTwo>
-                    <ArrowSection>
-                        <TouchableNativeFeedback style = {styles.buttonStyle}> 
-                            
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableNativeFeedback style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                    <TouchableNativeFeedback style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginRight: 3, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_right.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-                </ArrowCardTwo>
-            </View>
-
-            <View>
-                <ArrowCard>
-                    <ArrowSection>
-                        <TouchableNativeFeedback style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableNativeFeedback style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-
-                    <ArrowSection>
-                        <TouchableNativeFeedback style = {styles.buttonStyle}>
-                             <Image
-                                style={{height: 60, width: 30, marginLeft: 8, marginTop:-15}}
-                                source={require('bookbranch/img/arrow_left.png')}>
-                            </Image>
-                        </TouchableNativeFeedback>
-                    </ArrowSection>
-                </ArrowCard>
-            </View>
-            
-            <View>
                 <Card>
                     <CardSection>{ this.renderElement() }
-                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
-                        </TouchableNativeFeedback>
+                        <TouchableOpacity>
+                        </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList2(this.props.text)}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList2({textOne: this.props.textOne, textTwo: this.props.textTwo, text: this.props.text})}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableNativeFeedback>
+                        </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
-                        <TouchableNativeFeedback onPress={() => Actions.chooseAttList()}>
+                        <TouchableOpacity>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
-                        </TouchableNativeFeedback>
+                        </TouchableOpacity>
                     </CardSection>
                 </Card>
             </View>
         </View>
-                <Text style = {{marginTop: 610,marginLeft: 15, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Rating: </Text>
-                <RatingCard/>
-
-                <TouchableNativeFeedback style = {{marginTop: 549, marginLeft: 100}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>1</Text>
-                    </RatingSection>
-                </TouchableNativeFeedback>
-
-                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 134, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>2</Text>
-                    </RatingSection>
-                </TouchableNativeFeedback>
-
-                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 168, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>3</Text>
-                    </RatingSection>
-                </TouchableNativeFeedback>
-
-                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 201, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>4</Text>
-                    </RatingSection>
-                </TouchableNativeFeedback>
-
-                <TouchableNativeFeedback style = {{marginTop: 609, marginLeft: 235, position: 'absolute'}}>
-                    <RatingSection>
-                        <Text style = {{marginLeft: 5}}>5</Text>
-                    </RatingSection>
-                </TouchableNativeFeedback>
-
-                <View style = {styles.ButtonStyle1}>
-                    <TouchableNativeFeedback /*onPress={() => alert(`Added to Database!`)}*/>
-                        <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableNativeFeedback>
-                </View>
-
-            </MenuProvider>
         </View>
     );
   }
@@ -241,8 +129,8 @@ class CallAttributes1 extends Component {
 
 const styles = {
     TopThreeStyle: {
-        marginTop: 110,
-        marginLeft: 87,
+        marginTop: 50,
+        marginLeft: 78,
         position: 'absolute'
     },
     BookNumStyle: {

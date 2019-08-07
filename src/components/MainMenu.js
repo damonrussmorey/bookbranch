@@ -4,7 +4,6 @@ import React, {Component}from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback, Button} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 

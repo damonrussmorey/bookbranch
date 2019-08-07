@@ -1,8 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Platform } from 'react-native';
 
-const RatingCard = (props) => {
+const CardLarge = (props) => {
     return (
         <View>
              <View style = {styles.containerStyle}>
@@ -18,15 +17,15 @@ const styles = {
         borderRadius: 2,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 30,
-        width: 170,
+        height: 500,
+        width: 280,
         elevation: 1,
-        marginLeft: 100,
+        marginLeft: 50,
         marginRight: 5,
-        marginTop: 548,
+        marginTop: 15,
         position: 'absolute'
     },
 
 };
 
-export default RatingCard;
+export default CardLarge;

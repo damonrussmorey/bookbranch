@@ -1,6 +1,10 @@
+
 import React from 'react';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity  } from 'react-native';
 import Header from './header';
+import { Actions } from 'react-native-router-flux';
+
+import React, { Component } from 'react';
 import { Actions } from 'react-native-router-flux';
 
 export default class FindNewBook extends React.Component {

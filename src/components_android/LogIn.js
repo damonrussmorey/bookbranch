@@ -1,20 +1,31 @@
 //The tree background image is taken from this open source website: https://www.pexels.com/photo/countryside-dawn-daylight-environment-286305/
 
 import React, { Component } from 'react';
-import { Button, AppRegistry, View, Text, TouchableNativeFeedback, ImageBackground, TextInput} from 'react-native';
-import AttributesDetail from './AttributesDetail';
+import {  View, Text, TouchableNativeFeedback, ImageBackground, TextInput, TouchableHighlight} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Platform } from 'react-native';
-//import axios from 'axios'; // used for http requests
+import AsyncStorage from '@react-native-community/async-storage';
+// import { saveData, fetchData } from './asyncStorage';
+
 
 class LogIn extends Component {
+
   constructor(props) {
     super(props);
     this.state = { 
+        email: '',
         username: '',
         password: ''
     };
+  }
+
+  Authenticate =()=>{
+    const{username} = this.state;
+    let userObject = {
+        username: username,
+    }
+    AsyncStorage.setItem('userObject', JSON.stringify(userObject));
+    Actions.Launch();
   }
 
   render() {
@@ -23,10 +34,18 @@ class LogIn extends Component {
         <View>
             <Header headerText={'Bookbranch'} />
             <Text
-                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 155}}>
-                Log In</Text>
+                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
+                Welcome to Bookbranch!</Text>
+
             <TextInput
                 style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                placeholder=" Email"
+                placeholderTextColor="gray"
+                onChangeText={(email) => this.setState({email})}
+                value={this.state.email}
+            />
+            <TextInput
+                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Username"
                 placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
@@ -40,22 +59,11 @@ class LogIn extends Component {
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />
-            <View style = {styles.ButtonStyle1}>
-                    <TouchableNativeFeedback /*onPress={() => Actions.attList()}*/>
-                        <Text style = {styles.TextStyle1}>Login</Text>
-                    </TouchableNativeFeedback>
-                </View>
-                <View style = {styles.ButtonStyle2}>
-                    <TouchableNativeFeedback /*onPress={() => Actions.attList()}*/>
-                        <Text style = {styles.TextStyle2}>Register</Text>
-                    </TouchableNativeFeedback>
-                </View>
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableNativeFeedback onPress={() => Actions.Main()}>
-                        <Text style = {styles.TextStyle3}>Browse As Guest</Text>
+                    <TouchableNativeFeedback onPress={this.Authenticate.bind(this)}>
+                            <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableNativeFeedback>
                 </View>
-
         </View>
       </ImageBackground>
     );
@@ -97,12 +105,12 @@ const styles = {
         borderRadius: 5,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 30,
-        width: 140,
+        height: 40,
+        width: 110,
         elevation: 1,
         marginLeft: 220,
         marginRight: 5,
-        marginTop: 330,
+        marginTop: 230,
         position: 'absolute'  
     },
 
@@ -124,9 +132,9 @@ const styles = {
 
     TextStyle3: {
         fontWeight: 'bold',
-        fontSize: 13,
+        fontSize: 20,
         marginTop: 5,
-        marginLeft: 10,
+        marginLeft: 14,
         position: 'absolute'
     }
 };

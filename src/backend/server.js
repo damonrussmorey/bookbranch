@@ -39,12 +39,16 @@ app.use(bodyParser.urlencoded({extended: true}) );
 //send off to modules
 
 //XXXsimplified routingXXX
-app.post('/user_hash', (req, res) => {
-  require('./user_hash')(pool, req, res);
+app.post('/user_info', (req, res) => {
+  require('./user_info')(pool, req, res);
 });
 
 app.post('/new_user', (req, res) => {
   require('./new_user')(pool, req, res);
+});
+
+app.post('/insert_facebook', (req,res) =>{
+  require('./insert_facebook')(pool,req,res);
 });
 
 app.post('/magic', (req, res) => {
