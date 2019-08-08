@@ -1,7 +1,7 @@
 import React from 'react';
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
-import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity  } from 'react-native';
+import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 
 export default class FindNewBook extends React.Component {
 
@@ -136,6 +136,7 @@ _clearAndSave2 = (userChoice) => {
                 selectTextOnFocus={(this.state.disabled)}
                 onSubmitEditing={() => this.onKeyPress1(this.state.text1)}
                 onChangeText={(text1) => this.setState({text1: text1})}
+                
             />
             <TextInput
                 style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
@@ -152,11 +153,18 @@ _clearAndSave2 = (userChoice) => {
           data={this.state.data}
           renderItem={({item}) => 
           
+          <View>
+          <Image
+          style={{width: 50, height: 50}}
+          source={{uri: item.imageURL}}
+        />
             <Button
                 title={item.title}
                 onPress={ () => this._clearAndSave1(item.title)  }
                 >
-            </Button>}
+            </Button>
+          </View>
+          }
           
           
         />}
