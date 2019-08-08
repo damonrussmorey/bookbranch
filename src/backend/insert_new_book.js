@@ -71,8 +71,8 @@ module.exports = async (pool, book) => {
               
         //Damon: I didn't see why this was necessary, it's already
         //primary key
-        //For insert the new author
-        //continue_id = await connection.query('alter table authors auto_increment= '+ last_id);
+        //For insert the new author and url_title id equal to the line id.
+        continue_id = await connection.query('alter table authors auto_increment= '+ result[0][0].id);
 
         query = 'INSERT INTO authors(name,url_title) VALUES("'
               + book.author + '", "' + url_title + '");';
@@ -89,7 +89,7 @@ module.exports = async (pool, book) => {
                 + "-" + book_id;
 
       //Damon: same note from above
-      //continue_id = await connection.query('alter table books auto_increment= '+ last_id);
+      continue_id = await connection.query('alter table books auto_increment= '+ result[0][0].id);
 
       query = 'INSERT INTO books (title, url_title, asin, '
             + 'cover_url, amazon_url, description, average_rating) '

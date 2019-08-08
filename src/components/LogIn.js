@@ -36,7 +36,7 @@ class LogIn extends Component {
             Accept: 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(user);
+        body: JSON.stringify(user)
     });
     res = await res.json();
       
@@ -56,7 +56,7 @@ class LogIn extends Component {
             Accept: 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify(user);
+        body: JSON.stringify(user)
       });
       res = await res.json();
       if(res.id == -1) {
