@@ -29,8 +29,9 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (name) => {
-  console.log('\nSearching for book on AWS: ' + name);
+module.exports = async (req,res) => {
+  console.log(res.req.body)
+  console.log('\nSearching for book on AWS: ' + res.req.body.name);
 
   let book, response, result, description;
 
@@ -46,7 +47,7 @@ module.exports = async (name) => {
     response = await searcher.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
-        'Keywords': name,
+        'Keywords': res.req.body.name,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
     });
   } catch(e) {
@@ -57,27 +58,28 @@ module.exports = async (name) => {
   }
 
   result = response.result.ItemSearchResponse.Items.Item
-  //console.log(result.length);
+  console.log(result.length);
   if(!Array.isArray(result))
     result = [result];
 
   //Build the response
   //need to verify each field exists
   //response = []
-  let i = 0;
-  while(i < result.length
-        && result[i].ItemAttributes.ProductGroup !== 'Book') {
-    ++i;
-  }
+  //let i = 0;
+  //while(i < result.length
+  //      && result[i].ItemAttributes.ProductGroup !== 'Book') {
+  //  ++i;
+  //}
 
   //No books in the response, return null
-  if(i == result.length)
+  if(0 == result.length)
     return null;
 
-  r = result[i];
-  //for(r of result) {
-    /*if(r.ItemAttributes.ProductGroup !== 'Book')
-      continue;*/
+  //r = result[i];
+  response = []
+  for(r of result) {
+    if(r.ItemAttributes.ProductGroup !== 'Book')
+      continue;
     book = {};
 
     //Just take the first description, if there are any
@@ -109,6 +111,9 @@ module.exports = async (name) => {
     else
       book['author'] = '';
 
+    response.push(book)
+  }
+
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
@@ -118,24 +123,25 @@ module.exports = async (name) => {
   console.log(response)
   res.send(response);
   */
-
-  return book;
+ console.log(response.length)
+  res.send(response)
+  //return book;
 }
 
-/*
+
 //test
-if(process.argv[2] == 'test') {
-  const fetch = require('node-fetch');
-  (async () => {
-    let hi = await fetch('http://localhost:8765/find_book', {
-      headers: {
-        'content-type': 'application/json',
-        Accept: 'application/json'},
-      method : 'POST',
-      body: JSON.stringify({search: 'the hunger game'})
-    });
-    let res = await hi.json();
-    console.log('test: ' + JSON.stringify(res) + '\n');
-  })();
-}
-*/
+// if(process.argv[2] == 'test') {
+//   const fetch = require('node-fetch');
+//   (async () => {
+//     let hi = await fetch('http://localhost:8765/find_book', {
+//       headers: {
+//         'content-type': 'application/json',
+//         Accept: 'application/json'},
+//       method : 'POST',
+//       body: JSON.stringify({search: 'the hunger game'})
+//     });
+//     let res = await hi.json();
+//     console.log('test: ' + JSON.stringify(res) + '\n');
+//   })();
+// }
+
