@@ -15,7 +15,9 @@ export default class FindNewBook extends React.Component {
         text1:'',
         text2:'',
         lookupButton1: true,
-        continue: false
+        continue: false,
+        disabled: true,
+        disabled2: false
     }
 
   }
@@ -70,6 +72,8 @@ export default class FindNewBook extends React.Component {
         this.setState({
             text1: userChoice,
             showList1: false,
+            disabled: false,
+            disabled2: true
         })
     
     console.log("State Changed from clear and save")
@@ -81,7 +85,8 @@ _clearAndSave2 = (userChoice) => {
     this.setState({
         text2: userChoice,
         showList2: false,
-        continue: true
+        continue: true,
+        disabled2: false
     })
     // Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})
 }
@@ -126,9 +131,9 @@ _clearAndSave2 = (userChoice) => {
                 style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #1 Search"
                 placeholderTextColor="gray"
-                
                 value={this.state.text1}
-                
+                editable={(this.state.disabled)} 
+                selectTextOnFocus={(this.state.disabled)}
                 onSubmitEditing={() => this.onKeyPress1(this.state.text1)}
                 onChangeText={(text1) => this.setState({text1: text1})}
             />
@@ -139,6 +144,8 @@ _clearAndSave2 = (userChoice) => {
                 onSubmitEditing={() => this.onKeyPress2(this.state.text2)}
                 onChangeText={(text2) => this.setState({text2: text2})}
                 value={this.state.text2}
+                editable={(this.state.disabled2)} 
+                selectTextOnFocus={(this.state.disabled2)}
             />
             
         {(this.state.showList1) && <FlatList
