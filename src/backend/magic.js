@@ -122,7 +122,7 @@ module.exports = async (pool, req, res) => {
   //console.log("###### Book 1 track begin ######################")
   
   //find book 1 on AWS
-  book1 = await require('./find_book')(req.body.title1);
+  //book1 = await require('./find_book')(req.body.title1);
   //console.log(book1);
 
   //potentially we don't the book on Amazon, skip these if we didn't

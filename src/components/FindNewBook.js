@@ -83,7 +83,7 @@ _clearAndSave2 = (userChoice) => {
         showList2: false,
         continue: true
     })
-    Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})
+    // Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})
 }
 
   onKeyPress1(userChoice) {
@@ -159,9 +159,10 @@ _clearAndSave2 = (userChoice) => {
           
             <Button
                 title={item.title}
-                onPress={ () => this._clearAndSave2(item.title)  }
-                >
-            </Button>}
+                onPress={ () => this._clearAndSave2(item.title)  }>
+            </Button>
+            // <Text>{item.imageURL}</Text>
+          }
           
           
         />}
