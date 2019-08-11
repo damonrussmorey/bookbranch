@@ -61,11 +61,11 @@ class LogIn extends Component {
             />
                 <View style = {styles.ButtonStyle3}>
                     <TouchableOpacity onPress={this.Authenticate.bind(this)}>
-                            <Text style = {styles.TextStyle3}>Register</Text>
+                        <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>                
         </View>
-    </ImageBackground>
+      </ImageBackground>
     );
   }
 }

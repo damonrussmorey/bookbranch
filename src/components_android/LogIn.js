@@ -35,7 +35,6 @@ class LogIn extends Component {
       <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
         <View>
             <Header headerText={'Bookbranch'} />
-            <FBLoginButton />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
                 Welcome to Bookbranch!</Text>
@@ -67,6 +66,7 @@ class LogIn extends Component {
                             <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableNativeFeedback>
                 </View>
+                <FBLoginButton />
         </View>
       </ImageBackground>
     );
