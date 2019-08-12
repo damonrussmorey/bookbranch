@@ -6,7 +6,6 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import bcrypt from 'react-native-bcrypt'
-// import { saveData, fetchData } from './asyncStorage';
 
 
 class LogIn extends Component {
