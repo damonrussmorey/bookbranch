@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ActivityIndicator, View, Text, TouchableOpacity, Image, Linking} from 'react-native';
+import { ActivityIndicator, View, Text, TouchableOpacity, TouchableNativeFeedback,Image, Linking} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import CardLarge from './CardLarge';
 import HeaderBookResults from './HeaderBookResults';
@@ -91,14 +91,14 @@ class SearchBookResults extends Component {
             </View>
 
             <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress = {() => Linking.openURL(this.state.Results[this.state.i].amazonURL).catch((err)=>alert('bad'))}>
+                    <TouchableNativeFeedback onPress = {() => Linking.openURL(this.state.Results[this.state.i].amazonURL).catch((err)=>alert('bad'))}>
                         <Text style = {styles.TextStyle1}>Amazon</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
             </View>
             <View style = {styles.ButtonStyle2}>
-                    <TouchableOpacity onPress={() => Actions.popTo('Main')}>
+                    <TouchableNativeFeedback onPress={() => Actions.popTo('Main')}>
                         <Text style = {styles.TextStyle2}>Start Over</Text>
-                    </TouchableOpacity>
+                    </TouchableNativeFeedback>
             </View>
 
         </View>
