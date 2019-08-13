@@ -49,6 +49,8 @@ class LogIn extends Component {
       id: -1
     };
     let res, verified = false;
+    // short circuit
+    AsyncStorage.setItem('userObject', JSON.stringify(user));
 
     //ask backend if email already in use
     res = fetch('http://159.65.97.145:8765/user_info', {

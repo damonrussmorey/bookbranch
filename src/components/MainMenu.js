@@ -5,6 +5,8 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
+import App from '../../index.js';
+
 
 
 class MainMenu extends Component {
@@ -24,15 +26,25 @@ class MainMenu extends Component {
         let userObject = await AsyncStorage.getItem('userObject');
         let data = JSON.parse(userObject);
         this.setState({
-            username: data.username
+            username: data.name
         });
     }
+
+    async resetKey() {
+        try {
+          await AsyncStorage.removeItem('userObject');
+          const value = await AsyncStorage.getItem('userObject');
+          Actions.LogIn();
+        } catch (error) {
+        }
+      }
 
     render(){
     return (
         <View>
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
             <Header headerText={'Bookbranch'} />
+            <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button>
             <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress={() => Actions.FindNewBook()}>

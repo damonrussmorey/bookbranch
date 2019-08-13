@@ -175,7 +175,8 @@ export default class FindNewBook extends React.Component {
     console.log("Book Look up 1: isloading true and disabled2 true")
     this.setState({
       isLoading:true,
-      editable2:true
+      editable2:true,
+      continue: false
     })
       //fetch
       let res = await fetch('http://159.65.97.145:8765/keyword', {
@@ -199,33 +200,31 @@ export default class FindNewBook extends React.Component {
       
   }
 
-  _bookLookUp2 = () => {
+  _bookLookUp2 = async () => {
     this.setState({
       isLoading:true,
-      editable:true
+      editable:true,
+      continue: false
     })
+ 
       //fetch
-      fetch('http://159.65.97.145:8765/keyword', {
+      let res = await fetch('http://159.65.97.145:8765/keyword', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({keyword_search: this.state.text1})
-      })
-      .then((res) => res.json())
-      .then((res) => {
-      res = bookArray;
-        if(res.response != -1){
-          console.log("response is not -1");
-          this.setState({
-              showList: true,
-              data: res,
-              // isLoading: false
-          })
-        }
-      })
-      .catch((err) => alert(err));
-
+        body: JSON.stringify({keyword_search: this.state.text2})
+      });
+      res = await res.json();
+      
+      if(res.response != -1){
+        console.log("response is not -1");
+        this.setState({
+            showList: true,
+            data: res,
+            // isLoading: false
+        })
+      }
       
   }
 
@@ -329,7 +328,7 @@ bookList1(userChoice) {
 
   render(){
     return(
-      <View style={{flex: 1, paddingTop:20}}>
+      <View >
           <Header headerText={'Bookbranch'} />
             <Text
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 220,marginLeft: 40}}>

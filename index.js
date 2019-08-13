@@ -30,7 +30,7 @@ import Launch from './src/components/Launch';
 import AsyncStorage from '@react-native-community/async-storage';
 import CardStackStyleInterpolator from "react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator";
 
-class App extends Component {
+export default class App extends Component {
 
   componentDidMount(){
     // This is for demonstrating Async Works as intended, it can be uncommented and ran as if it were a 'Logout' button
