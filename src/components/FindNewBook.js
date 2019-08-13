@@ -19,8 +19,8 @@ export default class FindNewBook extends React.Component {
         continue: false,
         book1Saved: false,
         book2Saved: false,
-        // disabled: true,
-        // disabled2: false
+        disabled: true,
+        disabled2: false
     }
 
   }
@@ -65,7 +65,11 @@ export default class FindNewBook extends React.Component {
   }
 
   _bookLookUp1 = async () => {
-    // this.setState({isLoading:true})
+    console.log("Book Look up 1: isloading true and disabled2 true")
+    this.setState({
+      isLoading:true,
+      disabled2:true
+    })
       //fetch
       let data = fetch('http://localhost:8765/find_book', {
         headers: {
@@ -89,6 +93,10 @@ export default class FindNewBook extends React.Component {
   }
 
   _bookLookUp2 = () => {
+    this.setState({
+      isLoading:true,
+      disabled1:true
+    })
     //fetch
     let data = fetch('http://localhost:8765/find_book', {
       headers: {
@@ -107,12 +115,11 @@ export default class FindNewBook extends React.Component {
     .catch((err) => alert(err));
 }
 
-  _clearAndSave1 = (userChoice) => {
+finalChoiceSubmission1 = (userChoice) => {
         this.setState({
             text1: userChoice.title,
             showList1: false,
-            // disabled: false,
-            // disabled2: true
+            disabled: false,
         })
         this.checkContinue();
         // Save into Async-storage
@@ -130,12 +137,11 @@ export default class FindNewBook extends React.Component {
   }
 
 
-_clearAndSave2 = (userChoice) => {
-    console.log("clear and save 2");
+  finalChoiceSubmission2 = (userChoice) => {
     this.setState({
         text2: userChoice.title,
         showList2: false,
-        // disabled2: false
+        disabled2: false
     })
     this.checkContinue();
     // Save into Async-storage
@@ -148,7 +154,6 @@ _clearAndSave2 = (userChoice) => {
       author: userChoice.author
     };
     AsyncStorage.setItem('bookObject2', JSON.stringify(book));
-    // Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})
 }
 
 checkContinue(){
@@ -159,20 +164,28 @@ checkContinue(){
   }
 }
 
-finalChoiceSubmission1(userChoice) {
+bookList1(userChoice) {
+  console.log("Book list 1")
+  this.setState({
+    disabled2:true,
+  })
     this._bookLookUp1()
     this.setState({
-        // isLoading: false,
+        isLoading: false,
         text1: userChoice,
         showList1: true,
         book1Saved: true,
     })
   }
 
-  finalChoiceSubmission2(userChoice) {
+  bookList2(userChoice) {
+    console.log("Book list 2")
+    this.setState({
+      disabled:true,
+    })
     this._bookLookUp2()
     this.setState({
-        // isLoading: false,
+        isLoading: false,
         text2: userChoice,
         showList2: true,
         book2Saved: true,
@@ -211,9 +224,9 @@ finalChoiceSubmission1(userChoice) {
                 placeholder=" Book #1 Search"
                 placeholderTextColor="gray"
                 value={this.state.text1}
-                // editable={(this.state.disabled)} 
-                // selectTextOnFocus={(this.state.disabled)}
-                onSubmitEditing={() => this.finalChoiceSubmission1(this.state.text1)}
+                editable={(this.state.disabled)} 
+                selectTextOnFocus={(this.state.disabled)}
+                onSubmitEditing={() => this.bookList1(this.state.text1)}
                 onChangeText={(text1) => this.userChangeText1(text1) }
                 
             />
@@ -222,11 +235,11 @@ finalChoiceSubmission1(userChoice) {
                 placeholder=" Book #2 Search"
                 placeholderTextColor="gray"
                 value={this.state.text2}
-                onSubmitEditing={() => this.finalChoiceSubmission2(this.state.text2)}
+                onSubmitEditing={() => this.bookList2(this.state.text2)}
                 onChangeText={(text2) => this.userChangeText2(text2) }
                 
-                // editable={(this.state.disabled2)} 
-                // selectTextOnFocus={(this.state.disabled2)}
+                editable={(this.state.disabled2)} 
+                selectTextOnFocus={(this.state.disabled2)}
             />
             
         {(this.state.showList1) && <FlatList
@@ -240,7 +253,7 @@ finalChoiceSubmission1(userChoice) {
         />
             <Button
                 title={item.title}
-                onPress={ () => this._clearAndSave1(item)  }
+                onPress={ () => this.finalChoiceSubmission1(item)  }
                 >
             </Button>
           </View>
@@ -258,7 +271,7 @@ finalChoiceSubmission1(userChoice) {
               />
                   <Button
                       title={item.title}
-                      onPress={ () => this._clearAndSave2(item)  }
+                      onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
                   </Button>
                 </View>
