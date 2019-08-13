@@ -31,9 +31,9 @@ amazon again.
 
 module.exports = async (req, res) => {
   console.log('\nSearching for book on AWS: ' + req.body.name);
- 
+
   let book, response, result, description;
- 
+
   const { OperationHelper } = require('apac');
   const searcher = new OperationHelper({
     awsId: 'AKIAIANIRJALOZBL4MZQ',
@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
     assocId: 'bookbch-20',
     maxRequestsPerSecond: 1
   });
- 
+
   try {
     response = await searcher.execute(
       'ItemSearch', {
@@ -51,10 +51,11 @@ module.exports = async (req, res) => {
       });
   } catch (e) {
     console.log(e);
- 
+
     //didn't get a result from Amazon, so return null
     return null;
   }
+
   console.log(response)
   //Check all attributes first, if not exist set result to NULL
   if (!response || !response.result || !response.result.ItemSearchResponse || !response.result.ItemSearchResponse.Items || !response.result.ItemSearchResponse.Items.Item) {
@@ -63,16 +64,16 @@ module.exports = async (req, res) => {
   } else
     result = response.result.ItemSearchResponse.Items.Item
   //console.log(result.length);
- 
- 
+
+
   if (!Array.isArray(result))
     result = [result];
- 
+
   //Build the response
   //need to verify each field exists
   response = []
- 
- 
+
+
   /*
   let i = 0;
   while (i < result.length
@@ -81,19 +82,19 @@ module.exports = async (req, res) => {
   }
   if (!result[0] && !result[0].ItemAttributes)
     return null;
- 
+  
   //No books in the response, return null
   if (i == result.length)
     return null;
- 
+
   r = result[i];
   */
- 
+
   for (r of result) {
     if (r.ItemAttributes.ProductGroup !== 'Book')
       continue;
     book = {};
- 
+
     //Just take the first description, if there are any
     if (r.EditorialReviews && r.EditorialReviews.EditorialReview) {
       description = r.EditorialReviews.EditorialReview;
@@ -103,56 +104,58 @@ module.exports = async (req, res) => {
     } else {
       book['description'] = '';
     }
- 
+
     //these are guaranteed
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
- 
+
     if (r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
       book['imageURL'] = '';
- 
+
     if (r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
       book['title'] = '';
- 
+
     if (r.ItemAttributes.Author)
       book['author'] = r.ItemAttributes.Author;
     else
       book['author'] = '';
- 
+
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
     */
     response.push(book);
   }
- 
+
   if (response.length == 0) {
     res.send({response:-1});
     return;
   }
   console.log(response)
   res.send(response);
- 
- }
+
+}
+
 
 
 //test
-// if(process.argv[2] == 'test') {
-//   const fetch = require('node-fetch');
-//   (async () => {
-//     let hi = await fetch('http://localhost:8765/find_book', {
-//       headers: {
-//         'content-type': 'application/json',
-//         Accept: 'application/json'},
-//       method : 'POST',
-//       body: JSON.stringify({search: 'the hunger game'})
-//     });
-//     let res = await hi.json();
-//     console.log('test: ' + JSON.stringify(res) + '\n');
-//   })();
-// }
+if(process.argv[2] == 'test') {
+  const fetch = require('node-fetch');
+  (async () => {
+    let hi = await fetch('http://159.65.97.145:8765/find_book', {
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json'},
+      method : 'POST',
+      body: JSON.stringify({name: 'xixi'})
+    });
+    let res = await hi.json();
+    console.log('test: ' + JSON.stringify(res) + '\n');
+  })();
+}
+
 

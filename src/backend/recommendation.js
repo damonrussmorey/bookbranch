@@ -131,7 +131,7 @@ module.exports = async (pool, books, attrs) => {
 if(process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   async function test(test, body) {
-    let hi = await fetch('http://localhost:8765/recommendation', {
+    let hi = await fetch('http://159.65.97.145:8765/recommendation', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},

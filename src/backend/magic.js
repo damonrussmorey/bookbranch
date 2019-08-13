@@ -120,16 +120,12 @@ module.exports = async (pool, req, res) => {
     attr1.push({id: req.body.attr1id3, val: req.body.attr1val3});
 
   //console.log("###### Book 1 track begin ######################")
-  
-  //find book 1 on AWS
-  //book1 = await require('./find_book')(req.body.title1);
-  //console.log(book1);
 
   //potentially we don't the book on Amazon, skip these if we didn't
-  if(book1) {
+  if(req.body.book1.title) {
     //add book 1 to database or simply return the id if it's 
     //already there
-    book1_id = await require('./insert_new_book')(pool, book1);
+    book1_id = await require('./insert_new_book')(pool, req.body.book1);
     //console.log(book1_id)
 
     //add book 1 review to database
@@ -153,15 +149,11 @@ module.exports = async (pool, req, res) => {
     attr2.push({id: req.body.attr2id3, val: req.body.attr2val3});
 
   //console.log("\n\n############### Book 2 track begin ############")
-  
-  //find book 2 on AWS
-  book2 = await require('./find_book')(req.body.title2);
-  //console.log(book2)
 
-  if(book2) {
+  if(req.body.book2.title) {
     //add book 2 to database or simply return the id if it's
     //already there
-    book2_id = await require('./insert_new_book')(pool, book2);
+    book2_id = await require('./insert_new_book')(pool, req.body.book2);
     //console.log(book2_id);
 
     //add book 2 review to database
@@ -223,13 +215,20 @@ if(process.argv[2] === 'test') {
   } else {
     const fetch = require('node-fetch');
     (async () => {
-      let hi = await fetch('http://localhost:8765/magic', {
+      let hi = await fetch('http://159.65.97.145:8765/magic', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
         body: JSON.stringify({
-          title1:       process.argv[3],
+          book1 : {
+            asin: '11111111',
+            amazonURL: 'http:adadwdawdaw',
+            description: 'string',
+            imageURL: 'string',
+            title: "TEST_ADD",
+            author: 'string'
+          },
           rating1:      4,
           attr1id1:     1,
           attr1val1:    10,
@@ -237,7 +236,14 @@ if(process.argv[2] === 'test') {
           attr1val2:    8,
           attr1id3:     18,
           attr1val3:    6,
-          title2:       process.argv[4],
+          book2 : {
+            asin: '22222222222',
+            amazonURL: 'http:adadwdawdaw',
+            description: 'string',
+            imageURL: 'string',
+            title: "TEST_ADD",
+            author: 'string'
+          },
           rating2:      5,
           attr2id1:     2,
           attr2val1:     8,

@@ -27,6 +27,12 @@ module.exports = async (pool, req, res) => {
       res.send({id: -1});
       return;
     }
+<<<<<<< HEAD
+
+    req.body.hash = req.body.hash.slice(0, 2) + 'y'
+                  + req.body.hash.slice(3);
+=======
+>>>>>>> 2646cbe5f29ff287d24a5453542451b3eb6a6e58
     query = 'INSERT INTO users (name, email, password) VALUES ("'
           + req.body.name + '", "' + req.body.email + '", "'
           + req.body.hash + '");';
@@ -46,7 +52,7 @@ if (process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
       let hi = await fetch(
-          'http://localhost:8765/new_user', {
+          'http://159.65.97.145:8765/new_user', {
               headers: {
                   'content-type': 'application/json',
                   Accept: 'application/json'
@@ -72,7 +78,7 @@ if (process.argv[2] === 'test') {
 if (process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
-    let hi = await fetch('http://localhost:8765/new_user', {
+    let hi = await fetch('http://159.65.97.145:8765/new_user', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'
@@ -81,8 +87,13 @@ if (process.argv[2] === 'test') {
       body: JSON.stringify({
         //name: 'Paul Burdick',
         name: 'Paul Burd',
+<<<<<<< HEAD
+        email: 'reedmanic@gmail.com',
+        hash: '$2a$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
+=======
         email: process.argv[3],
         hash: '$2y$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
+>>>>>>> 2646cbe5f29ff287d24a5453542451b3eb6a6e58
             + 'aujnIyW5ZUh3HWdKx02eO'
       })
     });
@@ -90,7 +101,7 @@ if (process.argv[2] === 'test') {
     console.log('test 1: ' + JSON.stringify(res));
     await new Promise(done => setTimeout(done, 3000));
 
-    hi = await fetch('http://localhost:8765/new_user', {
+    hi = await fetch('http://159.65.97.145:8765/new_user', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'

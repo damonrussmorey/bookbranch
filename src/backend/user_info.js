@@ -44,7 +44,7 @@ module.exports = async (pool, req, res) => {
 if(process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
-    let hi = await fetch('http://localhost:8765/user_info', {
+    let hi = await fetch('http://159.65.97.145:8765/user_info', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},
@@ -56,7 +56,7 @@ if(process.argv[2] === 'test') {
 
     await new Promise(done => setTimeout(done, 3000));
     
-    hi = await fetch('http://localhost:8765/user_info', {
+    hi = await fetch('http://159.65.97.145:8765/user_info', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},

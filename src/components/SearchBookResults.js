@@ -3,6 +3,7 @@ import { ActivityIndicator, View, Text, TouchableOpacity, Image, Linking} from '
 import { Actions } from 'react-native-router-flux';
 import CardLarge from './CardLarge';
 import HeaderBookResults from './HeaderBookResults';
+import AsyncStorage from '@react-native-community/async-storage';
 //import axios from 'axios'; // used for http requests
 
 class SearchBookResults extends Component {
@@ -15,44 +16,48 @@ class SearchBookResults extends Component {
   }
 
   componentDidMount() {
-    return fetch('http://localhost:8765/magic', {
-        headers: {
-            'content-type': 'application/json',
-            Accept: 'application/json'
-        },
-        method: 'POST',
-        body: JSON.stringify({
-            title1:       this.props.BookOne,
-            rating1:      this.props.Book1RankOverall,
-            attr1id1:     this.props.Book1Attribute1,
-            attr1val1:    this.props.Book1Rank1,
-            attr1id2:     this.props.Book1Attribute2,
-            attr1val2:    this.props.Book1Rank2,
-            attr1id3:     this.props.Book1Attribute3,
-            attr1val3:    this.props.Book1Rank3,
-            title2:       this.props.BookTwo,
-            rating2:      this.props.Book2RankOverall,
-            attr2id1:     this.props.book2attributes1,
-            attr2val1:    this.props.Book2Rank1,
-            attr2id2:     this.props.book2attributes2,
-            attr2val2:    this.props.Book2Rank2,
-            attr2id3:     this.props.book2attributes3,
-            attr2val3:    this.props.Book2Rank3,
-            user_id:      1
-        })
-    })
-    .then(res => res.json())
-    .then(res => {
+    (async () => {
+        let book1 = await AsyncStorage.getItem('bookObject1');
+        book1 = JSON.parse(book1);
+        let book2 = await AsyncStorage.getItem('bookObject2');
+        book2 = JSON.parse(book2);
+        let user = await AsyncStorage.getItem('userObject');
+        
+        let res = await fetch('http://159.65.97.145:8765/magic', {
+            headers: {
+                'content-type': 'application/json',
+                Accept: 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                book1:        book1,
+                rating1:      this.props.Book1RankOverall,
+                attr1id1:     this.props.Book1Attribute1,
+                attr1val1:    this.props.Book1Rank1,
+                attr1id2:     this.props.Book1Attribute2,
+                attr1val2:    this.props.Book1Rank2,
+                attr1id3:     this.props.Book1Attribute3,
+                attr1val3:    this.props.Book1Rank3,
+                book2:        book2,
+                rating2:      this.props.Book2RankOverall,
+                attr2id1:     this.props.book2attributes1,
+                attr2val1:    this.props.Book2Rank1,
+                attr2id2:     this.props.book2attributes2,
+                attr2val2:    this.props.Book2Rank2,
+                attr2id3:     this.props.book2attributes3,
+                attr2val3:    this.props.Book2Rank3,
+                user_id:      user.id
+            })
+        });
+        res = await res.json();
+        
         this.setState({
             isLoading: false,
             Results: res,
             i: 0
-        }, function() {
-
         });
-    })
-    .catch(err => alert(err));
-    
+    })();
+  
   }
 
   render() {

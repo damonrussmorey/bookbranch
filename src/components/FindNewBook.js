@@ -178,26 +178,24 @@ export default class FindNewBook extends React.Component {
       editable2:true
     })
       //fetch
-      fetch('http://localhost:8765/find_book', {
+      let res = await fetch('http://159.65.97.145:8765/keyword', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({name: this.state.text1})
-      })
-      .then((res) => res.json())
-      .then((res) => {
-        if(res.response != -1){
-          console.log("response is not -1");
-          this.setState({
-              showList: true,
-              data: res.response,
-              // isLoading: false
-          })
-        }
-      })
-      .catch((err) => alert(err));
-
+        body: JSON.stringify({keyword_search: this.state.text1})
+      });
+      res = await res.json();
+      
+      if(res.response != -1){
+        console.log("response is not -1");
+        this.setState({
+            showList: true,
+            data: res,
+            // isLoading: false
+        })
+      }
+      
       
   }
 
@@ -207,12 +205,12 @@ export default class FindNewBook extends React.Component {
       editable:true
     })
       //fetch
-      fetch('http://localhost:8765/find_book', {
+      fetch('http://159.65.97.145:8765/keyword', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({name: this.state.text1})
+        body: JSON.stringify({keyword_search: this.state.text1})
       })
       .then((res) => res.json())
       .then((res) => {

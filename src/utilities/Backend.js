@@ -3,13 +3,13 @@ Fetch wrapper for front end
 */
 export class Backend {
   async function get(route) {
-    let res = await fetch('http://localhost:8765/' + route);
+    let res = await fetch('http://159.65.97.145:8765/' + route);
     res = await res.JSON();
     return res;
   }
 
   async function post(route, body) {
-    let res = await fetch('http://localhost:8765/' + route, {
+    let res = await fetch('http://159.65.97.145:8765/' + route, {
       headers: {
           'content-type': 'application/json',
           Accept: 'application/json'
