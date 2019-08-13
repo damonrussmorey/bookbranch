@@ -51,6 +51,10 @@ app.post('/insert_facebook', (req,res) =>{
   require('./insert_facebook')(pool,req,res);
 });
 
+app.post('/find_book', (req, res) => {
+  require('./find_book')(req, res);
+});
+
 app.post('/magic', (req, res) => {
   require('./magic')(pool, req, res);
 });
@@ -74,10 +78,6 @@ app.post('/keyword', (req, res) => {
 
 app.post('/insert_recommandation_review', (req, res) => {
   require('./insert_recommandation_review')(pool, req, res);
-});
-
-app.post('/find_book', (req, res) => {
-  require('./find_book')(req, res);
 });
 
 app.post('/insert_new_book',(req,res) =>{
