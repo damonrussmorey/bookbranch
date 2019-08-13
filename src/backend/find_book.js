@@ -29,8 +29,8 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (name) => {
-  console.log('\nSearching for book on AWS: ' + name);
+module.exports = async (req, res) => {
+  console.log('\nSearching for book on AWS: ' + req.body.name);
 
   let book, response, result, description;
 
@@ -46,7 +46,7 @@ module.exports = async (name) => {
     response = await searcher.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
-        'Keywords': name,
+        'Keywords': req.body.name,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
       });
   } catch (e) {
@@ -56,37 +56,43 @@ module.exports = async (name) => {
     return null;
   }
 
+  console.log(response)
   //Check all attributes first, if not exist set result to NULL
   if (!response || !response.result || !response.result.ItemSearchResponse || !response.result.ItemSearchResponse.Items || !response.result.ItemSearchResponse.Items.Item) {
-    result = null;
+    res.send({response:-1});
+    return;
   } else
     result = response.result.ItemSearchResponse.Items.Item
   //console.log(result.length);
 
 
-  if (result) {
-    if (!Array.isArray(result))
-      result = [result];
+  if (!Array.isArray(result))
+    result = [result];
 
-    //Build the response
-    //need to verify each field exists
-    //response = []
-    let i = 0;
-    while (i < result.length
-      && result[i].ItemAttributes.ProductGroup !== 'Book') {
-      ++i;
-    }
-    if (!result[0] && !result[0].ItemAttributes)
-      return null;
+  //Build the response
+  //need to verify each field exists
+  response = []
 
-    //No books in the response, return null
-    if (i == result.length)
-      return null;
 
-    r = result[i];
-    //for(r of result) {
-    /*if(r.ItemAttributes.ProductGroup !== 'Book')
-      continue;*/
+  /*
+  let i = 0;
+  while (i < result.length
+    && result[i].ItemAttributes.ProductGroup !== 'Book') {
+    ++i;
+  }
+  if (!result[0] && !result[0].ItemAttributes)
+    return null;
+  
+  //No books in the response, return null
+  if (i == result.length)
+    return null;
+
+  r = result[i];
+  */
+
+  for (r of result) {
+    if (r.ItemAttributes.ProductGroup !== 'Book')
+      continue;
     book = {};
 
     //Just take the first description, if there are any
@@ -117,23 +123,25 @@ module.exports = async (name) => {
       book['author'] = r.ItemAttributes.Author;
     else
       book['author'] = '';
-  }else//else not a result.
-    return null;
 
-  /*if(r.ItemAttributes.PublicationDate)
-        book['pubDate'] = r.ItemAttributes.PublicationDate;
-  else  book['pubDate'] = '';
-  */
-  /*response.push(book);
+    /*if(r.ItemAttributes.PublicationDate)
+          book['pubDate'] = r.ItemAttributes.PublicationDate;
+    else  book['pubDate'] = '';
+    */
+    response.push(book);
+  }
+
+  if (response.length == 0) {
+    res.send({response:-1});
+    return;
+  }
+  console.log(response)
+  res.send(response);
+
 }
-console.log(response)
-res.send(response);
-*/
 
-  return book;
-}
 
-/*
+
 //test
 if(process.argv[2] == 'test') {
   const fetch = require('node-fetch');
@@ -143,10 +151,11 @@ if(process.argv[2] == 'test') {
         'content-type': 'application/json',
         Accept: 'application/json'},
       method : 'POST',
-      body: JSON.stringify({search: 'the hunger game'})
+      body: JSON.stringify({name: 'xixi'})
     });
     let res = await hi.json();
     console.log('test: ' + JSON.stringify(res) + '\n');
   })();
 }
-*/
+
+
