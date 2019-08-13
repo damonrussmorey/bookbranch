@@ -29,104 +29,115 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (req,res) => {
-  console.log(res.req.body)
-  console.log('\nSearching for book on AWS: ' + res.req.body.name);
-
+module.exports = async (req, res) => {
+  console.log('\nSearching for book on AWS: ' + req.body.name);
+ 
   let book, response, result, description;
-
-  const {OperationHelper} = require('apac');
+ 
+  const { OperationHelper } = require('apac');
   const searcher = new OperationHelper({
-    awsId:     'AKIAIANIRJALOZBL4MZQ',
+    awsId: 'AKIAIANIRJALOZBL4MZQ',
     awsSecret: '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',
-    assocId:   'bookbch-20',
+    assocId: 'bookbch-20',
     maxRequestsPerSecond: 1
   });
-
+ 
   try {
     response = await searcher.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
-        'Keywords': res.req.body.name,
+        'Keywords': req.body.name,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
-    });
-  } catch(e) {
+      });
+  } catch (e) {
     console.log(e);
-
+ 
     //didn't get a result from Amazon, so return null
     return null;
   }
-
-  result = response.result.ItemSearchResponse.Items.Item
-  console.log(result.length);
-  if(!Array.isArray(result))
+  console.log(response)
+  //Check all attributes first, if not exist set result to NULL
+  if (!response || !response.result || !response.result.ItemSearchResponse || !response.result.ItemSearchResponse.Items || !response.result.ItemSearchResponse.Items.Item) {
+    res.send({response:-1});
+    return;
+  } else
+    result = response.result.ItemSearchResponse.Items.Item
+  //console.log(result.length);
+ 
+ 
+  if (!Array.isArray(result))
     result = [result];
-
+ 
   //Build the response
   //need to verify each field exists
-  //response = []
-  //let i = 0;
-  //while(i < result.length
-  //      && result[i].ItemAttributes.ProductGroup !== 'Book') {
-  //  ++i;
-  //}
-
-  //No books in the response, return null
-  if(0 == result.length)
-    return null;
-
-  //r = result[i];
   response = []
-  for(r of result) {
-    if(r.ItemAttributes.ProductGroup !== 'Book')
+ 
+ 
+  /*
+  let i = 0;
+  while (i < result.length
+    && result[i].ItemAttributes.ProductGroup !== 'Book') {
+    ++i;
+  }
+  if (!result[0] && !result[0].ItemAttributes)
+    return null;
+ 
+  //No books in the response, return null
+  if (i == result.length)
+    return null;
+ 
+  r = result[i];
+  */
+ 
+  for (r of result) {
+    if (r.ItemAttributes.ProductGroup !== 'Book')
       continue;
     book = {};
-
+ 
     //Just take the first description, if there are any
-    if(r.EditorialReviews && r.EditorialReviews.EditorialReview){
+    if (r.EditorialReviews && r.EditorialReviews.EditorialReview) {
       description = r.EditorialReviews.EditorialReview;
-      if(Array.isArray(description))
+      if (Array.isArray(description))
         description = description[0];
       book['description'] = description.Content;
     } else {
       book['description'] = '';
     }
-
+ 
     //these are guaranteed
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
-
-    if(r.LargeImage && r.LargeImage.URL)
+ 
+    if (r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
       book['imageURL'] = '';
-
-    if(r.ItemAttributes.Title)
+ 
+    if (r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
       book['title'] = '';
-
-    if(r.ItemAttributes.Author)
+ 
+    if (r.ItemAttributes.Author)
       book['author'] = r.ItemAttributes.Author;
     else
       book['author'] = '';
-
-    response.push(book)
-  }
-
+ 
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
     else  book['pubDate'] = '';
     */
-    /*response.push(book);
+    response.push(book);
+  }
+ 
+  if (response.length == 0) {
+    res.send({response:-1});
+    return;
   }
   console.log(response)
   res.send(response);
-  */
- console.log(response.length)
-  res.send(response)
-  //return book;
-}
+ 
+ }
 
 
 //test
