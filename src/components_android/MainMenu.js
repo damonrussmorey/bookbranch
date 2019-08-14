@@ -3,7 +3,7 @@
 import React, {Component}from 'react';
 import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback, Button} from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Header from './header';
+import HeaderLogout from './headerLogout.js';
 import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -28,11 +28,21 @@ class MainMenu extends Component {
         });
     }
 
+    async resetKey() {
+        try {
+          await AsyncStorage.removeItem('userObject');
+          const value = await AsyncStorage.getItem('userObject');
+          Actions.LogIn();
+        } catch (error) {
+        }
+      }
+
     render(){
     return (
         <View>
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
-            <Header headerText={'Bookbranch'} />
+            <HeaderLogout headerText={'Bookbranch'} />
+            {/* <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button> */}
             <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress={() => Actions.FindNewBook()}>

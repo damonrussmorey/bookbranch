@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
-import App from '../../index.js';
+import HeaderLogout from '../components_android/headerLogout';
 
 
 
@@ -43,8 +43,8 @@ class MainMenu extends Component {
     return (
         <View>
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
-            <Header headerText={'Bookbranch'} />
-            <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button>
+            <HeaderLogout headerText={'Bookbranch'} />
+            {/* <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button> */}
             <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                     <TouchableOpacity onPress={() => Actions.FindNewBook()}>

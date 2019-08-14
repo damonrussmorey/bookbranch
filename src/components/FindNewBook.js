@@ -193,7 +193,7 @@ export default class FindNewBook extends React.Component {
         this.setState({
             showList: true,
             data: res,
-            // isLoading: false
+            isLoading: false
         })
       }
       
@@ -222,7 +222,7 @@ export default class FindNewBook extends React.Component {
         this.setState({
             showList: true,
             data: res,
-            // isLoading: false
+            isLoading: false
         })
       }
       
