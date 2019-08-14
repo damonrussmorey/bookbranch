@@ -3,6 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 export default class FindNewBook extends React.Component {
@@ -249,16 +250,27 @@ export default class FindNewBook extends React.Component {
                 selectTextOnFocus={(this.state.editable2)}
             />
 
-        {(this.state.showList1) && <FlatList
+        {/* Book List for Book #1 */}
+        {(this.state.showList1) 
+        &&
+        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
+
           data={this.state.data}
           renderItem={({item}) => 
           
-          <View>
+          <View style={{
+              flex:1, 
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              
+          }}>
           <Image
           style={{width: 50, height: 50}}
           source={{uri: item.imageURL}}
         />
             <Button
+            style={{width: 50, height: 100}}
                 title={item.title}
                 onPress={ () => this.finalChoiceSubmission1(item)  }
                 >
@@ -266,7 +278,10 @@ export default class FindNewBook extends React.Component {
           </View>
           }
         />}
+
+        {/* Book List for Book #2 */}
         {(this.state.showList2) && <FlatList
+            
           data={this.state.data}
           renderItem=
                 {({item}) => 
@@ -289,11 +304,7 @@ export default class FindNewBook extends React.Component {
                 onPress={ () => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2}) }
                 >
             </Button>}
-            {/* <View style = {styles.ButtonStyle1}>
-                    <TouchableNativeFeedback onPress={() => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2})}>
-                        <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableNativeFeedback>
-            </View> */}
+      
             {this.state.isLoading && <View style={{flex: 1, padding: 20}}>
             <ActivityIndicator/>
             </View>}
@@ -301,6 +312,8 @@ export default class FindNewBook extends React.Component {
     );
   }
 }
+
+
 
 const styles = {
 

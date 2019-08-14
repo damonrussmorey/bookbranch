@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 let bookArray = [ { description:
@@ -356,16 +356,27 @@ bookList1(userChoice) {
                 selectTextOnFocus={(this.state.editable2)}
             />
             
-        {(this.state.showList1) && <FlatList
+        {/* Book List for Book #1 */}
+        {(this.state.showList1) 
+        &&
+        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'#000000'}}
+
           data={this.state.data}
           renderItem={({item}) => 
           
-          <View>
+          <View style={{
+              flex:1, 
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              
+          }}>
           <Image
           style={{width: 50, height: 50}}
           source={{uri: item.imageURL}}
         />
             <Button
+            style={{width: 50, height: 100}}
                 title={item.title}
                 onPress={ () => this.finalChoiceSubmission1(item)  }
                 >
@@ -373,6 +384,8 @@ bookList1(userChoice) {
           </View>
           }
         />}
+
+        {/* Book List for Book #2 */}
         {(this.state.showList2) && <FlatList
           data={this.state.data}
           renderItem=
