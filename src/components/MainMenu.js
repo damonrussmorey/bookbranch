@@ -47,7 +47,7 @@ class MainMenu extends Component {
             {/* <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button> */}
             <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: 10}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
-                    <TouchableOpacity onPress={() => Actions.FindNewBook()}>
+                    <TouchableOpacity onPress={() => Actions.FindNewBook()} >
                         <Text style = {styles.TextStyle1}>Find Your Next</Text>
                         <Text style = {styles.TextStyle2}>   Great Read!</Text>
                     </TouchableOpacity>

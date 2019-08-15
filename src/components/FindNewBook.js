@@ -359,8 +359,7 @@ bookList1(userChoice) {
         {/* Book List for Book #1 */}
         {(this.state.showList1) 
         &&
-        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'#000000'}}
-
+        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
           data={this.state.data}
           renderItem={({item}) => 
           
@@ -386,12 +385,17 @@ bookList1(userChoice) {
         />}
 
         {/* Book List for Book #2 */}
-        {(this.state.showList2) && <FlatList
+        {(this.state.showList2) && <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
           data={this.state.data}
           renderItem=
                 {({item}) => 
                 
-                <View>
+                <View style={{
+                  flex:1, 
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}>
                 <Image
                 style={{width: 50, height: 50}}
                 source={{uri: item.imageURL}}
@@ -418,33 +422,30 @@ bookList1(userChoice) {
 }
 
 const styles = {
-
-    ButtonStyle1: {
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#000000',
-        backgroundColor: '#D3D3D3',
-        height: 30,
-        width: 140,
-        elevation: 1,
-        marginLeft: 190,
-       // marginRight: 5,
-        marginTop: 230,
-        position: 'absolute'       
-    },
-
-    flatListResults:{
-        borderRadius: 4,
-        borderWidth: 0.5,
-        borderColor: '#d6d7da',
-        backgroundColor: 'red',
-    },
-
-    TextStyle1: {
-        fontWeight: 'bold',
-        fontSize: 13,
-        marginTop: 5,
-        marginLeft: 50,
-        position: 'absolute'
-    }
+  ButtonStyle1: {
+      borderWidth: 1,
+      borderRadius: 5,
+      borderColor: '#000000',
+      backgroundColor: '#D3D3D3',
+      height: 30,
+      width: 140,
+      elevation: 1,
+      marginLeft: 190,
+     // marginRight: 5,
+      marginTop: 230,
+      position: 'absolute'       
+  },
+  flatListResults:{
+      borderRadius: 4,
+      borderWidth: 0.5,
+      borderColor: '#d6d7da',
+      backgroundColor: 'red',
+  },
+  TextStyle1: {
+      fontWeight: 'bold',
+      fontSize: 13,
+      marginTop: 5,
+      marginLeft: 50,
+      position: 'absolute'
+  }
 };

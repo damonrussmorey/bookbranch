@@ -3,7 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 
 
 export default class FindNewBook extends React.Component {
@@ -253,7 +253,7 @@ export default class FindNewBook extends React.Component {
         {/* Book List for Book #1 */}
         {(this.state.showList1) 
         &&
-        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
+        <FlatList 
 
           data={this.state.data}
           renderItem={({item}) => 

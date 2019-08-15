@@ -5,7 +5,6 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import HeaderLogout from './headerLogout.js';
 import AsyncStorage from '@react-native-community/async-storage';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -57,7 +56,6 @@ class MainMenu extends Component {
     );
   }
 };
-
 const styles = {
 
     ButtonStyle1: {
@@ -65,12 +63,12 @@ const styles = {
         borderRadius: 5,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: hp('10%'),
-        width: wp('30%'),
+        height: 50,
+        width: 140,
         elevation: 1,
-        marginLeft: wp('50%'),
-        marginRight: wp('50%'),
-        marginTop: hp('50%'),
+        marginLeft: 220,
+        marginRight: 5,
+        marginTop: 290,
         position: 'absolute'       
     },
 
