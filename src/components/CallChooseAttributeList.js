@@ -15,6 +15,8 @@ class CallChooseAttributeList extends Component {
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold'}}>
                             Choose this book's top 3 attributes:
+
+                            IS THIS OLD
                             </Text>
                     </View>
                 </View>

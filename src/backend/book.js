@@ -32,7 +32,7 @@ module.exports = async (pool, ids) => {
   try {
     connection = await pool.getConnection();
     query =
-      'SELECT cover_url AS imageURL, amazon_url AS amazonURL '
+      'SELECT cover_url AS imageURL, amazon_url AS amazonURL, url_title AS urlTitle'
       + 'FROM books WHERE books.id IN (';
     for(id of ids)
       query += id + ',';

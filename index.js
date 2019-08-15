@@ -19,8 +19,8 @@ import ChooseAttributesList2 from './src/components/ChooseAttributesList2';
 import CallAttributes2 from './src/components/CallAttributes2';
 import CallAttributes3 from './src/components/CallAttributes3';
 import ChooseAttributesList3 from './src/components/ChooseAttributesList3';
-import CallAttributesPage2 from './src/components/CallAttributesPage2';
 import Book2CallAttributes1 from './src/components/Book2CallAttributes1';
+import Book2CallAttributes2 from './src/components/Book2CallAttributes2';
 import Book2ChooseAttributesList from './src/components/Book2ChooseAttributesList';
 import Book2ChooseAttributesList2 from './src/components/Book2ChooseAttributesList2';
 import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
@@ -117,7 +117,7 @@ export default class App extends Component {
 
         <Scene
           key = "CallAttributesPage2"
-          component={CallAttributesPage2}
+          component={Book2CallAttributes1}
           title="Choose Three Attributes"
         />
 
@@ -141,7 +141,7 @@ export default class App extends Component {
 
         <Scene
           key = "Book2attList1"
-          component={Book2CallAttributes1}
+          component={Book2CallAttributes2}
           title="Choose the Attributes"
         />
 
