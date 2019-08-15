@@ -22,6 +22,7 @@ class SearchBookResults extends Component {
         let book2 = await AsyncStorage.getItem('bookObject2');
         book2 = JSON.parse(book2);
         let user = await AsyncStorage.getItem('userObject');
+        user = JSON.parse(user);
         
         let res = await fetch('http://159.65.97.145:8765/magic', {
             headers: {
