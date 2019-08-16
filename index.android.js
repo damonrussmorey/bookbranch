@@ -19,8 +19,8 @@ import ChooseAttributesList2 from './src/components_android/ChooseAttributesList
 import CallAttributes2 from './src/components_android/CallAttributes2';
 import CallAttributes3 from './src/components_android/CallAttributes3';
 import ChooseAttributesList3 from './src/components_android/ChooseAttributesList3';
-import CallAttributesPage2 from './src/components_android/CallAttributesPage2';
 import Book2CallAttributes1 from './src/components_android/Book2CallAttributes1';
+// import Book2CallAttributes3 from './src/components_android/Book2CallAttributes3';
 import Book2ChooseAttributesList from './src/components_android/Book2ChooseAttributesList';
 import Book2ChooseAttributesList2 from './src/components_android/Book2ChooseAttributesList2';
 import Book2CallAttributes3 from './src/components_android/Book2CallAttributes3';
@@ -117,7 +117,7 @@ class App extends Component {
 
         <Scene
           key = "CallAttributesPage2"
-          component={CallAttributesPage2}
+          component={Book2CallAttributes1}
           title="Choose Three Attributes"
         />
 
@@ -141,7 +141,7 @@ class App extends Component {
 
         <Scene
           key = "Book2attList1"
-          component={Book2CallAttributes1}
+          component={Book2CallAttributes3}
           title="Choose the Attributes"
         />
 
@@ -159,7 +159,7 @@ class App extends Component {
 
         <Scene 
           key="Book2attList3"
-          component={Book2CallAttributes3}
+          component={Book2CallAttributes4}
           title="Choose the Attributes"
         />
 

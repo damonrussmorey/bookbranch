@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
+
 let bookArray = [ { description:
   '<p>A blue crayon mistakenly labeled as "red" suffers an identity crisis in this picture book by the <em>New York Times</em>–bestselling creator of <em>My Heart Is Like a Zoo</em> and <em>It\'s an Orange Aardvark!</em> Funny, insightful, and colorful, <em>Red: A Crayon\'s Story</em>, by Michael Hall, is about being true to your inner self and following your own path despite obstacles that may come your way. <em>Red</em> will appeal to fans of Lois Ehlert, Eric Carle, and <em>The Day the Crayons Quit</em>, and makes a great gift for readers of any age!</p><p>Red has a bright red label, but he is, in fact, blue. His teacher tries to help him be red (let\'s draw strawberries!), his mother tries to help him be red by sending him out on a playdate with a yellow classmate (go draw a nice orange!), and the scissors try to help him be red by snipping his label so that he has room to breathe. But Red is miserable. He just can\'t be red, no matter how hard he tries! Finally, a brand-new friend offers a brand-new perspective, and Red discovers what readers have known all along. He\'s blue! This funny, heartwarming, colorful picture book about finding the courage to be true to your inner self can be read on multiple levels, and it offers something for everyone.</p>',
  asin: '0062252070',
