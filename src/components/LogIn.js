@@ -36,7 +36,7 @@ class LogIn extends Component {
     })();
   }
 
-  Authenticate = () => {
+  Authenticate = async () => {
     //check if fields are populated
     if(!this.state.email || !this.state.username || !this.state.password) {
       alert('Please fill out the form');
@@ -44,68 +44,58 @@ class LogIn extends Component {
     }
     let user = {
       email: this.state.email,
-      name: this.state.username,
+      username: this.state.username,
       hash: '',
       id: -1
     };
     let res, verified = false;
     // short circuit
-    AsyncStorage.setItem('userObject', JSON.stringify(user));
+    //AsyncStorage.setItem('userObject', JSON.stringify(user));
 
     //ask backend if email already in use
-    res = fetch('http://159.65.97.145:8765/user_info', {
+    res = await fetch('http://159.65.97.145:8765/user_info', {
+      headers: {
+        'content-type': 'application/json',
+        Accept: 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(user)
+    })
+    res = await res.json();
+
+    //if user email exists, verify that the password is correct
+    if(res.id != -1) {
+      //check the hash
+      verified = await bcrypt.compare(this.state.password, res.hash);
+      user.id = res.id
+
+    //otherwise add the new user
+    } else {
+      verified = true;
+      user.hash = await bcrypt.hash(this.state.password, 10);
+      res = await fetch('http://159.65.97.145:8765/new_user', {
         headers: {
-            'content-type': 'application/json',
-            Accept: 'application/json'
+          'content-type': 'application/json',
+          Accept: 'application/json'
         },
         method: 'POST',
         body: JSON.stringify(user)
-    })
-    .then(res => res.json())
-    .then(res => {
-      //if user email exists, verify that the password is correct
-      if(res.id != -1) {
-        //check the hash
-        verified = bcrypt.compareSync(this.state.password, res.hash);
-        user.id = res.id
-        //If all good, move on to other screens
-        if(verified) {
-          AsyncStorage.setItem('userObject', JSON.stringify(user));
-          Actions.Main();
-        } else {
-          alert('Invalid login, try again');
-        }
-
-
-      //otherwise add the new user
+      })
+      res = res.json();
+      if(res.id == -1) {
+        verified = false;
       } else {
-        verified = true;
-        user.hash = bcrypt.hashSync(this.state.password, 10);
-        res = fetch('http://159.65.97.145:8765/new_user', {
-          headers: {
-              'content-type': 'application/json',
-              Accept: 'application/json'
-          },
-          method: 'POST',
-          body: JSON.stringify(user)
-        })
-        .then(res => res.json())
-        .then(res => {
-          if(res.id == -1) {
-            verified = false;
-          }
-          user.id = res.id;
-          //If all good, move on to other screens
-          if(verified) {
-            AsyncStorage.setItem('userObject', JSON.stringify(user));
-            Actions.Main({username: user.name});
-          } else {
-            alert('Invalid login, try again');
-          }
-
-        });
+        user.id = res.id;
       }
-    });
+    }
+
+    //If all good, move on to other screens
+    if(verified) {
+      AsyncStorage.setItem('userObject', JSON.stringify(user));
+      Actions.Main();
+    } else {
+      alert('Invalid login, try again');
+    }
   }
 
   render() {
@@ -154,7 +144,6 @@ class LogIn extends Component {
                 <ActivityIndicator/>
             </View>
         );
-    render
   }
 }
 
