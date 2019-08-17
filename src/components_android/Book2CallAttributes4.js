@@ -6,8 +6,30 @@ import Card from './Card';
 import CardSection from './CardSection';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import FlipCard from 'react-native-flip-card'
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Book2CallAttributes4 extends Component {
+   componentDidMount(){
+      this.fetchData();
+  }
+
+  constructor(props) {
+      super(props);
+      this.state = { 
+          title: '',
+          description:'',
+      };
+    }
+
+  fetchData = async () => {
+      let bookObject = await AsyncStorage.getItem('bookObject1');
+      let data = JSON.parse(bookObject);
+      this.setState({
+          title: data.title,
+          description:data.description,
+      });
+  }
     state = {  
         choosenIndex: 0,
         language1: "One",
@@ -337,20 +359,47 @@ class Book2CallAttributes4 extends Component {
             
             <View>
                 <Card>
-                    <CardSection>{ this.renderElement() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes1}</Text>
+                        </View>
+                     </FlipCard>
 
-                    <CardSection>{ this.renderElementTwo() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                    <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElementTwo() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes2}</Text>
+                        </View>
+                     </FlipCard>
 
-                    <CardSection>{this.renderElement3()}
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                    <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement3() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.attribute3}</Text>
+                        </View>
+                     </FlipCard>
                 </Card>
             </View>
         </View>
