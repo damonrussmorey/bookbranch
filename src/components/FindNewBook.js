@@ -360,52 +360,44 @@ bookList1(userChoice) {
         {/* Book List for Book #1 */}
         {(this.state.showList1) 
         &&
-        <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
+        <FlatList 
+
           data={this.state.data}
           renderItem={({item}) => 
           
-          <View style={{
-              flex:1, 
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              
-          }}>
-          <Image
-          style={{width: 50, height: 50}}
-          source={{uri: item.imageURL}}
-        />
-            <Button
-            style={{width: 50, height: 100}}
-                title={item.title}
-                onPress={ () => this.finalChoiceSubmission1(item)  }
-                >
-            </Button>
+          <View>
+          <TouchableOpacity
+                      title={item.title}
+                      onPress={ () => this.finalChoiceSubmission1(item)  }
+                      >
+                        <Text>{item.title}</Text>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={{uri: item.imageURL}}
+                        />
+                  </TouchableOpacity>
           </View>
           }
         />}
 
         {/* Book List for Book #2 */}
-        {(this.state.showList2) && <FlatList style={{marginBottom: hp('70%'), borderBottomColor:'black'}}
+        {(this.state.showList2) && <FlatList
+            
           data={this.state.data}
           renderItem=
                 {({item}) => 
                 
-                <View style={{
-                  flex:1, 
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}>
-                <Image
-                style={{width: 50, height: 50}}
-                source={{uri: item.imageURL}}
-              />
-                  <Button
+                <View>
+                <TouchableOpacity
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
-                  </Button>
+                        <Text>{item.title}</Text>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={{uri: item.imageURL}}
+                        />
+                  </TouchableOpacity>
                 </View>
                 }  
         />}

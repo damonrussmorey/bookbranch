@@ -258,13 +258,7 @@ export default class FindNewBook extends React.Component {
           data={this.state.data}
           renderItem={({item}) => 
           
-          <View style={{
-              flex:1, 
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              
-          }}>
+          <View>
           <TouchableOpacity
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission1(item)  }
