@@ -12,8 +12,6 @@ class SearchBookResults extends Component {
     this.state = { 
         text1: '',
         isLoading: true,
-        leftArrow: false,
-        rightArrow:true,
     }
   }
 
@@ -60,6 +58,41 @@ class SearchBookResults extends Component {
             i: 0
         });
     })();
+  }
+
+  onSwipeUp(gestureState) {
+    this.setState({myText: 'You swiped up!'});
+  }
+
+  onSwipeDown(gestureState) {
+    this.setState({myText: 'You swiped down!'});
+  }
+
+  onSwipeLeft(gestureState) {
+    this.setState({myText: 'You swiped left!'});
+  }
+
+  onSwipeRight(gestureState) {
+    this.setState({myText: 'You swiped right!'});
+  }
+
+  onSwipe(gestureName, gestureState) {
+    const {SWIPE_UP, SWIPE_DOWN, SWIPE_LEFT, SWIPE_RIGHT} = swipeDirections;
+    this.setState({gestureName: gestureName});
+    switch (gestureName) {
+      case SWIPE_UP:
+        this.setState(   );
+        break;
+      case SWIPE_DOWN:
+        this.setState(   );
+        break;
+      case SWIPE_LEFT:
+        this.setState( (prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}} );
+        break;
+      case SWIPE_RIGHT:
+        this.setState( (prev) => {return {i: Math.max(0, (prev.i - 1))}}   );
+        break;
+    }
   }
 
   leftArrow(i){

@@ -15,8 +15,6 @@ class SearchBookResults extends Component {
         myText: 'I\'m ready to get swiped!',
       gestureName: 'none',
       backgroundColor: '#fff',
-      leftArrow:false,
-      rightArrow:true,
     }
   }
 
