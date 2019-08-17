@@ -265,16 +265,16 @@ export default class FindNewBook extends React.Component {
               alignItems: 'center',
               
           }}>
-          <Image
-          style={{width: 50, height: 50}}
-          source={{uri: item.imageURL}}
-        />
-            <Button
-            style={{width: 50, height: 100}}
-                title={item.title}
-                onPress={ () => this.finalChoiceSubmission1(item)  }
-                >
-            </Button>
+          <TouchableOpacity
+                      title={item.title}
+                      onPress={ () => this.finalChoiceSubmission1(item)  }
+                      >
+                        <Text>{item.title}</Text>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={{uri: item.imageURL}}
+                        />
+                  </TouchableOpacity>
           </View>
           }
         />}
@@ -287,15 +287,16 @@ export default class FindNewBook extends React.Component {
                 {({item}) => 
                 
                 <View>
-                <Image
-                style={{width: 50, height: 50}}
-                source={{uri: item.imageURL}}
-              />
-                  <Button
+                <TouchableOpacity
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
-                  </Button>
+                        <Text>{item.title}</Text>
+                        <Image
+                          style={{width: 50, height: 50}}
+                          source={{uri: item.imageURL}}
+                        />
+                  </TouchableOpacity>
                 </View>
                 }  
         />}
