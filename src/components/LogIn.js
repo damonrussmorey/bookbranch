@@ -44,19 +44,17 @@ class LogIn extends Component {
     }
     let user = {
       email: this.state.email,
-      name: this.state.username,
+      username: this.state.username,
       hash: '',
       id: -1
     };
     let res, verified = false;
-    // short circuit
-    AsyncStorage.setItem('userObject', JSON.stringify(user));
 
     //ask backend if email already in use
     res = fetch('http://159.65.97.145:8765/user_info', {
         headers: {
-            'content-type': 'application/json',
-            Accept: 'application/json'
+          'content-type': 'application/json',
+          Accept: 'application/json'
         },
         method: 'POST',
         body: JSON.stringify(user)

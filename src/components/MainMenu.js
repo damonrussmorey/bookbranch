@@ -27,7 +27,7 @@ class MainMenu extends Component {
         let userObject = await AsyncStorage.getItem('userObject');
         let data = JSON.parse(userObject);
         this.setState({
-            username: data.name
+            username: data.username
         });
     }
 
