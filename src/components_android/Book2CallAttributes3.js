@@ -216,7 +216,7 @@ class Book2CallAttributes3 extends Component {
                         </View>
                         {/* Back Side */}
                         <View style={styles.back}>
-                        <Text style={styles.TopThreeStyle} >{this.props.attribute1}</Text>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes1}</Text>
                         </View>
                      </FlipCard>
 

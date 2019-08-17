@@ -4,14 +4,16 @@ import { Actions } from 'react-native-router-flux';
 import CardLarge from './CardLarge';
 import HeaderBookResults from './HeaderBookResults';
 import AsyncStorage from '@react-native-community/async-storage';
-//import axios from 'axios'; // used for http requests
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 class SearchBookResults extends Component {
   constructor(props) {
     super(props);
     this.state = { 
         text1: '',
-        isLoading: true
+        isLoading: true,
+        leftArrow: false,
+        rightArrow:true,
     }
   }
 
@@ -60,6 +62,22 @@ class SearchBookResults extends Component {
     })();
   }
 
+  leftArrow(i){
+    console.log("i:" + i);
+    if(i == 0){
+      return false;
+    } else
+      return true
+  }
+
+  rightArrow(i){
+    console.log("right i:" + i);
+    if(i > 8){
+      return false;
+    } else
+      return true
+  }
+
   render() {
     if(this.state.isLoading) {
         return(
@@ -72,29 +90,37 @@ class SearchBookResults extends Component {
         <View>
             <HeaderBookResults headerText={'Bookbranch'} />
             <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}> {'Top ' + this.state.Results.length + ' Results' }</Text>   
-            <CardLarge>
-            <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch/books/' + this.state.Results[this.state.i].urlTitle)}>
-                    <Image 
-                    style={{width: '100%', height: '100%'}}
-                    source = {{uri: this.state.Results[this.state.i].imageURL}}>
-                    </Image>
-                </TouchableOpacity>
-            </CardLarge>
+            <GestureRecognizer
+                onSwipe={(direction, state) => this.onSwipe(direction, state)}
+                onSwipeUp={(state) => this.onSwipeUp(state)}
+                onSwipeDown={(state) => this.onSwipeDown(state)}
+                onSwipeLeft={(state) => this.onSwipeLeft(state)}
+                onSwipeRight={(state) => this.onSwipeRight(state)}
+                 >
+                <CardLarge>
+                    <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch/books/' + this.state.Results[this.state.i].urlTitle)}>
+                        <Image 
+                        style={{width: '100%', height: '100%'}}
+                        source = {{uri: this.state.Results[this.state.i].imageURL}}>
+                        </Image>
+                    </TouchableOpacity>
+                </CardLarge>
+            </GestureRecognizer>
 
-            <View style = {{marginTop: 345, marginLeft: -10, position: 'absolute'}}>
+            <View style = {{marginTop: 380, marginLeft: 0.1, position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {"<"} </Text>
+                    {this.leftArrow(this.state.i) && <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>}
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 260, marginLeft: 330, position: 'absolute'}}>
-                <TouchableOpacity onPress = {() => {
+            <View style = {{marginTop: 380, marginLeft: 320, position: 'absolute'}}>
+             <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 70,}}> {">"} </Text>
-                </TouchableOpacity>
+                    {this.rightArrow(this.state.i) && <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>}
+             </TouchableOpacity>
             </View>
 
             <View style = {styles.ButtonStyle1}>

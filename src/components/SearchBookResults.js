@@ -6,7 +6,6 @@ import HeaderBookResults from './HeaderBookResults';
 import AsyncStorage from '@react-native-community/async-storage';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
-
 class SearchBookResults extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,9 @@ class SearchBookResults extends Component {
         isLoading: true,
         myText: 'I\'m ready to get swiped!',
       gestureName: 'none',
-      backgroundColor: '#fff'
+      backgroundColor: '#fff',
+      leftArrow:false,
+      rightArrow:true,
     }
   }
 
@@ -100,6 +101,22 @@ class SearchBookResults extends Component {
     }
   }
 
+  leftArrow(i){
+    console.log("i:" + i);
+    if(i == 0){
+      return false;
+    } else
+      return true
+  }
+
+  rightArrow(i){
+    console.log("right i:" + i);
+    if(i > 8){
+      return false;
+    } else
+      return true
+  }
+
   render() {
     const config = {
         velocityThreshold: 0.1,
@@ -116,7 +133,7 @@ class SearchBookResults extends Component {
     return (
         <View>
             <HeaderBookResults headerText={'Bookbranch'} />
-            <Text>onSwipe callback received gesture: {this.state.gestureName}</Text>
+            {/* <Text>onSwipe callback received gesture: {this.state.gestureName}</Text> */}
             <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}> {'Top ' + this.state.Results.length + ' Results' }</Text>   
             <GestureRecognizer
                 onSwipe={(direction, state) => this.onSwipe(direction, state)}
@@ -139,7 +156,7 @@ class SearchBookResults extends Component {
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>
+                    {this.leftArrow(this.state.i) && <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {"<"} </Text>}
                 </TouchableOpacity>
             </View>
 
@@ -147,7 +164,7 @@ class SearchBookResults extends Component {
              <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
-                    <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>
+                    {this.rightArrow(this.state.i) && <Text style = {{fontWeight: 'bold', fontSize: 60,}}> {">"} </Text>}
              </TouchableOpacity>
             </View>
 
