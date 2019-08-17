@@ -7,8 +7,32 @@ import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import FlipCard from 'react-native-flip-card'
+import AsyncStorage from '@react-native-community/async-storage';
 
 class CallAttributes1 extends Component {
+
+   componentDidMount(){
+      this.fetchData();
+  }
+  
+  constructor(props) {
+      super(props);
+      this.state = { 
+          title: '',
+          description:'',
+      };
+    }
+
+  fetchData = async () => {
+      let bookObject = await AsyncStorage.getItem('bookObject1');
+      let data = JSON.parse(bookObject);
+      this.setState({
+          title: data.title,
+          description:data.description,
+      });
+  }
+
     renderElement(){
         if(this.props.text == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -103,10 +127,19 @@ class CallAttributes1 extends Component {
                 <View>
             <View>
                 <Card>
-                    <CardSection>{ this.renderElement() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                     <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.text}</Text>
+                        </View>
+                     </FlipCard>
 
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList2({textOne: this.props.textOne, textTwo: this.props.textTwo, text: this.props.text})}>
