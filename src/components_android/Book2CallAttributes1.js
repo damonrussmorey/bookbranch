@@ -96,7 +96,7 @@ class Book2CallAttributes1 extends Component {
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Choose this book's top 3 attributes
+                            Select the next most prevalent attribute
                             </Text>
                     </View>
                 </View>

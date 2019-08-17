@@ -19,7 +19,7 @@ class CallAttributesPage2 extends Component {
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Choose this book's top 3 attributes
+                            Select the most prevalent attribute
                             </Text>
                     </View>
                 </View>
