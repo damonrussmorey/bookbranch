@@ -73,9 +73,12 @@ class SearchBookResults extends Component {
             <HeaderBookResults headerText={'Bookbranch'} />
             <Text style = {{marginTop: 15,fontSize: 25 ,color: 'black', fontWeight: 'bold', alignSelf: 'center'}}> {'Top ' + this.state.Results.length + ' Results' }</Text>   
             <CardLarge>
-                <Image 
-                 style={{width: '100%', height: '100%'}}
-                source = {{uri: this.state.Results[this.state.i].imageURL}}></Image>
+            <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch/books/' + this.state.Results[this.state.i].urlTitle)}>
+                    <Image 
+                    style={{width: '100%', height: '100%'}}
+                    source = {{uri: this.state.Results[this.state.i].imageURL}}>
+                    </Image>
+                </TouchableOpacity>
             </CardLarge>
 
             <View style = {{marginTop: 345, marginLeft: -10, position: 'absolute'}}>
