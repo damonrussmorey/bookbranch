@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import HeaderLogout from './headerLogout.js';
 import AsyncStorage from '@react-native-community/async-storage';
-
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 class MainMenu extends Component {
@@ -44,11 +44,11 @@ class MainMenu extends Component {
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
             <HeaderLogout headerText={'Bookbranch'} />
             {/* <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button> */}
-            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'black', marginTop: "10%"}}>Hi {this.state.username}!</Text>
+            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'white', marginTop: "10%"}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                 <TouchableOpacity onPress={() => Actions.FindNewBook()} >
-                        <Text style = {styles.TextStyle1}>Find Your Next</Text>
-                        <Text style = {styles.TextStyle2}>   Great Read!</Text>
+                        <Text adjustsFontSizeToFit style = {styles.TextStyle1}>Find Your Next {"\n"} Great Read!</Text>
+                        {/* <Text style = {styles.TextStyle2}>   Great Read!</Text> */}
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -63,8 +63,8 @@ const styles = {
         borderRadius: 5,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 50,
-        width: 140,
+        height: hp('10%'),
+        width: wp('30%'),
         elevation: 1,
         marginLeft: 220,
         marginRight: 5,
@@ -103,7 +103,7 @@ const styles = {
 
     TextStyle1: {
         fontWeight: 'bold',
-        fontSize: 17,
+        // fontSize: wp('4'),
         marginTop: 5,
         marginLeft: 5,
         alignSelf: 'center'

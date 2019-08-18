@@ -7,6 +7,7 @@ Sources I used:
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const Header = (props) => {
   const { textStyle, viewStyle, imageStyle, buttonStyle, imageStyle_two } = styles;
@@ -42,7 +43,7 @@ const styles = {
     fontWeight: 'bold',
     position: 'absolute',
     marginTop: -30,
-    marginLeft: -150
+    marginLeft: -(wp('35'))
   },
   imageStyle: {
     height: 20,

@@ -8,6 +8,7 @@ import React, {Component} from 'react';
 import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class HeaderLogout extends Component {
 
@@ -33,11 +34,11 @@ class HeaderLogout extends Component {
                 source={require('bookbranch/img/Bookbranch_Tree2.png')}>
               </Image>
               <TouchableOpacity onPress={() => Linking.openURL('https://bookbran.ch').catch((err)=>alert('bad'))}>
-                <Text style={styles.textStyle}>BookBranch</Text>
+                <Text style={styles.textStyle}>Bookbranch</Text>
               </TouchableOpacity>
       
             <TouchableOpacity style = {styles.buttonStyle} onPress={() => this.resetKey()}>
-                <Text style = {{fontSize: 11, marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}>Logout</Text>
+                <Text style = {{width:wp('9'),fontSize:wp('2.7'), marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}>Logout</Text>
             </TouchableOpacity>
           </View>
         );
@@ -61,7 +62,7 @@ const styles = {
     fontWeight: 'bold',
     position: 'absolute',
     marginTop: -30,
-    marginLeft: -150
+    marginLeft: -(wp('35'))
   },
   imageStyle: {
     height: 20,
@@ -73,7 +74,7 @@ const styles = {
     borderRadius: 15
   },
   buttonStyle: {
-    width: 40,
+    width: wp('11'),
     height: 23,
     backgroundColor: '#499920',
     borderRadius: 5,

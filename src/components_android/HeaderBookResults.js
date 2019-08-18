@@ -6,6 +6,7 @@ Sources I used:
 // Import libraries for making a component
 import React from 'react';
 import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 // Make a component
 const HeaderBookResults = (props) => {
@@ -43,7 +44,7 @@ const styles = {
     fontWeight: 'bold',
     position: 'absolute',
     marginTop: -30,
-    marginLeft: -150
+    marginLeft: -(wp('35'))
   },
   imageStyle: {
     height: 20,

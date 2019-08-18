@@ -3,6 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -220,6 +221,11 @@ export default class FindNewBook extends React.Component {
           book2Saved: false,
           })
       }
+      checkLength(bookTitle){
+        if(bookTitle.length > 58)
+          return bookTitle.slice(0,58);
+        return bookTitle;
+      }
 
   render() {
     return (
@@ -229,7 +235,7 @@ export default class FindNewBook extends React.Component {
                 style = {{fontSize: 20, fontWeight: 'bold', marginTop: 140,marginLeft: 40}}>
                 Step #1: Tell us your favorite 2 books you've read recently</Text>
             <TextInput
-                style={{marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
+                style={{marginTop: hp('5'), marginLeft: wp('5'),marginRight: wp('5'), height: hp('7'), width: wp('70'), borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #1 Search"
                 placeholderTextColor="gray"
                 value={this.state.text1}
@@ -239,7 +245,7 @@ export default class FindNewBook extends React.Component {
                 onChangeText={(text1) => this.userChangeText1(text1) }
             />
             <TextInput
-                style={{marginTop: 5, marginLeft: 30, height: 40, width: 300, borderColor: '#499920', borderWidth: 1}}
+                style={{marginTop: hp('1'), marginLeft: wp('5'),marginRight: wp('5'), height: hp('7'), width: wp('70'), borderColor: '#499920', borderWidth: 1}}
                 placeholder=" Book #2 Search"
                 placeholderTextColor="gray"
                 value={this.state.text2}
@@ -254,45 +260,54 @@ export default class FindNewBook extends React.Component {
         {(this.state.showList1) 
         &&
         <FlatList 
-
+        style={{height: hp('30'), }}
           data={this.state.data}
           renderItem={({item}) => 
           
           <View>
           <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission1(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
           </View>
           }
         />}
 
         {/* Book List for Book #2 */}
-        {(this.state.showList2) && <FlatList
-            
+        {(this.state.showList2) && <FlatList 
+        style={{height: hp('30'), }}
           data={this.state.data}
-          renderItem=
-                {({item}) => 
-                
-                <View>
-                <TouchableOpacity
+          renderItem={({item}) => 
+          
+          <View>
+          <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
-                </View>
-                }  
+          </View>
+          }
         />}
         {(this.state.continue) && <Button
                 title={"Continue"}
