@@ -223,7 +223,7 @@ export default class FindNewBook extends React.Component {
       }
       checkLength(bookTitle){
         if(bookTitle.length > 58)
-          return bookTitle.slice(0,58);
+          return bookTitle.slice(0,58) + "...";
         return bookTitle;
       }
 
