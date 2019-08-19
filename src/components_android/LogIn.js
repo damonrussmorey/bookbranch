@@ -5,10 +5,11 @@ import {  View, Text, TouchableNativeFeedback, ImageBackground, TextInput, Touch
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
-// import FBLoginButton from './FBLoginButton';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 // import { saveData, fetchData } from './asyncStorage';
 
-var FBLoginButton = require('./FBLoginButton');
+//var FBLoginButton = require('./FBLoginButton');
 
 class LogIn extends Component {
 
@@ -66,10 +67,42 @@ class LogIn extends Component {
                             <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableNativeFeedback>
                 </View>
-                <FBLoginButton />
+
+            <LoginButton 
+                readPermissions={["public_profile", "email"]}
+                onLoginFinished={
+                    (error, result) => {
+                        if (error) {
+                            console.log("login has error: " + result.error);
+                        } else if (result.isCancelled) {
+                            console.log("login is cancelled.");
+                        } else {
+                            AccessToken.getCurrentAccessToken().then(
+                                (data) => {
+                                    const infoRequest = new GraphRequest(
+                                        '/me?fields=id,name,email',
+                                        null,
+                                        this._responseInfoCallback
+                                    );
+                                    // Start the graph request.
+                                    new GraphRequestManager().addRequest(infoRequest).start();
+                                }
+                            )
+                        }
+                    }
+                }
+                onLogoutFinished={() => console.log("logout.")}
+            />
         </View>
       </ImageBackground>
     );
+  }
+  _responseInfoCallback = (error, result) => {
+    if (error) {
+      alert('Error fetching data: ' + error.toString());
+    } else {
+      alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
+    }
   }
 }
 
