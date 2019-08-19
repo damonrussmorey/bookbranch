@@ -6,6 +6,8 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import bcrypt from 'react-native-bcrypt'
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 // import { saveData, fetchData } from './asyncStorage';
 
 
@@ -138,6 +140,32 @@ class LogIn extends Component {
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />
+
+            <LoginButton
+                readPermissions={["public_profile","email"]}
+                onLoginFinished={
+                    (error, result) => {
+                        if (error) {
+                            console.log("login has error: " + result.error);
+                        } else if (result.isCancelled) {
+                            console.log("login is cancelled.");
+                        } else {
+                            AccessToken.getCurrentAccessToken().then(
+                                (data) => {
+                                    const infoRequest = new GraphRequest(
+                                        '/me?fields=id,name,email',
+                                        null,
+                                        this._responseInfoCallback
+                                    );
+                                    // Start the graph request.
+                                    new GraphRequestManager().addRequest(infoRequest).start();
+                                }
+                            )
+                        }
+                    }
+                }
+                onLogoutFinished={() => console.log("logout.")}/>
+
                 <View style = {styles.ButtonStyle3}>
                     <TouchableOpacity onPress={this.Authenticate.bind(this)}>
                             <Text style = {styles.TextStyle3}>Register</Text>
@@ -153,6 +181,14 @@ class LogIn extends Component {
             </View>
         );
     render
+  }
+  _responseInfoCallback = (error, result) => {
+      if (error) {
+          alert('Error fetching data: ' + error.toString());
+      } else {
+          // This is where you would get the users information to login/register
+          alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
+      }
   }
 }
 
