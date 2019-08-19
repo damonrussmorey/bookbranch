@@ -7,6 +7,8 @@ https://github.com/StephenGrider/ReactNativeReduxCasts/blob/master/albums/src/co
 
 import React from 'react';
 import { View } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+
 const Card = (props) => {
     return (
         <View>
@@ -23,12 +25,12 @@ const styles = {
         borderRadius: 2,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 400,
-        width: 200,
+        height: hp('58'),   //400 pixels
+        width: wp('47'),    // 200 pixels
         elevation: 1,
-        marginLeft: 90,
-        marginRight: 5,
-        marginTop: 75,
+        marginLeft: wp('13.062'),  //90,
+        marginRight: wp('0.725'),   // 5 pixels
+        marginTop: hp('10.885'), //75,
         position: 'absolute'
     },
 

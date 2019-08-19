@@ -91,7 +91,7 @@ class App extends Component {
           component={Launch}
           title="Launch"
           on={this.authenticate}
-          success="Main"
+          success="attList"
           failure="LogIn"
           initial
       />

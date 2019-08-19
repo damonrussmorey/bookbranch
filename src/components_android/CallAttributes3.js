@@ -8,6 +8,7 @@ import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import FlipCard from 'react-native-flip-card'
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class CallAttributes3 extends Component {
 
@@ -40,6 +41,10 @@ class CallAttributes3 extends Component {
         language4: "One"  
     };
     renderElement(){
+       console.log(wp('35') + " is 295 % of the screen height");
+       console.log(hp('78') + " is 78 % of the screen height");
+       console.log(hp('76') + " is 76 % of the screen height");
+       console.log(hp('75') + " is 75 % of the screen height");
         if(this.props.attribute1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -414,8 +419,8 @@ class CallAttributes3 extends Component {
                     </TouchableNativeFeedback>
                 </View>
 
-        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
+        <Text style = {{marginTop: hp('79'),alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: hp('76'), alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  
@@ -442,7 +447,8 @@ const styles = {
         position: 'absolute'  
     },  
     pickerStyle:{  
-        height: 23,  
+      //   height: 23, 
+        height: hp('3.36'), 
         width: 40,  
         color: '#344953',  
         justifyContent: 'center',
@@ -479,7 +485,7 @@ const styles = {
     TextStyle1: {
         fontWeight: 'bold',
         fontSize: 15,
-        marginTop: 5,
+        marginTop: hp('1'),
         alignSelf: 'center',
         position: 'absolute'
     },
@@ -494,6 +500,8 @@ const styles = {
     buttonStyle: {
         width: 40,
         height: 23,
+      //   height: hp('19.333'),
+      //   width: wp('16'),
         //paddingTop: 2,
         backgroundColor: '#ffffff',
         borderRadius: 5,
@@ -505,8 +513,8 @@ const styles = {
     AttributeStyle: {
         marginLeft: 14, 
         marginTop: 3, 
-        width: 160, 
-        height: 110
+        width: wp('40'),   //   width: 160, 
+        height: hp('17.2'),   //height: 110
     }
 };
 

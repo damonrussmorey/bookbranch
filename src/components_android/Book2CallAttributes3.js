@@ -9,6 +9,7 @@ import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 import FlipCard from 'react-native-flip-card'
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Book2CallAttributes3 extends Component {
    componentDidMount(){
@@ -304,8 +305,8 @@ const styles = {
     AttributeStyle: {
         marginLeft: 14, 
         marginTop: 3, 
-        width: 160, 
-        height: 110
+        width: wp('40'),   //   width: 160, 
+        height: hp('17.2'),   //height: 110
     }
 };
 

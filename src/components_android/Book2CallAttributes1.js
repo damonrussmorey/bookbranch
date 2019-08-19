@@ -7,6 +7,7 @@ import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class CallAttributes extends Component {
     render(){
@@ -35,7 +36,7 @@ class CallAttributes extends Component {
 
                     <CardSection>
                         <TouchableOpacity>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: wp('20'), marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
