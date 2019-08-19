@@ -41,10 +41,12 @@ class CallAttributes3 extends Component {
         language4: "One"  
     };
     renderElement(){
-       console.log(wp('35') + " is 295 % of the screen height");
-       console.log(hp('78') + " is 78 % of the screen height");
-       console.log(hp('76') + " is 76 % of the screen height");
-       console.log(hp('75') + " is 75 % of the screen height");
+      // marginLeft: wp('41.16'), //280,
+      // marginRight: wp('1.335'), //5,
+      // marginTop: hp('82.8'),  //560,
+       console.log(wp('67.16') + " is 280 pixels?"); // actually 169.52
+       console.log(wp('1.22') + " is 5 pixels?");      // 4.9
+       console.log(wp('135.9') + " is 560 pixels?");   // 340
         if(this.props.attribute1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -476,9 +478,9 @@ const styles = {
         height: 30,
         width: 80,
         elevation: 1,
-        marginLeft: 280,
-        marginRight: 5,
-        marginTop: 560,
+        marginLeft: wp('70'), //280,
+        marginRight: wp('1.22'), //5,
+        marginTop: hp('82'),  //560,
         position: 'absolute'       
     },
 

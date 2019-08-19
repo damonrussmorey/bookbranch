@@ -19,7 +19,7 @@ const styles = {
         borderRadius: 5,
         borderColor: '#e9e9ef',
         backgroundColor: '#e9e9ef',
-        height: 400,
+        height: hp('58'),
         width: 50,
         elevation: 1,
         marginLeft: wp('72'), //295,
