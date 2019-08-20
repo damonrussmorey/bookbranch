@@ -15,6 +15,19 @@ class Book2CallAttributes4 extends Component {
         language3: "One",
         language4: "One"
     };
+    trunc(){
+      var textbook2 = this.props.BookTwo;
+      var len = textbook2.length;
+
+      if(len > 30){
+          textbook2 = textbook2.substring(0, 30) + '...'
+          return textbook2;
+      }
+
+      else{
+          return textbook2;
+      }
+  }
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -255,8 +268,9 @@ class Book2CallAttributes4 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
@@ -355,8 +369,8 @@ class Book2CallAttributes4 extends Component {
             </View>
         </View>
 
-        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
+        <Text style = {{marginTop: 570,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: 550, alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  
@@ -420,7 +434,7 @@ const styles = {
         elevation: 1,
         marginLeft: 280,
         marginRight: 5,
-        marginTop: 560,
+        marginTop: 580,
         position: 'absolute'       
     },
 
