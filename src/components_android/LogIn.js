@@ -9,8 +9,6 @@ import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 // import { saveData, fetchData } from './asyncStorage';
 
-//var FBLoginButton = require('./FBLoginButton');
-
 class LogIn extends Component {
 
   constructor(props) {
