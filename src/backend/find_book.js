@@ -29,7 +29,7 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (req, res) => {
+module.exports = async (pool, req, res) => {
   console.log('\nSearching for book on AWS: ' + req.body.name);
 
   let book, response, result, description;
@@ -49,11 +49,12 @@ module.exports = async (req, res) => {
         'Keywords': req.body.name,
         'ResponseGroup': 'ItemAttributes,Images,EditorialReview'
       });
+    if(response.result.ItemSearchErrorResponse)
+      throw 'aws error';
   } catch (e) {
-    console.log(e);
-
-    //didn't get a result from Amazon, so return null
-    return null;
+    //didn't get a result from Amazon, so search the database instead
+    require('./keyword')(pool, req, res);
+    return;
   }
 
   console.log(response)
@@ -146,7 +147,7 @@ module.exports = async (req, res) => {
 if(process.argv[2] == 'test') {
   const fetch = require('node-fetch');
   (async () => {
-    let hi = await fetch('http://159.65.97.145:8765/find_book', {
+    let hi = await fetch('http://localhost:8765/find_book', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},

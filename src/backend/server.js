@@ -52,7 +52,7 @@ app.post('/insert_facebook', (req,res) =>{
 });
 
 app.post('/find_book', (req, res) => {
-  require('./find_book')(req, res);
+  require('./find_book')(pool, req, res);
 });
 
 app.post('/magic', (req, res) => {
