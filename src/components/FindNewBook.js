@@ -180,12 +180,12 @@ export default class FindNewBook extends React.Component {
       continue: false
     })
       //fetch
-      let res = await fetch('http://159.65.97.145:8765/keyword', {
+      let res = await fetch('http://159.65.97.145:8765/find_book', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({keyword_search: this.state.text1})
+        body: JSON.stringify({name: this.state.text1})
       });
       res = await res.json();
       
@@ -209,12 +209,12 @@ export default class FindNewBook extends React.Component {
     })
  
       //fetch
-      let res = await fetch('http://159.65.97.145:8765/keyword', { //keyword  // find_book
+      let res = await fetch('http://159.65.97.145:8765/find_book', { //keyword  // find_book
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({keyword_search: this.state.text2})  // keyword_search // name
+        body: JSON.stringify({name: this.state.text2})  // keyword_search // name
       });
       res = await res.json();
       

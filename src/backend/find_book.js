@@ -4,7 +4,7 @@ Search AWS for a book
 XXX For magic, only returns the top result
 
 Body of request:
-name
+{name:string}
 
 
 Body of response:
