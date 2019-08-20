@@ -324,6 +324,11 @@ bookList1(userChoice) {
       book2Saved: false,
       })
   }
+  checkLength(bookTitle){
+    if(bookTitle.length > 58)
+      return bookTitle.slice(0,58) + "...";
+    return bookTitle;
+  }
 
   
 
