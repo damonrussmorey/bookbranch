@@ -19,8 +19,8 @@ import ChooseAttributesList2 from './src/components/ChooseAttributesList2';
 import CallAttributes2 from './src/components/CallAttributes2';
 import CallAttributes3 from './src/components/CallAttributes3';
 import ChooseAttributesList3 from './src/components/ChooseAttributesList3';
-import CallAttributesPage2 from './src/components/CallAttributesPage2';
 import Book2CallAttributes1 from './src/components/Book2CallAttributes1';
+import Book2CallAttributes2 from './src/components/Book2CallAttributes2';
 import Book2ChooseAttributesList from './src/components/Book2ChooseAttributesList';
 import Book2ChooseAttributesList2 from './src/components/Book2ChooseAttributesList2';
 import Book2CallAttributes3 from './src/components/Book2CallAttributes3';
@@ -30,7 +30,7 @@ import Launch from './src/components/Launch';
 import AsyncStorage from '@react-native-community/async-storage';
 import CardStackStyleInterpolator from "react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator";
 
-class App extends Component {
+export default class App extends Component {
 
   componentDidMount(){
     // This is for demonstrating Async Works as intended, it can be uncommented and ran as if it were a 'Logout' button
@@ -91,7 +91,7 @@ class App extends Component {
           component={Launch}
           title="Launch"
           on={this.authenticate}
-          success="Main"
+          success="LogIn"
           failure="LogIn"
           initial
       />
@@ -117,7 +117,7 @@ class App extends Component {
 
         <Scene
           key = "CallAttributesPage2"
-          component={CallAttributesPage2}
+          component={Book2CallAttributes1}
           title="Choose Three Attributes"
         />
 
@@ -141,7 +141,7 @@ class App extends Component {
 
         <Scene
           key = "Book2attList1"
-          component={Book2CallAttributes1}
+          component={Book2CallAttributes2}
           title="Choose the Attributes"
         />
 

@@ -7,8 +7,46 @@ import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import FlipCard from 'react-native-flip-card'
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Book2CallAttributes3 extends Component {
+
+   componentDidMount(){
+      this.fetchData();
+  }
+  
+  constructor(props) {
+      super(props);
+      this.state = { 
+          title: '',
+          description:'',
+      };
+    }
+
+  fetchData = async () => {
+      let bookObject = await AsyncStorage.getItem('bookObject1');
+      let data = JSON.parse(bookObject);
+      this.setState({
+          title: data.title,
+          description:data.description,
+      });
+  }
+
+  trunc(){
+      var textbook2 = this.props.BookTwo;
+      var len = textbook2.length;
+
+      if(len > 30){
+         textbook2 = textbook2.substring(0, 30) + '...'
+         return textbook2;
+      }
+
+      else{
+         return textbook2;
+      }
+   }
+
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -171,12 +209,13 @@ class Book2CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                     <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Choose this book's top 3 attributes
+                            Select the least prevalent attribute
                             </Text>
                     </View>
                 </View>
@@ -184,15 +223,33 @@ class Book2CallAttributes3 extends Component {
             
             <View>
                 <Card>
-                    <CardSection>{ this.renderElement() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes1}</Text>
+                        </View>
+                     </FlipCard>
 
-                    <CardSection>{this.renderElement2()}
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                     <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement2() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.attribute2}</Text>
+                        </View>
+                     </FlipCard>
 
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList3Book2({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.attribute2})}>
@@ -211,7 +268,8 @@ const styles = {
     TopThreeStyle: {
       marginTop: 50,
       marginLeft: 78,
-      position: 'absolute'
+      position: 'absolute',
+      
     },
     BookNumStyle: {
         marginTop: 10,

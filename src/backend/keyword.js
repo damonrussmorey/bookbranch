@@ -20,9 +20,9 @@ module.exports = async (pool, req, res) => {
 
   //connect to db and pull all the data necessary
   try {
-    console.log("\n\nKeyword Search");
+    console.log("\nKeyword Search");
     connection = await pool.getConnection();
-    var querycode_keyword_search = 'SELECT books.title, authors.name, books.cover_url,books.id FROM books JOIN book_authors ON books.id = book_authors.book_id JOIN authors ON book_authors.author_id = authors.id WHERE (books.title LIKE "%' + req.body.keyword_search + '%" OR authors.name LIKE "%' + req.body.keyword_search +'%" OR books.description LIKE "%' + req.body.keyword_search + '%") GROUP BY books.title,books.description';
+    var querycode_keyword_search = 'SELECT books.amazon_url AS amazonURL, books.asin, books.description, books.title, authors.name, books.cover_url as imageURL,books.id FROM books JOIN book_authors ON books.id = book_authors.book_id JOIN authors ON book_authors.author_id = authors.id WHERE (books.title LIKE "%' + req.body.keyword_search + '%" OR authors.name LIKE "%' + req.body.keyword_search +'%" OR books.description LIKE "%' + req.body.keyword_search + '%") GROUP BY books.title,books.description';
     //the query returns are an array, results followed by
     //some other stuff, so for example
     //result = await connection.query('rawr')
@@ -47,7 +47,7 @@ module.exports = async (pool, req, res) => {
 if(process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
-      let hi = await fetch('http://localhost:8765/keyword', {
+      let hi = await fetch('http://159.65.97.145:8765/keyword', {
           headers: {
               'content-type': 'application/json',
               Accept: 'application/json'},

@@ -6,8 +6,30 @@ import Card from './Card';
 import CardSection from './CardSection';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import FlipCard from 'react-native-flip-card'
+import AsyncStorage from '@react-native-community/async-storage';
 
 class Book2CallAttributes4 extends Component {
+   componentDidMount(){
+      this.fetchData();
+  }
+
+  constructor(props) {
+      super(props);
+      this.state = { 
+          title: '',
+          description:'',
+      };
+    }
+
+  fetchData = async () => {
+      let bookObject = await AsyncStorage.getItem('bookObject1');
+      let data = JSON.parse(bookObject);
+      this.setState({
+          title: data.title,
+          description:data.description,
+      });
+  }
     state = {  
         choosenIndex: 0,
         language1: "One",
@@ -274,12 +296,12 @@ class Book2CallAttributes4 extends Component {
                         onValueChange={(itemValue, itemPosition) =>  
                             this.setState({language1: itemValue, choosenIndex: itemPosition})}  
                         >  
-                            <Picker.Item label="1" value = "One" />  
+                            {/* <Picker.Item label="1" value = "One" />  
                             <Picker.Item label="2" value="Two" />  
                             <Picker.Item label="3" value="Three" />
                             <Picker.Item label="4" value="Four" />
                             <Picker.Item label="5" value="Five" />
-                            <Picker.Item label="6" value="Six" />
+                            <Picker.Item label="6" value="Six" /> */}
                             <Picker.Item label="7" value="Seven" />
                             <Picker.Item label="8" value="Eight" /> 
                             <Picker.Item label="9" value="Nine" />
@@ -296,16 +318,16 @@ class Book2CallAttributes4 extends Component {
                         onValueChange={(itemValue, itemPosition) =>  
                             this.setState({language2: itemValue, choosenIndex: itemPosition})}  
                         >  
-                            <Picker.Item label="1" value="One" />  
+                            {/* <Picker.Item label="1" value="One" />  
                             <Picker.Item label="2" value="Two" />  
-                            <Picker.Item label="3" value="Three" />
+                            <Picker.Item label="3" value="Three" /> */}
                             <Picker.Item label="4" value="Four" />
                             <Picker.Item label="5" value="Five" />
                             <Picker.Item label="6" value="Six" />
                             <Picker.Item label="7" value="Seven" />
-                            <Picker.Item label="8" value="Eight" /> 
+                            {/* <Picker.Item label="8" value="Eight" /> 
                             <Picker.Item label="9" value="Nine" />
-                            <Picker.Item label="10" value="Ten" /> 
+                            <Picker.Item label="10" value="Ten" />  */}
                         </Picker>  
 
                         </View>
@@ -322,12 +344,12 @@ class Book2CallAttributes4 extends Component {
                             <Picker.Item label="2" value="Two" />  
                             <Picker.Item label="3" value="Three" />
                             <Picker.Item label="4" value="Four" />
-                            <Picker.Item label="5" value="Five" />
+                            {/* <Picker.Item label="5" value="Five" />
                             <Picker.Item label="6" value="Six" />
                             <Picker.Item label="7" value="Seven" />
                             <Picker.Item label="8" value="Eight" /> 
                             <Picker.Item label="9" value="Nine" />
-                            <Picker.Item label="10"value="Ten" /> 
+                            <Picker.Item label="10"value="Ten" />  */}
                         </Picker>  
 
                         </View>
@@ -337,20 +359,47 @@ class Book2CallAttributes4 extends Component {
             
             <View>
                 <Card>
-                    <CardSection>{ this.renderElement() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes1}</Text>
+                        </View>
+                     </FlipCard>
 
-                    <CardSection>{ this.renderElementTwo() }
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                    <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElementTwo() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.book2attributes2}</Text>
+                        </View>
+                     </FlipCard>
 
-                    <CardSection>{this.renderElement3()}
-                        <TouchableOpacity>
-                        </TouchableOpacity>
-                    </CardSection>
+                    <FlipCard>
+                        {/* Face Side */}
+                        <View style={styles.face}>
+                        <CardSection>{ this.renderElement3() }
+                              <TouchableOpacity>
+                              </TouchableOpacity>
+                        </CardSection>
+                        </View>
+                        {/* Back Side */}
+                        <View style={styles.back}>
+                        <Text style={styles.TopThreeStyle} >{this.props.attribute3}</Text>
+                        </View>
+                     </FlipCard>
                 </Card>
             </View>
         </View>

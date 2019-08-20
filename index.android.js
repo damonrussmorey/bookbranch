@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { AppRegistry, View } from 'react-native';
 import ChooseAttributeList from './src/components_android/ChooseAttributeList';
 import { Router, Scene, Stack } from 'react-native-router-flux';
-import CallAttributes from './src/components_android/CallAttributes';
+import Book2CallAttributes1 from './src/components_android/Book2CallAttributes1';
 import MainMenu from './src/components_android/MainMenu';
 import LogIn from './src/components_android/LogIn';
 import FindNewBook from './src/components_android/FindNewBook';
@@ -19,8 +19,8 @@ import ChooseAttributesList2 from './src/components_android/ChooseAttributesList
 import CallAttributes2 from './src/components_android/CallAttributes2';
 import CallAttributes3 from './src/components_android/CallAttributes3';
 import ChooseAttributesList3 from './src/components_android/ChooseAttributesList3';
+import Book2CallAttributes2 from './src/components_android/Book2CallAttributes2';
 import CallAttributesPage2 from './src/components_android/CallAttributesPage2';
-import Book2CallAttributes1 from './src/components_android/Book2CallAttributes1';
 import Book2ChooseAttributesList from './src/components_android/Book2ChooseAttributesList';
 import Book2ChooseAttributesList2 from './src/components_android/Book2ChooseAttributesList2';
 import Book2CallAttributes3 from './src/components_android/Book2CallAttributes3';
@@ -111,7 +111,7 @@ class App extends Component {
 
         <Scene
           key="attList"
-          component={CallAttributes}
+          component={Book2CallAttributes1}
           title="Choose Three Attributes"
         />
 
@@ -141,7 +141,7 @@ class App extends Component {
 
         <Scene
           key = "Book2attList1"
-          component={Book2CallAttributes1}
+          component={Book2CallAttributes2}
           title="Choose the Attributes"
         />
 

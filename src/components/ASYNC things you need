@@ -1,0 +1,22 @@
+import AsyncStorage from '@react-native-community/async-storage';
+
+
+componentDidMount(){
+        console.log("Hi from Call Attributes")
+        this.fetchData();
+    }
+    constructor(props) {
+        super(props);
+        this.state = { 
+            title: ''
+        };
+      }
+    fetchData = async () => {
+        let 'bookObject1 = await AsyncStorage.getItem('bookObject1');
+        let data = JSON.parse(bookObject1);
+        console.log(data);
+        this.setState({
+            title: data.title
+        });
+        
+    }

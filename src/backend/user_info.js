@@ -1,7 +1,8 @@
 /*
-User Hash requests
+User Info request
 Client sends an email for a user
-Returns the hash for the user, or NULL if user email not found
+Returns the id and hash for the user
+If user not found, returns id=-1
 
 Body of Request:
 {
@@ -10,30 +11,30 @@ Body of Request:
 
 Body of Response:
 {
+  id: int
   hash: string
 }
 */
 
 module.exports = async (pool, req, res) => {
-  console.log('\n\nRetrieve User Hash')
+  console.log('\nRetrieve User Info')
   //console.log(req.body.email);
 
-  let connection, result, query;
+  let connection, result, query, hash;
 
   try {
     connection = await pool.getConnection();
-    query = 'SELECT password FROM users WHERE email="'+req.body.email+'";'
+    query = 'SELECT id, password FROM users WHERE email="'+req.body.email+'";'
     //console.log(query);
     result = await connection.query(query);
     result = result[0][0];
     if(!result) {
-      res.send({password: null});
+      res.send({id:-1, hash: null});
     } else {
-      result = result.password;
-      result = result.slice(0, 2) + 'a' + result.slice(3);
-      res.send({password:result});
+      hash = result.password;
+      hash = hash.slice(0, 2) + 'a' + hash.slice(3);
+      res.send({id:result.id, hash:hash});
     }
-    console.log(result);
   } finally {
     if(connection && connection.release)  connection.release();
   }
@@ -43,7 +44,7 @@ module.exports = async (pool, req, res) => {
 if(process.argv[2] === 'test') {
   const fetch = require('node-fetch');
   (async () => {
-    let hi = await fetch('http://localhost:8765/user_hash', {
+    let hi = await fetch('http://159.65.97.145:8765/user_info', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},
@@ -55,7 +56,7 @@ if(process.argv[2] === 'test') {
 
     await new Promise(done => setTimeout(done, 3000));
     
-    hi = await fetch('http://localhost:8765/user_hash', {
+    hi = await fetch('http://159.65.97.145:8765/user_info', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'},

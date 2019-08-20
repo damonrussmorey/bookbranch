@@ -9,17 +9,32 @@ import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 
 class CallAttributes extends Component {
+    trunc(){
+        var textbook1 = this.props.textOne;
+        var len = textbook1.length;
+
+        if(len > 30){
+            textbook1 = textbook1.substring(0, 30) + '...'
+            return textbook1;
+        }
+
+        else{
+            return textbook1;
+        }
+    }
+
     render(){
     return (
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Choose this book's top 3 attributes
+                            Select the most prevalent attribute
                             </Text>
                     </View>
                 </View>
@@ -56,7 +71,8 @@ const styles = {
     TopThreeStyle: {
         marginTop: 50,
         marginLeft: 78,
-        position: 'absolute'
+        position: 'absolute',
+        justifyContent: 'center',
     },
     BookNumStyle: {
         marginTop: 10,

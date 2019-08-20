@@ -39,8 +39,8 @@ app.use(bodyParser.urlencoded({extended: true}) );
 //send off to modules
 
 //XXXsimplified routingXXX
-app.post('/user_hash', (req, res) => {
-  require('./user_hash')(pool, req, res);
+app.post('/user_info', (req, res) => {
+  require('./user_info')(pool, req, res);
 });
 
 app.post('/new_user', (req, res) => {
@@ -51,8 +51,16 @@ app.post('/insert_facebook', (req,res) =>{
   require('./insert_facebook')(pool,req,res);
 });
 
+app.post('/find_book', (req, res) => {
+  require('./find_book')(pool, req, res);
+});
+
 app.post('/magic', (req, res) => {
   require('./magic')(pool, req, res);
+});
+
+app.post('/keyword', (req, res) => {
+  require('./keyword')(pool, req, res);
 });
 
 /*
@@ -68,16 +76,9 @@ app.post('/book', (req, res) => {
   require('./book')(pool, req, res);
 });
 
-app.post('/keyword', (req, res) => {
-  require('./keyword')(pool, req, res);
-});
 
 app.post('/insert_recommandation_review', (req, res) => {
   require('./insert_recommandation_review')(pool, req, res);
-});
-
-app.post('/find_book', (req, res) => {
-  require('./find_book')(req, res);
 });
 
 app.post('/insert_new_book',(req,res) =>{

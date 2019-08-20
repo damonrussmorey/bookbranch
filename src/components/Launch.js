@@ -14,11 +14,6 @@ class Launch extends Component {
         <View>
             <Header headerText={'Launch'} />
                 <Text style={{marginTop: 250}}>
-                    Loading...
-
-                    {/* <Image
-                      source={require('bookbranch/img/91.gif')}>
-                    </Image> */}
                 </Text>
         </View>
         </ImageBackground>
