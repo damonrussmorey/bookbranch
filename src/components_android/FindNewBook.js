@@ -3,6 +3,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -250,49 +251,58 @@ export default class FindNewBook extends React.Component {
                 selectTextOnFocus={(this.state.editable2)}
             />
 
-        {/* Book List for Book #1 */}
-        {(this.state.showList1) 
+         {/* Book List for Book #1 */}
+         {(this.state.showList1) 
         &&
         <FlatList 
-
+        style={{height: hp('30'), }}
           data={this.state.data}
           renderItem={({item}) => 
           
           <View>
           <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission1(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
           </View>
           }
         />}
 
         {/* Book List for Book #2 */}
-        {(this.state.showList2) && <FlatList
-            
+        {(this.state.showList2) && <FlatList 
+        style={{height: hp('30'), }}
           data={this.state.data}
-          renderItem=
-                {({item}) => 
-                
-                <View>
-                <TouchableOpacity
+          renderItem={({item}) => 
+          
+          <View>
+          <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
-                </View>
-                }  
+          </View>
+          }
         />}
         {(this.state.continue) && <Button
                 title={"Continue"}
