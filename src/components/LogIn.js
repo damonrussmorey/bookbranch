@@ -182,12 +182,27 @@ class LogIn extends Component {
         );
     render
   }
-  _responseInfoCallback = (error, result) => {
+  _responseInfoCallback = async (error, result) => {
       if (error) {
           alert('Error fetching data: ' + error.toString());
       } else {
           // This is where you would get the users information to login/register
-          alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
+          let res = await fetch('http://localhost:8765/insert_facebook', {
+              headers: {
+                  'content-type': 'application/json',
+                  Accept: 'application/json'},
+              method : 'POST',
+              body: JSON.stringify({id: result.id, name: result.name, email: result.email})
+          });
+          res = await res.json();
+
+          if(res.id != -1) {
+              console.log("login with facebook");
+              alert('id: ' + res.id + '\nname: '+ res.name + '\nemail: ' + result.email);
+          }
+
+
+          //alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
       }
   }
 }

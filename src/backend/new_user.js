@@ -27,12 +27,10 @@ module.exports = async (pool, req, res) => {
       res.send({id: -1});
       return;
     }
-<<<<<<< HEAD
 
     req.body.hash = req.body.hash.slice(0, 2) + 'y'
                   + req.body.hash.slice(3);
-=======
->>>>>>> 2646cbe5f29ff287d24a5453542451b3eb6a6e58
+
     query = 'INSERT INTO users (name, email, password) VALUES ("'
           + req.body.name + '", "' + req.body.email + '", "'
           + req.body.hash + '");';
