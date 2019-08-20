@@ -24,23 +24,21 @@ module.exports = async (pool, req, res) => {
     try {
         connection = await pool.getConnection();
 
-        query = 'SELECT id FROM users WHERE facebook_id ="' + req.body.facebook_id + '" OR email = "'
+        query = 'SELECT id, name FROM users WHERE facebook_id ="' + req.body.id + '" OR email = "'
                                                             + req.body.email+'";';
         result = await connection.query(query);
         result = result[0];
         if (result.length && result.length > 0) {
-            result = result[0].id
-            res.send({id:result})
+            res.send({id:result[0].id, name: result[0].name})
             return;
         }
-        query = 'INSERT INTO users (facebook_id, name, email, avatar_url, facebook_avatar_original ) VALUES ("'
-            + req.body.facebook_id + '", "'+ req.body.name + '", "' 
-            + req.body.email + '", "' + req.body.avatar_url + '", "'
-            + req.body.facebook_avatar_original +'");';
+        query = 'INSERT INTO users (facebook_id, name, email) VALUES ("'
+            + req.body.id + '", "'+ req.body.name + '", "'
+            + req.body.email +'");';
         result = await connection.query(query);
-        res.send({id:result[0].insertId})
+        res.send({id:result[0].insertId, name: req.body.name})
     } catch(e) {
-        res.send(false);
+        res.send({id:-1});
       }finally {
         //this closes the connection
         if (connection && connection.release) connection.release();
@@ -48,6 +46,7 @@ module.exports = async (pool, req, res) => {
     }
 };
 
+/*
 if (process.argv[2] === 'test') {
     const fetch = require('node-fetch');
     (async () => {
@@ -69,4 +68,4 @@ if (process.argv[2] === 'test') {
         let res = await hi.json();
         console.log(JSON.stringify(res.id));
     })();
-}
+}*/
