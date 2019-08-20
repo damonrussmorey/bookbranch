@@ -5,7 +5,7 @@ import { View, Text, TouchableOpacity, ImageBackground, TouchableNativeFeedback,
 import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
-import HeaderLogout from '../components_android/headerLogout';
+import HeaderLogout from '../components/headerLogout';
 
 
 
