@@ -6,6 +6,8 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import bcrypt from 'react-native-bcrypt'
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 // import { saveData, fetchData } from './asyncStorage';
 
 
@@ -138,6 +140,31 @@ class LogIn extends Component {
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />
+
+            <LoginButton
+                readPermissions={["public_profile","email"]}
+                onLoginFinished={
+                    (error, result) => {
+                        if (error) {
+                            console.log("login has error: " + result.error);
+                        } else if (result.isCancelled) {
+                            console.log("login is cancelled.");
+                        } else {
+                            AccessToken.getCurrentAccessToken().then(
+                                (data) => {
+                                    const infoRequest = new GraphRequest(
+                                        '/me?fields=id,name,email',
+                                        null,
+                                        this._responseInfoCallback
+                                    );
+                                    // Start the graph request.
+                                    new GraphRequestManager().addRequest(infoRequest).start();
+                                }
+                            )
+                        }
+                    }
+                }
+                onLogoutFinished={() => console.log("logout.")}/>
                 <View style = {styles.ButtonStyle3}>
                     <TouchableOpacity onPress={this.Authenticate.bind(this)}>
                             <Text style = {styles.TextStyle3}>Register</Text>
@@ -154,6 +181,33 @@ class LogIn extends Component {
         );
     render
   }
+
+    _responseInfoCallback = async (error, result) => {
+        if (error) {
+            alert('Error fetching data: ' + error.toString());
+        } else {
+            // This is where you would get the users information to login/register
+            let res = await fetch('http://159.65.97.145:8765/insert_facebook', {
+                headers: {
+                    'content-type': 'application/json',
+                    Accept: 'application/json'},
+                method : 'POST',
+                body: JSON.stringify({id: result.id, name: result.name, email: result.email})
+            });
+            res = await res.json();
+
+
+            if(res.id != -1) {
+                console.log("login with facebook");
+                //alert('id: ' + res.id + '\nname: '+ res.name + '\nemail: ' + result.email);
+                await AsyncStorage.setItem('userObject', JSON.stringify({id: result.id, username:result.name}));
+                Actions.Main();
+            }
+
+
+            //alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
+        }
+    }
 }
 
 const styles = {
