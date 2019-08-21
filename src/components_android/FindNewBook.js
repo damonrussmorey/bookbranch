@@ -311,7 +311,7 @@ export default class FindNewBook extends React.Component {
         />}
         {(this.state.continue) && <Button
                 title={"Continue"}
-                onPress={ () => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2}) }
+                onPress={ () => Actions.attList({BookOne: this.state.text1, BookTwo: this.state.text2}) }
                 >
             </Button>}
       

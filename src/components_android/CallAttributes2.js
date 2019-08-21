@@ -32,6 +32,20 @@ class CallAttributes2 extends Component {
           description:data.description,
       });
   }
+
+  trunc(){
+   var textbook1 = this.props.BookOne;
+   var len = textbook1.length;
+
+   if(len > 30){
+       textbook1 = textbook1.substring(0, 30) + '...'
+       return textbook1;
+   }
+
+   else{
+       return textbook1;
+   }
+}
     renderElement(){
         if(this.props.text == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -194,8 +208,9 @@ class CallAttributes2 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
@@ -235,7 +250,7 @@ class CallAttributes2 extends Component {
                      </FlipCard>
 
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList3({textOne: this.props.textOne, textTwo: this.props.textTwo, attribute1: this.props.text, attribute2: this.props.attribute2 })}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttList3({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, attribute1: this.props.text, attribute2: this.props.attribute2 })}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
