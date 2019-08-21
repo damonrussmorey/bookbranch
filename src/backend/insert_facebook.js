@@ -24,19 +24,19 @@ module.exports = async (pool, req, res) => {
     try {
         connection = await pool.getConnection();
 
-        query = 'SELECT id, name FROM users WHERE facebook_id = "' + req.body.id + '" OR email = "'
-                                                            + req.body.email + '";';
+        query = 'SELECT id, name FROM users WHERE facebook_id = "' 
+            + req.body.facebook_id + '" OR email = "' + req.body.email + '";';
         result = await connection.query(query);
         result = result[0];
-        if (result.length && result.length > 0) {
+        if (result.length && result.length > 1) {
             res.send({id: result[0].id, name: result[0].name})
             return;
         }
         query = 'INSERT INTO users (facebook_id, name, email) VALUES ("'
-            + req.body.id + '", "' + req.body.name + '", "'
+            + req.body.facebook_id + '", "' + req.body.name + '", "'
             + req.body.email + '");';
         result = await connection.query(query);
-        res.send({id: result[0].insertId, name: req.body.name})
+        res.send({id: result[0].insertId, name: req.body.name, email: req.body.email})
     } catch(e) {
         res.send({id:-1});
     } finally {

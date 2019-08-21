@@ -183,14 +183,17 @@ class LogIn extends Component {
                 'content-type': 'application/json',
                 Accept: 'application/json'},
             method : 'POST',
-            body: JSON.stringify({id: result.id, name: result.name, email: result.email})
+            body: JSON.stringify({
+              facebook_id: result.id,
+              name: result.name,
+              email: result.email})
         });
         res = await res.json();
 
         if(res.id != -1) {
             console.log("login with facebook");
-            alert('id: ' + res.id + '\nname: '+ res.name + '\nemail: ' + result.email);
-            await AsyncStorage.setItem('userObject', JSON.stringify({id: res.id, username: res.name}));
+            alert('id: ' + JSON.stringify(res.id) + '\nname: ' + JSON.stringify(res.name) + '\nemail: ' + JSON.stringify(res.email));
+            await AsyncStorage.setItem('userObject', JSON.stringify({id: res.id, username: result.name}));
             Actions.Main();
         }
     }
