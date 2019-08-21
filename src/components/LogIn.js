@@ -191,7 +191,10 @@ class LogIn extends Component {
                   'content-type': 'application/json',
                   Accept: 'application/json'},
               method : 'POST',
-              body: JSON.stringify({id: result.id, name: result.name, email: result.email})
+              body: JSON.stringify({
+                facebook_id: result.id,
+                name: result.name,
+                email: result.email})
           });
           res = await res.json();
 
