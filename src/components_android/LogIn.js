@@ -138,7 +138,7 @@ class LogIn extends Component {
                 </View>
 
             <LoginButton 
-                readPermissions={["public_profile", "email"]}
+                readPermissions={["email", "public_profile"]}
                 onLoginFinished={
                     (error, result) => {
                         if (error) {
@@ -192,7 +192,7 @@ class LogIn extends Component {
 
         if(res.id != -1) {
             console.log("login with facebook");
-            alert('id: ' + res.id + '\nname: ' + res.name + '\nemail: ' + res.email);
+            //alert('id: ' + res.id + '\nname: ' + res.name + '\nemail: ' + res.email);
             await AsyncStorage.setItem('userObject', JSON.stringify({id: res.id, username: res.name}));
             Actions.Main();
         }
