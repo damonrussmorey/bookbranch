@@ -50,6 +50,7 @@ class SearchBookResults extends Component {
                 user_id:      user.id
             })
         });
+        
         res = await res.json();
         
         this.setState({

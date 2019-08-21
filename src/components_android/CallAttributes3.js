@@ -39,6 +39,20 @@ class CallAttributes3 extends Component {
         language3: "One",
         language4: "One"  
     };
+
+    trunc(){
+      var textbook1 = this.props.BookOne;
+      var len = textbook1.length;
+   
+      if(len > 30){
+          textbook1 = textbook1.substring(0, 30) + '...'
+          return textbook1;
+      }
+   
+      else{
+          return textbook1;
+      }
+   }
     renderElement(){
         if(this.props.attribute1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -281,8 +295,9 @@ class CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                     <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
@@ -409,7 +424,7 @@ class CallAttributes3 extends Component {
         </View>
 
         <View style = {styles.ButtonStyle1}>
-                <TouchableNativeFeedback onPress={() => Actions.CallAttributesPage2({BookOne: this.props.textOne, BookTwo: this.props.textTwo, Book1Attribute1: this.props.attribute1, Book1Attribute2: this.props.attribute2, Book1Attribute3: this.props.attribute3, Book1Rank1: this.state.language1, Book1Rank2: this.state.language2, Book1Rank3: this.state.language3, Book1RankOverall: this.state.language4})}>
+                <TouchableNativeFeedback onPress={() => Actions.Book2CallAttributes1({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.attribute1, Book1Attribute2: this.props.attribute2, Book1Attribute3: this.props.attribute3, Book1Rank1: this.state.language1, Book1Rank2: this.state.language2, Book1Rank3: this.state.language3, Book1RankOverall: this.state.language4})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableNativeFeedback>
                 </View>
