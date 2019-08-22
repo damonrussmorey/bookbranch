@@ -429,8 +429,8 @@ class CallAttributes3 extends Component {
                     </TouchableNativeFeedback>
                 </View>
 
-        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
+        <Text style = {{marginTop: 570,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: 550, alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  

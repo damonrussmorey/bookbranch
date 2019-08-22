@@ -42,7 +42,7 @@ class Book2CallAttributes1 extends Component {
             <View>
                 <Card>
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttListBook2({BookTwo: this.props.BookTwo, BookTwo: this.props.BookTwo})}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttListBook2({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall})}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
