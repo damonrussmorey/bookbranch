@@ -193,7 +193,7 @@ class LogIn extends Component {
         if(res.id != -1) {
             console.log("login with facebook");
             //alert('id: ' + res.id + '\nname: ' + res.name + '\nemail: ' + res.email);
-            await AsyncStorage.setItem('userObject', JSON.stringify({id: res.id, username: res.name}));
+            await AsyncStorage.setItem('userObject', JSON.stringify({id: result.id, username: result.name}));
             Actions.Main();
         }
     }
