@@ -1,13 +1,16 @@
+require('dotenv').config({path: '../../'});
 const express = require('express');
 const app = express();
-const port = 8765;
+const port = process.env.DB_PORT;
 const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser')
+const { OperationHelper } = require('apac');
+
 const pool = mysql.createPool({
-  host: '159.65.97.145',
-  user: 'forge',
-  password: '5OlUkuXQpeEXoHuK',
-  database: 'bookbranch',
+  host: process.env.DB_IP,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 100,
   queueLimit: 0
@@ -28,6 +31,13 @@ pool.getConnection((err, connection) => {
   }
   if(connection) connection.release();
   return;
+});
+
+const aws = new OperationHelper({
+  awsId: process.env.AWS_ID,
+  awsSecret: process.env.AWS_SECRET,
+  assocId: process.env.AWS_ASSOC,
+  maxRequestsPerSecond: 1
 });
 
 //to support JSON-encoded bodies
@@ -52,7 +62,7 @@ app.post('/insert_facebook', (req,res) =>{
 });
 
 app.post('/find_book', (req, res) => {
-  require('./find_book')(pool, req, res);
+  require('./find_book')(pool, aws, req, res);
 });
 
 app.post('/magic', (req, res) => {
@@ -62,32 +72,5 @@ app.post('/magic', (req, res) => {
 app.post('/keyword', (req, res) => {
   require('./keyword')(pool, req, res);
 });
-
-/*
-app.post('/recommendation', (req, res) => {
-  require('./recommendation')(pool, req, res);
-});
-
-app.get('/attributes', (req, res) => {
-  require('./attributes')(pool, req, res);
-});
-
-app.post('/book', (req, res) => {
-  require('./book')(pool, req, res);
-});
-
-
-app.post('/insert_recommandation_review', (req, res) => {
-  require('./insert_recommandation_review')(pool, req, res);
-});
-
-app.post('/insert_new_book',(req,res) =>{
-  require('./insert_new_book')(pool,req,res);
-})
-
-app.post('/average_attribute',(req,res) =>{
-  require('./average_attribute')(pool,req,res);
-});
-*/
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

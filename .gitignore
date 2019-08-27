@@ -1,3 +1,6 @@
+#env file
+.env
+
 #VSCode workspace file
 *.code-workspace
 

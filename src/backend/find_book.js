@@ -29,21 +29,13 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, aws, req, res) => {
   console.log('\nSearching for book on AWS: ' + req.body.name);
 
   let book, response, result, description;
 
-  const { OperationHelper } = require('apac');
-  const searcher = new OperationHelper({
-    awsId: 'AKIAIANIRJALOZBL4MZQ',
-    awsSecret: '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',
-    assocId: 'bookbch-20',
-    maxRequestsPerSecond: 1
-  });
-
   try {
-    response = await searcher.execute(
+    response = await aws.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
         'Keywords': req.body.name,

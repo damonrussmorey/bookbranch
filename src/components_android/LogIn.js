@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import bcrypt from 'react-native-bcrypt'
+import {DB_IP, DB_PORT} from 'react-native-dotenv'
 // import { saveData, fetchData } from './asyncStorage';
 
 
@@ -53,7 +54,7 @@ class LogIn extends Component {
     //AsyncStorage.setItem('userObject', JSON.stringify(user));
 
     //ask backend if email already in use
-    res = await fetch('http://159.65.97.145:8765/user_info', {
+    res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/user_info', {
       headers: {
         'content-type': 'application/json',
         Accept: 'application/json'
@@ -73,7 +74,7 @@ class LogIn extends Component {
     } else {
       verified = true;
       user.hash = bcrypt.hashSync(this.state.password, 10);
-      res = await fetch('http://159.65.97.145:8765/new_user', {
+      res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/new_user', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'
