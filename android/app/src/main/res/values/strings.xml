@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bookbranch</string>
+    <string name="facebook_app_id">356022665094302</string>
+    <string name="fb_login_protocol_scheme">fb356022665094302</string>
 </resources>
