@@ -1,10 +1,12 @@
-require('dotenv').config({path: '../../'});
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = process.env.DB_PORT;
 const mysql = require('mysql2/promise');
 const bodyParser = require('body-parser')
 const { OperationHelper } = require('apac');
+
+console.log(process.env);
 
 const pool = mysql.createPool({
   host: process.env.DB_IP,

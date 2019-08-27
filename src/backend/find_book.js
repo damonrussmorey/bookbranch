@@ -102,20 +102,22 @@ module.exports = async (pool, aws, req, res) => {
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
 
+    //if no image, title, or author, reject the entry
+
     if (r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
-      book['imageURL'] = '';
+      continue
 
     if (r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
-      book['title'] = '';
+      continue
 
     if (r.ItemAttributes.Author)
       book['author'] = r.ItemAttributes.Author;
     else
-      book['author'] = '';
+      continue
 
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;
