@@ -23,9 +23,19 @@ module.exports = async (pool, req, res) => {
     //connect to db and pull all the data necessary
     try {
         connection = await pool.getConnection();
+        console.log("I Got: " + req.body.email);
 
+        let emailValue = '';
+        if(req.body.email == undefined){
+          emailValue = req.body.name + "@facebook.com";
+        }
+        else{
+          emailValue = req.body.email;
+        }
+
+        console.log("I'm going to send: " + emailValue);
         query = 'SELECT id, name FROM users WHERE facebook_id = "' 
-            + req.body.facebook_id + '" AND email = "' + req.body.email + '";';
+            + req.body.facebook_id + '" AND email = "' + emailValue + '";';
         result = await connection.query(query);
         result = result[0];
         if (result.length && result.length[1] != "undefined") {
@@ -34,7 +44,7 @@ module.exports = async (pool, req, res) => {
         }
         query = 'INSERT INTO users (facebook_id, name, email) VALUES ("'
             + req.body.facebook_id + '", "' + req.body.name + '", "'
-            + req.body.email + '");';
+            + emailValue + '");';
         result = await connection.query(query);
         res.send({id: result[0].insertId, name: req.body.name})
     } catch(e) {
