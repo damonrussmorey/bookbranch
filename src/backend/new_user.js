@@ -84,13 +84,8 @@ if (process.argv[2] === 'test') {
       body: JSON.stringify({
         //name: 'Paul Burdick',
         name: 'Paul Burd',
-<<<<<<< HEAD
-        email: 'reedmanic@gmail.com',
-        hash: '$2a$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
-=======
         email: process.argv[3],
         hash: '$2y$10$5lD5tJcm.6zgaQkKhTocYeIcPIskR6Nd'
->>>>>>> 2646cbe5f29ff287d24a5453542451b3eb6a6e58
             + 'aujnIyW5ZUh3HWdKx02eO'
       })
     });
