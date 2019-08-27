@@ -110,6 +110,7 @@ class CallAttributes1 extends Component {
 
         if(this.props.text == 'Power')
            return <Image source={require('bookbranch/img/attributes/power-attribute.png')} style={styles.AttributeStyle}></Image>
+        
         if(this.props.text == 'Readable')
            return <Image source={require('bookbranch/img/attributes/readable-attribute.png')} style={styles.AttributeStyle}></Image>
 
