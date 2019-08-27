@@ -114,9 +114,12 @@ module.exports = async (pool, aws, req, res) => {
     else
       continue
 
-    if (r.ItemAttributes.Author)
-      book['author'] = r.ItemAttributes.Author;
-    else
+    if (r.ItemAttributes.Author) {
+      if(Array.isArray(r.ItemAttributes.Author))
+        book['author'] = r.ItemAttributes.Author[0];
+      else
+        book['author'] = r.ItemAttributes.Author;
+    } else
       continue
 
     /*if(r.ItemAttributes.PublicationDate)
