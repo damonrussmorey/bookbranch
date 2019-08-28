@@ -6,13 +6,25 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 
 class ChooseAttributesList3 extends Component {
+    trunc(){
+        var textbook1 = this.props.textOne;
+        var len = textbook1.length;
+
+        if(len > 30){
+            textbook1 = textbook1.substring(0, 30) + '...'
+            return textbook1;
+        }
+
+        else{
+            return textbook1;
+        }
+    }
     render () {
         return (
             <View>
                 <Header headerText={'Bookbranch'} />
-                <View>
-                        <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                        <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
                 </View>
                 <Card>
                     <ScrollView>

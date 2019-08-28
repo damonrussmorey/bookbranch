@@ -40,13 +40,27 @@ class CallAttributes3 extends Component {
         language3: "One",
         language4: "One"  
     };
+
+    trunc(){
+      var textbook1 = this.props.BookOne;
+      var len = textbook1.length;
+   
+      if(len > 30){
+          textbook1 = textbook1.substring(0, 30) + '...'
+          return textbook1;
+      }
+   
+      else{
+          return textbook1;
+      }
+   }
     renderElement(){
       // marginLeft: wp('41.16'), //280,
       // marginRight: wp('1.335'), //5,
       // marginTop: hp('82.8'),  //560,
-       console.log(wp('67.16') + " is 280 pixels?"); // actually 169.52
-       console.log(wp('1.22') + " is 5 pixels?");      // 4.9
-       console.log(wp('135.9') + " is 560 pixels?");   // 340
+       console.log(hp('83.45') + " needs to be 570pixels?"); // actually 169.52
+       console.log(hp('80.56') + " needs to be 550 pixels?");      // 4.9
+       console.log(hp('85') + " 85 is bigger pixels?");   // 340
         if(this.props.attribute1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
 
@@ -288,8 +302,9 @@ class CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                     <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
@@ -416,12 +431,12 @@ class CallAttributes3 extends Component {
         </View>
 
         <View style = {styles.ButtonStyle1}>
-                <TouchableNativeFeedback onPress={() => Actions.CallAttributesPage2({BookOne: this.props.textOne, BookTwo: this.props.textTwo, Book1Attribute1: this.props.attribute1, Book1Attribute2: this.props.attribute2, Book1Attribute3: this.props.attribute3, Book1Rank1: this.state.language1, Book1Rank2: this.state.language2, Book1Rank3: this.state.language3, Book1RankOverall: this.state.language4})}>
+                <TouchableNativeFeedback onPress={() => Actions.Book2CallAttributes1({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.attribute1, Book1Attribute2: this.props.attribute2, Book1Attribute3: this.props.attribute3, Book1Rank1: this.state.language1, Book1Rank2: this.state.language2, Book1Rank3: this.state.language3, Book1RankOverall: this.state.language4})}>
                         <Text style = {styles.TextStyle1}>Next</Text>
                     </TouchableNativeFeedback>
                 </View>
 
-        <Text style = {{marginTop: hp('79'),alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <Text style = {{marginTop: hp('83.45'), alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
         <View style = {{marginTop: hp('76'), alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  

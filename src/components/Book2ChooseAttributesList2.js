@@ -6,14 +6,27 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 
 class Book2ChooseAttributesList2 extends Component {
+    trunc(){
+        var textbook2 = this.props.BookTwo;
+        var len = textbook2.length;
+
+        if(len > 30){
+            textbook2 = textbook2.substring(0, 30) + '...'
+            return textbook2;
+        }
+
+        else{
+            return textbook2;
+        }
+    }
+    
     render () {
         return (
             <View>
                 <Header headerText={'Bookbranch'} />
-                <View>
-                        <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                        <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
-                </View>
+                <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                 <Card>
                     <ScrollView>
                     <TouchableOpacity onPress={() => Actions.Book2attList3({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, attribute2: 'Adventurous'})}>

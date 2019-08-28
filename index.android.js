@@ -6,7 +6,7 @@
 console.disableYellowBox = true;
 import React, { Component } from 'react';
 import { AppRegistry, View } from 'react-native';
-import ChooseAttributeList from './src/components_android/ChooseAttributeList';
+import ChooseAttributesList from './src/components_android/ChooseAttributesList';
 import { Router, Scene, Stack } from 'react-native-router-flux';
 import Book2CallAttributes1 from './src/components_android/Book2CallAttributes1';
 import MainMenu from './src/components_android/MainMenu';
@@ -20,7 +20,8 @@ import CallAttributes2 from './src/components_android/CallAttributes2';
 import CallAttributes3 from './src/components_android/CallAttributes3';
 import ChooseAttributesList3 from './src/components_android/ChooseAttributesList3';
 import Book2CallAttributes2 from './src/components_android/Book2CallAttributes2';
-import CallAttributesPage2 from './src/components_android/CallAttributesPage2';
+// import CallAttributesPage2 from './src/components_android/CallAttributesPage2';
+import CallAttributes from './src/components_android/CallAttributes';
 import Book2ChooseAttributesList from './src/components_android/Book2ChooseAttributesList';
 import Book2ChooseAttributesList2 from './src/components_android/Book2ChooseAttributesList2';
 import Book2CallAttributes3 from './src/components_android/Book2CallAttributes3';
@@ -91,7 +92,7 @@ class App extends Component {
           component={Launch}
           title="Launch"
           on={this.authenticate}
-          success="attList"
+          success="Main"
           failure="LogIn"
           initial
       />
@@ -111,13 +112,13 @@ class App extends Component {
 
         <Scene
           key="attList"
-          component={Book2CallAttributes1}
+          component={CallAttributes}
           title="Choose Three Attributes"
         />
 
         <Scene
-          key = "CallAttributesPage2"
-          component={CallAttributesPage2}
+          key = "Book2CallAttributes1"
+          component={Book2CallAttributes1}
           title="Choose Three Attributes"
         />
 
@@ -147,7 +148,7 @@ class App extends Component {
 
         <Scene
           key="chooseAttList"
-          component={ChooseAttributeList}
+          component={ChooseAttributesList}
           title="Choose From The Following List"
         />
 

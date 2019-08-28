@@ -38,6 +38,20 @@ class Book2CallAttributes4 extends Component {
         language3: "One",
         language4: "One"
     };
+    trunc(){
+      var textbook2 = this.props.BookTwo;
+      var len = textbook2.length;
+
+      if(len > 30){
+          textbook2 = textbook2.substring(0, 30) + '...'
+          return textbook2;
+      }
+
+      else{
+          return textbook2;
+      }
+  }
+
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -278,12 +292,13 @@ class Book2CallAttributes4 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
-                            {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
-                            Now attach some attribute ratings!
+                            {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
+                            Now attach some ratings!
                             </Text>
                     </View>
                 </View>
@@ -405,8 +420,14 @@ class Book2CallAttributes4 extends Component {
             </View>
         </View>
 
-        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
+        <View style = {styles.ButtonStyle1}>
+                <TouchableNativeFeedback /*BookResultsDetail*/ onPress={async () => {
+                  Actions.SearchBookResults({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.attribute3, Book2Rank1: this.state.language1, Book2Rank2: this.state.language2, Book2Rank3: this.state.language3, Book2RankOverall: this.state.language4})}}>
+                        <Text style = {styles.TextStyle1}>Next</Text>
+                    </TouchableNativeFeedback>
+         </View>
+        <Text style = {{marginTop: hp('83.45'),alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: hp('76'), alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  
@@ -421,12 +442,7 @@ class Book2CallAttributes4 extends Component {
 
                         </View>
 
-        <View style = {styles.ButtonStyle1}>
-                <TouchableNativeFeedback /*BookResultsDetail*/ onPress={async () => {
-                  Actions.SearchBookResults({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall, book2attributes1: this.props.book2attributes1, book2attributes2: this.props.book2attributes2, book2attributes3: this.props.attribute3, Book2Rank1: this.state.language1, Book2Rank2: this.state.language2, Book2Rank3: this.state.language3, Book2RankOverall: this.state.language4})}}>
-                        <Text style = {styles.TextStyle1}>Next</Text>
-                    </TouchableNativeFeedback>
-                </View>
+        
         </View>
     );
   }
@@ -440,7 +456,7 @@ const styles = {
       position: 'absolute'  
     },  
     pickerStyle:{  
-        height: 23,  
+        height: hp('3.36'),//23,  
         width: 40,  
         color: '#344953',  
         justifyContent: 'center',
@@ -468,16 +484,16 @@ const styles = {
         height: 30,
         width: 80,
         elevation: 1,
-        marginLeft: 280,
-        marginRight: 5,
-        marginTop: 560,
+        marginLeft: wp('70'), //280,
+        marginRight: wp('1.22'), //5,
+        marginTop: hp('82'),  //560,
         position: 'absolute'       
     },
 
     TextStyle1: {
         fontWeight: 'bold',
         fontSize: 15,
-        marginTop: 5,
+        marginTop: hp('1'),
         alignSelf: 'center',
         position: 'absolute'
     },

@@ -9,8 +9,6 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 
 export default class FindNewBook extends React.Component {
 
-  
-
     constructor(props){
       super(props);
       this.state ={ 
@@ -77,12 +75,12 @@ export default class FindNewBook extends React.Component {
           continue: false
         })
           //fetch
-          let res = await fetch('http://159.65.97.145:8765/keyword', {
+          let res = await fetch('http://159.65.97.145:8765/find_book', {
             headers: {
               'content-type': 'application/json',
               Accept: 'application/json'},
             method : 'POST',
-            body: JSON.stringify({keyword_search: this.state.text1})
+            body: JSON.stringify({name: this.state.text1})
           });
           res = await res.json();
           
@@ -106,12 +104,12 @@ export default class FindNewBook extends React.Component {
         })
      
           //fetch
-          let res = await fetch('http://159.65.97.145:8765/keyword', {
+          let res = await fetch('http://159.65.97.145:8765/find_book', {
             headers: {
               'content-type': 'application/json',
               Accept: 'application/json'},
             method : 'POST',
-            body: JSON.stringify({keyword_search: this.state.text2})
+            body: JSON.stringify({name: this.state.text2})
           });
           res = await res.json();
           
@@ -256,8 +254,8 @@ export default class FindNewBook extends React.Component {
                 selectTextOnFocus={(this.state.editable2)}
             />
 
-        {/* Book List for Book #1 */}
-        {(this.state.showList1) 
+         {/* Book List for Book #1 */}
+         {(this.state.showList1) 
         &&
         <FlatList 
         style={{height: hp('30'), }}
@@ -311,7 +309,7 @@ export default class FindNewBook extends React.Component {
         />}
         {(this.state.continue) && <Button
                 title={"Continue"}
-                onPress={ () => Actions.attList({textOne: this.state.text1, textTwo: this.state.text2}) }
+                onPress={ () => Actions.attList({BookOne: this.state.text1, BookTwo: this.state.text2}) }
                 >
             </Button>}
       

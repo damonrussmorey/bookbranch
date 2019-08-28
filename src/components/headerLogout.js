@@ -37,7 +37,7 @@ class HeaderLogout extends Component {
               </TouchableOpacity>
       
             <TouchableOpacity style = {styles.buttonStyle} onPress={() => this.resetKey()}>
-                <Text style = {{fontSize: 11, marginLeft: 2, marginTop: 1, fontWeight: 'bold', color: '#ffffff'}}>Logout</Text>
+                <Text style = {{fontSize: 10, marginLeft: 1, marginTop: 3, fontWeight: 'bold', color: '#ffffff'}}>Logout</Text>
             </TouchableOpacity>
           </View>
         );

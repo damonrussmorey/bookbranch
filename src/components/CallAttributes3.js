@@ -30,10 +30,24 @@ class CallAttributes3 extends Component {
           description:data.description,
       });
   }
+  trunc(){
+   var textbook1 = this.props.textOne;
+   var len = textbook1.length;
+
+   if(len > 30){
+       textbook1 = textbook1.substring(0, 30) + '...'
+       return textbook1;
+   }
+
+   else{
+       return textbook1;
+   }
+}
+
     state = {  
         choosenIndex: 0,
-        language1: "One",
-        language2: "One",
+        language1: "Seven",
+        language2: "Four",
         language3: "One",
         language4: "One"  
     };
@@ -279,8 +293,9 @@ class CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #1:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.textOne}</Text>
+                     <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 11 ,color: '#778899', fontWeight: 'bold', alignSelf:'center', marginTop: -3}}>
@@ -412,8 +427,8 @@ class CallAttributes3 extends Component {
                     </TouchableOpacity>
                 </View>
 
-        <Text style = {{marginTop: 540,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
-        <View style = {{marginTop: 520, alignSelf: 'center'}}> 
+         <Text style = {{marginTop: 570,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+        <View style = {{marginTop: 550, alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  
                         onValueChange={(itemValue, itemPosition) =>  
@@ -451,6 +466,7 @@ const styles = {
       marginTop: 50,
       marginLeft: 78,
       position: 'absolute'
+      
     },
     BookNumStyle: {
         marginTop: 10,
@@ -470,7 +486,7 @@ const styles = {
         elevation: 1,
         marginLeft: 280,
         marginRight: 5,
-        marginTop: 560,
+        marginTop: 580,
         position: 'absolute'       
     },
 

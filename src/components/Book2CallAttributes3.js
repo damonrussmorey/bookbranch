@@ -32,6 +32,21 @@ class Book2CallAttributes3 extends Component {
           description:data.description,
       });
   }
+
+  trunc(){
+      var textbook2 = this.props.BookTwo;
+      var len = textbook2.length;
+
+      if(len > 30){
+         textbook2 = textbook2.substring(0, 30) + '...'
+         return textbook2;
+      }
+
+      else{
+         return textbook2;
+      }
+   }
+
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -194,8 +209,9 @@ class Book2CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
-                    <Text style = {{marginTop: 5,marginLeft: 20, fontWeight: 'bold', fontSize: 25, position: 'absolute'}}>Book #2:</Text>
-                    <Text style = {{marginTop: 8,marginLeft: 150, fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.props.BookTwo}</Text>
+                     <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                        <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
+                    </View>
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
@@ -252,7 +268,8 @@ const styles = {
     TopThreeStyle: {
       marginTop: 50,
       marginLeft: 78,
-      position: 'absolute'
+      position: 'absolute',
+      
     },
     BookNumStyle: {
         marginTop: 10,

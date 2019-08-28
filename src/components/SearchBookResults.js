@@ -26,6 +26,18 @@ class SearchBookResults extends Component {
         book2 = JSON.parse(book2);
         let user = await AsyncStorage.getItem('userObject');
         user = JSON.parse(user);
+        console.log(book1 + " overall: " + this.props.Book1RankOverall);
+        console.log(book1 + " book1att1: " + this.props.Book1Attribute1);
+        console.log(book1 + " bookrank1: " + this.props.Book1Rank1);
+        console.log(book1 + " book1Attribute2: " + this.props.Book1Attribute2);
+        console.log(book1 + " book1rank2: " + this.props.Book1Rank2);
+        console.log(book1 + " book1rank3: " + this.props.Book1Rank3);
+        console.log(book2 + " book1rankoveral: " + this.props.Book2RankOverall);
+        console.log(book2 + " book2attr1: " + this.props.book2attributes1);
+        console.log(book2 + " book2attr1: " + this.props.book2attributes1);
+        console.log(book2 + " book2rank2: " + this.props.Book2Rank2);
+        console.log(book2 + " book2attr3: " + this.props.book2attributes3);
+        console.log(book2 + " book2rank3: " + this.props.Book2Rank3);
         
         let res = await fetch('http://159.65.97.145:8765/magic', {
             headers: {
@@ -45,7 +57,7 @@ class SearchBookResults extends Component {
                 book2:        book2,
                 rating2:      this.props.Book2RankOverall,
                 attr2id1:     this.props.book2attributes1,
-                attr2val1:    this.props.Book2Rank1,
+                attr2val1:    this.props.book2Rank1,
                 attr2id2:     this.props.book2attributes2,
                 attr2val2:    this.props.Book2Rank2,
                 attr2id3:     this.props.book2attributes3,
@@ -121,6 +133,11 @@ class SearchBookResults extends Component {
         directionalOffsetThreshold: 80
       };
 
+        console.log((this.props.Book1Rank1) + (this.props.Book2Rank1))
+        console.log((this.props.Book1Rank2) + (this.props.Book2Rank2))
+        console.log(this.props.Book1Rank3 + this.props.Book2Rank3)
+        console.log(this.props.Book1RankOverall + this.props.Book2RankOverall)
+
     if(this.state.isLoading) {
         return(
             <View style={{flex: 1, padding: 20}}>
@@ -176,7 +193,6 @@ class SearchBookResults extends Component {
                         <Text style = {styles.TextStyle2}>Start Over</Text>
                     </TouchableOpacity>
             </View>
-
         </View>
     );
     }

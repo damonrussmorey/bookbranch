@@ -180,12 +180,12 @@ export default class FindNewBook extends React.Component {
       continue: false
     })
       //fetch
-      let res = await fetch('http://159.65.97.145:8765/keyword', {
+      let res = await fetch('http://159.65.97.145:8765/find_book', {
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({keyword_search: this.state.text1})
+        body: JSON.stringify({name: this.state.text1})
       });
       res = await res.json();
       
@@ -209,12 +209,12 @@ export default class FindNewBook extends React.Component {
     })
  
       //fetch
-      let res = await fetch('http://159.65.97.145:8765/keyword', { //keyword  // find_book
+      let res = await fetch('http://159.65.97.145:8765/find_book', { //keyword  // find_book
         headers: {
           'content-type': 'application/json',
           Accept: 'application/json'},
         method : 'POST',
-        body: JSON.stringify({keyword_search: this.state.text2})  // keyword_search // name
+        body: JSON.stringify({name: this.state.text2})  // keyword_search // name
       });
       res = await res.json();
       
@@ -324,6 +324,11 @@ bookList1(userChoice) {
       book2Saved: false,
       })
   }
+  checkLength(bookTitle){
+    if(bookTitle.length > 58)
+      return bookTitle.slice(0,58) + "...";
+    return bookTitle;
+  }
 
   
 
@@ -361,45 +366,54 @@ bookList1(userChoice) {
         {(this.state.showList1) 
         &&
         <FlatList 
-
+        style={{height: hp('30'), }}
           data={this.state.data}
           renderItem={({item}) => 
           
           <View>
           <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission1(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
           </View>
           }
         />}
 
         {/* Book List for Book #2 */}
-        {(this.state.showList2) && <FlatList
-            
+        {(this.state.showList2) && <FlatList 
+        style={{height: hp('30'), }}
           data={this.state.data}
-          renderItem=
-                {({item}) => 
-                
-                <View>
-                <TouchableOpacity
+          renderItem={({item}) => 
+          
+          <View>
+          <TouchableOpacity
+                      style={{
+                        borderRadius: 4,
+                        borderWidth: 0.5,
+                        borderColor: '#d6d7da',}}
                       title={item.title}
                       onPress={ () => this.finalChoiceSubmission2(item)  }
                       >
-                        <Text>{item.title}</Text>
+                       
                         <Image
-                          style={{width: 50, height: 50}}
+                          style={{width: wp('7'), height: hp('7')}}
                           source={{uri: item.imageURL}}
                         />
+                         <Text style={{marginRight:wp('10'), marginLeft:wp('20'), position: 'absolute',}} >{this.checkLength(item.title)}</Text>
                   </TouchableOpacity>
-                </View>
-                }  
+          </View>
+          }
         />}
         {(this.state.continue) && <Button
                 title={"Continue"}

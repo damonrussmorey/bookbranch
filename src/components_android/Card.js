@@ -26,7 +26,7 @@ const styles = {
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
         height: hp('58'),   //400 pixels
-        width: wp('47'),    // 200 pixels
+        width: wp('48'),    // 200 pixels
         elevation: 1,
         marginLeft: wp('13.062'),  //90,
         marginRight: wp('0.725'),   // 5 pixels
