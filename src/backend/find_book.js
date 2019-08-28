@@ -29,21 +29,13 @@ and keep it consistent until we add the book, to avoid having to query
 amazon again.
 */
 
-module.exports = async (pool, req, res) => {
+module.exports = async (pool, aws, req, res) => {
   console.log('\nSearching for book on AWS: ' + req.body.name);
 
   let book, response, result, description;
 
-  const { OperationHelper } = require('apac');
-  const searcher = new OperationHelper({
-    awsId: 'AKIAIANIRJALOZBL4MZQ',
-    awsSecret: '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',
-    assocId: 'bookbch-20',
-    maxRequestsPerSecond: 1
-  });
-
   try {
-    response = await searcher.execute(
+    response = await aws.execute(
       'ItemSearch', {
         'SearchIndex': 'Books',
         'Keywords': req.body.name,
@@ -110,20 +102,25 @@ module.exports = async (pool, req, res) => {
     book['asin'] = r.ASIN;
     book['amazonURL'] = r.DetailPageURL;
 
+    //if no image, title, or author, reject the entry
+
     if (r.LargeImage && r.LargeImage.URL)
       book['imageURL'] = r.LargeImage.URL;
     else
-      book['imageURL'] = '';
+      continue
 
     if (r.ItemAttributes.Title)
       book['title'] = r.ItemAttributes.Title;
     else
-      book['title'] = '';
+      continue
 
-    if (r.ItemAttributes.Author)
-      book['author'] = r.ItemAttributes.Author;
-    else
-      book['author'] = '';
+    if (r.ItemAttributes.Author) {
+      if(Array.isArray(r.ItemAttributes.Author))
+        book['author'] = r.ItemAttributes.Author[0];
+      else
+        book['author'] = r.ItemAttributes.Author;
+    } else
+      continue
 
     /*if(r.ItemAttributes.PublicationDate)
           book['pubDate'] = r.ItemAttributes.PublicationDate;

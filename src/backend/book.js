@@ -33,7 +33,7 @@ module.exports = async (pool, ids) => {
     connection = await pool.getConnection();
     query =
       'SELECT cover_url AS imageURL, amazon_url AS amazonURL, url_title AS urlTitle'
-      + 'FROM books WHERE books.id IN (';
+      + ' FROM books WHERE books.id IN (';
     for(id of ids)
       query += id + ',';
     query = query.slice(0, -1) + ') ORDER BY FIELD(books.id,';

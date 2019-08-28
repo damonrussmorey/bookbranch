@@ -4,6 +4,7 @@ import Header from './header';
 import { Button, FlatList, ActivityIndicator, Text, View, TextInput, TouchableOpacity, Image  } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {DB_IP, DB_PORT} from 'react-native-dotenv'
 
 
 
@@ -75,7 +76,7 @@ export default class FindNewBook extends React.Component {
           continue: false
         })
           //fetch
-          let res = await fetch('http://159.65.97.145:8765/find_book', {
+          let res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/find_book', {
             headers: {
               'content-type': 'application/json',
               Accept: 'application/json'},
@@ -104,7 +105,7 @@ export default class FindNewBook extends React.Component {
         })
      
           //fetch
-          let res = await fetch('http://159.65.97.145:8765/find_book', {
+          let res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/find_book', {
             headers: {
               'content-type': 'application/json',
               Accept: 'application/json'},

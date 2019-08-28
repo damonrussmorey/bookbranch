@@ -5,6 +5,7 @@ import CardLarge from './CardLarge';
 import HeaderBookResults from './HeaderBookResults';
 import AsyncStorage from '@react-native-community/async-storage';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import {DB_IP, DB_PORT} from 'react-native-dotenv'
 
 class SearchBookResults extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class SearchBookResults extends Component {
         console.log(book2 + " book2attr3: " + this.props.book2attributes3);
         console.log(book2 + " book2rank3: " + this.props.Book2Rank3);
         
-        let res = await fetch('http://159.65.97.145:8765/magic', {
+        let res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/magic', {
             headers: {
                 'content-type': 'application/json',
                 Accept: 'application/json'
