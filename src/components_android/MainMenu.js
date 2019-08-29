@@ -43,12 +43,10 @@ class MainMenu extends Component {
         <View>
             <ImageBackground source={require('bookbranch/img/dawn-daylight.jpg')} style={{width: '100%', height: '100%'}}>
             <HeaderLogout headerText={'Bookbranch'} />
-            {/* <Button onPress={() => this.resetKey()} title={"Logout"}>Logout</Button> */}
-            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'white', marginTop: "10%"}}>Hi {this.state.username}!</Text>
+            <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'white', marginTop: hp('4%')}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                 <TouchableOpacity onPress={() => Actions.FindNewBook()} >
                         <Text  style = {styles.TextStyle1}>Find Your Next {"\n"} Great Read!</Text>
-                        {/* <Text style = {styles.TextStyle2}>   Great Read!</Text> */}
                     </TouchableOpacity>
                 </View>
             </ImageBackground>
@@ -66,9 +64,9 @@ const styles = {
         height: hp('10%'),
         width: wp('30%'),
         elevation: 1,
-        marginLeft: 220,
-        marginRight: 5,
-        marginTop: 290,
+        marginLeft: wp('60%'), //220,
+        marginRight: wp('3%'), //5,
+        marginTop: hp('40%'), //290,
         position: 'absolute'       
     },
 

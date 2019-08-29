@@ -252,7 +252,7 @@ class CallAttributes2 extends Component {
 
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList3({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, attribute1: this.props.text, attribute2: this.props.attribute2 })}>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: wp('20'), marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
                 </Card>

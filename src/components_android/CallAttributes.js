@@ -7,6 +7,7 @@ import CardSection from './CardSection';
 import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class CallAttributes extends Component {
     trunc(){
@@ -42,19 +43,19 @@ class CallAttributes extends Component {
                 <Card>
                     <CardSection>
                         <TouchableOpacity onPress={() => Actions.chooseAttList({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall})}>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: wp('20'), marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
                         <TouchableOpacity>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: wp('20'), marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
 
                     <CardSection>
                         <TouchableOpacity>
-                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
+                            <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: wp('20'), marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
                 </Card>

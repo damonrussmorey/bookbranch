@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const CardLarge = (props) => {
     return (
@@ -17,13 +18,13 @@ const styles = {
         borderRadius: 2,
         borderColor: '#000000',
         backgroundColor: '#D3D3D3',
-        height: 500,
-        width: 280,
+        height: hp('70'),//500,
+        width: wp('60'),//280,
         elevation: 1,
-        marginLeft: 50,
-        marginRight: 5,
+        marginLeft: wp('20'),//50,
+        marginRight: wp('10'),//5,
         marginTop: 15,
-        position: 'absolute'
+        // position: 'absolute'
     },
 
 };

@@ -6,6 +6,7 @@ import HeaderBookResults from './HeaderBookResults';
 import AsyncStorage from '@react-native-community/async-storage';
 import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 import {DB_IP, DB_PORT} from 'react-native-dotenv'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class SearchBookResults extends Component {
   constructor(props) {
@@ -160,7 +161,7 @@ class SearchBookResults extends Component {
                 </CardLarge>
             </GestureRecognizer>
 
-            <View style = {{marginTop: 380, marginLeft: 0.1, position: 'absolute'}}>
+            <View style = {{marginTop: hp('50%'), marginLeft: wp('1%'), position: 'absolute'}}>
                 <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.max(0, (prev.i - 1))}})
             }}>
@@ -168,7 +169,7 @@ class SearchBookResults extends Component {
                 </TouchableOpacity>
             </View>
 
-            <View style = {{marginTop: 380, marginLeft: 320, position: 'absolute'}}>
+            <View style = {{marginTop: hp('50%'), marginLeft: wp('85%'), position: 'absolute'}}>
              <TouchableOpacity onPress = {() => {
                 this.setState((prev) => {return {i: Math.min((prev.i + 1), prev.Results.length-1)}})
             }}>
@@ -203,8 +204,8 @@ const styles = {
         height: 30,
         width: 90,
         elevation: 1,
-        marginLeft: 200,
-        marginTop: 625,
+        marginLeft: wp('60'),
+        marginTop: hp('90'),//625,
         position: 'absolute'       
     },
 
@@ -224,8 +225,8 @@ const styles = {
         height: 30,
         width: 90,
         elevation: 1,
-        marginLeft: 95,
-        marginTop: 625,
+        marginLeft: wp('20'),
+        marginTop: hp('90'),//625,
         position: 'absolute'       
     },
 
