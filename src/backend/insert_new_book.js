@@ -17,7 +17,16 @@ body:
 Returns the id for the inserted book
 */
 module.exports = async (pool, book) => {
-  console.log('\nAdding book to the database');
+//console.log('\nAdding book to the database');
+  book.amazonURL = book.amazonURL.replace(/\"/g, '');
+  book.imageURL = book.imageURL.replace(/\"/g, '');
+  book.title = book.title.replace(/\"/g, '');
+  book.author = book.author.replace(/\"/g, '');
+//console.log(book.description);
+  book.description = book.description.replace(/\"/g, '');
+//console.log(book.description);
+
+  //remove double quotes from strings
 
   //declare local vars
   let connection, result, query, book_id, auth_id, url_title;
@@ -38,11 +47,11 @@ module.exports = async (pool, book) => {
     //If we have a result from the query, then the book is already
     //in the database, return its id
     if(result) {
-      console.log('Book is already in the database');
+//console.log('Book is already in the database');
       book_id = result.id;
 
     } else {
-      console.log("Book is not in the database.");
+//console.log("Book is not in the database.");
       //Books are not saved in the database, check the
       //authors first, if need to add the new authors or not.
       query = 'SELECT id FROM authors WHERE name = "'
@@ -54,11 +63,11 @@ module.exports = async (pool, book) => {
         result = result[0];
           
       if(result) {
-        console.log('Author is already in the database');
+//console.log('Author is already in the database');
         auth_id = result.id;
 
       } else {
-        console.log('Author is not in the database');
+//console.log('Author is not in the database');
 
         //For get url_title, need to get the max_id in
         //authors table and then add '1' to the new authors
@@ -76,7 +85,7 @@ module.exports = async (pool, book) => {
 
         query = 'INSERT INTO authors(name,url_title) VALUES("'
               + book.author + '", "' + url_title + '");';
-        //console.log(query);
+//console.log(query);
         result = await connection.query(query);
       }
 
@@ -96,13 +105,13 @@ module.exports = async (pool, book) => {
             + 'VALUES("'+ book.title + '","' + url_title + '", "'
             + book.asin + '", "' + book.imageURL + '", "'
             + book.amazonURL +'","'+ book.description+'", 0);';
-      //console.log(query);
+//console.log(query);
       result = await connection.query(query);
 
       //Insert book authors
       query = 'INSERT INTO book_authors(book_id, author_id) '
             + 'VALUES('+ book_id + ',' + auth_id + ');';
-      //console.log(query);
+//console.log(query);
       result = await connection.query(query);
       }
 
@@ -142,7 +151,7 @@ if (process.argv[2] === 'test') {
             })
         });
         let res = await hi.json();
-        console.log(JSON.stringify(res));
+//console.log(JSON.stringify(res));
 
     })();
 }

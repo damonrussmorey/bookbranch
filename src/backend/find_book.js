@@ -30,7 +30,7 @@ amazon again.
 */
 
 module.exports = async (pool, aws, req, res) => {
-  console.log('\nSearching for book on AWS: ' + req.body.name);
+//console.log('\nSearching for book on AWS: ' + req.body.name);
 
   let book, response, result, description;
 
@@ -49,7 +49,7 @@ module.exports = async (pool, aws, req, res) => {
     return;
   }
 
-  console.log(response)
+//console.log(response)
   //Check all attributes first, if not exist set result to NULL
   if (!response || !response.result || !response.result.ItemSearchResponse || !response.result.ItemSearchResponse.Items || !response.result.ItemSearchResponse.Items.Item) {
     res.send({response:-1});
@@ -133,7 +133,7 @@ module.exports = async (pool, aws, req, res) => {
     res.send({response:-1});
     return;
   }
-  console.log(response)
+//console.log(response)
   res.send(response);
 
 }
@@ -152,7 +152,7 @@ if(process.argv[2] == 'test') {
       body: JSON.stringify({name: 'xixi'})
     });
     let res = await hi.json();
-    console.log('test: ' + JSON.stringify(res) + '\n');
+//console.log('test: ' + JSON.stringify(res) + '\n');
   })();
 }
 
