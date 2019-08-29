@@ -196,10 +196,11 @@ class LogIn extends Component {
                 body: JSON.stringify({id: result.id, name: result.name, email: result.email})
             });
             res = await res.json();
+            // console.log(res.id + "DB IP: " + DB_IP + " , PORT: " + DB_PORT);
 
 
             if(res.id != -1) {
-                console.log("login with facebook");
+                // console.log("login with facebook");
                 //alert('id: ' + res.id + '\nname: '+ res.name + '\nemail: ' + result.email);
                 await AsyncStorage.setItem('userObject', JSON.stringify({id: result.id, username:result.name}));
                 Actions.Main();

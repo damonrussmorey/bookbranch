@@ -179,26 +179,28 @@ class LogIn extends Component {
         alert('Error fetching data: ' + error.toString());
     } else {
         // This is where you would get the users information to login/register
-        let res = await fetch('http://159.65.97.145:8765/insert_facebook', {
+        let res = await fetch('http://' + DB_IP + ':' + DB_PORT + '/insert_facebook', {
             headers: {
                 'content-type': 'application/json',
                 Accept: 'application/json'},
             method : 'POST',
-            body: JSON.stringify({
-              facebook_id: result.id,
-              name: result.name,
-              email: result.email})
+            body: JSON.stringify({id: result.id, name: result.name, email: result.email})
         });
         res = await res.json();
+        // console.log(res.id + "DB IP: " + DB_IP + " , PORT: " + DB_PORT);
+
 
         if(res.id != -1) {
-            console.log("login with facebook");
-            //alert('id: ' + res.id + '\nname: ' + res.name + '\nemail: ' + res.email);
-            await AsyncStorage.setItem('userObject', JSON.stringify({id: result.id, username: result.name}));
+            // console.log("login with facebook");
+            //alert('id: ' + res.id + '\nname: '+ res.name + '\nemail: ' + result.email);
+            await AsyncStorage.setItem('userObject', JSON.stringify({id: result.id, username:result.name}));
             Actions.Main();
         }
+
+
+        //alert('id: ' + result.id + '\nname: '+ result.name + '\nemail: ' + result.email);
     }
-  }
+}
 }
 
 const styles = {
