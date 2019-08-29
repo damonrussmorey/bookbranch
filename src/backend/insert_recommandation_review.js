@@ -25,7 +25,7 @@ result
 */
 
 module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
-  console.log('\nBook review');
+  //console.log('\nBook review');
 
   //declare local vars
   let connection, result, data, query, review_id, new_score;
@@ -39,7 +39,7 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
     query = 'INSERT INTO book_reviews(book_id, user_id, rating) '
           + 'VALUES(' + book_id + ',' + user_id
           + ',' + rating_value + ');';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
     review_id = result[0].insertId;
 
@@ -51,10 +51,10 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
              + ',' + review_id + ',' + at.val + '),';
     }
     query = query.slice(0, -1) + ';';
-    //console.log(query)
+    ////console.log(query)
     result = await connection.query(query);
     //debug
-    //console.log(result)
+    ////console.log(result)
 
     //query code get the new average score of inserted attributes
     query = 'SELECT attribute_id, AVG(score) AS avg FROM '
@@ -64,12 +64,12 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
       query += 'attribute_id = ' + at.id + ' OR '
     }
     query = query.slice(0, -4) + ') GROUP BY attribute_id;';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
     data = result[0];
     //debug
-    //console.log("The bookid, attribute_id and new average score: ")
-    //console.log(data)
+    ////console.log("The bookid, attribute_id and new average score: ")
+    ////console.log(data)
 
     //Delete old book_attribute records
     query = 'DELETE FROM book_attributes WHERE book_id=' + book_id
@@ -78,10 +78,10 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
       query += 'attribute_id=' + d.attribute_id + ' OR ';
     }
     query = query.slice(0, -4) + ');';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
     //debug
-    //console.log(result);
+    ////console.log(result);
 
     //Insert new book_attribute records
     query = 'INSERT INTO book_attributes (book_id, attribute_id, '
@@ -90,25 +90,25 @@ module.exports = async (pool, { book_id, attr, user_id, rating_value }) => {
       query += '(' + book_id + ',' + d.attribute_id + ',' + d.avg + '),';
     }
     query = query.slice(0, -1) + ';';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
 
     //Update average rating score
     query = 'SELECT AVG(rating) AS rate FROM book_reviews WHERE book_id = ' + book_id + ';';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
     new_score = result[0][0].rate;
     query = 'UPDATE books SET average_rating = ' + new_score
           + ' WHERE id = ' + book_id + ';';
-    //console.log(query);
+    ////console.log(query);
     result = await connection.query(query);
     //debug
-    //console.log(result);
+    ////console.log(result);
 
     //return result, display to frontend if run successfully.
     return true;
   } catch(e) {
-    console.log(e);
+    //console.log(e);
     return false;
   } finally {
     //this closes the connection
@@ -139,7 +139,7 @@ if (process.argv[2] === 'test') {
       })
     });
     let res = await hi.json();
-    console.log(JSON.stringify(res));
+    //console.log(JSON.stringify(res));
   })();
 }
 */

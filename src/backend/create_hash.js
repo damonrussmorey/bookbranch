@@ -22,6 +22,6 @@ async function hashPassword(plainPassword) {
     try {
         return await saltPasswordAsync(plainPassword, 10);
     } catch (err) {
-        console.error('There was an error ', err);
+//console.error('There was an error ', err);
     }
 }

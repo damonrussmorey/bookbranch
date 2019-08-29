@@ -17,13 +17,13 @@ boolean
 Will return false if email is in the database already
 */
 module.exports = async (pool, req, res) => {
-    console.log('\n\nAdding new user by facebook');
+//console.log('\n\nAdding new user by facebook');
     let connection, result, query;
 
     //connect to db and pull all the data necessary
     try {
         connection = await pool.getConnection();
-        console.log("I Got: " + req.body.email);
+//console.log("I Got: " + req.body.email);
 
         let emailValue = '';
         if(req.body.email == undefined){
@@ -33,7 +33,7 @@ module.exports = async (pool, req, res) => {
           emailValue = req.body.email;
         }
 
-        console.log("I'm going to send: " + emailValue);
+//console.log("I'm going to send: " + emailValue);
         query = 'SELECT id, name FROM users WHERE facebook_id = "' 
             + req.body.facebook_id + '" AND email = "' + emailValue + '";';
         result = await connection.query(query);
@@ -76,6 +76,6 @@ if (process.argv[2] === 'test') {
                 })
             });
         let res = await hi.json();
-        console.log(JSON.stringify(res.id));
+//console.log(JSON.stringify(res.id));
     })();
 }*/
