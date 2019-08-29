@@ -47,7 +47,7 @@ class MainMenu extends Component {
             <Text style = {{fontSize: 30, fontWeight: 'bold', alignSelf: 'center', color: 'white', marginTop: "10%"}}>Hi {this.state.username}!</Text>
                 <View style = {styles.ButtonStyle1}>
                 <TouchableOpacity onPress={() => Actions.FindNewBook()} >
-                        <Text adjustsFontSizeToFit style = {styles.TextStyle1}>Find Your Next {"\n"} Great Read!</Text>
+                        <Text  style = {styles.TextStyle1}>Find Your Next {"\n"} Great Read!</Text>
                         {/* <Text style = {styles.TextStyle2}>   Great Read!</Text> */}
                     </TouchableOpacity>
                 </View>
@@ -62,7 +62,7 @@ const styles = {
         borderWidth: 1,
         borderRadius: 5,
         borderColor: '#000000',
-        backgroundColor: '#D3D3D3',
+        backgroundColor: '#499920',
         height: hp('10%'),
         width: wp('30%'),
         elevation: 1,
@@ -103,9 +103,10 @@ const styles = {
 
     TextStyle1: {
         fontWeight: 'bold',
-        // fontSize: wp('4'),
-        marginTop: 5,
-        marginLeft: 5,
+        fontSize: wp('4'),
+        color: 'white',
+        marginTop: hp('1.5'),
+        marginLeft: hp('1'),
         alignSelf: 'center'
     },
 
