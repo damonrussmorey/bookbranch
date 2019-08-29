@@ -23,7 +23,7 @@ Body of response:
 */
 
 module.exports = async (pool, ids) => {
-  console.log('\nBook Information Request');
+//console.log('\nBook Information Request');
 
   if(!Array.isArray(ids))
     ids = [ids];
@@ -44,7 +44,7 @@ module.exports = async (pool, ids) => {
     result = await connection.query(query);
     result = result[0];
     if(!result)
-      console.log('no matches, sending back null');
+//console.log('no matches, sending back null');
     if(!Array.isArray(result))
       result = [result];
   } finally {
@@ -52,7 +52,7 @@ module.exports = async (pool, ids) => {
   }
 /*
   for(r of result)
-    console.log(r.imageURL);
+//console.log(r.imageURL);
     */
   return result;
 }
@@ -69,6 +69,6 @@ if(process.argv[2] == 'test') {
       body: JSON.stringify([1,2,4])
     });
     let res = await hi.json();
-    console.log(JSON.stringify(res));
+//console.log(JSON.stringify(res));
   })();
 }

@@ -4,7 +4,7 @@ NOT USING
 Get a list of attributes from the database
 */
 module.exports = async (pool, req, res) => {
-  console.log('Get attributes');
+//console.log('Get attributes');
     
   let connection, result;
   try {
@@ -29,6 +29,6 @@ if(process.argv[2] === 'test') {
   (async () => {
     let res = await fetch('http://159.65.97.145:8765/attributes');
     let attr = await res.json();
-    console.log(JSON.stringify(attr));
+//console.log(JSON.stringify(attr));
   })();
 }

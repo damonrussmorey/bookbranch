@@ -17,7 +17,7 @@ Body of Response:
 */
 
 module.exports = async (pool, req, res) => {
-  console.log('\nRetrieve User Info')
+//console.log('\nRetrieve User Info')
   //console.log(req.body.email);
 
   let connection, result, query, hash;
@@ -52,7 +52,7 @@ if(process.argv[2] === 'test') {
       body: JSON.stringify({email: 'damonrm1@yahoo.com'})
     });
     let res = await hi.json();
-    console.log('test 1: ' + JSON.stringify(res) + '\n');
+//console.log('test 1: ' + JSON.stringify(res) + '\n');
 
     await new Promise(done => setTimeout(done, 3000));
     
@@ -64,6 +64,6 @@ if(process.argv[2] === 'test') {
       body: JSON.stringify({email: 'damoBADnrm1@yahoo.com'})
     });
     res = await hi.json();
-    console.log('test 2: ' + JSON.stringify(res) + '\n');
+//console.log('test 2: ' + JSON.stringify(res) + '\n');
   })();
 }

@@ -15,7 +15,7 @@ boolean
 Will return false if email is in the database already
 */
 module.exports = async (pool, req, res) => {
-  console.log('\n\nAdding new user');
+//console.log('\n\nAdding new user');
   let connection, result, query;
 
   //connect to db and pull all the data necessary
@@ -31,7 +31,7 @@ module.exports = async (pool, req, res) => {
     req.body.hash = req.body.hash.slice(0, 2) + 'y'
                   + req.body.hash.slice(3);
     query = 'INSERT INTO users (name, email, password) VALUES ("'
-          + req.body.name + '", "' + req.body.email + '", "'
+          + req.body.username + '", "' + req.body.email + '", "'
           + req.body.hash + '");';
     result = await connection.query(query);
     res.send({id: result[0].insertId});
@@ -65,7 +65,7 @@ if (process.argv[2] === 'test') {
               })
           });
       let res = await hi.json();
-      console.log(JSON.stringify(res.id));
+//console.log(JSON.stringify(res.id));
   })();
 }
 
@@ -90,7 +90,7 @@ if (process.argv[2] === 'test') {
       })
     });
     let res = await hi.json();
-    console.log('test 1: ' + JSON.stringify(res));
+//console.log('test 1: ' + JSON.stringify(res));
     await new Promise(done => setTimeout(done, 3000));
 
     hi = await fetch('http://159.65.97.145:8765/new_user', {
@@ -108,7 +108,7 @@ if (process.argv[2] === 'test') {
       })
     });
     res = await hi.json();
-    console.log('test 2: ' + JSON.stringify(res));
+//console.log('test 2: ' + JSON.stringify(res));
     
   })();
 }

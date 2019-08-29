@@ -32,7 +32,7 @@ We need the books to skip it from matching to itself
 This can be used without needing to exclude a book, just send book_id: -1.
 */
 module.exports = async (pool, books, attrs) => {
-  console.log('\nBook Recommendation')
+//console.log('\nBook Recommendation')
   //console.log(books);
   //console.log(attrs);
 
@@ -139,7 +139,7 @@ if(process.argv[2] === 'test') {
       body: JSON.stringify(body)
     });
     let res = await hi.json();
-    console.log(test + ': ', JSON.stringify(res));
+//console.log(test + ': ', JSON.stringify(res));
   }
 
   (async () => {

@@ -20,8 +20,14 @@ class Book2CallAttributes4 extends Component {
       this.state = { 
           title: '',
           description:'',
+          choosenIndex: 0,
+          language1: "Seven",
+          language2: "Four",
+          language3: "One",
+          language4: "One"
       };
     }
+
 
   fetchData = async () => {
       let bookObject = await AsyncStorage.getItem('bookObject1');
@@ -31,13 +37,7 @@ class Book2CallAttributes4 extends Component {
           description:data.description,
       });
   }
-    state = {  
-        choosenIndex: 0,
-        language1: "One",
-        language2: "One",
-        language3: "One",
-        language4: "One"
-    };
+
     trunc(){
       var textbook2 = this.props.BookTwo;
       var len = textbook2.length;
