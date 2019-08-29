@@ -19,8 +19,12 @@ class CallAttributes3 extends Component {
       this.state = { 
           title: '',
           description:'',
-      };
-    }
+          language1: "Seven",
+          language2: "Four",
+          language3: "One",
+          language4: "One"
+         };
+       }
 
   fetchData = async () => {
       let bookObject = await AsyncStorage.getItem('bookObject1');

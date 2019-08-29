@@ -16,10 +16,14 @@ class CallAttributes3 extends Component {
   }
   
   constructor(props) {
-      super(props);
-      this.state = { 
-          title: '',
-          description:'',
+   super(props);
+   this.state = { 
+       title: '',
+       description:'',
+       language1: "Seven",
+       language2: "Four",
+       language3: "One",
+       language4: "One"
       };
     }
 
@@ -31,14 +35,6 @@ class CallAttributes3 extends Component {
           description:data.description,
       });
   }
-
-    state = {  
-        choosenIndex: 0,
-        language1: "One",
-        language2: "One",
-        language3: "One",
-        language4: "One"  
-    };
 
     trunc(){
       var textbook1 = this.props.BookOne;

@@ -29,11 +29,16 @@ class SearchBookResults extends Component {
         console.log(book1 + " book1att1: " + this.props.Book1Attribute1);
         console.log(book1 + " bookrank1: " + this.props.Book1Rank1);
         console.log(book1 + " book1Attribute2: " + this.props.Book1Attribute2);
+        
         console.log(book1 + " book1rank2: " + this.props.Book1Rank2);
+        console.log(book1 + " book1Attribute3: " + this.props.Book1Attribute3);
         console.log(book1 + " book1rank3: " + this.props.Book1Rank3);
+
         console.log(book2.title + " book2rankoveral: " + this.props.Book2RankOverall);
         console.log(book2 + " book2attr1: " + this.props.book2attributes1);
-        console.log(book2 + " book2attr1: " + this.props.book2attributes1);
+        console.log(book2 + " book2rank1: " + this.props.Book2Rank1);
+        console.log(book2 + " book2attr1: " + this.props.book2attributes2);
+        
         console.log(book2 + " book2rank2: " + this.props.Book2Rank2);
         console.log(book2 + " book2attr3: " + this.props.book2attributes3);
         console.log(book2 + " book2rank3: " + this.props.Book2Rank3);
