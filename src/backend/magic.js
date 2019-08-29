@@ -107,7 +107,9 @@ module.exports = async (pool, req, res) => {
     req.body.rating1 = convert_rank[req.body.rating1];
     req.body.rating2 = convert_rank[req.body.rating2];
   }
-//console.log(req.body);
+
+for(x in req.body)
+  console.log(JSON.stringify(x)+':' + JSON.stringify(req.body[x]));
 
   let attr1, attr2, attr, book1, book2, book1_id, book2_id,
       success, ids, recommendations;
@@ -211,7 +213,7 @@ module.exports = async (pool, req, res) => {
 if(process.argv[2] === 'test') {
   if(process.argv.length != 5) {
 //console.log('Please provide 2 book names to test\n'
-           + '> node magic.js test "joan of arc" "huckleberry finn"');
+//           + '> node magic.js test "joan of arc" "huckleberry finn"');
   } else {
     const fetch = require('node-fetch');
     (async () => {

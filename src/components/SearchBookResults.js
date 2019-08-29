@@ -58,7 +58,7 @@ class SearchBookResults extends Component {
                 book2:        book2,
                 rating2:      this.props.Book2RankOverall,
                 attr2id1:     this.props.book2attributes1,
-                attr2val1:    this.props.book2Rank1,
+                attr2val1:    this.props.Book2Rank1,
                 attr2id2:     this.props.book2attributes2,
                 attr2val2:    this.props.Book2Rank2,
                 attr2id3:     this.props.book2attributes3,
