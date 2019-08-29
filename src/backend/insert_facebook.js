@@ -35,7 +35,7 @@ module.exports = async (pool, req, res) => {
 
 //console.log("I'm going to send: " + emailValue);
         query = 'SELECT id, name FROM users WHERE facebook_id = "' 
-            + req.body.facebook_id + '" AND email = "' + emailValue + '";';
+            + req.body.facebook_id + '" OR email = "' + emailValue + '";';
         result = await connection.query(query);
         result = result[0];
         if (result.length && result.length[1] != "undefined") {
