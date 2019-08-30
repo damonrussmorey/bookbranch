@@ -9,6 +9,7 @@ import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import { GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import bcrypt from 'react-native-bcrypt'
 import {DB_IP, DB_PORT} from 'react-native-dotenv'
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 // import { saveData, fetchData } from './asyncStorage';
 
 class LogIn extends Component {
@@ -107,38 +108,42 @@ class LogIn extends Component {
         <View>
             <Header headerText={'Bookbranch'} />
             <Text
-                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
+                style = {{fontSize: wp('6'), fontWeight: 'bold', marginTop: hp('5'),marginLeft: wp('20'), color: '#ffffff'}}>
                 Welcome to Bookbranch!</Text>
 
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: hp('17'), marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Email"
                 placeholderTextColor="gray"
                 onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
             />
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Username"
                 placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
                 value={this.state.username}
             />
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Password"
                 secureTextEntry = {true}
                 placeholderTextColor="gray"
                 onChangeText={(password) => this.setState({password})}
                 value={this.state.password}
             />
-                <View style = {styles.ButtonStyle3}>
-                    <TouchableNativeFeedback onPress={this.Authenticate.bind(this)}>
+
+
+            <View style = {styles.ButtonStyle3}> 
+              <TouchableNativeFeedback style = {{ marginBottom:wp('90'), backgroundColor:"#499920"}} onPress={this.Authenticate.bind(this)}>
                             <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableNativeFeedback>
+            
+                    
                 </View>
-
-            <LoginButton 
+                <View style = {styles.Seperator}> 
+                <LoginButton 
                 readPermissions={["email", "public_profile"]}
                 onLoginFinished={
                     (error, result) => {
@@ -162,7 +167,10 @@ class LogIn extends Component {
                     }
                 }
                 onLogoutFinished={() => console.log("logout.")}
-            />
+            /> 
+            </View>
+
+            
         </View>
       </ImageBackground>
     );
@@ -205,6 +213,11 @@ class LogIn extends Component {
 
 const styles = {
 
+  Seperator:{
+    marginTop:wp('2'),
+    marginLeft: wp('14'),//220,
+  },
+
     ButtonStyle1: {
         borderWidth: 1,
         borderRadius: 5,
@@ -237,14 +250,15 @@ const styles = {
         borderWidth: 1,
         borderRadius: 5,
         borderColor: '#000000',
-        backgroundColor: '#D3D3D3',
+        backgroundColor: '#499920',
         height: 40,
         width: 110,
-        elevation: 1,
-        marginLeft: 220,
-        marginRight: 5,
-        marginTop: 230,
-        position: 'absolute'  
+        // elevation: 1,
+        marginLeft: wp('14'),//220,
+        // marginRight: wp('5'),//5,
+        marginTop: hp('1'),//230,
+        position: 'relative',
+        alignItems: 'stretch',
     },
 
     TextStyle1: {
@@ -268,7 +282,9 @@ const styles = {
         fontSize: 20,
         marginTop: 5,
         marginLeft: 14,
-        position: 'absolute'
+        position: 'absolute',
+        color: '#ffffff',
+        backgroundColor: '#499920',
     }
 };
 
