@@ -4,7 +4,7 @@
 Sponsored by Dan Hahn
 
 Cross platform mobile app for Easier Book Discovery and Review
-Inspired from BookBranch.ch
+Inspired from https://bookbran.ch/
 
 
 ### Prerequisites
