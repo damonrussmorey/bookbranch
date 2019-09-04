@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import HeaderLogout from '../components/headerLogout';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 
@@ -65,13 +66,13 @@ const styles = {
         borderWidth: 1,
         borderRadius: 5,
         borderColor: '#000000',
-        backgroundColor: '#D3D3D3',
-        height: 50,
-        width: 140,
+        backgroundColor: '#499920',
+        height: hp('10%'),
+        width: wp('30%'),
         elevation: 1,
-        marginLeft: 220,
-        marginRight: 5,
-        marginTop: 290,
+        marginLeft: wp('60%'), //220,
+        marginRight: wp('3%'), //5,
+        marginTop: hp('40%'), //290,
         position: 'absolute'       
     },
 
@@ -106,9 +107,10 @@ const styles = {
 
     TextStyle1: {
         fontWeight: 'bold',
-        fontSize: 17,
-        marginTop: 5,
-        marginLeft: 5,
+        fontSize: wp('4'),
+        color: 'white',
+        marginTop: hp('1.5'),
+        marginLeft: hp('1'),
         alignSelf: 'center'
     },
 

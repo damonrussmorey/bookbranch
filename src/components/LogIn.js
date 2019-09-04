@@ -7,6 +7,7 @@ import Header from './header';
 import AsyncStorage from '@react-native-community/async-storage';
 import bcrypt from 'react-native-bcrypt'
 // import { saveData, fetchData } from './asyncStorage';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
 class LogIn extends Component {
@@ -113,25 +114,25 @@ class LogIn extends Component {
         <View>
             <Header headerText={'Bookbranch'} />
             <Text
-                style = {{fontSize: 20, fontWeight: 'bold', marginTop: 5,marginLeft: 65, color: 'black'}}>
+                style = {{fontSize: wp('6'), fontWeight: 'bold', marginTop: hp('5'),marginLeft: wp('20'), color: '#ffffff'}}>
                 Welcome to Bookbranch!</Text>
 
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: 10, marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginTop: hp('17'), marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Email"
                 placeholderTextColor="gray"
                 onChangeText={(email) => this.setState({email})}
                 value={this.state.email}
             />
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff', marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Name"
                 placeholderTextColor="gray"
                 onChangeText={(username) => this.setState({username})}
                 value={this.state.username}
             />
             <TextInput
-                style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: 30, height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
+                style={{opacity: 0.70,backgroundColor: '#ffffff',marginLeft: wp('14'), height: 40, width: 300, borderColor: 'black', borderWidth: 1}}
                 placeholder=" Password"
                 secureTextEntry = {true}
                 placeholderTextColor="gray"
@@ -139,7 +140,7 @@ class LogIn extends Component {
                 value={this.state.password}
             />
                 <View style = {styles.ButtonStyle3}>
-                    <TouchableOpacity onPress={this.Authenticate.bind(this)}>
+                    <TouchableOpacity style = {{ marginBottom:wp('90'), backgroundColor:"#499920"}} onPress={this.Authenticate.bind(this)}>
                             <Text style = {styles.TextStyle3}>Register</Text>
                     </TouchableOpacity>
                 </View>
