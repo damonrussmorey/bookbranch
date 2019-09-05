@@ -101,10 +101,10 @@ module.exports = async (pool, book) => {
       continue_id = await connection.query('alter table books auto_increment= '+ result[0][0].id);
 
       query = 'INSERT INTO books (title, url_title, asin, '
-            + 'cover_url, amazon_url, description, average_rating) '
+            + 'cover_url, amazon_url, description, average_rating, goodreads_url, total_shares) '
             + 'VALUES("'+ book.title + '","' + url_title + '", "'
             + book.asin + '", "' + book.imageURL + '", "'
-            + book.amazonURL +'","'+ book.description+'", 0);';
+            + book.amazonURL +'","'+ book.description+'", 0, "https://goodreads.com", 0);';
 //console.log(query);
       result = await connection.query(query);
 
