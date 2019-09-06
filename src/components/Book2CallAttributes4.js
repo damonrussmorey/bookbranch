@@ -55,7 +55,6 @@ class Book2CallAttributes4 extends Component {
           return textbook2;
       }
   }
-
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -296,7 +295,11 @@ class Book2CallAttributes4 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
+<<<<<<< HEAD
                      <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+=======
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+>>>>>>> effeea686a6d58937764d1f6a2081685c50eae2e
                         <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
                     </View>
                     <View style = {styles.TopThreeStyle}>
@@ -489,7 +492,7 @@ const styles = {
         elevation: 1,
         marginLeft: 280,
         marginRight: 5,
-        marginTop: 560,
+        marginTop: 580,
         position: 'absolute'       
     },
 

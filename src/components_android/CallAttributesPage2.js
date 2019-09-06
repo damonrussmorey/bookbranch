@@ -8,18 +8,18 @@ import ArrowCard from './ArrowCard';
 import ArrowSection from './ArrowSection';
 import ArrowCardTwo from './ArrowCardTwo';
 
-class CallAttributes extends Component {
+class CallAttributesPage2 extends Component {
     trunc(){
-        var textbook1 = this.props.textOne;
-        var len = textbook1.length;
+        var textbook2 = this.props.BookTwo;
+        var len = textbook2.length;
 
         if(len > 30){
-            textbook1 = textbook1.substring(0, 30) + '...'
-            return textbook1;
+            textbook2 = textbook2.substring(0, 30) + '...'
+            return textbook2;
         }
 
         else{
-            return textbook1;
+            return textbook2;
         }
     }
     render(){
@@ -33,16 +33,15 @@ class CallAttributes extends Component {
                     <View style = {styles.TopThreeStyle}>
                         <Text style = 
                             {{fontSize: 12 ,color: '#778899', fontWeight: 'bold', alignSelf:'center'}}>
-                            Select the most prevalent attribute
+                            Choose this book's top 3 attributes
                             </Text>
                     </View>
                 </View>
                 <View>
-
             <View>
                 <Card>
                     <CardSection>
-                        <TouchableOpacity onPress={() => Actions.chooseAttList({textOne: this.props.textOne, textTwo: this.props.textTwo})}>
+                        <TouchableOpacity onPress={() => Actions.chooseAttListBook2({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, Book1Attribute1: this.props.Book1Attribute1, Book1Attribute2: this.props.Book1Attribute2, Book1Attribute3: this.props.Book1Attribute3, Book1Rank1: this.props.Book1Rank1, Book1Rank2: this.props.Book1Rank2, Book1Rank3: this.props.Book1Rank3, Book1RankOverall: this.props.Book1RankOverall})}>
                             <Text style= {{fontSize: 50, fontWeight: 'bold' , marginLeft: 76, marginTop: 31}}>+</Text>
                         </TouchableOpacity>
                     </CardSection>
@@ -70,8 +69,7 @@ const styles = {
     TopThreeStyle: {
         marginTop: 50,
         marginLeft: 78,
-        position: 'absolute',
-        justifyContent: 'center',
+        position: 'absolute'
     },
     BookNumStyle: {
         marginTop: 10,
@@ -113,6 +111,7 @@ const styles = {
     buttonStyle: {
         width: 40,
         height: 23,
+        //paddingTop: 2,
         backgroundColor: '#ffffff',
         borderRadius: 5,
         borderWidth: 1,
@@ -121,4 +120,4 @@ const styles = {
       }
 };
 
-export default CallAttributes;
+export default CallAttributesPage2;

@@ -55,6 +55,19 @@ class CallAttributes3 extends Component {
         language3: "One",
         language4: "One"  
     };
+    trunc(){
+      var textbook1 = this.props.textOne;
+      var len = textbook1.length;
+
+      if(len > 30){
+          textbook1 = textbook1.substring(0, 30) + '...'
+          return textbook1;
+      }
+
+      else{
+          return textbook1;
+      }
+  }
     renderElement(){
         if(this.props.attribute1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
@@ -297,7 +310,11 @@ class CallAttributes3 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
+<<<<<<< HEAD
                      <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+=======
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+>>>>>>> effeea686a6d58937764d1f6a2081685c50eae2e
                         <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
                     </View>
                     <View style = {styles.TopThreeStyle}>
@@ -431,7 +448,11 @@ class CallAttributes3 extends Component {
                     </TouchableOpacity>
                 </View>
 
+<<<<<<< HEAD
          <Text style = {{marginTop: 570,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+=======
+        <Text style = {{marginTop: 570,alignSelf: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>Overall Rating: </Text>
+>>>>>>> effeea686a6d58937764d1f6a2081685c50eae2e
         <View style = {{marginTop: 550, alignSelf: 'center'}}> 
                         <Picker style={styles.pickerStyle}  
                         selectedValue={this.state.language4}  

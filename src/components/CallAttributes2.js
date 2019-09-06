@@ -209,7 +209,11 @@ class CallAttributes2 extends Component {
         <View>
                 <Header headerText={'Bookbranch'} />
                 <View>
+<<<<<<< HEAD
                      <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+=======
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+>>>>>>> effeea686a6d58937764d1f6a2081685c50eae2e
                         <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
                     </View>
                     <View style = {styles.TopThreeStyle}>

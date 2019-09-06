@@ -9,24 +9,23 @@ class ChooseAttributesList3 extends Component {
     trunc(){
         var textbook1 = this.props.BookOne;
         var len = textbook1.length;
-     
+
         if(len > 30){
             textbook1 = textbook1.substring(0, 30) + '...'
             return textbook1;
         }
-     
+
         else{
             return textbook1;
         }
-     }
-
+    }
     render () {
         return (
             <View>
                 <Header headerText={'Bookbranch'} />
-                <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
+                    <View style = {{marginTop: 15, flexDirection: 'row', justifyContent: 'center', alignItems: 'stretch'}}>
                         <Text style = {{alignItems: 'center', fontWeight: 'bold', fontSize: 20, position: 'absolute'}}>{this.trunc()}</Text>
-                </View>
+                    </View>
                 <Card>
                     <ScrollView>
                     <TouchableOpacity onPress={() => Actions.attList3({BookOne: this.props.BookOne, BookTwo: this.props.BookTwo, attribute1: this.props.attribute1, attribute2: this.props.attribute2, attribute3: 'Adventurous' })}>

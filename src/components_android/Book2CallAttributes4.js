@@ -51,7 +51,6 @@ class Book2CallAttributes4 extends Component {
           return textbook2;
       }
   }
-
     renderElement(){
         if(this.props.book2attributes1 == 'Adventurous')
            return <Image source={require('bookbranch/img/attributes/adventurous-attribute.png')} style={styles.AttributeStyle}></Image>
